@@ -1,0 +1,508 @@
+ARM GAS  C:\Users\Diego\AppData\Local\Temp\cci6Onry.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"main.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.main,"ax",%progbits
+  20              		.align	2
+  21              		.global	main
+  22              		.thumb
+  23              		.thumb_func
+  24              		.type	main, %function
+  25              	main:
+  26              	.LFB63:
+  27              		.file 1 "main.c"
+   1:main.c        **** /******************************************************************************
+   2:main.c        **** * File Name: main.c
+   3:main.c        **** *
+   4:main.c        **** * Version: 1.10
+   5:main.c        **** *
+   6:main.c        **** * Description: This is the source code for the Blinking LED code example.
+   7:main.c        **** *
+   8:main.c        **** * Related Document: CE195352_PSoC_5LP_Blinking_LED.pdf
+   9:main.c        **** *
+  10:main.c        **** * Hardware Dependency: See CE195352_PSoC_5LP_Blinking_LED.pdf
+  11:main.c        **** *
+  12:main.c        **** *******************************************************************************
+  13:main.c        **** * Copyright (2018), Cypress Semiconductor Corporation. All rights reserved.
+  14:main.c        **** *******************************************************************************
+  15:main.c        **** * This software, including source code, documentation and related materials
+  16:main.c        **** * (“Software”), is owned by Cypress Semiconductor Corporation or one of its
+  17:main.c        **** * subsidiaries (“Cypress”) and is protected by and subject to worldwide patent
+  18:main.c        **** * protection (United States and foreign), United States copyright laws and
+  19:main.c        **** * international treaty provisions. Therefore, you may use this Software only
+  20:main.c        **** * as provided in the license agreement accompanying the software package from
+  21:main.c        **** * which you obtained this Software (“EULA”).
+  22:main.c        **** *
+  23:main.c        **** * If no EULA applies, Cypress hereby grants you a personal, nonexclusive,
+  24:main.c        **** * non-transferable license to copy, modify, and compile the Software source
+  25:main.c        **** * code solely for use in connection with Cypress’s integrated circuit products.
+  26:main.c        **** * Any reproduction, modification, translation, compilation, or representation
+  27:main.c        **** * of this Software except as specified above is prohibited without the express
+  28:main.c        **** * written permission of Cypress.
+  29:main.c        **** *
+  30:main.c        **** * Disclaimer: THIS SOFTWARE IS PROVIDED AS-IS, WITH NO WARRANTY OF ANY KIND, 
+ARM GAS  C:\Users\Diego\AppData\Local\Temp\cci6Onry.s 			page 2
+
+
+  31:main.c        **** * EXPRESS OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, NONINFRINGEMENT, IMPLIED 
+  32:main.c        **** * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE. Cypress 
+  33:main.c        **** * reserves the right to make changes to the Software without notice. Cypress 
+  34:main.c        **** * does not assume any liability arising out of the application or use of the 
+  35:main.c        **** * Software or any product or circuit described in the Software. Cypress does 
+  36:main.c        **** * not authorize its products for use in any products where a malfunction or 
+  37:main.c        **** * failure of the Cypress product may reasonably be expected to result in 
+  38:main.c        **** * significant property damage, injury or death (“High Risk Product”). By 
+  39:main.c        **** * including Cypress’s product in a High Risk Product, the manufacturer of such 
+  40:main.c        **** * system or application assumes all risk of such use and in doing so agrees to 
+  41:main.c        **** * indemnify Cypress against all liability.
+  42:main.c        **** *******************************************************************************/
+  43:main.c        **** 
+  44:main.c        **** #include <project.h>
+  45:main.c        **** 
+  46:main.c        **** /*******************************************************************************
+  47:main.c        **** * Function Name: main
+  48:main.c        **** ********************************************************************************
+  49:main.c        **** *
+  50:main.c        **** * Summary:
+  51:main.c        **** *  The PWM is configured and started in the PWM_1_Start() function.
+  52:main.c        **** *  The firmware then enters an idle loop, leaving control of the project
+  53:main.c        **** *  to the fixed function PWM peripheral.
+  54:main.c        **** *
+  55:main.c        **** * Parameters:
+  56:main.c        **** *  None.
+  57:main.c        **** *
+  58:main.c        **** * Return:
+  59:main.c        **** *  None.
+  60:main.c        **** *
+  61:main.c        **** *******************************************************************************/
+  62:main.c        **** int main()
+  63:main.c        **** {
+  28              		.loc 1 63 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 1, uses_anonymous_args = 0
+  32 0000 80B5     		push	{r7, lr}
+  33              		.cfi_def_cfa_offset 8
+  34              		.cfi_offset 7, -8
+  35              		.cfi_offset 14, -4
+  36 0002 00AF     		add	r7, sp, #0
+  37              		.cfi_def_cfa_register 7
+  64:main.c        ****     /* Prepare components */
+  65:main.c        ****     PWM_1_Start(); 
+  38              		.loc 1 65 0
+  39 0004 FFF7FEFF 		bl	PWM_1_Start
+  66:main.c        ****     CyGlobalIntEnable;
+  40              		.loc 1 66 0
+  41              		.syntax unified
+  42              	@ 66 "main.c" 1
+  43 0008 62B6     		CPSIE   i
+  44              	@ 0 "" 2
+  67:main.c        ****     UART_1_Start();
+  45              		.loc 1 67 0
+  46              		.thumb
+  47              		.syntax unified
+ARM GAS  C:\Users\Diego\AppData\Local\Temp\cci6Onry.s 			page 3
+
+
+  48 000a FFF7FEFF 		bl	UART_1_Start
+  68:main.c        ****     Timer_1_Start();
+  49              		.loc 1 68 0
+  50 000e FFF7FEFF 		bl	Timer_1_Start
+  51              	.L3:
+  69:main.c        ****     
+  70:main.c        ****     for (;;)
+  71:main.c        ****     {
+  72:main.c        ****         if(Kill_Switch_Read() == 0){
+  52              		.loc 1 72 0
+  53 0012 FFF7FEFF 		bl	Kill_Switch_Read
+  54 0016 0346     		mov	r3, r0
+  55 0018 002B     		cmp	r3, #0
+  56 001a FAD1     		bne	.L3
+  73:main.c        ****             UART_1_PutChar('1');
+  57              		.loc 1 73 0
+  58 001c 3120     		movs	r0, #49
+  59 001e FFF7FEFF 		bl	UART_1_PutChar
+  74:main.c        ****         }
+  75:main.c        ****     }
+  60              		.loc 1 75 0
+  61 0022 F6E7     		b	.L3
+  62              		.cfi_endproc
+  63              	.LFE63:
+  64              		.size	main, .-main
+  65              		.text
+  66              	.Letext0:
+  67              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.2\\psoc creator\\import\\gnu\\arm\\5.4.
+  68              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.2\\psoc creator\\import\\gnu\\arm\\5.4.
+  69              		.file 4 "Generated_Source\\PSoC5/core_cm3.h"
+  70              		.section	.debug_info,"",%progbits
+  71              	.Ldebug_info0:
+  72 0000 C7000000 		.4byte	0xc7
+  73 0004 0400     		.2byte	0x4
+  74 0006 00000000 		.4byte	.Ldebug_abbrev0
+  75 000a 04       		.byte	0x4
+  76 000b 01       		.uleb128 0x1
+  77 000c 63000000 		.4byte	.LASF16
+  78 0010 0C       		.byte	0xc
+  79 0011 2E000000 		.4byte	.LASF17
+  80 0015 04010000 		.4byte	.LASF18
+  81 0019 00000000 		.4byte	.Ldebug_ranges0+0
+  82 001d 00000000 		.4byte	0
+  83 0021 00000000 		.4byte	.Ldebug_line0
+  84 0025 02       		.uleb128 0x2
+  85 0026 01       		.byte	0x1
+  86 0027 06       		.byte	0x6
+  87 0028 5B010000 		.4byte	.LASF0
+  88 002c 02       		.uleb128 0x2
+  89 002d 01       		.byte	0x1
+  90 002e 08       		.byte	0x8
+  91 002f F1000000 		.4byte	.LASF1
+  92 0033 02       		.uleb128 0x2
+  93 0034 02       		.byte	0x2
+  94 0035 05       		.byte	0x5
+  95 0036 83010000 		.4byte	.LASF2
+  96 003a 02       		.uleb128 0x2
+ARM GAS  C:\Users\Diego\AppData\Local\Temp\cci6Onry.s 			page 4
+
+
+  97 003b 02       		.byte	0x2
+  98 003c 07       		.byte	0x7
+  99 003d 0E000000 		.4byte	.LASF3
+ 100 0041 03       		.uleb128 0x3
+ 101 0042 73010000 		.4byte	.LASF9
+ 102 0046 02       		.byte	0x2
+ 103 0047 3F       		.byte	0x3f
+ 104 0048 4C000000 		.4byte	0x4c
+ 105 004c 02       		.uleb128 0x2
+ 106 004d 04       		.byte	0x4
+ 107 004e 05       		.byte	0x5
+ 108 004f 3E010000 		.4byte	.LASF4
+ 109 0053 02       		.uleb128 0x2
+ 110 0054 04       		.byte	0x4
+ 111 0055 07       		.byte	0x7
+ 112 0056 3A000000 		.4byte	.LASF5
+ 113 005a 02       		.uleb128 0x2
+ 114 005b 08       		.byte	0x8
+ 115 005c 05       		.byte	0x5
+ 116 005d 00000000 		.4byte	.LASF6
+ 117 0061 02       		.uleb128 0x2
+ 118 0062 08       		.byte	0x8
+ 119 0063 07       		.byte	0x7
+ 120 0064 4C000000 		.4byte	.LASF7
+ 121 0068 04       		.uleb128 0x4
+ 122 0069 04       		.byte	0x4
+ 123 006a 05       		.byte	0x5
+ 124 006b 696E7400 		.ascii	"int\000"
+ 125 006f 02       		.uleb128 0x2
+ 126 0070 04       		.byte	0x4
+ 127 0071 07       		.byte	0x7
+ 128 0072 21000000 		.4byte	.LASF8
+ 129 0076 03       		.uleb128 0x3
+ 130 0077 8D010000 		.4byte	.LASF10
+ 131 007b 03       		.byte	0x3
+ 132 007c 2C       		.byte	0x2c
+ 133 007d 41000000 		.4byte	0x41
+ 134 0081 02       		.uleb128 0x2
+ 135 0082 04       		.byte	0x4
+ 136 0083 04       		.byte	0x4
+ 137 0084 7D010000 		.4byte	.LASF11
+ 138 0088 02       		.uleb128 0x2
+ 139 0089 08       		.byte	0x8
+ 140 008a 04       		.byte	0x4
+ 141 008b 47010000 		.4byte	.LASF12
+ 142 008f 02       		.uleb128 0x2
+ 143 0090 01       		.byte	0x1
+ 144 0091 08       		.byte	0x8
+ 145 0092 FF000000 		.4byte	.LASF13
+ 146 0096 02       		.uleb128 0x2
+ 147 0097 08       		.byte	0x8
+ 148 0098 04       		.byte	0x4
+ 149 0099 67010000 		.4byte	.LASF14
+ 150 009d 02       		.uleb128 0x2
+ 151 009e 04       		.byte	0x4
+ 152 009f 07       		.byte	0x7
+ 153 00a0 95010000 		.4byte	.LASF15
+ARM GAS  C:\Users\Diego\AppData\Local\Temp\cci6Onry.s 			page 5
+
+
+ 154 00a4 05       		.uleb128 0x5
+ 155 00a5 35000000 		.4byte	.LASF19
+ 156 00a9 01       		.byte	0x1
+ 157 00aa 3E       		.byte	0x3e
+ 158 00ab 68000000 		.4byte	0x68
+ 159 00af 00000000 		.4byte	.LFB63
+ 160 00b3 24000000 		.4byte	.LFE63-.LFB63
+ 161 00b7 01       		.uleb128 0x1
+ 162 00b8 9C       		.byte	0x9c
+ 163 00b9 06       		.uleb128 0x6
+ 164 00ba 4E010000 		.4byte	.LASF20
+ 165 00be 04       		.byte	0x4
+ 166 00bf 1207     		.2byte	0x712
+ 167 00c1 C5000000 		.4byte	0xc5
+ 168 00c5 07       		.uleb128 0x7
+ 169 00c6 76000000 		.4byte	0x76
+ 170 00ca 00       		.byte	0
+ 171              		.section	.debug_abbrev,"",%progbits
+ 172              	.Ldebug_abbrev0:
+ 173 0000 01       		.uleb128 0x1
+ 174 0001 11       		.uleb128 0x11
+ 175 0002 01       		.byte	0x1
+ 176 0003 25       		.uleb128 0x25
+ 177 0004 0E       		.uleb128 0xe
+ 178 0005 13       		.uleb128 0x13
+ 179 0006 0B       		.uleb128 0xb
+ 180 0007 03       		.uleb128 0x3
+ 181 0008 0E       		.uleb128 0xe
+ 182 0009 1B       		.uleb128 0x1b
+ 183 000a 0E       		.uleb128 0xe
+ 184 000b 55       		.uleb128 0x55
+ 185 000c 17       		.uleb128 0x17
+ 186 000d 11       		.uleb128 0x11
+ 187 000e 01       		.uleb128 0x1
+ 188 000f 10       		.uleb128 0x10
+ 189 0010 17       		.uleb128 0x17
+ 190 0011 00       		.byte	0
+ 191 0012 00       		.byte	0
+ 192 0013 02       		.uleb128 0x2
+ 193 0014 24       		.uleb128 0x24
+ 194 0015 00       		.byte	0
+ 195 0016 0B       		.uleb128 0xb
+ 196 0017 0B       		.uleb128 0xb
+ 197 0018 3E       		.uleb128 0x3e
+ 198 0019 0B       		.uleb128 0xb
+ 199 001a 03       		.uleb128 0x3
+ 200 001b 0E       		.uleb128 0xe
+ 201 001c 00       		.byte	0
+ 202 001d 00       		.byte	0
+ 203 001e 03       		.uleb128 0x3
+ 204 001f 16       		.uleb128 0x16
+ 205 0020 00       		.byte	0
+ 206 0021 03       		.uleb128 0x3
+ 207 0022 0E       		.uleb128 0xe
+ 208 0023 3A       		.uleb128 0x3a
+ 209 0024 0B       		.uleb128 0xb
+ 210 0025 3B       		.uleb128 0x3b
+ARM GAS  C:\Users\Diego\AppData\Local\Temp\cci6Onry.s 			page 6
+
+
+ 211 0026 0B       		.uleb128 0xb
+ 212 0027 49       		.uleb128 0x49
+ 213 0028 13       		.uleb128 0x13
+ 214 0029 00       		.byte	0
+ 215 002a 00       		.byte	0
+ 216 002b 04       		.uleb128 0x4
+ 217 002c 24       		.uleb128 0x24
+ 218 002d 00       		.byte	0
+ 219 002e 0B       		.uleb128 0xb
+ 220 002f 0B       		.uleb128 0xb
+ 221 0030 3E       		.uleb128 0x3e
+ 222 0031 0B       		.uleb128 0xb
+ 223 0032 03       		.uleb128 0x3
+ 224 0033 08       		.uleb128 0x8
+ 225 0034 00       		.byte	0
+ 226 0035 00       		.byte	0
+ 227 0036 05       		.uleb128 0x5
+ 228 0037 2E       		.uleb128 0x2e
+ 229 0038 00       		.byte	0
+ 230 0039 3F       		.uleb128 0x3f
+ 231 003a 19       		.uleb128 0x19
+ 232 003b 03       		.uleb128 0x3
+ 233 003c 0E       		.uleb128 0xe
+ 234 003d 3A       		.uleb128 0x3a
+ 235 003e 0B       		.uleb128 0xb
+ 236 003f 3B       		.uleb128 0x3b
+ 237 0040 0B       		.uleb128 0xb
+ 238 0041 49       		.uleb128 0x49
+ 239 0042 13       		.uleb128 0x13
+ 240 0043 11       		.uleb128 0x11
+ 241 0044 01       		.uleb128 0x1
+ 242 0045 12       		.uleb128 0x12
+ 243 0046 06       		.uleb128 0x6
+ 244 0047 40       		.uleb128 0x40
+ 245 0048 18       		.uleb128 0x18
+ 246 0049 9642     		.uleb128 0x2116
+ 247 004b 19       		.uleb128 0x19
+ 248 004c 00       		.byte	0
+ 249 004d 00       		.byte	0
+ 250 004e 06       		.uleb128 0x6
+ 251 004f 34       		.uleb128 0x34
+ 252 0050 00       		.byte	0
+ 253 0051 03       		.uleb128 0x3
+ 254 0052 0E       		.uleb128 0xe
+ 255 0053 3A       		.uleb128 0x3a
+ 256 0054 0B       		.uleb128 0xb
+ 257 0055 3B       		.uleb128 0x3b
+ 258 0056 05       		.uleb128 0x5
+ 259 0057 49       		.uleb128 0x49
+ 260 0058 13       		.uleb128 0x13
+ 261 0059 3F       		.uleb128 0x3f
+ 262 005a 19       		.uleb128 0x19
+ 263 005b 3C       		.uleb128 0x3c
+ 264 005c 19       		.uleb128 0x19
+ 265 005d 00       		.byte	0
+ 266 005e 00       		.byte	0
+ 267 005f 07       		.uleb128 0x7
+ARM GAS  C:\Users\Diego\AppData\Local\Temp\cci6Onry.s 			page 7
+
+
+ 268 0060 35       		.uleb128 0x35
+ 269 0061 00       		.byte	0
+ 270 0062 49       		.uleb128 0x49
+ 271 0063 13       		.uleb128 0x13
+ 272 0064 00       		.byte	0
+ 273 0065 00       		.byte	0
+ 274 0066 00       		.byte	0
+ 275              		.section	.debug_aranges,"",%progbits
+ 276 0000 1C000000 		.4byte	0x1c
+ 277 0004 0200     		.2byte	0x2
+ 278 0006 00000000 		.4byte	.Ldebug_info0
+ 279 000a 04       		.byte	0x4
+ 280 000b 00       		.byte	0
+ 281 000c 0000     		.2byte	0
+ 282 000e 0000     		.2byte	0
+ 283 0010 00000000 		.4byte	.LFB63
+ 284 0014 24000000 		.4byte	.LFE63-.LFB63
+ 285 0018 00000000 		.4byte	0
+ 286 001c 00000000 		.4byte	0
+ 287              		.section	.debug_ranges,"",%progbits
+ 288              	.Ldebug_ranges0:
+ 289 0000 00000000 		.4byte	.LFB63
+ 290 0004 24000000 		.4byte	.LFE63
+ 291 0008 00000000 		.4byte	0
+ 292 000c 00000000 		.4byte	0
+ 293              		.section	.debug_line,"",%progbits
+ 294              	.Ldebug_line0:
+ 295 0000 5B010000 		.section	.debug_str,"MS",%progbits,1
+ 295      02003F01 
+ 295      00000201 
+ 295      FB0E0D00 
+ 295      01010101 
+ 296              	.LASF6:
+ 297 0000 6C6F6E67 		.ascii	"long long int\000"
+ 297      206C6F6E 
+ 297      6720696E 
+ 297      7400
+ 298              	.LASF3:
+ 299 000e 73686F72 		.ascii	"short unsigned int\000"
+ 299      7420756E 
+ 299      7369676E 
+ 299      65642069 
+ 299      6E7400
+ 300              	.LASF8:
+ 301 0021 756E7369 		.ascii	"unsigned int\000"
+ 301      676E6564 
+ 301      20696E74 
+ 301      00
+ 302              	.LASF17:
+ 303 002e 6D61696E 		.ascii	"main.c\000"
+ 303      2E6300
+ 304              	.LASF19:
+ 305 0035 6D61696E 		.ascii	"main\000"
+ 305      00
+ 306              	.LASF5:
+ 307 003a 6C6F6E67 		.ascii	"long unsigned int\000"
+ 307      20756E73 
+ARM GAS  C:\Users\Diego\AppData\Local\Temp\cci6Onry.s 			page 8
+
+
+ 307      69676E65 
+ 307      6420696E 
+ 307      7400
+ 308              	.LASF7:
+ 309 004c 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 309      206C6F6E 
+ 309      6720756E 
+ 309      7369676E 
+ 309      65642069 
+ 310              	.LASF16:
+ 311 0063 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 311      43313120 
+ 311      352E342E 
+ 311      31203230 
+ 311      31363036 
+ 312 0096 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 312      20726576 
+ 312      6973696F 
+ 312      6E203233 
+ 312      37373135 
+ 313 00c9 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 313      66756E63 
+ 313      74696F6E 
+ 313      2D736563 
+ 313      74696F6E 
+ 314              	.LASF1:
+ 315 00f1 756E7369 		.ascii	"unsigned char\000"
+ 315      676E6564 
+ 315      20636861 
+ 315      7200
+ 316              	.LASF13:
+ 317 00ff 63686172 		.ascii	"char\000"
+ 317      00
+ 318              	.LASF18:
+ 319 0104 433A5C55 		.ascii	"C:\\Users\\Diego\\Documents\\PSoC Creator\\Mepsan\\"
+ 319      73657273 
+ 319      5C446965 
+ 319      676F5C44 
+ 319      6F63756D 
+ 320 0131 4D657073 		.ascii	"Mepsan.cydsn\000"
+ 320      616E2E63 
+ 320      7964736E 
+ 320      00
+ 321              	.LASF4:
+ 322 013e 6C6F6E67 		.ascii	"long int\000"
+ 322      20696E74 
+ 322      00
+ 323              	.LASF12:
+ 324 0147 646F7562 		.ascii	"double\000"
+ 324      6C6500
+ 325              	.LASF20:
+ 326 014e 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 326      52784275 
+ 326      66666572 
+ 326      00
+ 327              	.LASF0:
+ 328 015b 7369676E 		.ascii	"signed char\000"
+ARM GAS  C:\Users\Diego\AppData\Local\Temp\cci6Onry.s 			page 9
+
+
+ 328      65642063 
+ 328      68617200 
+ 329              	.LASF14:
+ 330 0167 6C6F6E67 		.ascii	"long double\000"
+ 330      20646F75 
+ 330      626C6500 
+ 331              	.LASF9:
+ 332 0173 5F5F696E 		.ascii	"__int32_t\000"
+ 332      7433325F 
+ 332      7400
+ 333              	.LASF11:
+ 334 017d 666C6F61 		.ascii	"float\000"
+ 334      7400
+ 335              	.LASF2:
+ 336 0183 73686F72 		.ascii	"short int\000"
+ 336      7420696E 
+ 336      7400
+ 337              	.LASF10:
+ 338 018d 696E7433 		.ascii	"int32_t\000"
+ 338      325F7400 
+ 339              	.LASF15:
+ 340 0195 73697A65 		.ascii	"sizetype\000"
+ 340      74797065 
+ 340      00
+ 341              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

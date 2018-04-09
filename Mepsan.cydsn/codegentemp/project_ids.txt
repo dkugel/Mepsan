@@ -1,0 +1,7 @@
+C:\Users\Diego\Documents\PSoC Creator\Mepsan\Mepsan.cydsn\Mepsan.cyprj|85c05bb8-d07e-4652-b978-8b329f1ba96e
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|31d11385-ddd1-4119-afe5-d28884fbb3ac
+C:\Users\Diego\Documents\PSoC Creator\4.2\Downloads ( 4.2).cylib\Downloads ( 4.2).cyprj|998859a6-ced9-4c30-9b76-2f20c464d6ad
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|703d0152-e146-4b3e-ad20-3c10a7cf9fba
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|75e4e95c-ba2a-4ff8-8e75-986be2146a0e
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|a3c68cba-9eb1-437f-b6a8-8361932c399d
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\default\CyReferenceLibrary\CyReferenceLibrary.cylib\CyReferenceLibrary.cyprj|b22d7a9c-0801-4c4a-a1c1-ca7a391eb41d
