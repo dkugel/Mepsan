@@ -42,23 +42,27 @@
 *******************************************************************************/
 
 #include <project.h>
+#include <GVar.h>
+#include <PumpCom.h>
+
+
+CY_ISR(polling);
+uint8 Positions;
+
+
+
+CY_ISR(polling){
+    Timer_1_ReadStatusRegister();    											 
+    PollCounter++; //Incrementa el contador    
+}
 
 /*******************************************************************************
 * Function Name: main
 ********************************************************************************
 *
-* Summary:
-*  The PWM is configured and started in the PWM_1_Start() function.
-*  The firmware then enters an idle loop, leaving control of the project
-*  to the fixed function PWM peripheral.
-*
-* Parameters:
-*  None.
-*
-* Return:
-*  None.
 *
 *******************************************************************************/
+
 int main()
 {
     /* Prepare components */
@@ -66,11 +70,24 @@ int main()
     CyGlobalIntEnable;
     UART_1_Start();
     Timer_1_Start();
+    Positions = GetAddress();
+    PollCounter = 0;
     
     for (;;)
     {
-        if(Kill_Switch_Read() == 0){
-            UART_1_PutChar('1');
+        if(PollCounter == 50){
+            if(Positions == 2){
+                PollPump(side.a.dir);
+                PollPump(side.b.dir);
+                PollCounter = 0;
+            }
+            if(Positions == 4){
+                PollPump(side.a.dir);
+                PollPump(side.b.dir);
+                PollPump(side.c.dir);
+                PollPump(side.d.dir);
+                PollCounter = 0;
+            }
         }
     }
 }

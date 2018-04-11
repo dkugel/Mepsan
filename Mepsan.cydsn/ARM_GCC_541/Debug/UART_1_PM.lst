@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Diego\AppData\Local\Temp\ccGlX60j.s 			page 1
+ARM GAS  C:\Users\Diego\AppData\Local\Temp\ccZaM7i5.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Diego\AppData\Local\Temp\ccGlX60j.s 			page 1
   24:Generated_Source\PSoC5/UART_1_PM.c **** static UART_1_BACKUP_STRUCT  UART_1_backup =
   25:Generated_Source\PSoC5/UART_1_PM.c **** {
   26:Generated_Source\PSoC5/UART_1_PM.c ****     /* enableState - disabled */
-ARM GAS  C:\Users\Diego\AppData\Local\Temp\ccGlX60j.s 			page 2
+ARM GAS  C:\Users\Diego\AppData\Local\Temp\ccZaM7i5.s 			page 2
 
 
   27:Generated_Source\PSoC5/UART_1_PM.c ****     0u,
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\Diego\AppData\Local\Temp\ccGlX60j.s 			page 1
   53              		.size	UART_1_SaveConfig, .-UART_1_SaveConfig
   54              		.section	.text.UART_1_RestoreConfig,"ax",%progbits
   55              		.align	2
-ARM GAS  C:\Users\Diego\AppData\Local\Temp\ccGlX60j.s 			page 3
+ARM GAS  C:\Users\Diego\AppData\Local\Temp\ccZaM7i5.s 			page 3
 
 
   56              		.global	UART_1_RestoreConfig
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\Diego\AppData\Local\Temp\ccGlX60j.s 			page 1
   77 0008 80BC     		pop	{r7}
   78              		.cfi_restore 7
   79              		.cfi_def_cfa_offset 0
-ARM GAS  C:\Users\Diego\AppData\Local\Temp\ccGlX60j.s 			page 4
+ARM GAS  C:\Users\Diego\AppData\Local\Temp\ccZaM7i5.s 			page 4
 
 
   80 000a 7047     		bx	lr
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\Diego\AppData\Local\Temp\ccGlX60j.s 			page 1
  103 0004 094B     		ldr	r3, .L6
  104 0006 1B78     		ldrb	r3, [r3]
  105 0008 DBB2     		uxtb	r3, r3
-ARM GAS  C:\Users\Diego\AppData\Local\Temp\ccGlX60j.s 			page 5
+ARM GAS  C:\Users\Diego\AppData\Local\Temp\ccZaM7i5.s 			page 5
 
 
  106 000a 03F01003 		and	r3, r3, #16
@@ -286,7 +286,7 @@ ARM GAS  C:\Users\Diego\AppData\Local\Temp\ccGlX60j.s 			page 1
  127              	.L7:
  128              		.align	2
  129              	.L6:
- 130 002c 9A650040 		.word	1073767834
+ 130 002c 94640040 		.word	1073767572
  131 0030 00000000 		.word	UART_1_backup
  132              		.cfi_endproc
  133              	.LFE2:
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\Diego\AppData\Local\Temp\ccGlX60j.s 			page 1
  139              		.thumb_func
  140              		.type	UART_1_Wakeup, %function
  141              	UART_1_Wakeup:
-ARM GAS  C:\Users\Diego\AppData\Local\Temp\ccGlX60j.s 			page 6
+ARM GAS  C:\Users\Diego\AppData\Local\Temp\ccZaM7i5.s 			page 6
 
 
  142              	.LFB3:
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\Diego\AppData\Local\Temp\ccGlX60j.s 			page 1
  182:Generated_Source\PSoC5/UART_1_PM.c ****     if(UART_1_backup.enableState != 0u)
  159              		.loc 1 182 0
  160 0010 034B     		ldr	r3, .L11
-ARM GAS  C:\Users\Diego\AppData\Local\Temp\ccGlX60j.s 			page 7
+ARM GAS  C:\Users\Diego\AppData\Local\Temp\ccZaM7i5.s 			page 7
 
 
  161 0012 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
@@ -392,40 +392,40 @@ ARM GAS  C:\Users\Diego\AppData\Local\Temp\ccGlX60j.s 			page 1
  185 0006 00000000 		.4byte	.Ldebug_abbrev0
  186 000a 04       		.byte	0x4
  187 000b 01       		.uleb128 0x1
- 188 000c B5000000 		.4byte	.LASF21
+ 188 000c AF000000 		.4byte	.LASF21
  189 0010 0C       		.byte	0xc
- 190 0011 51010000 		.4byte	.LASF22
- 191 0015 34000000 		.4byte	.LASF23
+ 190 0011 4B010000 		.4byte	.LASF22
+ 191 0015 75000000 		.4byte	.LASF23
  192 0019 00000000 		.4byte	.Ldebug_ranges0+0
  193 001d 00000000 		.4byte	0
  194 0021 00000000 		.4byte	.Ldebug_line0
  195 0025 02       		.uleb128 0x2
  196 0026 01       		.byte	0x1
  197 0027 06       		.byte	0x6
- 198 0028 BF010000 		.4byte	.LASF0
+ 198 0028 B9010000 		.4byte	.LASF0
  199 002c 02       		.uleb128 0x2
  200 002d 01       		.byte	0x1
  201 002e 08       		.byte	0x8
- 202 002f 43010000 		.4byte	.LASF1
+ 202 002f 3D010000 		.4byte	.LASF1
  203 0033 02       		.uleb128 0x2
  204 0034 02       		.byte	0x2
  205 0035 05       		.byte	0x5
- 206 0036 EC010000 		.4byte	.LASF2
+ 206 0036 E6010000 		.4byte	.LASF2
  207 003a 02       		.uleb128 0x2
  208 003b 02       		.byte	0x2
  209 003c 07       		.byte	0x7
- 210 003d AC010000 		.4byte	.LASF3
+ 210 003d A6010000 		.4byte	.LASF3
  211 0041 02       		.uleb128 0x2
  212 0042 04       		.byte	0x4
  213 0043 05       		.byte	0x5
-ARM GAS  C:\Users\Diego\AppData\Local\Temp\ccGlX60j.s 			page 8
+ARM GAS  C:\Users\Diego\AppData\Local\Temp\ccZaM7i5.s 			page 8
 
 
- 214 0044 79010000 		.4byte	.LASF4
+ 214 0044 73010000 		.4byte	.LASF4
  215 0048 02       		.uleb128 0x2
  216 0049 04       		.byte	0x4
  217 004a 07       		.byte	0x7
- 218 004b 74000000 		.4byte	.LASF5
+ 218 004b 3A000000 		.4byte	.LASF5
  219 004f 02       		.uleb128 0x2
  220 0050 08       		.byte	0x8
  221 0051 05       		.byte	0x5
@@ -433,7 +433,7 @@ ARM GAS  C:\Users\Diego\AppData\Local\Temp\ccGlX60j.s 			page 1
  223 0056 02       		.uleb128 0x2
  224 0057 08       		.byte	0x8
  225 0058 07       		.byte	0x7
- 226 0059 98000000 		.4byte	.LASF7
+ 226 0059 5E000000 		.4byte	.LASF7
  227 005d 03       		.uleb128 0x3
  228 005e 04       		.byte	0x4
  229 005f 05       		.byte	0x5
@@ -443,24 +443,24 @@ ARM GAS  C:\Users\Diego\AppData\Local\Temp\ccGlX60j.s 			page 1
  233 0066 07       		.byte	0x7
  234 0067 1A000000 		.4byte	.LASF8
  235 006b 04       		.uleb128 0x4
- 236 006c 6E000000 		.4byte	.LASF12
+ 236 006c 34000000 		.4byte	.LASF12
  237 0070 02       		.byte	0x2
  238 0071 E401     		.2byte	0x1e4
  239 0073 2C000000 		.4byte	0x2c
  240 0077 02       		.uleb128 0x2
  241 0078 04       		.byte	0x4
  242 0079 04       		.byte	0x4
- 243 007a AF000000 		.4byte	.LASF9
+ 243 007a A9000000 		.4byte	.LASF9
  244 007e 02       		.uleb128 0x2
  245 007f 08       		.byte	0x8
  246 0080 04       		.byte	0x4
- 247 0081 82010000 		.4byte	.LASF10
+ 247 0081 7C010000 		.4byte	.LASF10
  248 0085 02       		.uleb128 0x2
  249 0086 01       		.byte	0x1
  250 0087 08       		.byte	0x8
- 251 0088 74010000 		.4byte	.LASF11
+ 251 0088 6E010000 		.4byte	.LASF11
  252 008c 04       		.uleb128 0x4
- 253 008d F6010000 		.4byte	.LASF13
+ 253 008d F0010000 		.4byte	.LASF13
  254 0091 02       		.byte	0x2
  255 0092 8E02     		.2byte	0x28e
  256 0094 98000000 		.4byte	0x98
@@ -469,16 +469,16 @@ ARM GAS  C:\Users\Diego\AppData\Local\Temp\ccGlX60j.s 			page 1
  259 009d 02       		.uleb128 0x2
  260 009e 08       		.byte	0x8
  261 009f 04       		.byte	0x4
- 262 00a0 E0010000 		.4byte	.LASF14
+ 262 00a0 DA010000 		.4byte	.LASF14
  263 00a4 02       		.uleb128 0x2
  264 00a5 04       		.byte	0x4
  265 00a6 07       		.byte	0x7
- 266 00a7 09020000 		.4byte	.LASF15
+ 266 00a7 03020000 		.4byte	.LASF15
  267 00ab 06       		.uleb128 0x6
- 268 00ac 97010000 		.4byte	.LASF24
+ 268 00ac 91010000 		.4byte	.LASF24
  269 00b0 01       		.byte	0x1
  270 00b1 03       		.byte	0x3
-ARM GAS  C:\Users\Diego\AppData\Local\Temp\ccGlX60j.s 			page 9
+ARM GAS  C:\Users\Diego\AppData\Local\Temp\ccZaM7i5.s 			page 9
 
 
  271 00b2 45       		.byte	0x45
@@ -491,12 +491,12 @@ ARM GAS  C:\Users\Diego\AppData\Local\Temp\ccGlX60j.s 			page 1
  278 00c2 00       		.byte	0
  279 00c3 00       		.byte	0
  280 00c4 08       		.uleb128 0x8
- 281 00c5 12020000 		.4byte	.LASF16
+ 281 00c5 0C020000 		.4byte	.LASF16
  282 00c9 03       		.byte	0x3
  283 00ca 4D       		.byte	0x4d
  284 00cb AB000000 		.4byte	0xab
  285 00cf 09       		.uleb128 0x9
- 286 00d0 86000000 		.4byte	.LASF17
+ 286 00d0 4C000000 		.4byte	.LASF17
  287 00d4 01       		.byte	0x1
  288 00d5 36       		.byte	0x36
  289 00d6 00000000 		.4byte	.LFB0
@@ -504,7 +504,7 @@ ARM GAS  C:\Users\Diego\AppData\Local\Temp\ccGlX60j.s 			page 1
  291 00de 01       		.uleb128 0x1
  292 00df 9C       		.byte	0x9c
  293 00e0 09       		.uleb128 0x9
- 294 00e1 CB010000 		.4byte	.LASF18
+ 294 00e1 C5010000 		.4byte	.LASF18
  295 00e5 01       		.byte	0x1
  296 00e6 57       		.byte	0x57
  297 00e7 00000000 		.4byte	.LFB1
@@ -520,7 +520,7 @@ ARM GAS  C:\Users\Diego\AppData\Local\Temp\ccGlX60j.s 			page 1
  307 0100 01       		.uleb128 0x1
  308 0101 9C       		.byte	0x9c
  309 0102 0A       		.uleb128 0xa
- 310 0103 FB010000 		.4byte	.LASF20
+ 310 0103 F5010000 		.4byte	.LASF20
  311 0107 01       		.byte	0x1
  312 0108 AC       		.byte	0xac
  313 0109 00000000 		.4byte	.LFB3
@@ -528,7 +528,7 @@ ARM GAS  C:\Users\Diego\AppData\Local\Temp\ccGlX60j.s 			page 1
  315 0111 01       		.uleb128 0x1
  316 0112 9C       		.byte	0x9c
  317 0113 0B       		.uleb128 0xb
- 318 0114 89010000 		.4byte	.LASF26
+ 318 0114 83010000 		.4byte	.LASF26
  319 0118 01       		.byte	0x1
  320 0119 18       		.byte	0x18
  321 011a C4000000 		.4byte	0xc4
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\Diego\AppData\Local\Temp\ccGlX60j.s 			page 1
  325 0124 00       		.byte	0
  326              		.section	.debug_abbrev,"",%progbits
  327              	.Ldebug_abbrev0:
-ARM GAS  C:\Users\Diego\AppData\Local\Temp\ccGlX60j.s 			page 10
+ARM GAS  C:\Users\Diego\AppData\Local\Temp\ccZaM7i5.s 			page 10
 
 
  328 0000 01       		.uleb128 0x1
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\Diego\AppData\Local\Temp\ccGlX60j.s 			page 1
  382 0036 05       		.uleb128 0x5
  383 0037 35       		.uleb128 0x35
  384 0038 00       		.byte	0
-ARM GAS  C:\Users\Diego\AppData\Local\Temp\ccGlX60j.s 			page 11
+ARM GAS  C:\Users\Diego\AppData\Local\Temp\ccZaM7i5.s 			page 11
 
 
  385 0039 49       		.uleb128 0x49
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\Diego\AppData\Local\Temp\ccGlX60j.s 			page 1
  439 006f 3A       		.uleb128 0x3a
  440 0070 0B       		.uleb128 0xb
  441 0071 3B       		.uleb128 0x3b
-ARM GAS  C:\Users\Diego\AppData\Local\Temp\ccGlX60j.s 			page 12
+ARM GAS  C:\Users\Diego\AppData\Local\Temp\ccZaM7i5.s 			page 12
 
 
  442 0072 0B       		.uleb128 0xb
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\Diego\AppData\Local\Temp\ccGlX60j.s 			page 1
  496 0004 0200     		.2byte	0x2
  497 0006 00000000 		.4byte	.Ldebug_info0
  498 000a 04       		.byte	0x4
-ARM GAS  C:\Users\Diego\AppData\Local\Temp\ccGlX60j.s 			page 13
+ARM GAS  C:\Users\Diego\AppData\Local\Temp\ccZaM7i5.s 			page 13
 
 
  499 000b 00       		.byte	0
@@ -772,137 +772,135 @@ ARM GAS  C:\Users\Diego\AppData\Local\Temp\ccGlX60j.s 			page 1
  534      5F315F53 
  534      6C656570 
  534      00
- 535              	.LASF23:
- 536 0034 433A5C55 		.ascii	"C:\\Users\\Diego\\Documents\\PSoC Creator\\Mepsan\\"
- 536      73657273 
- 536      5C446965 
- 536      676F5C44 
- 536      6F63756D 
-ARM GAS  C:\Users\Diego\AppData\Local\Temp\ccGlX60j.s 			page 14
+ 535              	.LASF12:
+ 536 0034 75696E74 		.ascii	"uint8\000"
+ 536      3800
+ 537              	.LASF5:
+ 538 003a 6C6F6E67 		.ascii	"long unsigned int\000"
+ 538      20756E73 
+ARM GAS  C:\Users\Diego\AppData\Local\Temp\ccZaM7i5.s 			page 14
 
 
- 537 0061 4D657073 		.ascii	"Mepsan.cydsn\000"
- 537      616E2E63 
- 537      7964736E 
- 537      00
- 538              	.LASF12:
- 539 006e 75696E74 		.ascii	"uint8\000"
- 539      3800
- 540              	.LASF5:
- 541 0074 6C6F6E67 		.ascii	"long unsigned int\000"
- 541      20756E73 
- 541      69676E65 
- 541      6420696E 
- 541      7400
- 542              	.LASF17:
- 543 0086 55415254 		.ascii	"UART_1_SaveConfig\000"
- 543      5F315F53 
- 543      61766543 
- 543      6F6E6669 
- 543      6700
- 544              	.LASF7:
- 545 0098 6C6F6E67 		.ascii	"long long unsigned int\000"
- 545      206C6F6E 
- 545      6720756E 
- 545      7369676E 
- 545      65642069 
+ 538      69676E65 
+ 538      6420696E 
+ 538      7400
+ 539              	.LASF17:
+ 540 004c 55415254 		.ascii	"UART_1_SaveConfig\000"
+ 540      5F315F53 
+ 540      61766543 
+ 540      6F6E6669 
+ 540      6700
+ 541              	.LASF7:
+ 542 005e 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 542      206C6F6E 
+ 542      6720756E 
+ 542      7369676E 
+ 542      65642069 
+ 543              	.LASF23:
+ 544 0075 433A5C55 		.ascii	"C:\\Users\\Diego\\Documents\\GitHub\\Mepsan\\Mepsan"
+ 544      73657273 
+ 544      5C446965 
+ 544      676F5C44 
+ 544      6F63756D 
+ 545 00a2 2E637964 		.ascii	".cydsn\000"
+ 545      736E00
  546              	.LASF9:
- 547 00af 666C6F61 		.ascii	"float\000"
+ 547 00a9 666C6F61 		.ascii	"float\000"
  547      7400
  548              	.LASF21:
- 549 00b5 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 549 00af 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
  549      43313120 
  549      352E342E 
  549      31203230 
  549      31363036 
- 550 00e8 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 550 00e2 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
  550      20726576 
  550      6973696F 
  550      6E203233 
  550      37373135 
- 551 011b 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 551 0115 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
  551      66756E63 
  551      74696F6E 
  551      2D736563 
  551      74696F6E 
  552              	.LASF1:
- 553 0143 756E7369 		.ascii	"unsigned char\000"
+ 553 013d 756E7369 		.ascii	"unsigned char\000"
  553      676E6564 
  553      20636861 
  553      7200
  554              	.LASF22:
- 555 0151 47656E65 		.ascii	"Generated_Source\\PSoC5\\UART_1_PM.c\000"
+ 555 014b 47656E65 		.ascii	"Generated_Source\\PSoC5\\UART_1_PM.c\000"
  555      72617465 
  555      645F536F 
  555      75726365 
  555      5C50536F 
  556              	.LASF11:
- 557 0174 63686172 		.ascii	"char\000"
-ARM GAS  C:\Users\Diego\AppData\Local\Temp\ccGlX60j.s 			page 15
-
-
+ 557 016e 63686172 		.ascii	"char\000"
  557      00
  558              	.LASF4:
- 559 0179 6C6F6E67 		.ascii	"long int\000"
+ARM GAS  C:\Users\Diego\AppData\Local\Temp\ccZaM7i5.s 			page 15
+
+
+ 559 0173 6C6F6E67 		.ascii	"long int\000"
  559      20696E74 
  559      00
  560              	.LASF10:
- 561 0182 646F7562 		.ascii	"double\000"
+ 561 017c 646F7562 		.ascii	"double\000"
  561      6C6500
  562              	.LASF26:
- 563 0189 55415254 		.ascii	"UART_1_backup\000"
+ 563 0183 55415254 		.ascii	"UART_1_backup\000"
  563      5F315F62 
  563      61636B75 
  563      7000
  564              	.LASF24:
- 565 0197 55415254 		.ascii	"UART_1_backupStruct_\000"
+ 565 0191 55415254 		.ascii	"UART_1_backupStruct_\000"
  565      5F315F62 
  565      61636B75 
  565      70537472 
  565      7563745F 
  566              	.LASF3:
- 567 01ac 73686F72 		.ascii	"short unsigned int\000"
+ 567 01a6 73686F72 		.ascii	"short unsigned int\000"
  567      7420756E 
  567      7369676E 
  567      65642069 
  567      6E7400
  568              	.LASF0:
- 569 01bf 7369676E 		.ascii	"signed char\000"
+ 569 01b9 7369676E 		.ascii	"signed char\000"
  569      65642063 
  569      68617200 
  570              	.LASF18:
- 571 01cb 55415254 		.ascii	"UART_1_RestoreConfig\000"
+ 571 01c5 55415254 		.ascii	"UART_1_RestoreConfig\000"
  571      5F315F52 
  571      6573746F 
  571      7265436F 
  571      6E666967 
  572              	.LASF14:
- 573 01e0 6C6F6E67 		.ascii	"long double\000"
+ 573 01da 6C6F6E67 		.ascii	"long double\000"
  573      20646F75 
  573      626C6500 
  574              	.LASF2:
- 575 01ec 73686F72 		.ascii	"short int\000"
+ 575 01e6 73686F72 		.ascii	"short int\000"
  575      7420696E 
  575      7400
  576              	.LASF13:
- 577 01f6 72656738 		.ascii	"reg8\000"
+ 577 01f0 72656738 		.ascii	"reg8\000"
  577      00
  578              	.LASF20:
- 579 01fb 55415254 		.ascii	"UART_1_Wakeup\000"
+ 579 01f5 55415254 		.ascii	"UART_1_Wakeup\000"
  579      5F315F57 
  579      616B6575 
  579      7000
  580              	.LASF15:
- 581 0209 73697A65 		.ascii	"sizetype\000"
+ 581 0203 73697A65 		.ascii	"sizetype\000"
  581      74797065 
  581      00
  582              	.LASF16:
- 583 0212 55415254 		.ascii	"UART_1_BACKUP_STRUCT\000"
-ARM GAS  C:\Users\Diego\AppData\Local\Temp\ccGlX60j.s 			page 16
-
-
+ 583 020c 55415254 		.ascii	"UART_1_BACKUP_STRUCT\000"
  583      5F315F42 
  583      41434B55 
+ARM GAS  C:\Users\Diego\AppData\Local\Temp\ccZaM7i5.s 			page 16
+
+
  583      505F5354 
  583      52554354 
  584              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
