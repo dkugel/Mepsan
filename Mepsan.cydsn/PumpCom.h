@@ -15,4 +15,4 @@
 
 
 uint8 GetAddress (void);
-uint8 PollPump(uint8 address);
+uint8 PumpState(uint8 address);

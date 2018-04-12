@@ -46,6 +46,14 @@
   <file name="C:\Users\Diego\Documents\GitHub\Mepsan\Mepsan.cydsn\codegentemp\UART_2_BOOT.c" value="SOURCE_C;CortexM3;;;;UART_2" />
   <file name="C:\Users\Diego\Documents\GitHub\Mepsan\Mepsan.cydsn\codegentemp\Clock_2.c" value="SOURCE_C;CortexM3;;;;Clock_2" />
   <file name="C:\Users\Diego\Documents\GitHub\Mepsan\Mepsan.cydsn\codegentemp\Clock_2.h" value="HEADER;;;;;Clock_2" />
+  <file name="C:\Users\Diego\Documents\GitHub\Mepsan\Mepsan.cydsn\codegentemp\Timer_2.c" value="SOURCE_C;CortexM3;;;;Timer_2" />
+  <file name="C:\Users\Diego\Documents\GitHub\Mepsan\Mepsan.cydsn\codegentemp\Timer_2.h" value="HEADER;;;;;Timer_2" />
+  <file name="C:\Users\Diego\Documents\GitHub\Mepsan\Mepsan.cydsn\codegentemp\Timer_2_PM.c" value="SOURCE_C;CortexM3;;;;Timer_2" />
+  <file name="C:\Users\Diego\Documents\GitHub\Mepsan\Mepsan.cydsn\codegentemp\isr_2.c" value="SOURCE_C;CortexM3;;;;isr_2" />
+  <file name="C:\Users\Diego\Documents\GitHub\Mepsan\Mepsan.cydsn\codegentemp\isr_2.h" value="HEADER;;;;;isr_2" />
+  <file name="C:\Users\Diego\Documents\GitHub\Mepsan\Mepsan.cydsn\codegentemp\EnablePin_aliases.h" value="HEADER;;;;;EnablePin" />
+  <file name="C:\Users\Diego\Documents\GitHub\Mepsan\Mepsan.cydsn\codegentemp\EnablePin.c" value="SOURCE_C;CortexM3;;;;EnablePin" />
+  <file name="C:\Users\Diego\Documents\GitHub\Mepsan\Mepsan.cydsn\codegentemp\EnablePin.h" value="HEADER;;;;;EnablePin" />
   <file name="C:\Users\Diego\Documents\GitHub\Mepsan\Mepsan.cydsn\codegentemp\UART_1_IntClock.c" value="SOURCE_C;CortexM3;;;;UART_1_IntClock" />
   <file name="C:\Users\Diego\Documents\GitHub\Mepsan\Mepsan.cydsn\codegentemp\UART_1_IntClock.h" value="HEADER;;;;;UART_1_IntClock" />
   <file name="C:\Users\Diego\Documents\GitHub\Mepsan\Mepsan.cydsn\codegentemp\cm3gcc.ld" value="LINKER_SCRIPT;;;b98f980c-3bd1-4fc7-a887-c56a20a46fdd;;cy_boot" />

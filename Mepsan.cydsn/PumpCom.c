@@ -25,14 +25,19 @@
 *******************************************************************************/
 uint8 GetAddress (void){
     uint8 x;
+    uint8 response;
+    UART_1_ClearRxBuffer();
     side.a.dir = 0xFF;
     side.b.dir = 0xFF;
     side.c.dir = 0xFF;
     side.d.dir = 0xFF;
-    for(x=0;x<=15;x++){
+    EnablePin_Write (1u);
+    for(x=1;x<=15;x++){
         UART_1_PutChar(x);
         CyDelay(50);
-        if((UART_1_GetRxBufferSize()>=1)&&(side.a.dir==0xff)){
+        EnablePin_Write (0u);
+        if((UART_1_GetRxBufferSize()>=1)&&(side.a.dir==0xff)){  
+           response = UART_1_ReadRxData();
            side.a.dir=x;	
            UART_1_ClearRxBuffer();
         }
@@ -49,6 +54,8 @@ uint8 GetAddress (void){
            UART_1_ClearRxBuffer();
         }
     }
+    UART_1_ClearRxBuffer();
+    UART_1_ClearTxBuffer();
     if((side.a.dir!=0xff)&&(side.b.dir!=0xff)){
         return 2;
     }
@@ -61,34 +68,9 @@ uint8 GetAddress (void){
             return 0;
         }
     }
+    EnablePin_Write (0u);
 }
-//
-//lado.a.dir=0xff;
-//lado.b.dir=0xff;
-//    for(x=0;x<=15;x++){
-//        Surtidor_PutChar(x);
-//        CyDelay(100);
-//        if((Surtidor_GetRxBufferSize()>=1)&&(lado.a.dir==0xff)){
-//           lado.a.dir=x;	
-//           Surtidor_ClearRxBuffer();
-//        }
-//        if((Surtidor_GetRxBufferSize()>=1)&&(x!=lado.a.dir)){
-//           lado.b.dir=x;
-//           Surtidor_ClearRxBuffer();
-//        }
-//    }
-//    if((lado.a.dir!=0xff)&&(lado.b.dir!=0xff)){
-//        return 2;
-//    }
-//    else{
-//        if((lado.a.dir!=0xff)||(lado.b.dir!=0xff)){
-//            return 1;
-//        }
-//        else{
-//            return 0;
-//        }
-//    }
-//}
+
 
 
 
@@ -99,7 +81,7 @@ uint8 GetAddress (void){
 *
 *******************************************************************************/
 
-uint8 PollPump(uint8 address)
+uint8 PumpState(uint8 address)
 {    
     UART_1_PutChar((0x50+address));
     UART_1_PutChar(0x20);

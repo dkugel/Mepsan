@@ -32,6 +32,8 @@ struct position{
     uint8 volumeSale[14];           //Venta de Volumen vendido
     uint8 ppuSale[14];              //Venta de PPU vendido
     uint8 productSale;              //Venta de Producto vendido
+    uint8 states[5];                //Estados a Gbr
+    
 };
 
 struct pump{
@@ -42,3 +44,27 @@ struct pump{
 };
 
 struct pump side;       //lado del surtidor
+
+/*
+*********************************************************************************************************
+*
+*                            Var GILB.
+*          
+*********************************************************************************************************
+*/
+
+uint8 dirGbr;
+
+enum GILB_STATES
+{
+    GILB_FAIL       = 0x00,
+    GILB_IDLE       = 0x60,
+    GILB_CALLING    = 0x70,
+    GILB_AUTHORIZED = 0x80,
+    GILB_BUSY       = 0x90,
+    GILB_PEOT       = 0xA0,
+    GILB_FEOT       = 0xB0,
+    GILB_STOPPED    = 0xC0,
+    GILB_SEND_DATA  = 0xD0, //READY FOR LONG COMM
+    GILB_UNKNOWN    = 0xFF  //PUMP DESCONECTED
+};

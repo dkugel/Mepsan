@@ -44,7 +44,7 @@
 #include <project.h>
 #include <GVar.h>
 #include <PumpCom.h>
-
+#include <Gbr.h>
 
 CY_ISR(polling);
 uint8 Positions;
@@ -70,25 +70,24 @@ int main()
     CyGlobalIntEnable;
     UART_1_Start();
     Timer_1_Start();
+    EnablePin_Write (1u);
     Positions = GetAddress();
     PollCounter = 0;
     
     for (;;)
     {
-        if(PollCounter == 50){
-            if(Positions == 2){
-                PollPump(side.a.dir);
-                PollPump(side.b.dir);
-                PollCounter = 0;
+        if(Positions > 0){
+            PumpState(side.a.dir);
+            PumpState(side.b.dir);
+            if(Positions > 2){
+                PumpState(side.c.dir);
+                PumpState(side.d.dir);
             }
-            if(Positions == 4){
-                PollPump(side.a.dir);
-                PollPump(side.b.dir);
-                PollPump(side.c.dir);
-                PollPump(side.d.dir);
-                PollCounter = 0;
-            }
+            SystemQ();
+        }else{
+            Positions = GetAddress();    
         }
+        
     }
 }
 
