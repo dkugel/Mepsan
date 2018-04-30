@@ -10,9 +10,17 @@
  * ========================================
 */
 
-/* [] END OF FILE */
+
 #include <project.h>
 
 
-uint8 GetAddress (void);
+uint8 GetAddress (uint8 dir);
 uint8 PumpState(uint8 address);
+uint8 Authorize(uint8 address);
+uint8 PriceUpdate(uint8 address, uint8 *price);
+void TotalRequest(uint8 address, uint8 type, uint8 nozzle);
+void GetTotal(void);
+void GetACK(void);
+void ProccessResponse(void);
+
+/* [] END OF FILE */

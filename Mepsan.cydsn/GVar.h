@@ -45,6 +45,20 @@ struct pump{
 
 struct pump side;       //lado del surtidor
 
+enum MEPSAN_REQUEST
+{
+    MEPSAN_STATE     = 0x00,
+    MEPSAN_AUTHORIZE = 0x06,
+    MEPSAN_R_FILLING = 0x04
+};
+
+uint8 MepsanResponse[50];
+uint8 MepsanSendTo[50];
+uint8 PumpAddress[15];
+uint16 CRC;
+uint8 crc_lo,crc_hi;
+uint8 Positions;
+
 /*
 *********************************************************************************************************
 *
