@@ -111,7 +111,7 @@ uint8 GetAddress (uint8 pos){
 *******************************************************************************/
 uint8 Authorize(uint8 address){
     uint8 size, status;    
-    for(uint8 x = 0; x < 100; x ++){
+    for(uint8 x = 0; x < 50; x ++){
         MepsanSendTo[x] = 0x00;
     }
     EnablePin_Write (1u);
@@ -136,6 +136,43 @@ uint8 Authorize(uint8 address){
     return status;
 }
 
+/*******************************************************************************
+* Function Name: ReturnStatus
+********************************************************************************
+*
+*
+*******************************************************************************/
+uint8 ReturnStatus(uint8 address){
+    uint8 size, status;    
+    for(uint8 x = 0; x < 50; x ++){
+        MepsanSendTo[x] = 0x00;
+    }
+    EnablePin_Write (1u);
+    MepsanSendTo[0] = (0x50|address);
+    MepsanSendTo[1] = (0x30);
+    MepsanSendTo[2] = (0x01);
+    MepsanSendTo[3] = (0x01);
+    MepsanSendTo[4] = (MEPSAN_STATE);
+    CRC    = gen_crc16(MepsanSendTo,5);
+    crc_hi = (CRC & 0xFF00) >> 8;
+    crc_lo = (CRC & 0x00FF) ;
+    MepsanSendTo[5] = crc_lo;
+    MepsanSendTo[6] = crc_hi;
+    MepsanSendTo[7] = 0x03;
+    MepsanSendTo[8] = 0xFA;
+    for(uint8 x = 0; x <= 9; x++){    
+        UART_1_PutChar(MepsanSendTo[x]);
+    }
+    CyDelay(4);
+    EnablePin_Write (0u);
+     size = UART_1_GetRxBufferSize();
+    for(uint8 MepRx = 0; MepRx < size; MepRx++){
+        MepsanResponse[MepRx] = UART_1_ReadRxData();
+    }       
+    UART_1_ClearRxBuffer();
+    CyDelay(300); 
+    return status;
+}
 
 /*******************************************************************************
 * Function Name: PumpState
@@ -146,6 +183,9 @@ uint8 Authorize(uint8 address){
 
 uint8 PumpState(uint8 address)
 { 
+    for(uint8 x = 0; x < 50; x ++){
+        MepsanResponse[x] = 0x00;
+    }
     uint8 size;
     EnablePin_Write (1u);
     UART_1_PutChar((0x50|address));
@@ -157,8 +197,29 @@ uint8 PumpState(uint8 address)
     for(uint8 MepRx = 0; MepRx < size; MepRx++){
         MepsanResponse[MepRx] = UART_1_ReadRxData();
     }
+       
     UART_1_ClearRxBuffer();
-    CyDelay(300);    
+    CyDelay(300); 
+    if(address == side.a.dir){
+        for(uint8 MepRx = 0; MepRx < size; MepRx++){
+            side.a.MepsanStore[MepRx] = MepsanResponse[MepRx];
+        }
+    }
+    if(address == side.b.dir){
+        for(uint8 MepRx = 0; MepRx < size; MepRx++){
+            side.b.MepsanStore[MepRx] = MepsanResponse[MepRx];
+        }
+    }
+    if(address == side.c.dir){
+        for(uint8 MepRx = 0; MepRx < size; MepRx++){
+            side.c.MepsanStore[MepRx] = MepsanResponse[MepRx];
+        }
+    }
+    if(address == side.d.dir){
+        for(uint8 MepRx = 0; MepRx < size; MepRx++){
+            side.d.MepsanStore[MepRx] = MepsanResponse[MepRx];
+        }
+    } 
     if(size>=1){              
         return MepsanResponse[1];
     }
@@ -242,7 +303,8 @@ void TotalRequest(uint8 address, uint8 type, uint8 nozzle)
         UART_1_PutChar(MepsanSendTo[x]);
     }
     CyDelay(4);
-    EnablePin_Write (0u);                   
+    EnablePin_Write (0u);  
+    PumpState(address);
 }
 
 /*******************************************************************************
@@ -272,28 +334,21 @@ void GetACK(){
     UART_1_ClearRxBuffer();
 }
 
-void ProccessResponse(void){
-    uint8 size,ValidateA,ValidateB;
-    for(uint8 x = 0; x < 50; x++){
-        MepsanResponse[x] = UART_1_ReadRxData();   
-    }    
-    size = UART_1_GetRxBufferSize();        
-    for(uint8 MepRx = 0; MepRx < size; MepRx++){        
+void ProccessResponse(uint8 address){
+    uint8 ValidateA,ValidateB;            
+    for(uint8 MepRx = 0; MepRx < 20; MepRx++){        
         MepsanResponse[MepRx] = UART_1_ReadRxData(); 
         ValidateA = (MepsanResponse[1]|0xF0);
-        ValidateB =  MepsanResponse[2];
-        
+        ValidateB =  MepsanResponse[2];        
     } 
     ValidateA = (MepsanResponse[1]|0xF0);
     ValidateB =  MepsanResponse[2];
-    UART_1_ClearRxBuffer();
-    
-    if(size > 0){
-        if(ValidateA == 0xC0 && ValidateB != 0x65){
-            GetACK();
-        }
-        if(ValidateB == 0x65){
-            GetTotal();
-        }
+    UART_1_ClearRxBuffer();        
+    if(ValidateA == 0xC0 && ValidateB != 0x65){
+        GetACK();
     }
+    if(ValidateB == 0x65){
+        GetTotal();
+    }
+    
 }

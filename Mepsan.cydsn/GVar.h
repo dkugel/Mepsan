@@ -33,6 +33,7 @@ struct position{
     uint8 ppuSale[14];              //Venta de PPU vendido
     uint8 productSale;              //Venta de Producto vendido
     uint8 states[5];                //Estados a Gbr
+    uint8 MepsanStore[50];
     
 };
 

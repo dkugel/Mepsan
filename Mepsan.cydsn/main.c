@@ -73,10 +73,13 @@ void PollingPos(void){
         Positions = 4;
     }
     if(Positions == 1){
-            for(x = 0; x < 5; x++){
-                side.a.states[x] = PumpState(side.a.dir);                
-            }            
-        }
+        if(x == 5)
+            x = 0;
+        side.a.states[x] = PumpState(side.a.dir);                
+        x++;     
+        ReturnStatus(side.a.dir);
+        TotalRequest(side.a.dir, 0, 1); // dir, volume, nozzle
+    }
     if(Positions == 2){
         for(x = 0; x < 5; x++){
             side.a.states[x] = PumpState(side.a.dir);
@@ -144,7 +147,7 @@ int main()
             //ReturnStatus(0);
             PumpState(0);
             TotalRequest(0, 0, 1); //dir 0, volume, nozzle 1
-            ProccessResponse();
+            ProccessResponse(0);
             PumpState(0);
 //            TotalRequest(0, 1, 1); //dir 0, volume, nozzle 1
 //            ProccessResponse();
