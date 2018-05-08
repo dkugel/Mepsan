@@ -72,13 +72,9 @@ void PollingPos(void){
     if(side.c.dir != 0xFF && side.d.dir != 0xFF){
         Positions = 4;
     }
-    if(Positions == 1){
-        if(x == 5)
-            x = 0;
-        side.a.states[x] = PumpState(side.a.dir);                
-        x++;     
-        ReturnStatus(side.a.dir);
-        TotalRequest(side.a.dir, 0, 1); // dir, volume, nozzle
+    if(Positions == 1){       
+        side.a.states[0] = PumpState(side.a.dir);                                    
+        //ReturnStatus(side.a.dir);        
     }
     if(Positions == 2){
         for(x = 0; x < 5; x++){
@@ -131,7 +127,8 @@ int main()
     side.a.dir = PumpAddress[1];
     side.b.dir = PumpAddress[2];
     side.c.dir = PumpAddress[3];
-    side.d.dir = PumpAddress[4];  
+    side.d.dir = PumpAddress[4]; 
+    TotalRequestType = 0; 
             
     for (;;)
     {
@@ -140,19 +137,15 @@ int main()
             Authorize(side.a.dir);
             PrintReceipt();
         }else{
-            PollingPos();
+            PollingPos();                       
         }                
         if(Kill_Switch_Read() == 0u){
             //PriceUpdate(0,side.a.ppuNozzle[0]);
             //ReturnStatus(0);
+            PumpState(0);            
+            TotalRequest(0, TotalRequestType, 1); //dir 0, volume, nozzle 1                           
             PumpState(0);
-            TotalRequest(0, 0, 1); //dir 0, volume, nozzle 1
-            ProccessResponse(0);
-            PumpState(0);
-//            TotalRequest(0, 1, 1); //dir 0, volume, nozzle 1
-//            ProccessResponse();
-        }
-        
+        }        
     }
 }
 

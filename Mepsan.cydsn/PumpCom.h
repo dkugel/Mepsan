@@ -19,6 +19,7 @@ uint8 PumpState(uint8 address);
 uint8 Authorize(uint8 address);
 uint8 ReturnStatus(uint8 address);
 uint8 PriceUpdate(uint8 address, uint8 *price);
+void GetResponse(void);
 void TotalRequest(uint8 address, uint8 type, uint8 nozzle);
 void GetTotal(void);
 void GetACK(void);

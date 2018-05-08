@@ -17,6 +17,12 @@
 
 #define CRC16 0x8005
 
+/*******************************************************************************
+* Function Name: gen_crc16
+********************************************************************************
+*
+*
+*******************************************************************************/
 uint16_t gen_crc16(const uint8_t *data, uint16_t size)
 {
     uint16_t out = 0;
@@ -69,6 +75,73 @@ uint16_t gen_crc16(const uint8_t *data, uint16_t size)
     return crc;
 }
 
+/*******************************************************************************
+* Function Name: GetResponse
+********************************************************************************
+*
+*
+*******************************************************************************/
+void GetResponse(void){
+    uint8 size, address;
+    size = MepsanResponse[0];          
+    CyDelay(10); 
+    address = MepsanResponse[1] & 0x00;
+    if(address == side.a.dir){
+        for(uint8 MepRx = 1; MepRx < size + 1; MepRx++){
+            side.a.MepsanStore[MepRx - 1] = MepsanResponse[MepRx];
+        }
+        if(side.a.MepsanStore[2] == 0x65){
+            for(uint8 x = 5; x < (side.a.MepsanStore[3]-1) + 5; x++ ){
+                side.a.totalsNozzle[((side.a.MepsanStore[4])&0x0F)-1][TotalRequestType][x-5] = side.a.MepsanStore[x] ;
+            }
+            
+            side.a.ProcessedTotals[((side.a.MepsanStore[4])&0x0F)-1][TotalRequestType][0] = (side.a.totalsNozzle[((side.a.MepsanStore[4])&0x0F)-1][TotalRequestType][0] >> 4) + 0x30;
+            side.a.ProcessedTotals[((side.a.MepsanStore[4])&0x0F)-1][TotalRequestType][1] = (side.a.totalsNozzle[((side.a.MepsanStore[4])&0x0F)-1][TotalRequestType][0] & 0x0F) + 0x30;
+            side.a.ProcessedTotals[((side.a.MepsanStore[4])&0x0F)-1][TotalRequestType][2] = (side.a.totalsNozzle[((side.a.MepsanStore[4])&0x0F)-1][TotalRequestType][1] >> 4) + 0x30;
+            side.a.ProcessedTotals[((side.a.MepsanStore[4])&0x0F)-1][TotalRequestType][3] = (side.a.totalsNozzle[((side.a.MepsanStore[4])&0x0F)-1][TotalRequestType][1] & 0x0F) + 0x30;
+            side.a.ProcessedTotals[((side.a.MepsanStore[4])&0x0F)-1][TotalRequestType][4] = (side.a.totalsNozzle[((side.a.MepsanStore[4])&0x0F)-1][TotalRequestType][2] >> 4) + 0x30;
+            side.a.ProcessedTotals[((side.a.MepsanStore[4])&0x0F)-1][TotalRequestType][5] = (side.a.totalsNozzle[((side.a.MepsanStore[4])&0x0F)-1][TotalRequestType][2] & 0x0F) + 0x30;
+            side.a.ProcessedTotals[((side.a.MepsanStore[4])&0x0F)-1][TotalRequestType][6] = (side.a.totalsNozzle[((side.a.MepsanStore[4])&0x0F)-1][TotalRequestType][3] >> 4) + 0x30;
+            side.a.ProcessedTotals[((side.a.MepsanStore[4])&0x0F)-1][TotalRequestType][7] = (side.a.totalsNozzle[((side.a.MepsanStore[4])&0x0F)-1][TotalRequestType][3] & 0x0F) + 0x30;
+            side.a.ProcessedTotals[((side.a.MepsanStore[4])&0x0F)-1][TotalRequestType][8] = (side.a.totalsNozzle[((side.a.MepsanStore[4])&0x0F)-1][TotalRequestType][4] >> 4) + 0x30;
+            side.a.ProcessedTotals[((side.a.MepsanStore[4])&0x0F)-1][TotalRequestType][9] = (side.a.totalsNozzle[((side.a.MepsanStore[4])&0x0F)-1][TotalRequestType][4] & 0x0F) + 0x30;
+            
+            EnablePin_Write (1u);
+            UART_1_PutChar((0x50|address));
+            UART_1_PutChar(0xC0|(side.a.MepsanStore[1]&0x0F));
+            UART_1_PutChar(0xFA); 
+            CyDelay(4);
+            EnablePin_Write (0u);
+        }
+        if(side.a.MepsanStore[2] == 0x02){
+            for(uint8 x = 4; x < 8; x++ ){
+                side.a.volumeSale[x-4] = side.a.MepsanStore[x];
+                side.a.moneySale[x-4] = side.a.MepsanStore[x+4];
+            }
+            EnablePin_Write (1u);
+            UART_1_PutChar((0x50|address));
+            UART_1_PutChar(0xC0|(side.a.MepsanStore[1]&0x0F));
+            UART_1_PutChar(0xFA); 
+            CyDelay(4);
+            EnablePin_Write (0u);
+        }
+    }
+    if(address == side.b.dir){
+        for(uint8 MepRx = 1; MepRx < size + 1; MepRx++){
+            side.b.MepsanStore[MepRx - 1] = MepsanResponse[MepRx];
+        }
+    }
+    if(address == side.c.dir){
+        for(uint8 MepRx = 1; MepRx < size + 1; MepRx++){
+            side.c.MepsanStore[MepRx - 1] = MepsanResponse[MepRx];
+        }
+    }
+    if(address == side.d.dir){
+        for(uint8 MepRx = 1; MepRx < size + 1; MepRx++){
+            side.d.MepsanStore[MepRx - 1] = MepsanResponse[MepRx];
+        }
+    } 
+}
 
 /*******************************************************************************
 * Function Name: GetAddress
@@ -117,7 +190,7 @@ uint8 Authorize(uint8 address){
     EnablePin_Write (1u);
     MepsanSendTo[0] = (0x50|address);
     MepsanSendTo[1] = (0x30);
-    MepsanSendTo[2] = (0x01);
+    MepsanSendTo[2] = (address + 1);
     MepsanSendTo[3] = (0x01);
     MepsanSendTo[4] = (MEPSAN_AUTHORIZE);
     CRC    = gen_crc16(MepsanSendTo,5);
@@ -150,7 +223,7 @@ uint8 ReturnStatus(uint8 address){
     EnablePin_Write (1u);
     MepsanSendTo[0] = (0x50|address);
     MepsanSendTo[1] = (0x30);
-    MepsanSendTo[2] = (0x01);
+    MepsanSendTo[2] = (address + 1);
     MepsanSendTo[3] = (0x01);
     MepsanSendTo[4] = (MEPSAN_STATE);
     CRC    = gen_crc16(MepsanSendTo,5);
@@ -165,7 +238,7 @@ uint8 ReturnStatus(uint8 address){
     }
     CyDelay(4);
     EnablePin_Write (0u);
-     size = UART_1_GetRxBufferSize();
+    size = UART_1_GetRxBufferSize();
     for(uint8 MepRx = 0; MepRx < size; MepRx++){
         MepsanResponse[MepRx] = UART_1_ReadRxData();
     }       
@@ -193,17 +266,19 @@ uint8 PumpState(uint8 address)
     UART_1_PutChar(0xFA); 
     CyDelay(4);
     EnablePin_Write (0u);
-    size = UART_1_GetRxBufferSize();
-    for(uint8 MepRx = 0; MepRx < size; MepRx++){
+    size = UART_1_GetRxBufferSize();   
+    MepsanResponse[0] = size;
+    for(uint8 MepRx = 1; MepRx < size + 1; MepRx++){
         MepsanResponse[MepRx] = UART_1_ReadRxData();
-    }
-       
+    }          
     UART_1_ClearRxBuffer();
+    if(size > 3)
+        GetResponse();
     CyDelay(300); 
     if(address == side.a.dir){
         for(uint8 MepRx = 0; MepRx < size; MepRx++){
             side.a.MepsanStore[MepRx] = MepsanResponse[MepRx];
-        }
+        }        
     }
     if(address == side.b.dir){
         for(uint8 MepRx = 0; MepRx < size; MepRx++){
@@ -243,7 +318,7 @@ uint8 PriceUpdate(uint8 address, uint8 *price)
     EnablePin_Write (1u);
     MepsanSendTo[0] = (0x50|address);
     MepsanSendTo[1] = (0x30);
-    MepsanSendTo[2] = (0x05);
+    MepsanSendTo[2] = (0x05); //Price change transaction
     MepsanSendTo[3] = (0x03); //Data bytes in transaction
     MepsanSendTo[4] = (price[0]);
     MepsanSendTo[5] = (price[1]);
@@ -304,7 +379,12 @@ void TotalRequest(uint8 address, uint8 type, uint8 nozzle)
     }
     CyDelay(4);
     EnablePin_Write (0u);  
-    PumpState(address);
+    size = UART_1_GetRxBufferSize();
+    for(uint8 MepRx = 0; MepRx < size; MepRx++){
+        MepsanResponse[MepRx] = UART_1_ReadRxData();
+    }       
+    UART_1_ClearRxBuffer();
+    CyDelay(200); 
 }
 
 /*******************************************************************************
@@ -334,21 +414,47 @@ void GetACK(){
     UART_1_ClearRxBuffer();
 }
 
+
 void ProccessResponse(uint8 address){
-    uint8 ValidateA,ValidateB;            
-    for(uint8 MepRx = 0; MepRx < 20; MepRx++){        
-        MepsanResponse[MepRx] = UART_1_ReadRxData(); 
-        ValidateA = (MepsanResponse[1]|0xF0);
-        ValidateB =  MepsanResponse[2];        
-    } 
-    ValidateA = (MepsanResponse[1]|0xF0);
-    ValidateB =  MepsanResponse[2];
+    uint8 ValidateA,ValidateB,x;            
+    if(address == side.a.dir){
+        ValidateA = (side.a.MepsanStore[1]|0xF0);
+        ValidateB =  side.a.MepsanStore[2];
+        if(ValidateB == 0x65){
+            for(x = 5; x < side.a.MepsanStore[3]+5; x++ ){
+                side.a.totalsNozzle[(side.a.MepsanStore[4])&0x0F][(side.a.MepsanStore[4]&0xF0)>>4][x] = side.a.MepsanStore[x] ;
+            }
+        }
+//        for(uint8 MepRx = 0; MepRx < 50; MepRx++){
+//            side.a.MepsanStore[MepRx] = MepsanResponse[MepRx];
+//        }
+    }
+//    if(address == side.b.dir){
+//        for(uint8 MepRx = 0; MepRx < 50; MepRx++){
+//            side.b.MepsanStore[MepRx] = MepsanResponse[MepRx];
+//        }
+//    }
+//    if(address == side.c.dir){
+//        for(uint8 MepRx = 0; MepRx < 50; MepRx++){
+//            side.c.MepsanStore[MepRx] = MepsanResponse[MepRx];
+//        }
+//    }
+//    if(address == side.d.dir){
+//        for(uint8 MepRx = 0; MepRx < 50; MepRx++){
+//            side.d.MepsanStore[MepRx] = MepsanResponse[MepRx];
+//        }
+//    }
+    
+    
+    
+    
+    
+    
     UART_1_ClearRxBuffer();        
     if(ValidateA == 0xC0 && ValidateB != 0x65){
         GetACK();
     }
     if(ValidateB == 0x65){
         GetTotal();
-    }
-    
+    }    
 }

@@ -26,14 +26,17 @@ uint8 CurrentState;
 
 struct position{
     uint8 dir;                      //Direccion
-    uint8 totalsNozzle[4][3][15];   //Totales Manguera: [0-3] // [0]=Volumen [1]=Dinero [2]=PPU // [8 ó 12 - 4 ó 5]
+    uint8 totalsNozzle[4][3][5];   //Totales Manguera: [0-3] // [0]=Volumen [1]=Dinero [2]=PPU // [8 ó 12 - 4 ó 5]
     uint8 ppuNozzle[4][8];         //PPU autorizados [Manguera 0-3][Datos]
-    uint8 moneySale[14];            //Venta de Dinero vendido
-    uint8 volumeSale[14];           //Venta de Volumen vendido
+    uint8 moneySale[4];            //Venta de Dinero vendido
+    uint8 volumeSale[4];           //Venta de Volumen vendido
     uint8 ppuSale[14];              //Venta de PPU vendido
     uint8 productSale;              //Venta de Producto vendido
     uint8 states[5];                //Estados a Gbr
-    uint8 MepsanStore[50];
+    uint8 MepsanStore[50];          //Datos Mepsan por posición
+    uint8 ProcessedTotals[4][3][10];//Totales en ASCII
+    uint8 ProcessedmoneySale[8];            //Venta de Dinero vendido
+    uint8 ProcessedvolumeSale[8];           //Venta de Volumen vendido
     
 };
 
@@ -59,6 +62,7 @@ uint8 PumpAddress[15];
 uint16 CRC;
 uint8 crc_lo,crc_hi;
 uint8 Positions;
+uint8 TotalRequestType;
 
 /*
 *********************************************************************************************************

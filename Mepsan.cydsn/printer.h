@@ -10,4 +10,5 @@
  * ========================================
 */
 void PrintReceipt(void);
+void PrintShift(void);
 /* [] END OF FILE */

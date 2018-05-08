@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc23jVim.s 			page 1
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccPB1gwT.s 			page 1
 
 
    1              		.syntax unified
@@ -19,349 +19,368 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc23jVim.s 			page 1
   16              		.text
   17              	.Ltext0:
   18              		.cfi_sections	.debug_frame
-  19              		.global	LINE_FEED
-  20              		.data
-  21              		.type	LINE_FEED, %object
-  22              		.size	LINE_FEED, 1
-  23              	LINE_FEED:
-  24 0000 0A       		.byte	10
-  25              		.global	msn_EDS
-  26 0001 000000   		.align	2
-  27              		.type	msn_EDS, %object
-  28              		.size	msn_EDS, 22
-  29              	msn_EDS:
-  30 0004 20455354 		.ascii	" ESTACION DE SERVICIO "
-  30      4143494F 
-  30      4E204445 
-  30      20534552 
-  30      56494349 
-  31              		.global	msn_EDS2
-  32 001a 0000     		.align	2
-  33              		.type	msn_EDS2, %object
-  34              		.size	msn_EDS2, 22
-  35              	msn_EDS2:
-  36 001c 20202020 		.ascii	"    PRUEBAS MEPSAN    "
-  36      50525545 
-  36      42415320 
-  36      4D455053 
-  36      414E2020 
-  37              		.global	msn_EDS3
-  38 0032 0000     		.align	2
-  39              		.type	msn_EDS3, %object
-  40              		.size	msn_EDS3, 22
-  41              	msn_EDS3:
-  42 0034 20202054 		.ascii	"   Tel: (57)123456    "
-  42      656C3A20 
-  42      28353729 
-  42      31323334 
-  42      35362020 
-  43              		.global	msn_EDS4
-  44 004a 0000     		.align	2
-  45              		.type	msn_EDS4, %object
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc23jVim.s 			page 2
+  19              		.comm	PollCounter,2,2
+  20              		.comm	CurrentState,1,1
+  21              		.comm	side,1228,4
+  22              		.comm	MepsanResponse,50,4
+  23              		.comm	MepsanSendTo,50,4
+  24              		.comm	PumpAddress,15,4
+  25              		.comm	CRC,2,2
+  26              		.comm	crc_lo,1,1
+  27              		.comm	crc_hi,1,1
+  28              		.comm	Positions,1,1
+  29              		.comm	TotalRequestType,1,1
+  30              		.comm	dirGbr,1,1
+  31              		.global	LINE_FEED
+  32              		.data
+  33              		.type	LINE_FEED, %object
+  34              		.size	LINE_FEED, 1
+  35              	LINE_FEED:
+  36 0000 0A       		.byte	10
+  37              		.global	msn_EDS
+  38 0001 000000   		.align	2
+  39              		.type	msn_EDS, %object
+  40              		.size	msn_EDS, 22
+  41              	msn_EDS:
+  42 0004 20455354 		.ascii	" ESTACION DE SERVICIO "
+  42      4143494F 
+  42      4E204445 
+  42      20534552 
+  42      56494349 
+  43              		.global	msn_EDS2
+  44 001a 0000     		.align	2
+  45              		.type	msn_EDS2, %object
+  46              		.size	msn_EDS2, 22
+  47              	msn_EDS2:
+  48 001c 20202020 		.ascii	"    PRUEBAS MEPSAN    "
+  48      50525545 
+  48      42415320 
+  48      4D455053 
+  48      414E2020 
+  49              		.global	msn_EDS3
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccPB1gwT.s 			page 2
 
 
-  46              		.size	msn_EDS4, 22
-  47              	msn_EDS4:
-  48 004c 2020204E 		.ascii	"   NIT: 900.123.456   "
-  48      49543A20 
-  48      3930302E 
-  48      3132332E 
-  48      34353620 
-  49              		.global	msn_fecha
-  50 0062 0000     		.align	2
-  51              		.type	msn_fecha, %object
-  52              		.size	msn_fecha, 13
-  53              	msn_fecha:
-  54 0064 46656368 		.ascii	"Fecha      : "
-  54      61202020 
-  54      2020203A 
-  54      20
-  55              		.global	msn_hora
-  56 0071 000000   		.align	2
-  57              		.type	msn_hora, %object
-  58              		.size	msn_hora, 13
-  59              	msn_hora:
-  60 0074 486F7261 		.ascii	"Hora       : "
-  60      20202020 
-  60      2020203A 
-  60      20
-  61              		.global	msn_placa
-  62 0081 000000   		.align	2
-  63              		.type	msn_placa, %object
-  64              		.size	msn_placa, 13
-  65              	msn_placa:
-  66 0084 506C6163 		.ascii	"Placa      : "
+  50 0032 0000     		.align	2
+  51              		.type	msn_EDS3, %object
+  52              		.size	msn_EDS3, 22
+  53              	msn_EDS3:
+  54 0034 20202054 		.ascii	"   Tel: (57)123456    "
+  54      656C3A20 
+  54      28353729 
+  54      31323334 
+  54      35362020 
+  55              		.global	msn_EDS4
+  56 004a 0000     		.align	2
+  57              		.type	msn_EDS4, %object
+  58              		.size	msn_EDS4, 22
+  59              	msn_EDS4:
+  60 004c 2020204E 		.ascii	"   NIT: 900.123.456   "
+  60      49543A20 
+  60      3930302E 
+  60      3132332E 
+  60      34353620 
+  61              		.global	msn_fecha
+  62 0062 0000     		.align	2
+  63              		.type	msn_fecha, %object
+  64              		.size	msn_fecha, 13
+  65              	msn_fecha:
+  66 0064 46656368 		.ascii	"Fecha      : "
   66      61202020 
   66      2020203A 
   66      20
-  67              		.global	PRN_MILLEAGE
-  68 0091 000000   		.align	2
-  69              		.type	PRN_MILLEAGE, %object
-  70              		.size	PRN_MILLEAGE, 13
-  71              	PRN_MILLEAGE:
-  72 0094 4B696C6F 		.ascii	"Kilometraje: "
-  72      6D657472 
-  72      616A653A 
+  67              		.global	msn_hora
+  68 0071 000000   		.align	2
+  69              		.type	msn_hora, %object
+  70              		.size	msn_hora, 13
+  71              	msn_hora:
+  72 0074 486F7261 		.ascii	"Hora       : "
+  72      20202020 
+  72      2020203A 
   72      20
-  73              		.global	PRN_TRANSTYPE
-  74 00a1 000000   		.align	2
-  75              		.type	PRN_TRANSTYPE, %object
-  76              		.size	PRN_TRANSTYPE, 13
-  77              	PRN_TRANSTYPE:
-  78 00a4 5469706F 		.ascii	"Tipo       : "
-  78      20202020 
+  73              		.global	msn_placa
+  74 0081 000000   		.align	2
+  75              		.type	msn_placa, %object
+  76              		.size	msn_placa, 13
+  77              	msn_placa:
+  78 0084 506C6163 		.ascii	"Placa      : "
+  78      61202020 
   78      2020203A 
   78      20
-  79              		.global	msn_pos
-  80 00b1 000000   		.align	2
-  81              		.type	msn_pos, %object
-  82              		.size	msn_pos, 13
-  83              	msn_pos:
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc23jVim.s 			page 3
-
-
-  84 00b4 506F7369 		.ascii	"Posicion   : "
-  84      63696F6E 
-  84      2020203A 
+  79              		.global	PRN_MILLEAGE
+  80 0091 000000   		.align	2
+  81              		.type	PRN_MILLEAGE, %object
+  82              		.size	PRN_MILLEAGE, 13
+  83              	PRN_MILLEAGE:
+  84 0094 4B696C6F 		.ascii	"Kilometraje: "
+  84      6D657472 
+  84      616A653A 
   84      20
-  85              		.global	msn_product
-  86 00c1 000000   		.align	2
-  87              		.type	msn_product, %object
-  88              		.size	msn_product, 13
-  89              	msn_product:
-  90 00c4 50726F64 		.ascii	"Producto   : "
-  90      7563746F 
+  85              		.global	PRN_TRANSTYPE
+  86 00a1 000000   		.align	2
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccPB1gwT.s 			page 3
+
+
+  87              		.type	PRN_TRANSTYPE, %object
+  88              		.size	PRN_TRANSTYPE, 13
+  89              	PRN_TRANSTYPE:
+  90 00a4 5469706F 		.ascii	"Tipo       : "
+  90      20202020 
   90      2020203A 
   90      20
-  91              		.global	msn_ppu
-  92 00d1 000000   		.align	2
-  93              		.type	msn_ppu, %object
-  94              		.size	msn_ppu, 13
-  95              	msn_ppu:
-  96 00d4 50707520 		.ascii	"Ppu        : "
-  96      20202020 
+  91              		.global	msn_pos
+  92 00b1 000000   		.align	2
+  93              		.type	msn_pos, %object
+  94              		.size	msn_pos, 13
+  95              	msn_pos:
+  96 00b4 506F7369 		.ascii	"Posicion   : "
+  96      63696F6E 
   96      2020203A 
   96      20
-  97              		.global	msn_vol
-  98 00e1 000000   		.align	2
-  99              		.type	msn_vol, %object
- 100              		.size	msn_vol, 15
- 101              	msn_vol:
- 102 00e4 566F6C75 		.ascii	"Volumen    : \000"
- 102      6D656E20 
+  97              		.global	msn_product
+  98 00c1 000000   		.align	2
+  99              		.type	msn_product, %object
+ 100              		.size	msn_product, 13
+ 101              	msn_product:
+ 102 00c4 50726F64 		.ascii	"Producto   : "
+ 102      7563746F 
  102      2020203A 
- 102      2000
- 103 00f2 00       		.space	1
- 104              		.global	msn_din
- 105 00f3 00       		.align	2
- 106              		.type	msn_din, %object
- 107              		.size	msn_din, 15
- 108              	msn_din:
- 109 00f4 44696E65 		.ascii	"Dinero     : \000"
- 109      726F2020 
- 109      2020203A 
- 109      2000
- 110 0102 00       		.space	1
- 111              		.global	msn_numero
- 112 0103 00       		.align	2
- 113              		.type	msn_numero, %object
- 114              		.size	msn_numero, 13
- 115              	msn_numero:
- 116 0104 436F6E73 		.ascii	"Consecutivo: "
- 116      65637574 
- 116      69766F3A 
- 116      20
- 117              		.global	PRN_BALANCE
- 118 0111 000000   		.align	2
- 119              		.type	PRN_BALANCE, %object
- 120              		.size	PRN_BALANCE, 13
- 121              	PRN_BALANCE:
- 122 0114 53616C64 		.ascii	"Saldo      : "
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc23jVim.s 			page 4
+ 102      20
+ 103              		.global	msn_ppu
+ 104 00d1 000000   		.align	2
+ 105              		.type	msn_ppu, %object
+ 106              		.size	msn_ppu, 13
+ 107              	msn_ppu:
+ 108 00d4 50707520 		.ascii	"Ppu        : "
+ 108      20202020 
+ 108      2020203A 
+ 108      20
+ 109              		.global	msn_vol
+ 110 00e1 000000   		.align	2
+ 111              		.type	msn_vol, %object
+ 112              		.size	msn_vol, 13
+ 113              	msn_vol:
+ 114 00e4 566F6C75 		.ascii	"Volumen    : "
+ 114      6D656E20 
+ 114      2020203A 
+ 114      20
+ 115              		.global	msn_din
+ 116 00f1 000000   		.align	2
+ 117              		.type	msn_din, %object
+ 118              		.size	msn_din, 13
+ 119              	msn_din:
+ 120 00f4 44696E65 		.ascii	"Dinero     : "
+ 120      726F2020 
+ 120      2020203A 
+ 120      20
+ 121              		.global	msn_cierre
+ 122 0101 000000   		.align	2
+ 123              		.type	msn_cierre, %object
+ 124              		.size	msn_cierre, 13
+ 125              	msn_cierre:
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccPB1gwT.s 			page 4
 
 
- 122      6F202020 
- 122      2020203A 
- 122      20
- 123              		.global	PRN_COMPANY
- 124 0121 000000   		.align	2
- 125              		.type	PRN_COMPANY, %object
- 126              		.size	PRN_COMPANY, 13
- 127              	PRN_COMPANY:
- 128 0124 456D7072 		.ascii	"Empresa    : "
- 128      65736120 
- 128      2020203A 
- 128      20
- 129              		.global	PRN_ACCOUNT
- 130 0131 000000   		.align	2
- 131              		.type	PRN_ACCOUNT, %object
- 132              		.size	PRN_ACCOUNT, 13
- 133              	PRN_ACCOUNT:
- 134 0134 4375656E 		.ascii	"Cuenta     : "
- 134      74612020 
- 134      2020203A 
- 134      20
- 135              		.global	PRN_SERIAL
- 136 0141 000000   		.align	2
- 137              		.type	PRN_SERIAL, %object
- 138              		.size	PRN_SERIAL, 13
- 139              	PRN_SERIAL:
- 140 0144 53657269 		.ascii	"Serial     : "
- 140      616C2020 
- 140      2020203A 
- 140      20
- 141              		.global	PRN_ACCOUNTTYPE
- 142 0151 000000   		.align	2
- 143              		.type	PRN_ACCOUNTTYPE, %object
- 144              		.size	PRN_ACCOUNTTYPE, 13
- 145              	PRN_ACCOUNTTYPE:
- 146 0154 5469706F 		.ascii	"Tipo Cuenta: "
- 146      20437565 
- 146      6E74613A 
- 146      20
- 147              		.global	PRN_VISITSDAY
- 148 0161 000000   		.align	2
- 149              		.type	PRN_VISITSDAY, %object
- 150              		.size	PRN_VISITSDAY, 13
- 151              	PRN_VISITSDAY:
- 152 0164 56697369 		.ascii	"Visitas Dia: "
- 152      74617320 
- 152      4469613A 
- 152      20
- 153              		.global	PRN_VISITSWEEK
- 154 0171 000000   		.align	2
- 155              		.type	PRN_VISITSWEEK, %object
- 156              		.size	PRN_VISITSWEEK, 13
- 157              	PRN_VISITSWEEK:
- 158 0174 56697369 		.ascii	"Visitas Sem: "
- 158      74617320 
- 158      53656D3A 
- 158      20
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc23jVim.s 			page 5
+ 126 0104 43696572 		.ascii	"Cierre No  : "
+ 126      7265204E 
+ 126      6F20203A 
+ 126      20
+ 127              		.global	msn_numero
+ 128 0111 000000   		.align	2
+ 129              		.type	msn_numero, %object
+ 130              		.size	msn_numero, 13
+ 131              	msn_numero:
+ 132 0114 436F6E73 		.ascii	"Consecutivo: "
+ 132      65637574 
+ 132      69766F3A 
+ 132      20
+ 133              		.global	PRN_BALANCE
+ 134 0121 000000   		.align	2
+ 135              		.type	PRN_BALANCE, %object
+ 136              		.size	PRN_BALANCE, 13
+ 137              	PRN_BALANCE:
+ 138 0124 53616C64 		.ascii	"Saldo      : "
+ 138      6F202020 
+ 138      2020203A 
+ 138      20
+ 139              		.global	PRN_COMPANY
+ 140 0131 000000   		.align	2
+ 141              		.type	PRN_COMPANY, %object
+ 142              		.size	PRN_COMPANY, 13
+ 143              	PRN_COMPANY:
+ 144 0134 456D7072 		.ascii	"Empresa    : "
+ 144      65736120 
+ 144      2020203A 
+ 144      20
+ 145              		.global	PRN_ACCOUNT
+ 146 0141 000000   		.align	2
+ 147              		.type	PRN_ACCOUNT, %object
+ 148              		.size	PRN_ACCOUNT, 13
+ 149              	PRN_ACCOUNT:
+ 150 0144 4375656E 		.ascii	"Cuenta     : "
+ 150      74612020 
+ 150      2020203A 
+ 150      20
+ 151              		.global	PRN_SERIAL
+ 152 0151 000000   		.align	2
+ 153              		.type	PRN_SERIAL, %object
+ 154              		.size	PRN_SERIAL, 13
+ 155              	PRN_SERIAL:
+ 156 0154 53657269 		.ascii	"Serial     : "
+ 156      616C2020 
+ 156      2020203A 
+ 156      20
+ 157              		.global	PRN_ACCOUNTTYPE
+ 158 0161 000000   		.align	2
+ 159              		.type	PRN_ACCOUNTTYPE, %object
+ 160              		.size	PRN_ACCOUNTTYPE, 13
+ 161              	PRN_ACCOUNTTYPE:
+ 162 0164 5469706F 		.ascii	"Tipo Cuenta: "
+ 162      20437565 
+ 162      6E74613A 
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccPB1gwT.s 			page 5
 
 
- 159              		.global	PRN_VISITSMONTH
- 160 0181 000000   		.align	2
- 161              		.type	PRN_VISITSMONTH, %object
- 162              		.size	PRN_VISITSMONTH, 13
- 163              	PRN_VISITSMONTH:
- 164 0184 56697369 		.ascii	"Visitas Mes: "
- 164      74617320 
- 164      4D65733A 
- 164      20
- 165              		.global	PRN_VOLUMEDAY
- 166 0191 000000   		.align	2
- 167              		.type	PRN_VOLUMEDAY, %object
- 168              		.size	PRN_VOLUMEDAY, 13
- 169              	PRN_VOLUMEDAY:
- 170 0194 566F6C75 		.ascii	"Volumen Dia: "
- 170      6D656E20 
- 170      4469613A 
- 170      20
- 171              		.global	PRN_VOLUMEWEEK
- 172 01a1 000000   		.align	2
- 173              		.type	PRN_VOLUMEWEEK, %object
- 174              		.size	PRN_VOLUMEWEEK, 13
- 175              	PRN_VOLUMEWEEK:
- 176 01a4 566F6C75 		.ascii	"Volumen Sem: "
- 176      6D656E20 
- 176      53656D3A 
- 176      20
- 177              		.global	PRN_VOLUMEMONTH
- 178 01b1 000000   		.align	2
- 179              		.type	PRN_VOLUMEMONTH, %object
- 180              		.size	PRN_VOLUMEMONTH, 13
- 181              	PRN_VOLUMEMONTH:
- 182 01b4 566F6C75 		.ascii	"Volumen Mes: "
- 182      6D656E20 
- 182      4D65733A 
- 182      20
- 183              		.global	PRN_MONEYDAY
- 184 01c1 000000   		.align	2
- 185              		.type	PRN_MONEYDAY, %object
- 186              		.size	PRN_MONEYDAY, 13
- 187              	PRN_MONEYDAY:
- 188 01c4 44696E65 		.ascii	"Dinero Dia : "
- 188      726F2044 
- 188      6961203A 
- 188      20
- 189              		.global	PRN_MONEYWEEK
- 190 01d1 000000   		.align	2
- 191              		.type	PRN_MONEYWEEK, %object
- 192              		.size	PRN_MONEYWEEK, 13
- 193              	PRN_MONEYWEEK:
- 194 01d4 44696E65 		.ascii	"Dinero Sem : "
- 194      726F2053 
- 194      656D203A 
- 194      20
- 195              		.global	PRN_MONEYMONTH
- 196 01e1 000000   		.align	2
- 197              		.type	PRN_MONEYMONTH, %object
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc23jVim.s 			page 6
+ 162      20
+ 163              		.global	PRN_VISITSDAY
+ 164 0171 000000   		.align	2
+ 165              		.type	PRN_VISITSDAY, %object
+ 166              		.size	PRN_VISITSDAY, 13
+ 167              	PRN_VISITSDAY:
+ 168 0174 56697369 		.ascii	"Visitas Dia: "
+ 168      74617320 
+ 168      4469613A 
+ 168      20
+ 169              		.global	PRN_VISITSWEEK
+ 170 0181 000000   		.align	2
+ 171              		.type	PRN_VISITSWEEK, %object
+ 172              		.size	PRN_VISITSWEEK, 13
+ 173              	PRN_VISITSWEEK:
+ 174 0184 56697369 		.ascii	"Visitas Sem: "
+ 174      74617320 
+ 174      53656D3A 
+ 174      20
+ 175              		.global	PRN_VISITSMONTH
+ 176 0191 000000   		.align	2
+ 177              		.type	PRN_VISITSMONTH, %object
+ 178              		.size	PRN_VISITSMONTH, 13
+ 179              	PRN_VISITSMONTH:
+ 180 0194 56697369 		.ascii	"Visitas Mes: "
+ 180      74617320 
+ 180      4D65733A 
+ 180      20
+ 181              		.global	PRN_VOLUMEDAY
+ 182 01a1 000000   		.align	2
+ 183              		.type	PRN_VOLUMEDAY, %object
+ 184              		.size	PRN_VOLUMEDAY, 13
+ 185              	PRN_VOLUMEDAY:
+ 186 01a4 566F6C75 		.ascii	"Volumen Dia: "
+ 186      6D656E20 
+ 186      4469613A 
+ 186      20
+ 187              		.global	PRN_VOLUMEWEEK
+ 188 01b1 000000   		.align	2
+ 189              		.type	PRN_VOLUMEWEEK, %object
+ 190              		.size	PRN_VOLUMEWEEK, 13
+ 191              	PRN_VOLUMEWEEK:
+ 192 01b4 566F6C75 		.ascii	"Volumen Sem: "
+ 192      6D656E20 
+ 192      53656D3A 
+ 192      20
+ 193              		.global	PRN_VOLUMEMONTH
+ 194 01c1 000000   		.align	2
+ 195              		.type	PRN_VOLUMEMONTH, %object
+ 196              		.size	PRN_VOLUMEMONTH, 13
+ 197              	PRN_VOLUMEMONTH:
+ 198 01c4 566F6C75 		.ascii	"Volumen Mes: "
+ 198      6D656E20 
+ 198      4D65733A 
+ 198      20
+ 199              		.global	PRN_MONEYDAY
+ 200 01d1 000000   		.align	2
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccPB1gwT.s 			page 6
 
 
- 198              		.size	PRN_MONEYMONTH, 13
- 199              	PRN_MONEYMONTH:
- 200 01e4 44696E65 		.ascii	"Dinero Mes : "
- 200      726F204D 
- 200      6573203A 
- 200      20
- 201              		.global	PRN_PRESET
- 202 01f1 000000   		.align	2
- 203              		.type	PRN_PRESET, %object
- 204              		.size	PRN_PRESET, 13
- 205              	PRN_PRESET:
- 206 01f4 56616C6F 		.ascii	"Valor Prog.: "
- 206      72205072 
- 206      6F672E3A 
- 206      20
- 207              		.global	PRN_SIGNATURE
- 208 0201 000000   		.align	2
- 209              		.type	PRN_SIGNATURE, %object
- 210              		.size	PRN_SIGNATURE, 13
- 211              	PRN_SIGNATURE:
- 212 0204 4669726D 		.ascii	"Firma      : "
- 212      61202020 
- 212      2020203A 
- 212      20
- 213              		.global	PRN_ID
- 214 0211 000000   		.align	2
- 215              		.type	PRN_ID, %object
- 216              		.size	PRN_ID, 13
- 217              	PRN_ID:
- 218 0214 43656475 		.ascii	"Cedula     : "
- 218      6C612020 
- 218      2020203A 
- 218      20
- 219              		.global	PRN_CURRENCY
- 220 0221 000000   		.align	2
- 221              		.type	PRN_CURRENCY, %object
- 222              		.size	PRN_CURRENCY, 1
- 223              	PRN_CURRENCY:
- 224 0224 24       		.ascii	"$"
- 225              		.global	SEPARATOR
- 226 0225 000000   		.align	2
- 227              		.type	SEPARATOR, %object
- 228              		.size	SEPARATOR, 24
- 229              	SEPARATOR:
- 230 0228 2A2A2A2A 		.ascii	"************************"
- 230      2A2A2A2A 
- 230      2A2A2A2A 
- 230      2A2A2A2A 
- 230      2A2A2A2A 
- 231              		.section	.text.PrintReceipt,"ax",%progbits
- 232              		.align	2
- 233              		.global	PrintReceipt
- 234              		.thumb
- 235              		.thumb_func
- 236              		.type	PrintReceipt, %function
- 237              	PrintReceipt:
- 238              	.LFB63:
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc23jVim.s 			page 7
+ 201              		.type	PRN_MONEYDAY, %object
+ 202              		.size	PRN_MONEYDAY, 13
+ 203              	PRN_MONEYDAY:
+ 204 01d4 44696E65 		.ascii	"Dinero Dia : "
+ 204      726F2044 
+ 204      6961203A 
+ 204      20
+ 205              		.global	PRN_MONEYWEEK
+ 206 01e1 000000   		.align	2
+ 207              		.type	PRN_MONEYWEEK, %object
+ 208              		.size	PRN_MONEYWEEK, 13
+ 209              	PRN_MONEYWEEK:
+ 210 01e4 44696E65 		.ascii	"Dinero Sem : "
+ 210      726F2053 
+ 210      656D203A 
+ 210      20
+ 211              		.global	PRN_MONEYMONTH
+ 212 01f1 000000   		.align	2
+ 213              		.type	PRN_MONEYMONTH, %object
+ 214              		.size	PRN_MONEYMONTH, 13
+ 215              	PRN_MONEYMONTH:
+ 216 01f4 44696E65 		.ascii	"Dinero Mes : "
+ 216      726F204D 
+ 216      6573203A 
+ 216      20
+ 217              		.global	PRN_PRESET
+ 218 0201 000000   		.align	2
+ 219              		.type	PRN_PRESET, %object
+ 220              		.size	PRN_PRESET, 13
+ 221              	PRN_PRESET:
+ 222 0204 56616C6F 		.ascii	"Valor Prog.: "
+ 222      72205072 
+ 222      6F672E3A 
+ 222      20
+ 223              		.global	PRN_SIGNATURE
+ 224 0211 000000   		.align	2
+ 225              		.type	PRN_SIGNATURE, %object
+ 226              		.size	PRN_SIGNATURE, 13
+ 227              	PRN_SIGNATURE:
+ 228 0214 4669726D 		.ascii	"Firma      : "
+ 228      61202020 
+ 228      2020203A 
+ 228      20
+ 229              		.global	PRN_ID
+ 230 0221 000000   		.align	2
+ 231              		.type	PRN_ID, %object
+ 232              		.size	PRN_ID, 13
+ 233              	PRN_ID:
+ 234 0224 43656475 		.ascii	"Cedula     : "
+ 234      6C612020 
+ 234      2020203A 
+ 234      20
+ 235              		.global	PRN_CURRENCY
+ 236 0231 000000   		.align	2
+ 237              		.type	PRN_CURRENCY, %object
+ 238              		.size	PRN_CURRENCY, 1
+ 239              	PRN_CURRENCY:
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccPB1gwT.s 			page 7
 
 
- 239              		.file 1 "printer.c"
+ 240 0234 24       		.ascii	"$"
+ 241              		.global	SEPARATOR
+ 242 0235 000000   		.align	2
+ 243              		.type	SEPARATOR, %object
+ 244              		.size	SEPARATOR, 24
+ 245              	SEPARATOR:
+ 246 0238 2A2A2A2A 		.ascii	"************************"
+ 246      2A2A2A2A 
+ 246      2A2A2A2A 
+ 246      2A2A2A2A 
+ 246      2A2A2A2A 
+ 247              		.section	.text.PrintReceipt,"ax",%progbits
+ 248              		.align	2
+ 249              		.global	PrintReceipt
+ 250              		.thumb
+ 251              		.thumb_func
+ 252              		.type	PrintReceipt, %function
+ 253              	PrintReceipt:
+ 254              	.LFB63:
+ 255              		.file 1 "printer.c"
    1:printer.c     **** /* ========================================
    2:printer.c     ****  *
    3:printer.c     ****  * Copyright YOUR COMPANY, THE YEAR
@@ -374,1573 +393,2706 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc23jVim.s 			page 1
   10:printer.c     ****  * ========================================
   11:printer.c     **** */
   12:printer.c     **** #include <project.h>
-  13:printer.c     **** 
-  14:printer.c     **** uint8 LINE_FEED = 0x0A;
-  15:printer.c     **** 
+  13:printer.c     **** #include <GVar.h>
+  14:printer.c     **** 
+  15:printer.c     **** uint8 LINE_FEED = 0x0A;
   16:printer.c     **** 
-  17:printer.c     **** /***********  Temporal messages ******************/
-  18:printer.c     **** uint8 msn_EDS[22]       = " ESTACION DE SERVICIO ";
-  19:printer.c     **** uint8 msn_EDS2[22]      = "    PRUEBAS MEPSAN    ";
-  20:printer.c     **** uint8 msn_EDS3[22]      = "   Tel: (57)123456    ";
-  21:printer.c     **** uint8 msn_EDS4[22]      = "   NIT: 900.123.456   ";
-  22:printer.c     **** 
-  23:printer.c     **** /*********** informative messages ****************/
-  24:printer.c     **** 
-  25:printer.c     **** uint8 msn_fecha[13]       = "Fecha      : ";
-  26:printer.c     **** uint8 msn_hora[13]        = "Hora       : ";
-  27:printer.c     **** uint8 msn_placa[13]       = "Placa      : ";
-  28:printer.c     **** uint8 PRN_MILLEAGE[13]    = "Kilometraje: ";
-  29:printer.c     **** uint8 PRN_TRANSTYPE[13]   = "Tipo       : ";
-  30:printer.c     **** uint8 msn_pos[13]         = "Posicion   : ";
-  31:printer.c     **** uint8 msn_product[13]     = "Producto   : ";
-  32:printer.c     **** uint8 msn_ppu[13]         = "Ppu        : ";
-  33:printer.c     **** uint8 msn_vol[15]         = "Volumen    : ";
-  34:printer.c     **** uint8 msn_din[15]         = "Dinero     : ";
-  35:printer.c     **** uint8 msn_numero[13]      = "Consecutivo: ";
-  36:printer.c     **** uint8 PRN_BALANCE[13]     = "Saldo      : ";
-  37:printer.c     **** uint8 PRN_COMPANY[13]     = "Empresa    : ";
-  38:printer.c     **** uint8 PRN_ACCOUNT[13]     = "Cuenta     : ";
-  39:printer.c     **** uint8 PRN_SERIAL[13]      = "Serial     : ";
-  40:printer.c     **** uint8 PRN_ACCOUNTTYPE[13] = "Tipo Cuenta: ";
-  41:printer.c     **** uint8 PRN_VISITSDAY[13]   = "Visitas Dia: ";
-  42:printer.c     **** uint8 PRN_VISITSWEEK[13]  = "Visitas Sem: ";
-  43:printer.c     **** uint8 PRN_VISITSMONTH[13] = "Visitas Mes: ";
-  44:printer.c     **** uint8 PRN_VOLUMEDAY[13]   = "Volumen Dia: ";
-  45:printer.c     **** uint8 PRN_VOLUMEWEEK[13]  = "Volumen Sem: ";
-  46:printer.c     **** uint8 PRN_VOLUMEMONTH[13] = "Volumen Mes: ";
-  47:printer.c     **** uint8 PRN_MONEYDAY[13]    = "Dinero Dia : ";
-  48:printer.c     **** uint8 PRN_MONEYWEEK[13]   = "Dinero Sem : ";
-  49:printer.c     **** uint8 PRN_MONEYMONTH[13]  = "Dinero Mes : ";
-  50:printer.c     **** uint8 PRN_PRESET[13]      = "Valor Prog.: ";
-  51:printer.c     **** uint8 PRN_SIGNATURE[13]   = "Firma      : ";
-  52:printer.c     **** uint8 PRN_ID[13]          = "Cedula     : ";
-  53:printer.c     **** uint8 PRN_CURRENCY[1]     = "$";
-  54:printer.c     **** uint8 SEPARATOR[24]       = "************************";
-  55:printer.c     **** 
-  56:printer.c     **** 
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc23jVim.s 			page 8
+  17:printer.c     **** 
+  18:printer.c     **** /***********  Temporal messages ******************/
+  19:printer.c     **** uint8 msn_EDS[22]       = " ESTACION DE SERVICIO ";
+  20:printer.c     **** uint8 msn_EDS2[22]      = "    PRUEBAS MEPSAN    ";
+  21:printer.c     **** uint8 msn_EDS3[22]      = "   Tel: (57)123456    ";
+  22:printer.c     **** uint8 msn_EDS4[22]      = "   NIT: 900.123.456   ";
+  23:printer.c     **** 
+  24:printer.c     **** /*********** informative messages ****************/
+  25:printer.c     **** 
+  26:printer.c     **** uint8 msn_fecha[13]       = "Fecha      : ";
+  27:printer.c     **** uint8 msn_hora[13]        = "Hora       : ";
+  28:printer.c     **** uint8 msn_placa[13]       = "Placa      : ";
+  29:printer.c     **** uint8 PRN_MILLEAGE[13]    = "Kilometraje: ";
+  30:printer.c     **** uint8 PRN_TRANSTYPE[13]   = "Tipo       : ";
+  31:printer.c     **** uint8 msn_pos[13]         = "Posicion   : ";
+  32:printer.c     **** uint8 msn_product[13]     = "Producto   : ";
+  33:printer.c     **** uint8 msn_ppu[13]         = "Ppu        : ";
+  34:printer.c     **** uint8 msn_vol[13]         = "Volumen    : ";
+  35:printer.c     **** uint8 msn_din[13]         = "Dinero     : ";
+  36:printer.c     **** uint8 msn_cierre[13]      = "Cierre No  : ";
+  37:printer.c     **** uint8 msn_numero[13]      = "Consecutivo: ";
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccPB1gwT.s 			page 8
 
 
+  38:printer.c     **** uint8 PRN_BALANCE[13]     = "Saldo      : ";
+  39:printer.c     **** uint8 PRN_COMPANY[13]     = "Empresa    : ";
+  40:printer.c     **** uint8 PRN_ACCOUNT[13]     = "Cuenta     : ";
+  41:printer.c     **** uint8 PRN_SERIAL[13]      = "Serial     : ";
+  42:printer.c     **** uint8 PRN_ACCOUNTTYPE[13] = "Tipo Cuenta: ";
+  43:printer.c     **** uint8 PRN_VISITSDAY[13]   = "Visitas Dia: ";
+  44:printer.c     **** uint8 PRN_VISITSWEEK[13]  = "Visitas Sem: ";
+  45:printer.c     **** uint8 PRN_VISITSMONTH[13] = "Visitas Mes: ";
+  46:printer.c     **** uint8 PRN_VOLUMEDAY[13]   = "Volumen Dia: ";
+  47:printer.c     **** uint8 PRN_VOLUMEWEEK[13]  = "Volumen Sem: ";
+  48:printer.c     **** uint8 PRN_VOLUMEMONTH[13] = "Volumen Mes: ";
+  49:printer.c     **** uint8 PRN_MONEYDAY[13]    = "Dinero Dia : ";
+  50:printer.c     **** uint8 PRN_MONEYWEEK[13]   = "Dinero Sem : ";
+  51:printer.c     **** uint8 PRN_MONEYMONTH[13]  = "Dinero Mes : ";
+  52:printer.c     **** uint8 PRN_PRESET[13]      = "Valor Prog.: ";
+  53:printer.c     **** uint8 PRN_SIGNATURE[13]   = "Firma      : ";
+  54:printer.c     **** uint8 PRN_ID[13]          = "Cedula     : ";
+  55:printer.c     **** uint8 PRN_CURRENCY[1]     = "$";
+  56:printer.c     **** uint8 SEPARATOR[24]       = "************************";
   57:printer.c     **** 
   58:printer.c     **** 
-  59:printer.c     **** void PrintReceipt(void){
- 240              		.loc 1 59 0
- 241              		.cfi_startproc
- 242              		@ args = 0, pretend = 0, frame = 16
- 243              		@ frame_needed = 1, uses_anonymous_args = 0
- 244 0000 80B5     		push	{r7, lr}
- 245              		.cfi_def_cfa_offset 8
- 246              		.cfi_offset 7, -8
- 247              		.cfi_offset 14, -4
- 248 0002 84B0     		sub	sp, sp, #16
- 249              		.cfi_def_cfa_offset 24
- 250 0004 00AF     		add	r7, sp, #0
- 251              		.cfi_def_cfa_register 7
- 252              	.LBB2:
-  60:printer.c     ****     for(uint8 x = 0; x < 13; x ++){
- 253              		.loc 1 60 0
- 254 0006 0023     		movs	r3, #0
- 255 0008 FB73     		strb	r3, [r7, #15]
- 256 000a 08E0     		b	.L2
- 257              	.L3:
-  61:printer.c     ****         UART_3_PutChar(msn_product[x]);
- 258              		.loc 1 61 0 discriminator 3
- 259 000c FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
- 260 000e 6E4A     		ldr	r2, .L24
- 261 0010 D35C     		ldrb	r3, [r2, r3]	@ zero_extendqisi2
- 262 0012 1846     		mov	r0, r3
- 263 0014 FFF7FEFF 		bl	UART_3_PutChar
-  60:printer.c     ****     for(uint8 x = 0; x < 13; x ++){
- 264              		.loc 1 60 0 discriminator 3
- 265 0018 FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
- 266 001a 0133     		adds	r3, r3, #1
- 267 001c FB73     		strb	r3, [r7, #15]
- 268              	.L2:
-  60:printer.c     ****     for(uint8 x = 0; x < 13; x ++){
- 269              		.loc 1 60 0 is_stmt 0 discriminator 1
- 270 001e FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
- 271 0020 0C2B     		cmp	r3, #12
- 272 0022 F3D9     		bls	.L3
- 273              	.LBE2:
-  62:printer.c     ****     }
-  63:printer.c     ****     UART_3_PutChar(LINE_FEED);
- 274              		.loc 1 63 0 is_stmt 1
- 275 0024 694B     		ldr	r3, .L24+4
- 276 0026 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 277 0028 1846     		mov	r0, r3
- 278 002a FFF7FEFF 		bl	UART_3_PutChar
- 279              	.LBB3:
-  64:printer.c     ****     for(uint8 x = 0; x < 13; x ++){
- 280              		.loc 1 64 0
- 281 002e 0023     		movs	r3, #0
- 282 0030 BB73     		strb	r3, [r7, #14]
- 283 0032 08E0     		b	.L4
- 284              	.L5:
-  65:printer.c     ****         UART_3_PutChar(msn_pos[x]);
- 285              		.loc 1 65 0 discriminator 3
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc23jVim.s 			page 9
+  59:printer.c     **** 
+  60:printer.c     **** 
+  61:printer.c     **** void PrintReceipt(void){
+ 256              		.loc 1 61 0
+ 257              		.cfi_startproc
+ 258              		@ args = 0, pretend = 0, frame = 16
+ 259              		@ frame_needed = 1, uses_anonymous_args = 0
+ 260 0000 80B5     		push	{r7, lr}
+ 261              		.cfi_def_cfa_offset 8
+ 262              		.cfi_offset 7, -8
+ 263              		.cfi_offset 14, -4
+ 264 0002 84B0     		sub	sp, sp, #16
+ 265              		.cfi_def_cfa_offset 24
+ 266 0004 00AF     		add	r7, sp, #0
+ 267              		.cfi_def_cfa_register 7
+ 268              	.LBB2:
+  62:printer.c     ****     for(uint8 x = 0; x < 13; x ++){
+ 269              		.loc 1 62 0
+ 270 0006 0023     		movs	r3, #0
+ 271 0008 FB73     		strb	r3, [r7, #15]
+ 272 000a 08E0     		b	.L2
+ 273              	.L3:
+  63:printer.c     ****         UART_3_PutChar(msn_product[x]);
+ 274              		.loc 1 63 0 discriminator 3
+ 275 000c FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 276 000e 6E4A     		ldr	r2, .L24
+ 277 0010 D35C     		ldrb	r3, [r2, r3]	@ zero_extendqisi2
+ 278 0012 1846     		mov	r0, r3
+ 279 0014 FFF7FEFF 		bl	UART_3_PutChar
+  62:printer.c     ****     for(uint8 x = 0; x < 13; x ++){
+ 280              		.loc 1 62 0 discriminator 3
+ 281 0018 FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 282 001a 0133     		adds	r3, r3, #1
+ 283 001c FB73     		strb	r3, [r7, #15]
+ 284              	.L2:
+  62:printer.c     ****     for(uint8 x = 0; x < 13; x ++){
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccPB1gwT.s 			page 9
 
 
- 286 0034 BB7B     		ldrb	r3, [r7, #14]	@ zero_extendqisi2
- 287 0036 664A     		ldr	r2, .L24+8
- 288 0038 D35C     		ldrb	r3, [r2, r3]	@ zero_extendqisi2
- 289 003a 1846     		mov	r0, r3
- 290 003c FFF7FEFF 		bl	UART_3_PutChar
-  64:printer.c     ****     for(uint8 x = 0; x < 13; x ++){
- 291              		.loc 1 64 0 discriminator 3
- 292 0040 BB7B     		ldrb	r3, [r7, #14]	@ zero_extendqisi2
- 293 0042 0133     		adds	r3, r3, #1
- 294 0044 BB73     		strb	r3, [r7, #14]
- 295              	.L4:
-  64:printer.c     ****     for(uint8 x = 0; x < 13; x ++){
- 296              		.loc 1 64 0 is_stmt 0 discriminator 1
- 297 0046 BB7B     		ldrb	r3, [r7, #14]	@ zero_extendqisi2
- 298 0048 0C2B     		cmp	r3, #12
- 299 004a F3D9     		bls	.L5
- 300              	.LBE3:
-  66:printer.c     ****     }
-  67:printer.c     ****     UART_3_PutChar(LINE_FEED);
- 301              		.loc 1 67 0 is_stmt 1
- 302 004c 5F4B     		ldr	r3, .L24+4
- 303 004e 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 304 0050 1846     		mov	r0, r3
- 305 0052 FFF7FEFF 		bl	UART_3_PutChar
- 306              	.LBB4:
-  68:printer.c     ****     for(uint8 x = 0; x < 13; x ++){
- 307              		.loc 1 68 0
- 308 0056 0023     		movs	r3, #0
- 309 0058 7B73     		strb	r3, [r7, #13]
- 310 005a 08E0     		b	.L6
- 311              	.L7:
-  69:printer.c     ****         UART_3_PutChar(msn_placa[x]);
- 312              		.loc 1 69 0 discriminator 3
- 313 005c 7B7B     		ldrb	r3, [r7, #13]	@ zero_extendqisi2
- 314 005e 5D4A     		ldr	r2, .L24+12
- 315 0060 D35C     		ldrb	r3, [r2, r3]	@ zero_extendqisi2
- 316 0062 1846     		mov	r0, r3
- 317 0064 FFF7FEFF 		bl	UART_3_PutChar
-  68:printer.c     ****     for(uint8 x = 0; x < 13; x ++){
- 318              		.loc 1 68 0 discriminator 3
- 319 0068 7B7B     		ldrb	r3, [r7, #13]	@ zero_extendqisi2
- 320 006a 0133     		adds	r3, r3, #1
- 321 006c 7B73     		strb	r3, [r7, #13]
- 322              	.L6:
-  68:printer.c     ****     for(uint8 x = 0; x < 13; x ++){
- 323              		.loc 1 68 0 is_stmt 0 discriminator 1
- 324 006e 7B7B     		ldrb	r3, [r7, #13]	@ zero_extendqisi2
- 325 0070 0C2B     		cmp	r3, #12
- 326 0072 F3D9     		bls	.L7
- 327              	.LBE4:
-  70:printer.c     ****     }
-  71:printer.c     ****     UART_3_PutChar(LINE_FEED);
- 328              		.loc 1 71 0 is_stmt 1
- 329 0074 554B     		ldr	r3, .L24+4
- 330 0076 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 331 0078 1846     		mov	r0, r3
- 332 007a FFF7FEFF 		bl	UART_3_PutChar
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc23jVim.s 			page 10
+ 285              		.loc 1 62 0 is_stmt 0 discriminator 1
+ 286 001e FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 287 0020 0C2B     		cmp	r3, #12
+ 288 0022 F3D9     		bls	.L3
+ 289              	.LBE2:
+  64:printer.c     ****     }
+  65:printer.c     ****     UART_3_PutChar(LINE_FEED);
+ 290              		.loc 1 65 0 is_stmt 1
+ 291 0024 694B     		ldr	r3, .L24+4
+ 292 0026 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 293 0028 1846     		mov	r0, r3
+ 294 002a FFF7FEFF 		bl	UART_3_PutChar
+ 295              	.LBB3:
+  66:printer.c     ****     for(uint8 x = 0; x < 13; x ++){
+ 296              		.loc 1 66 0
+ 297 002e 0023     		movs	r3, #0
+ 298 0030 BB73     		strb	r3, [r7, #14]
+ 299 0032 08E0     		b	.L4
+ 300              	.L5:
+  67:printer.c     ****         UART_3_PutChar(msn_pos[x]);
+ 301              		.loc 1 67 0 discriminator 3
+ 302 0034 BB7B     		ldrb	r3, [r7, #14]	@ zero_extendqisi2
+ 303 0036 664A     		ldr	r2, .L24+8
+ 304 0038 D35C     		ldrb	r3, [r2, r3]	@ zero_extendqisi2
+ 305 003a 1846     		mov	r0, r3
+ 306 003c FFF7FEFF 		bl	UART_3_PutChar
+  66:printer.c     ****     for(uint8 x = 0; x < 13; x ++){
+ 307              		.loc 1 66 0 discriminator 3
+ 308 0040 BB7B     		ldrb	r3, [r7, #14]	@ zero_extendqisi2
+ 309 0042 0133     		adds	r3, r3, #1
+ 310 0044 BB73     		strb	r3, [r7, #14]
+ 311              	.L4:
+  66:printer.c     ****     for(uint8 x = 0; x < 13; x ++){
+ 312              		.loc 1 66 0 is_stmt 0 discriminator 1
+ 313 0046 BB7B     		ldrb	r3, [r7, #14]	@ zero_extendqisi2
+ 314 0048 0C2B     		cmp	r3, #12
+ 315 004a F3D9     		bls	.L5
+ 316              	.LBE3:
+  68:printer.c     ****     }
+  69:printer.c     ****     UART_3_PutChar(LINE_FEED);
+ 317              		.loc 1 69 0 is_stmt 1
+ 318 004c 5F4B     		ldr	r3, .L24+4
+ 319 004e 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 320 0050 1846     		mov	r0, r3
+ 321 0052 FFF7FEFF 		bl	UART_3_PutChar
+ 322              	.LBB4:
+  70:printer.c     ****     for(uint8 x = 0; x < 13; x ++){
+ 323              		.loc 1 70 0
+ 324 0056 0023     		movs	r3, #0
+ 325 0058 7B73     		strb	r3, [r7, #13]
+ 326 005a 08E0     		b	.L6
+ 327              	.L7:
+  71:printer.c     ****         UART_3_PutChar(msn_placa[x]);
+ 328              		.loc 1 71 0 discriminator 3
+ 329 005c 7B7B     		ldrb	r3, [r7, #13]	@ zero_extendqisi2
+ 330 005e 5D4A     		ldr	r2, .L24+12
+ 331 0060 D35C     		ldrb	r3, [r2, r3]	@ zero_extendqisi2
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccPB1gwT.s 			page 10
 
 
- 333              	.LBB5:
-  72:printer.c     ****     for(uint8 x = 0; x < 24; x ++){
- 334              		.loc 1 72 0
- 335 007e 0023     		movs	r3, #0
- 336 0080 3B73     		strb	r3, [r7, #12]
- 337 0082 08E0     		b	.L8
- 338              	.L9:
-  73:printer.c     ****         UART_3_PutChar(SEPARATOR[x]);
- 339              		.loc 1 73 0 discriminator 3
- 340 0084 3B7B     		ldrb	r3, [r7, #12]	@ zero_extendqisi2
- 341 0086 544A     		ldr	r2, .L24+16
- 342 0088 D35C     		ldrb	r3, [r2, r3]	@ zero_extendqisi2
- 343 008a 1846     		mov	r0, r3
- 344 008c FFF7FEFF 		bl	UART_3_PutChar
-  72:printer.c     ****     for(uint8 x = 0; x < 24; x ++){
- 345              		.loc 1 72 0 discriminator 3
- 346 0090 3B7B     		ldrb	r3, [r7, #12]	@ zero_extendqisi2
- 347 0092 0133     		adds	r3, r3, #1
- 348 0094 3B73     		strb	r3, [r7, #12]
- 349              	.L8:
-  72:printer.c     ****     for(uint8 x = 0; x < 24; x ++){
- 350              		.loc 1 72 0 is_stmt 0 discriminator 1
- 351 0096 3B7B     		ldrb	r3, [r7, #12]	@ zero_extendqisi2
- 352 0098 172B     		cmp	r3, #23
- 353 009a F3D9     		bls	.L9
- 354              	.LBE5:
-  74:printer.c     ****     }
-  75:printer.c     ****     UART_3_PutChar(LINE_FEED);
- 355              		.loc 1 75 0 is_stmt 1
- 356 009c 4B4B     		ldr	r3, .L24+4
- 357 009e 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 358 00a0 1846     		mov	r0, r3
- 359 00a2 FFF7FEFF 		bl	UART_3_PutChar
- 360              	.LBB6:
-  76:printer.c     ****     for(uint8 x = 0; x < 13; x ++){
- 361              		.loc 1 76 0
- 362 00a6 0023     		movs	r3, #0
- 363 00a8 FB72     		strb	r3, [r7, #11]
- 364 00aa 08E0     		b	.L10
- 365              	.L11:
-  77:printer.c     ****         UART_3_PutChar(msn_hora[x]);
- 366              		.loc 1 77 0 discriminator 3
- 367 00ac FB7A     		ldrb	r3, [r7, #11]	@ zero_extendqisi2
- 368 00ae 4B4A     		ldr	r2, .L24+20
- 369 00b0 D35C     		ldrb	r3, [r2, r3]	@ zero_extendqisi2
- 370 00b2 1846     		mov	r0, r3
- 371 00b4 FFF7FEFF 		bl	UART_3_PutChar
-  76:printer.c     ****     for(uint8 x = 0; x < 13; x ++){
- 372              		.loc 1 76 0 discriminator 3
- 373 00b8 FB7A     		ldrb	r3, [r7, #11]	@ zero_extendqisi2
- 374 00ba 0133     		adds	r3, r3, #1
- 375 00bc FB72     		strb	r3, [r7, #11]
- 376              	.L10:
-  76:printer.c     ****     for(uint8 x = 0; x < 13; x ++){
- 377              		.loc 1 76 0 is_stmt 0 discriminator 1
- 378 00be FB7A     		ldrb	r3, [r7, #11]	@ zero_extendqisi2
- 379 00c0 0C2B     		cmp	r3, #12
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc23jVim.s 			page 11
+ 332 0062 1846     		mov	r0, r3
+ 333 0064 FFF7FEFF 		bl	UART_3_PutChar
+  70:printer.c     ****     for(uint8 x = 0; x < 13; x ++){
+ 334              		.loc 1 70 0 discriminator 3
+ 335 0068 7B7B     		ldrb	r3, [r7, #13]	@ zero_extendqisi2
+ 336 006a 0133     		adds	r3, r3, #1
+ 337 006c 7B73     		strb	r3, [r7, #13]
+ 338              	.L6:
+  70:printer.c     ****     for(uint8 x = 0; x < 13; x ++){
+ 339              		.loc 1 70 0 is_stmt 0 discriminator 1
+ 340 006e 7B7B     		ldrb	r3, [r7, #13]	@ zero_extendqisi2
+ 341 0070 0C2B     		cmp	r3, #12
+ 342 0072 F3D9     		bls	.L7
+ 343              	.LBE4:
+  72:printer.c     ****     }
+  73:printer.c     ****     UART_3_PutChar(LINE_FEED);
+ 344              		.loc 1 73 0 is_stmt 1
+ 345 0074 554B     		ldr	r3, .L24+4
+ 346 0076 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 347 0078 1846     		mov	r0, r3
+ 348 007a FFF7FEFF 		bl	UART_3_PutChar
+ 349              	.LBB5:
+  74:printer.c     ****     for(uint8 x = 0; x < 24; x ++){
+ 350              		.loc 1 74 0
+ 351 007e 0023     		movs	r3, #0
+ 352 0080 3B73     		strb	r3, [r7, #12]
+ 353 0082 08E0     		b	.L8
+ 354              	.L9:
+  75:printer.c     ****         UART_3_PutChar(SEPARATOR[x]);
+ 355              		.loc 1 75 0 discriminator 3
+ 356 0084 3B7B     		ldrb	r3, [r7, #12]	@ zero_extendqisi2
+ 357 0086 544A     		ldr	r2, .L24+16
+ 358 0088 D35C     		ldrb	r3, [r2, r3]	@ zero_extendqisi2
+ 359 008a 1846     		mov	r0, r3
+ 360 008c FFF7FEFF 		bl	UART_3_PutChar
+  74:printer.c     ****     for(uint8 x = 0; x < 24; x ++){
+ 361              		.loc 1 74 0 discriminator 3
+ 362 0090 3B7B     		ldrb	r3, [r7, #12]	@ zero_extendqisi2
+ 363 0092 0133     		adds	r3, r3, #1
+ 364 0094 3B73     		strb	r3, [r7, #12]
+ 365              	.L8:
+  74:printer.c     ****     for(uint8 x = 0; x < 24; x ++){
+ 366              		.loc 1 74 0 is_stmt 0 discriminator 1
+ 367 0096 3B7B     		ldrb	r3, [r7, #12]	@ zero_extendqisi2
+ 368 0098 172B     		cmp	r3, #23
+ 369 009a F3D9     		bls	.L9
+ 370              	.LBE5:
+  76:printer.c     ****     }
+  77:printer.c     ****     UART_3_PutChar(LINE_FEED);
+ 371              		.loc 1 77 0 is_stmt 1
+ 372 009c 4B4B     		ldr	r3, .L24+4
+ 373 009e 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 374 00a0 1846     		mov	r0, r3
+ 375 00a2 FFF7FEFF 		bl	UART_3_PutChar
+ 376              	.LBB6:
+  78:printer.c     ****     for(uint8 x = 0; x < 13; x ++){
+ 377              		.loc 1 78 0
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccPB1gwT.s 			page 11
 
 
- 380 00c2 F3D9     		bls	.L11
- 381              	.LBE6:
-  78:printer.c     ****     }
-  79:printer.c     ****     UART_3_PutChar(LINE_FEED);
- 382              		.loc 1 79 0 is_stmt 1
- 383 00c4 414B     		ldr	r3, .L24+4
- 384 00c6 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 385 00c8 1846     		mov	r0, r3
- 386 00ca FFF7FEFF 		bl	UART_3_PutChar
- 387              	.LBB7:
-  80:printer.c     ****     for(uint8 x = 0; x < 13; x ++){
- 388              		.loc 1 80 0
- 389 00ce 0023     		movs	r3, #0
- 390 00d0 BB72     		strb	r3, [r7, #10]
- 391 00d2 08E0     		b	.L12
- 392              	.L13:
-  81:printer.c     ****         UART_3_PutChar(msn_fecha[x]);
- 393              		.loc 1 81 0 discriminator 3
- 394 00d4 BB7A     		ldrb	r3, [r7, #10]	@ zero_extendqisi2
- 395 00d6 424A     		ldr	r2, .L24+24
- 396 00d8 D35C     		ldrb	r3, [r2, r3]	@ zero_extendqisi2
- 397 00da 1846     		mov	r0, r3
- 398 00dc FFF7FEFF 		bl	UART_3_PutChar
-  80:printer.c     ****     for(uint8 x = 0; x < 13; x ++){
- 399              		.loc 1 80 0 discriminator 3
- 400 00e0 BB7A     		ldrb	r3, [r7, #10]	@ zero_extendqisi2
- 401 00e2 0133     		adds	r3, r3, #1
- 402 00e4 BB72     		strb	r3, [r7, #10]
- 403              	.L12:
-  80:printer.c     ****     for(uint8 x = 0; x < 13; x ++){
- 404              		.loc 1 80 0 is_stmt 0 discriminator 1
- 405 00e6 BB7A     		ldrb	r3, [r7, #10]	@ zero_extendqisi2
- 406 00e8 0C2B     		cmp	r3, #12
- 407 00ea F3D9     		bls	.L13
- 408              	.LBE7:
-  82:printer.c     ****     }
-  83:printer.c     ****     UART_3_PutChar(LINE_FEED);
- 409              		.loc 1 83 0 is_stmt 1
- 410 00ec 374B     		ldr	r3, .L24+4
- 411 00ee 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 412 00f0 1846     		mov	r0, r3
- 413 00f2 FFF7FEFF 		bl	UART_3_PutChar
- 414              	.LBB8:
-  84:printer.c     ****     for(uint8 x = 0; x < 24; x ++){
- 415              		.loc 1 84 0
- 416 00f6 0023     		movs	r3, #0
- 417 00f8 7B72     		strb	r3, [r7, #9]
- 418 00fa 08E0     		b	.L14
- 419              	.L15:
-  85:printer.c     ****         UART_3_PutChar(SEPARATOR[x]);
- 420              		.loc 1 85 0 discriminator 3
- 421 00fc 7B7A     		ldrb	r3, [r7, #9]	@ zero_extendqisi2
- 422 00fe 364A     		ldr	r2, .L24+16
- 423 0100 D35C     		ldrb	r3, [r2, r3]	@ zero_extendqisi2
- 424 0102 1846     		mov	r0, r3
- 425 0104 FFF7FEFF 		bl	UART_3_PutChar
-  84:printer.c     ****     for(uint8 x = 0; x < 24; x ++){
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc23jVim.s 			page 12
+ 378 00a6 0023     		movs	r3, #0
+ 379 00a8 FB72     		strb	r3, [r7, #11]
+ 380 00aa 08E0     		b	.L10
+ 381              	.L11:
+  79:printer.c     ****         UART_3_PutChar(msn_hora[x]);
+ 382              		.loc 1 79 0 discriminator 3
+ 383 00ac FB7A     		ldrb	r3, [r7, #11]	@ zero_extendqisi2
+ 384 00ae 4B4A     		ldr	r2, .L24+20
+ 385 00b0 D35C     		ldrb	r3, [r2, r3]	@ zero_extendqisi2
+ 386 00b2 1846     		mov	r0, r3
+ 387 00b4 FFF7FEFF 		bl	UART_3_PutChar
+  78:printer.c     ****     for(uint8 x = 0; x < 13; x ++){
+ 388              		.loc 1 78 0 discriminator 3
+ 389 00b8 FB7A     		ldrb	r3, [r7, #11]	@ zero_extendqisi2
+ 390 00ba 0133     		adds	r3, r3, #1
+ 391 00bc FB72     		strb	r3, [r7, #11]
+ 392              	.L10:
+  78:printer.c     ****     for(uint8 x = 0; x < 13; x ++){
+ 393              		.loc 1 78 0 is_stmt 0 discriminator 1
+ 394 00be FB7A     		ldrb	r3, [r7, #11]	@ zero_extendqisi2
+ 395 00c0 0C2B     		cmp	r3, #12
+ 396 00c2 F3D9     		bls	.L11
+ 397              	.LBE6:
+  80:printer.c     ****     }
+  81:printer.c     ****     UART_3_PutChar(LINE_FEED);
+ 398              		.loc 1 81 0 is_stmt 1
+ 399 00c4 414B     		ldr	r3, .L24+4
+ 400 00c6 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 401 00c8 1846     		mov	r0, r3
+ 402 00ca FFF7FEFF 		bl	UART_3_PutChar
+ 403              	.LBB7:
+  82:printer.c     ****     for(uint8 x = 0; x < 13; x ++){
+ 404              		.loc 1 82 0
+ 405 00ce 0023     		movs	r3, #0
+ 406 00d0 BB72     		strb	r3, [r7, #10]
+ 407 00d2 08E0     		b	.L12
+ 408              	.L13:
+  83:printer.c     ****         UART_3_PutChar(msn_fecha[x]);
+ 409              		.loc 1 83 0 discriminator 3
+ 410 00d4 BB7A     		ldrb	r3, [r7, #10]	@ zero_extendqisi2
+ 411 00d6 424A     		ldr	r2, .L24+24
+ 412 00d8 D35C     		ldrb	r3, [r2, r3]	@ zero_extendqisi2
+ 413 00da 1846     		mov	r0, r3
+ 414 00dc FFF7FEFF 		bl	UART_3_PutChar
+  82:printer.c     ****     for(uint8 x = 0; x < 13; x ++){
+ 415              		.loc 1 82 0 discriminator 3
+ 416 00e0 BB7A     		ldrb	r3, [r7, #10]	@ zero_extendqisi2
+ 417 00e2 0133     		adds	r3, r3, #1
+ 418 00e4 BB72     		strb	r3, [r7, #10]
+ 419              	.L12:
+  82:printer.c     ****     for(uint8 x = 0; x < 13; x ++){
+ 420              		.loc 1 82 0 is_stmt 0 discriminator 1
+ 421 00e6 BB7A     		ldrb	r3, [r7, #10]	@ zero_extendqisi2
+ 422 00e8 0C2B     		cmp	r3, #12
+ 423 00ea F3D9     		bls	.L13
+ 424              	.LBE7:
+  84:printer.c     ****     }
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccPB1gwT.s 			page 12
 
 
- 426              		.loc 1 84 0 discriminator 3
- 427 0108 7B7A     		ldrb	r3, [r7, #9]	@ zero_extendqisi2
- 428 010a 0133     		adds	r3, r3, #1
- 429 010c 7B72     		strb	r3, [r7, #9]
- 430              	.L14:
-  84:printer.c     ****     for(uint8 x = 0; x < 24; x ++){
- 431              		.loc 1 84 0 is_stmt 0 discriminator 1
- 432 010e 7B7A     		ldrb	r3, [r7, #9]	@ zero_extendqisi2
- 433 0110 172B     		cmp	r3, #23
- 434 0112 F3D9     		bls	.L15
- 435              	.LBE8:
-  86:printer.c     ****     }
-  87:printer.c     ****     UART_3_PutChar(LINE_FEED);
- 436              		.loc 1 87 0 is_stmt 1
- 437 0114 2D4B     		ldr	r3, .L24+4
- 438 0116 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 439 0118 1846     		mov	r0, r3
- 440 011a FFF7FEFF 		bl	UART_3_PutChar
- 441              	.LBB9:
-  88:printer.c     ****     for(uint8 x = 0; x < 20; x ++){
- 442              		.loc 1 88 0
- 443 011e 0023     		movs	r3, #0
- 444 0120 3B72     		strb	r3, [r7, #8]
- 445 0122 08E0     		b	.L16
- 446              	.L17:
-  89:printer.c     ****         UART_3_PutChar(msn_EDS4[x]);
- 447              		.loc 1 89 0 discriminator 3
- 448 0124 3B7A     		ldrb	r3, [r7, #8]	@ zero_extendqisi2
- 449 0126 2F4A     		ldr	r2, .L24+28
- 450 0128 D35C     		ldrb	r3, [r2, r3]	@ zero_extendqisi2
- 451 012a 1846     		mov	r0, r3
- 452 012c FFF7FEFF 		bl	UART_3_PutChar
-  88:printer.c     ****     for(uint8 x = 0; x < 20; x ++){
- 453              		.loc 1 88 0 discriminator 3
- 454 0130 3B7A     		ldrb	r3, [r7, #8]	@ zero_extendqisi2
- 455 0132 0133     		adds	r3, r3, #1
- 456 0134 3B72     		strb	r3, [r7, #8]
- 457              	.L16:
-  88:printer.c     ****     for(uint8 x = 0; x < 20; x ++){
- 458              		.loc 1 88 0 is_stmt 0 discriminator 1
- 459 0136 3B7A     		ldrb	r3, [r7, #8]	@ zero_extendqisi2
- 460 0138 132B     		cmp	r3, #19
- 461 013a F3D9     		bls	.L17
- 462              	.LBE9:
-  90:printer.c     ****     }
-  91:printer.c     ****     UART_3_PutChar(LINE_FEED);
- 463              		.loc 1 91 0 is_stmt 1
- 464 013c 234B     		ldr	r3, .L24+4
- 465 013e 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 466 0140 1846     		mov	r0, r3
- 467 0142 FFF7FEFF 		bl	UART_3_PutChar
- 468              	.LBB10:
-  92:printer.c     ****     for(uint8 x = 0; x < 20; x ++){
- 469              		.loc 1 92 0
- 470 0146 0023     		movs	r3, #0
- 471 0148 FB71     		strb	r3, [r7, #7]
- 472 014a 08E0     		b	.L18
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc23jVim.s 			page 13
+  85:printer.c     ****     UART_3_PutChar(LINE_FEED);
+ 425              		.loc 1 85 0 is_stmt 1
+ 426 00ec 374B     		ldr	r3, .L24+4
+ 427 00ee 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 428 00f0 1846     		mov	r0, r3
+ 429 00f2 FFF7FEFF 		bl	UART_3_PutChar
+ 430              	.LBB8:
+  86:printer.c     ****     for(uint8 x = 0; x < 24; x ++){
+ 431              		.loc 1 86 0
+ 432 00f6 0023     		movs	r3, #0
+ 433 00f8 7B72     		strb	r3, [r7, #9]
+ 434 00fa 08E0     		b	.L14
+ 435              	.L15:
+  87:printer.c     ****         UART_3_PutChar(SEPARATOR[x]);
+ 436              		.loc 1 87 0 discriminator 3
+ 437 00fc 7B7A     		ldrb	r3, [r7, #9]	@ zero_extendqisi2
+ 438 00fe 364A     		ldr	r2, .L24+16
+ 439 0100 D35C     		ldrb	r3, [r2, r3]	@ zero_extendqisi2
+ 440 0102 1846     		mov	r0, r3
+ 441 0104 FFF7FEFF 		bl	UART_3_PutChar
+  86:printer.c     ****     for(uint8 x = 0; x < 24; x ++){
+ 442              		.loc 1 86 0 discriminator 3
+ 443 0108 7B7A     		ldrb	r3, [r7, #9]	@ zero_extendqisi2
+ 444 010a 0133     		adds	r3, r3, #1
+ 445 010c 7B72     		strb	r3, [r7, #9]
+ 446              	.L14:
+  86:printer.c     ****     for(uint8 x = 0; x < 24; x ++){
+ 447              		.loc 1 86 0 is_stmt 0 discriminator 1
+ 448 010e 7B7A     		ldrb	r3, [r7, #9]	@ zero_extendqisi2
+ 449 0110 172B     		cmp	r3, #23
+ 450 0112 F3D9     		bls	.L15
+ 451              	.LBE8:
+  88:printer.c     ****     }
+  89:printer.c     ****     UART_3_PutChar(LINE_FEED);
+ 452              		.loc 1 89 0 is_stmt 1
+ 453 0114 2D4B     		ldr	r3, .L24+4
+ 454 0116 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 455 0118 1846     		mov	r0, r3
+ 456 011a FFF7FEFF 		bl	UART_3_PutChar
+ 457              	.LBB9:
+  90:printer.c     ****     for(uint8 x = 0; x < 20; x ++){
+ 458              		.loc 1 90 0
+ 459 011e 0023     		movs	r3, #0
+ 460 0120 3B72     		strb	r3, [r7, #8]
+ 461 0122 08E0     		b	.L16
+ 462              	.L17:
+  91:printer.c     ****         UART_3_PutChar(msn_EDS4[x]);
+ 463              		.loc 1 91 0 discriminator 3
+ 464 0124 3B7A     		ldrb	r3, [r7, #8]	@ zero_extendqisi2
+ 465 0126 2F4A     		ldr	r2, .L24+28
+ 466 0128 D35C     		ldrb	r3, [r2, r3]	@ zero_extendqisi2
+ 467 012a 1846     		mov	r0, r3
+ 468 012c FFF7FEFF 		bl	UART_3_PutChar
+  90:printer.c     ****     for(uint8 x = 0; x < 20; x ++){
+ 469              		.loc 1 90 0 discriminator 3
+ 470 0130 3B7A     		ldrb	r3, [r7, #8]	@ zero_extendqisi2
+ 471 0132 0133     		adds	r3, r3, #1
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccPB1gwT.s 			page 13
 
 
- 473              	.L19:
-  93:printer.c     ****         UART_3_PutChar(msn_EDS3[x]);
- 474              		.loc 1 93 0 discriminator 3
- 475 014c FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
- 476 014e 264A     		ldr	r2, .L24+32
- 477 0150 D35C     		ldrb	r3, [r2, r3]	@ zero_extendqisi2
- 478 0152 1846     		mov	r0, r3
- 479 0154 FFF7FEFF 		bl	UART_3_PutChar
-  92:printer.c     ****     for(uint8 x = 0; x < 20; x ++){
- 480              		.loc 1 92 0 discriminator 3
- 481 0158 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
- 482 015a 0133     		adds	r3, r3, #1
- 483 015c FB71     		strb	r3, [r7, #7]
- 484              	.L18:
-  92:printer.c     ****     for(uint8 x = 0; x < 20; x ++){
- 485              		.loc 1 92 0 is_stmt 0 discriminator 1
- 486 015e FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
- 487 0160 132B     		cmp	r3, #19
- 488 0162 F3D9     		bls	.L19
- 489              	.LBE10:
-  94:printer.c     ****     }
-  95:printer.c     ****     UART_3_PutChar(LINE_FEED);
- 490              		.loc 1 95 0 is_stmt 1
- 491 0164 194B     		ldr	r3, .L24+4
- 492 0166 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 493 0168 1846     		mov	r0, r3
- 494 016a FFF7FEFF 		bl	UART_3_PutChar
- 495              	.LBB11:
-  96:printer.c     ****     for(uint8 x = 0; x < 20; x ++){
- 496              		.loc 1 96 0
- 497 016e 0023     		movs	r3, #0
- 498 0170 BB71     		strb	r3, [r7, #6]
- 499 0172 08E0     		b	.L20
- 500              	.L21:
-  97:printer.c     ****         UART_3_PutChar(msn_EDS2[x]);
- 501              		.loc 1 97 0 discriminator 3
- 502 0174 BB79     		ldrb	r3, [r7, #6]	@ zero_extendqisi2
- 503 0176 1D4A     		ldr	r2, .L24+36
- 504 0178 D35C     		ldrb	r3, [r2, r3]	@ zero_extendqisi2
- 505 017a 1846     		mov	r0, r3
- 506 017c FFF7FEFF 		bl	UART_3_PutChar
-  96:printer.c     ****     for(uint8 x = 0; x < 20; x ++){
- 507              		.loc 1 96 0 discriminator 3
- 508 0180 BB79     		ldrb	r3, [r7, #6]	@ zero_extendqisi2
- 509 0182 0133     		adds	r3, r3, #1
- 510 0184 BB71     		strb	r3, [r7, #6]
- 511              	.L20:
-  96:printer.c     ****     for(uint8 x = 0; x < 20; x ++){
- 512              		.loc 1 96 0 is_stmt 0 discriminator 1
- 513 0186 BB79     		ldrb	r3, [r7, #6]	@ zero_extendqisi2
- 514 0188 132B     		cmp	r3, #19
- 515 018a F3D9     		bls	.L21
- 516              	.LBE11:
-  98:printer.c     ****     }
-  99:printer.c     ****     UART_3_PutChar(LINE_FEED);
- 517              		.loc 1 99 0 is_stmt 1
- 518 018c 0F4B     		ldr	r3, .L24+4
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc23jVim.s 			page 14
+ 472 0134 3B72     		strb	r3, [r7, #8]
+ 473              	.L16:
+  90:printer.c     ****     for(uint8 x = 0; x < 20; x ++){
+ 474              		.loc 1 90 0 is_stmt 0 discriminator 1
+ 475 0136 3B7A     		ldrb	r3, [r7, #8]	@ zero_extendqisi2
+ 476 0138 132B     		cmp	r3, #19
+ 477 013a F3D9     		bls	.L17
+ 478              	.LBE9:
+  92:printer.c     ****     }
+  93:printer.c     ****     UART_3_PutChar(LINE_FEED);
+ 479              		.loc 1 93 0 is_stmt 1
+ 480 013c 234B     		ldr	r3, .L24+4
+ 481 013e 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 482 0140 1846     		mov	r0, r3
+ 483 0142 FFF7FEFF 		bl	UART_3_PutChar
+ 484              	.LBB10:
+  94:printer.c     ****     for(uint8 x = 0; x < 20; x ++){
+ 485              		.loc 1 94 0
+ 486 0146 0023     		movs	r3, #0
+ 487 0148 FB71     		strb	r3, [r7, #7]
+ 488 014a 08E0     		b	.L18
+ 489              	.L19:
+  95:printer.c     ****         UART_3_PutChar(msn_EDS3[x]);
+ 490              		.loc 1 95 0 discriminator 3
+ 491 014c FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 492 014e 264A     		ldr	r2, .L24+32
+ 493 0150 D35C     		ldrb	r3, [r2, r3]	@ zero_extendqisi2
+ 494 0152 1846     		mov	r0, r3
+ 495 0154 FFF7FEFF 		bl	UART_3_PutChar
+  94:printer.c     ****     for(uint8 x = 0; x < 20; x ++){
+ 496              		.loc 1 94 0 discriminator 3
+ 497 0158 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 498 015a 0133     		adds	r3, r3, #1
+ 499 015c FB71     		strb	r3, [r7, #7]
+ 500              	.L18:
+  94:printer.c     ****     for(uint8 x = 0; x < 20; x ++){
+ 501              		.loc 1 94 0 is_stmt 0 discriminator 1
+ 502 015e FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 503 0160 132B     		cmp	r3, #19
+ 504 0162 F3D9     		bls	.L19
+ 505              	.LBE10:
+  96:printer.c     ****     }
+  97:printer.c     ****     UART_3_PutChar(LINE_FEED);
+ 506              		.loc 1 97 0 is_stmt 1
+ 507 0164 194B     		ldr	r3, .L24+4
+ 508 0166 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 509 0168 1846     		mov	r0, r3
+ 510 016a FFF7FEFF 		bl	UART_3_PutChar
+ 511              	.LBB11:
+  98:printer.c     ****     for(uint8 x = 0; x < 20; x ++){
+ 512              		.loc 1 98 0
+ 513 016e 0023     		movs	r3, #0
+ 514 0170 BB71     		strb	r3, [r7, #6]
+ 515 0172 08E0     		b	.L20
+ 516              	.L21:
+  99:printer.c     ****         UART_3_PutChar(msn_EDS2[x]);
+ 517              		.loc 1 99 0 discriminator 3
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccPB1gwT.s 			page 14
 
 
- 519 018e 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 520 0190 1846     		mov	r0, r3
- 521 0192 FFF7FEFF 		bl	UART_3_PutChar
- 522              	.LBB12:
- 100:printer.c     ****     for(uint8 x = 0; x < 20; x ++){
- 523              		.loc 1 100 0
- 524 0196 0023     		movs	r3, #0
- 525 0198 7B71     		strb	r3, [r7, #5]
- 526 019a 08E0     		b	.L22
- 527              	.L23:
- 101:printer.c     ****         UART_3_PutChar(msn_EDS[x]);
- 528              		.loc 1 101 0 discriminator 3
- 529 019c 7B79     		ldrb	r3, [r7, #5]	@ zero_extendqisi2
- 530 019e 144A     		ldr	r2, .L24+40
- 531 01a0 D35C     		ldrb	r3, [r2, r3]	@ zero_extendqisi2
- 532 01a2 1846     		mov	r0, r3
- 533 01a4 FFF7FEFF 		bl	UART_3_PutChar
- 100:printer.c     ****     for(uint8 x = 0; x < 20; x ++){
- 534              		.loc 1 100 0 discriminator 3
- 535 01a8 7B79     		ldrb	r3, [r7, #5]	@ zero_extendqisi2
- 536 01aa 0133     		adds	r3, r3, #1
- 537 01ac 7B71     		strb	r3, [r7, #5]
- 538              	.L22:
- 100:printer.c     ****     for(uint8 x = 0; x < 20; x ++){
- 539              		.loc 1 100 0 is_stmt 0 discriminator 1
- 540 01ae 7B79     		ldrb	r3, [r7, #5]	@ zero_extendqisi2
- 541 01b0 132B     		cmp	r3, #19
- 542 01b2 F3D9     		bls	.L23
- 543              	.LBE12:
- 102:printer.c     ****     }
- 103:printer.c     ****     UART_3_PutChar(LINE_FEED);
- 544              		.loc 1 103 0 is_stmt 1
- 545 01b4 054B     		ldr	r3, .L24+4
- 546 01b6 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 547 01b8 1846     		mov	r0, r3
- 548 01ba FFF7FEFF 		bl	UART_3_PutChar
- 104:printer.c     ****     
- 105:printer.c     **** }
- 549              		.loc 1 105 0
- 550 01be 00BF     		nop
- 551 01c0 1037     		adds	r7, r7, #16
- 552              		.cfi_def_cfa_offset 8
- 553 01c2 BD46     		mov	sp, r7
- 554              		.cfi_def_cfa_register 13
- 555              		@ sp needed
- 556 01c4 80BD     		pop	{r7, pc}
- 557              	.L25:
- 558 01c6 00BF     		.align	2
- 559              	.L24:
- 560 01c8 00000000 		.word	msn_product
- 561 01cc 00000000 		.word	LINE_FEED
- 562 01d0 00000000 		.word	msn_pos
- 563 01d4 00000000 		.word	msn_placa
- 564 01d8 00000000 		.word	SEPARATOR
- 565 01dc 00000000 		.word	msn_hora
- 566 01e0 00000000 		.word	msn_fecha
- 567 01e4 00000000 		.word	msn_EDS4
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc23jVim.s 			page 15
+ 518 0174 BB79     		ldrb	r3, [r7, #6]	@ zero_extendqisi2
+ 519 0176 1D4A     		ldr	r2, .L24+36
+ 520 0178 D35C     		ldrb	r3, [r2, r3]	@ zero_extendqisi2
+ 521 017a 1846     		mov	r0, r3
+ 522 017c FFF7FEFF 		bl	UART_3_PutChar
+  98:printer.c     ****     for(uint8 x = 0; x < 20; x ++){
+ 523              		.loc 1 98 0 discriminator 3
+ 524 0180 BB79     		ldrb	r3, [r7, #6]	@ zero_extendqisi2
+ 525 0182 0133     		adds	r3, r3, #1
+ 526 0184 BB71     		strb	r3, [r7, #6]
+ 527              	.L20:
+  98:printer.c     ****     for(uint8 x = 0; x < 20; x ++){
+ 528              		.loc 1 98 0 is_stmt 0 discriminator 1
+ 529 0186 BB79     		ldrb	r3, [r7, #6]	@ zero_extendqisi2
+ 530 0188 132B     		cmp	r3, #19
+ 531 018a F3D9     		bls	.L21
+ 532              	.LBE11:
+ 100:printer.c     ****     }
+ 101:printer.c     ****     UART_3_PutChar(LINE_FEED);
+ 533              		.loc 1 101 0 is_stmt 1
+ 534 018c 0F4B     		ldr	r3, .L24+4
+ 535 018e 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 536 0190 1846     		mov	r0, r3
+ 537 0192 FFF7FEFF 		bl	UART_3_PutChar
+ 538              	.LBB12:
+ 102:printer.c     ****     for(uint8 x = 0; x < 20; x ++){
+ 539              		.loc 1 102 0
+ 540 0196 0023     		movs	r3, #0
+ 541 0198 7B71     		strb	r3, [r7, #5]
+ 542 019a 08E0     		b	.L22
+ 543              	.L23:
+ 103:printer.c     ****         UART_3_PutChar(msn_EDS[x]);
+ 544              		.loc 1 103 0 discriminator 3
+ 545 019c 7B79     		ldrb	r3, [r7, #5]	@ zero_extendqisi2
+ 546 019e 144A     		ldr	r2, .L24+40
+ 547 01a0 D35C     		ldrb	r3, [r2, r3]	@ zero_extendqisi2
+ 548 01a2 1846     		mov	r0, r3
+ 549 01a4 FFF7FEFF 		bl	UART_3_PutChar
+ 102:printer.c     ****     for(uint8 x = 0; x < 20; x ++){
+ 550              		.loc 1 102 0 discriminator 3
+ 551 01a8 7B79     		ldrb	r3, [r7, #5]	@ zero_extendqisi2
+ 552 01aa 0133     		adds	r3, r3, #1
+ 553 01ac 7B71     		strb	r3, [r7, #5]
+ 554              	.L22:
+ 102:printer.c     ****     for(uint8 x = 0; x < 20; x ++){
+ 555              		.loc 1 102 0 is_stmt 0 discriminator 1
+ 556 01ae 7B79     		ldrb	r3, [r7, #5]	@ zero_extendqisi2
+ 557 01b0 132B     		cmp	r3, #19
+ 558 01b2 F3D9     		bls	.L23
+ 559              	.LBE12:
+ 104:printer.c     ****     }
+ 105:printer.c     ****     UART_3_PutChar(LINE_FEED);
+ 560              		.loc 1 105 0 is_stmt 1
+ 561 01b4 054B     		ldr	r3, .L24+4
+ 562 01b6 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 563 01b8 1846     		mov	r0, r3
+ 564 01ba FFF7FEFF 		bl	UART_3_PutChar
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccPB1gwT.s 			page 15
 
 
- 568 01e8 00000000 		.word	msn_EDS3
- 569 01ec 00000000 		.word	msn_EDS2
- 570 01f0 00000000 		.word	msn_EDS
- 571              		.cfi_endproc
- 572              	.LFE63:
- 573              		.size	PrintReceipt, .-PrintReceipt
- 574              		.text
- 575              	.Letext0:
- 576              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.2\\psoc creator\\import\\gnu\\arm\\5.4.
- 577              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.2\\psoc creator\\import\\gnu\\arm\\5.4.
- 578              		.file 4 "Generated_Source\\PSoC5/cytypes.h"
- 579              		.file 5 "Generated_Source\\PSoC5/core_cm3.h"
- 580              		.section	.debug_info,"",%progbits
- 581              	.Ldebug_info0:
- 582 0000 91040000 		.4byte	0x491
- 583 0004 0400     		.2byte	0x4
- 584 0006 00000000 		.4byte	.Ldebug_abbrev0
- 585 000a 04       		.byte	0x4
- 586 000b 01       		.uleb128 0x1
- 587 000c 1C000000 		.4byte	.LASF53
- 588 0010 0C       		.byte	0xc
- 589 0011 18030000 		.4byte	.LASF54
- 590 0015 41020000 		.4byte	.LASF55
- 591 0019 00000000 		.4byte	.Ldebug_ranges0+0
- 592 001d 00000000 		.4byte	0
- 593 0021 00000000 		.4byte	.Ldebug_line0
- 594 0025 02       		.uleb128 0x2
- 595 0026 01       		.byte	0x1
- 596 0027 06       		.byte	0x6
- 597 0028 E9020000 		.4byte	.LASF0
- 598 002c 02       		.uleb128 0x2
- 599 002d 01       		.byte	0x1
- 600 002e 08       		.byte	0x8
- 601 002f 19010000 		.4byte	.LASF1
- 602 0033 02       		.uleb128 0x2
- 603 0034 02       		.byte	0x2
- 604 0035 05       		.byte	0x5
- 605 0036 96020000 		.4byte	.LASF2
- 606 003a 02       		.uleb128 0x2
- 607 003b 02       		.byte	0x2
- 608 003c 07       		.byte	0x7
- 609 003d 39010000 		.4byte	.LASF3
- 610 0041 03       		.uleb128 0x3
- 611 0042 B8000000 		.4byte	.LASF9
- 612 0046 02       		.byte	0x2
- 613 0047 3F       		.byte	0x3f
- 614 0048 4C000000 		.4byte	0x4c
- 615 004c 02       		.uleb128 0x2
- 616 004d 04       		.byte	0x4
- 617 004e 05       		.byte	0x5
- 618 004f CF000000 		.4byte	.LASF4
- 619 0053 02       		.uleb128 0x2
- 620 0054 04       		.byte	0x4
- 621 0055 07       		.byte	0x7
- 622 0056 27010000 		.4byte	.LASF5
- 623 005a 02       		.uleb128 0x2
- 624 005b 08       		.byte	0x8
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc23jVim.s 			page 16
+ 106:printer.c     ****     
+ 107:printer.c     **** }
+ 565              		.loc 1 107 0
+ 566 01be 00BF     		nop
+ 567 01c0 1037     		adds	r7, r7, #16
+ 568              		.cfi_def_cfa_offset 8
+ 569 01c2 BD46     		mov	sp, r7
+ 570              		.cfi_def_cfa_register 13
+ 571              		@ sp needed
+ 572 01c4 80BD     		pop	{r7, pc}
+ 573              	.L25:
+ 574 01c6 00BF     		.align	2
+ 575              	.L24:
+ 576 01c8 00000000 		.word	msn_product
+ 577 01cc 00000000 		.word	LINE_FEED
+ 578 01d0 00000000 		.word	msn_pos
+ 579 01d4 00000000 		.word	msn_placa
+ 580 01d8 00000000 		.word	SEPARATOR
+ 581 01dc 00000000 		.word	msn_hora
+ 582 01e0 00000000 		.word	msn_fecha
+ 583 01e4 00000000 		.word	msn_EDS4
+ 584 01e8 00000000 		.word	msn_EDS3
+ 585 01ec 00000000 		.word	msn_EDS2
+ 586 01f0 00000000 		.word	msn_EDS
+ 587              		.cfi_endproc
+ 588              	.LFE63:
+ 589              		.size	PrintReceipt, .-PrintReceipt
+ 590              		.section	.text.PrintShift,"ax",%progbits
+ 591              		.align	2
+ 592              		.global	PrintShift
+ 593              		.thumb
+ 594              		.thumb_func
+ 595              		.type	PrintShift, %function
+ 596              	PrintShift:
+ 597              	.LFB64:
+ 108:printer.c     **** 
+ 109:printer.c     **** void PrintShift(void){
+ 598              		.loc 1 109 0
+ 599              		.cfi_startproc
+ 600              		@ args = 0, pretend = 0, frame = 16
+ 601              		@ frame_needed = 1, uses_anonymous_args = 0
+ 602 0000 80B5     		push	{r7, lr}
+ 603              		.cfi_def_cfa_offset 8
+ 604              		.cfi_offset 7, -8
+ 605              		.cfi_offset 14, -4
+ 606 0002 84B0     		sub	sp, sp, #16
+ 607              		.cfi_def_cfa_offset 24
+ 608 0004 00AF     		add	r7, sp, #0
+ 609              		.cfi_def_cfa_register 7
+ 110:printer.c     ****     
+ 111:printer.c     ****     
+ 112:printer.c     ****     UART_3_PutChar(LINE_FEED);
+ 610              		.loc 1 112 0
+ 611 0006 734B     		ldr	r3, .L49
+ 612 0008 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 613 000a 1846     		mov	r0, r3
+ 614 000c FFF7FEFF 		bl	UART_3_PutChar
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccPB1gwT.s 			page 16
 
 
- 625 005c 05       		.byte	0x5
- 626 005d 76020000 		.4byte	.LASF6
- 627 0061 02       		.uleb128 0x2
- 628 0062 08       		.byte	0x8
- 629 0063 07       		.byte	0x7
- 630 0064 EE010000 		.4byte	.LASF7
- 631 0068 04       		.uleb128 0x4
- 632 0069 04       		.byte	0x4
- 633 006a 05       		.byte	0x5
- 634 006b 696E7400 		.ascii	"int\000"
- 635 006f 02       		.uleb128 0x2
- 636 0070 04       		.byte	0x4
- 637 0071 07       		.byte	0x7
- 638 0072 C5010000 		.4byte	.LASF8
- 639 0076 03       		.uleb128 0x3
- 640 0077 30020000 		.4byte	.LASF10
- 641 007b 03       		.byte	0x3
- 642 007c 2C       		.byte	0x2c
- 643 007d 41000000 		.4byte	0x41
- 644 0081 05       		.uleb128 0x5
- 645 0082 AA020000 		.4byte	.LASF11
- 646 0086 04       		.byte	0x4
- 647 0087 E401     		.2byte	0x1e4
- 648 0089 2C000000 		.4byte	0x2c
- 649 008d 02       		.uleb128 0x2
- 650 008e 04       		.byte	0x4
- 651 008f 04       		.byte	0x4
- 652 0090 0B010000 		.4byte	.LASF12
- 653 0094 02       		.uleb128 0x2
- 654 0095 08       		.byte	0x8
- 655 0096 04       		.byte	0x4
- 656 0097 7A010000 		.4byte	.LASF13
- 657 009b 02       		.uleb128 0x2
- 658 009c 01       		.byte	0x1
- 659 009d 08       		.byte	0x8
- 660 009e 84020000 		.4byte	.LASF14
- 661 00a2 02       		.uleb128 0x2
- 662 00a3 08       		.byte	0x8
- 663 00a4 04       		.byte	0x4
- 664 00a5 DD020000 		.4byte	.LASF15
- 665 00a9 02       		.uleb128 0x2
- 666 00aa 04       		.byte	0x4
- 667 00ab 07       		.byte	0x7
- 668 00ac 38020000 		.4byte	.LASF16
- 669 00b0 06       		.uleb128 0x6
- 670 00b1 C2000000 		.4byte	.LASF56
- 671 00b5 01       		.byte	0x1
- 672 00b6 3B       		.byte	0x3b
- 673 00b7 00000000 		.4byte	.LFB63
- 674 00bb F4010000 		.4byte	.LFE63-.LFB63
- 675 00bf 01       		.uleb128 0x1
- 676 00c0 9C       		.byte	0x9c
- 677 00c1 E0010000 		.4byte	0x1e0
- 678 00c5 07       		.uleb128 0x7
- 679 00c6 06000000 		.4byte	.LBB2
- 680 00ca 1E000000 		.4byte	.LBE2-.LBB2
- 681 00ce DF000000 		.4byte	0xdf
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc23jVim.s 			page 17
+ 615              	.LBB13:
+ 113:printer.c     ****     for(uint8 x = 0; x < 10; x ++){
+ 616              		.loc 1 113 0
+ 617 0010 0023     		movs	r3, #0
+ 618 0012 FB73     		strb	r3, [r7, #15]
+ 619 0014 0AE0     		b	.L27
+ 620              	.L28:
+ 114:printer.c     ****         UART_3_PutChar(side.a.ProcessedTotals[0][0][x]);
+ 621              		.loc 1 114 0 discriminator 3
+ 622 0016 FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 623 0018 6F4A     		ldr	r2, .L49+4
+ 624 001a 1344     		add	r3, r3, r2
+ 625 001c 93F8AB30 		ldrb	r3, [r3, #171]	@ zero_extendqisi2
+ 626 0020 1846     		mov	r0, r3
+ 627 0022 FFF7FEFF 		bl	UART_3_PutChar
+ 113:printer.c     ****     for(uint8 x = 0; x < 10; x ++){
+ 628              		.loc 1 113 0 discriminator 3
+ 629 0026 FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 630 0028 0133     		adds	r3, r3, #1
+ 631 002a FB73     		strb	r3, [r7, #15]
+ 632              	.L27:
+ 113:printer.c     ****     for(uint8 x = 0; x < 10; x ++){
+ 633              		.loc 1 113 0 is_stmt 0 discriminator 1
+ 634 002c FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 635 002e 092B     		cmp	r3, #9
+ 636 0030 F1D9     		bls	.L28
+ 637              	.LBE13:
+ 115:printer.c     ****     }
+ 116:printer.c     ****     UART_3_PutChar(LINE_FEED);
+ 638              		.loc 1 116 0 is_stmt 1
+ 639 0032 684B     		ldr	r3, .L49
+ 640 0034 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 641 0036 1846     		mov	r0, r3
+ 642 0038 FFF7FEFF 		bl	UART_3_PutChar
+ 643              	.LBB14:
+ 117:printer.c     ****     for(uint8 x = 0; x < 13; x ++){
+ 644              		.loc 1 117 0
+ 645 003c 0023     		movs	r3, #0
+ 646 003e BB73     		strb	r3, [r7, #14]
+ 647 0040 08E0     		b	.L29
+ 648              	.L30:
+ 118:printer.c     ****         UART_3_PutChar(msn_pos[x]);
+ 649              		.loc 1 118 0 discriminator 3
+ 650 0042 BB7B     		ldrb	r3, [r7, #14]	@ zero_extendqisi2
+ 651 0044 654A     		ldr	r2, .L49+8
+ 652 0046 D35C     		ldrb	r3, [r2, r3]	@ zero_extendqisi2
+ 653 0048 1846     		mov	r0, r3
+ 654 004a FFF7FEFF 		bl	UART_3_PutChar
+ 117:printer.c     ****     for(uint8 x = 0; x < 13; x ++){
+ 655              		.loc 1 117 0 discriminator 3
+ 656 004e BB7B     		ldrb	r3, [r7, #14]	@ zero_extendqisi2
+ 657 0050 0133     		adds	r3, r3, #1
+ 658 0052 BB73     		strb	r3, [r7, #14]
+ 659              	.L29:
+ 117:printer.c     ****     for(uint8 x = 0; x < 13; x ++){
+ 660              		.loc 1 117 0 is_stmt 0 discriminator 1
+ 661 0054 BB7B     		ldrb	r3, [r7, #14]	@ zero_extendqisi2
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccPB1gwT.s 			page 17
 
 
- 682 00d2 08       		.uleb128 0x8
- 683 00d3 7800     		.ascii	"x\000"
- 684 00d5 01       		.byte	0x1
- 685 00d6 3C       		.byte	0x3c
- 686 00d7 81000000 		.4byte	0x81
- 687 00db 02       		.uleb128 0x2
- 688 00dc 91       		.byte	0x91
- 689 00dd 77       		.sleb128 -9
- 690 00de 00       		.byte	0
- 691 00df 07       		.uleb128 0x7
- 692 00e0 2E000000 		.4byte	.LBB3
- 693 00e4 1E000000 		.4byte	.LBE3-.LBB3
- 694 00e8 F9000000 		.4byte	0xf9
- 695 00ec 08       		.uleb128 0x8
- 696 00ed 7800     		.ascii	"x\000"
- 697 00ef 01       		.byte	0x1
- 698 00f0 40       		.byte	0x40
- 699 00f1 81000000 		.4byte	0x81
- 700 00f5 02       		.uleb128 0x2
- 701 00f6 91       		.byte	0x91
- 702 00f7 76       		.sleb128 -10
- 703 00f8 00       		.byte	0
- 704 00f9 07       		.uleb128 0x7
- 705 00fa 56000000 		.4byte	.LBB4
- 706 00fe 1E000000 		.4byte	.LBE4-.LBB4
- 707 0102 13010000 		.4byte	0x113
- 708 0106 08       		.uleb128 0x8
- 709 0107 7800     		.ascii	"x\000"
- 710 0109 01       		.byte	0x1
- 711 010a 44       		.byte	0x44
- 712 010b 81000000 		.4byte	0x81
- 713 010f 02       		.uleb128 0x2
- 714 0110 91       		.byte	0x91
- 715 0111 75       		.sleb128 -11
- 716 0112 00       		.byte	0
- 717 0113 07       		.uleb128 0x7
- 718 0114 7E000000 		.4byte	.LBB5
- 719 0118 1E000000 		.4byte	.LBE5-.LBB5
- 720 011c 2D010000 		.4byte	0x12d
- 721 0120 08       		.uleb128 0x8
- 722 0121 7800     		.ascii	"x\000"
- 723 0123 01       		.byte	0x1
- 724 0124 48       		.byte	0x48
- 725 0125 81000000 		.4byte	0x81
- 726 0129 02       		.uleb128 0x2
- 727 012a 91       		.byte	0x91
- 728 012b 74       		.sleb128 -12
- 729 012c 00       		.byte	0
- 730 012d 07       		.uleb128 0x7
- 731 012e A6000000 		.4byte	.LBB6
- 732 0132 1E000000 		.4byte	.LBE6-.LBB6
- 733 0136 47010000 		.4byte	0x147
- 734 013a 08       		.uleb128 0x8
- 735 013b 7800     		.ascii	"x\000"
- 736 013d 01       		.byte	0x1
- 737 013e 4C       		.byte	0x4c
- 738 013f 81000000 		.4byte	0x81
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc23jVim.s 			page 18
+ 662 0056 0C2B     		cmp	r3, #12
+ 663 0058 F3D9     		bls	.L30
+ 664              	.LBE14:
+ 119:printer.c     ****     }
+ 120:printer.c     ****     UART_3_PutChar(LINE_FEED);
+ 665              		.loc 1 120 0 is_stmt 1
+ 666 005a 5E4B     		ldr	r3, .L49
+ 667 005c 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 668 005e 1846     		mov	r0, r3
+ 669 0060 FFF7FEFF 		bl	UART_3_PutChar
+ 670              	.LBB15:
+ 121:printer.c     ****     for(uint8 x = 0; x < 13; x ++){
+ 671              		.loc 1 121 0
+ 672 0064 0023     		movs	r3, #0
+ 673 0066 7B73     		strb	r3, [r7, #13]
+ 674 0068 08E0     		b	.L31
+ 675              	.L32:
+ 122:printer.c     ****         UART_3_PutChar(msn_cierre[x]);
+ 676              		.loc 1 122 0 discriminator 3
+ 677 006a 7B7B     		ldrb	r3, [r7, #13]	@ zero_extendqisi2
+ 678 006c 5C4A     		ldr	r2, .L49+12
+ 679 006e D35C     		ldrb	r3, [r2, r3]	@ zero_extendqisi2
+ 680 0070 1846     		mov	r0, r3
+ 681 0072 FFF7FEFF 		bl	UART_3_PutChar
+ 121:printer.c     ****     for(uint8 x = 0; x < 13; x ++){
+ 682              		.loc 1 121 0 discriminator 3
+ 683 0076 7B7B     		ldrb	r3, [r7, #13]	@ zero_extendqisi2
+ 684 0078 0133     		adds	r3, r3, #1
+ 685 007a 7B73     		strb	r3, [r7, #13]
+ 686              	.L31:
+ 121:printer.c     ****     for(uint8 x = 0; x < 13; x ++){
+ 687              		.loc 1 121 0 is_stmt 0 discriminator 1
+ 688 007c 7B7B     		ldrb	r3, [r7, #13]	@ zero_extendqisi2
+ 689 007e 0C2B     		cmp	r3, #12
+ 690 0080 F3D9     		bls	.L32
+ 691              	.LBE15:
+ 123:printer.c     ****     }
+ 124:printer.c     ****     
+ 125:printer.c     ****     ///////////////////////////////////////////////
+ 126:printer.c     ****     UART_3_PutChar(LINE_FEED);
+ 692              		.loc 1 126 0 is_stmt 1
+ 693 0082 544B     		ldr	r3, .L49
+ 694 0084 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 695 0086 1846     		mov	r0, r3
+ 696 0088 FFF7FEFF 		bl	UART_3_PutChar
+ 697              	.LBB16:
+ 127:printer.c     ****     for(uint8 x = 0; x < 24; x ++){
+ 698              		.loc 1 127 0
+ 699 008c 0023     		movs	r3, #0
+ 700 008e 3B73     		strb	r3, [r7, #12]
+ 701 0090 08E0     		b	.L33
+ 702              	.L34:
+ 128:printer.c     ****         UART_3_PutChar(SEPARATOR[x]);
+ 703              		.loc 1 128 0 discriminator 3
+ 704 0092 3B7B     		ldrb	r3, [r7, #12]	@ zero_extendqisi2
+ 705 0094 534A     		ldr	r2, .L49+16
+ 706 0096 D35C     		ldrb	r3, [r2, r3]	@ zero_extendqisi2
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccPB1gwT.s 			page 18
 
 
- 739 0143 02       		.uleb128 0x2
- 740 0144 91       		.byte	0x91
- 741 0145 73       		.sleb128 -13
- 742 0146 00       		.byte	0
- 743 0147 07       		.uleb128 0x7
- 744 0148 CE000000 		.4byte	.LBB7
- 745 014c 1E000000 		.4byte	.LBE7-.LBB7
- 746 0150 61010000 		.4byte	0x161
- 747 0154 08       		.uleb128 0x8
- 748 0155 7800     		.ascii	"x\000"
- 749 0157 01       		.byte	0x1
- 750 0158 50       		.byte	0x50
- 751 0159 81000000 		.4byte	0x81
- 752 015d 02       		.uleb128 0x2
- 753 015e 91       		.byte	0x91
- 754 015f 72       		.sleb128 -14
- 755 0160 00       		.byte	0
- 756 0161 07       		.uleb128 0x7
- 757 0162 F6000000 		.4byte	.LBB8
- 758 0166 1E000000 		.4byte	.LBE8-.LBB8
- 759 016a 7B010000 		.4byte	0x17b
- 760 016e 08       		.uleb128 0x8
- 761 016f 7800     		.ascii	"x\000"
- 762 0171 01       		.byte	0x1
- 763 0172 54       		.byte	0x54
- 764 0173 81000000 		.4byte	0x81
- 765 0177 02       		.uleb128 0x2
- 766 0178 91       		.byte	0x91
- 767 0179 71       		.sleb128 -15
- 768 017a 00       		.byte	0
- 769 017b 07       		.uleb128 0x7
- 770 017c 1E010000 		.4byte	.LBB9
- 771 0180 1E000000 		.4byte	.LBE9-.LBB9
- 772 0184 95010000 		.4byte	0x195
- 773 0188 08       		.uleb128 0x8
- 774 0189 7800     		.ascii	"x\000"
- 775 018b 01       		.byte	0x1
- 776 018c 58       		.byte	0x58
- 777 018d 81000000 		.4byte	0x81
- 778 0191 02       		.uleb128 0x2
- 779 0192 91       		.byte	0x91
- 780 0193 70       		.sleb128 -16
- 781 0194 00       		.byte	0
- 782 0195 07       		.uleb128 0x7
- 783 0196 46010000 		.4byte	.LBB10
- 784 019a 1E000000 		.4byte	.LBE10-.LBB10
- 785 019e AF010000 		.4byte	0x1af
- 786 01a2 08       		.uleb128 0x8
- 787 01a3 7800     		.ascii	"x\000"
- 788 01a5 01       		.byte	0x1
- 789 01a6 5C       		.byte	0x5c
- 790 01a7 81000000 		.4byte	0x81
- 791 01ab 02       		.uleb128 0x2
- 792 01ac 91       		.byte	0x91
- 793 01ad 6F       		.sleb128 -17
- 794 01ae 00       		.byte	0
- 795 01af 07       		.uleb128 0x7
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc23jVim.s 			page 19
+ 707 0098 1846     		mov	r0, r3
+ 708 009a FFF7FEFF 		bl	UART_3_PutChar
+ 127:printer.c     ****     for(uint8 x = 0; x < 24; x ++){
+ 709              		.loc 1 127 0 discriminator 3
+ 710 009e 3B7B     		ldrb	r3, [r7, #12]	@ zero_extendqisi2
+ 711 00a0 0133     		adds	r3, r3, #1
+ 712 00a2 3B73     		strb	r3, [r7, #12]
+ 713              	.L33:
+ 127:printer.c     ****     for(uint8 x = 0; x < 24; x ++){
+ 714              		.loc 1 127 0 is_stmt 0 discriminator 1
+ 715 00a4 3B7B     		ldrb	r3, [r7, #12]	@ zero_extendqisi2
+ 716 00a6 172B     		cmp	r3, #23
+ 717 00a8 F3D9     		bls	.L34
+ 718              	.LBE16:
+ 129:printer.c     ****     }    
+ 130:printer.c     ****     UART_3_PutChar(LINE_FEED);
+ 719              		.loc 1 130 0 is_stmt 1
+ 720 00aa 4A4B     		ldr	r3, .L49
+ 721 00ac 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 722 00ae 1846     		mov	r0, r3
+ 723 00b0 FFF7FEFF 		bl	UART_3_PutChar
+ 724              	.LBB17:
+ 131:printer.c     ****     for(uint8 x = 0; x < 13; x ++){
+ 725              		.loc 1 131 0
+ 726 00b4 0023     		movs	r3, #0
+ 727 00b6 FB72     		strb	r3, [r7, #11]
+ 728 00b8 08E0     		b	.L35
+ 729              	.L36:
+ 132:printer.c     ****         UART_3_PutChar(msn_hora[x]);
+ 730              		.loc 1 132 0 discriminator 3
+ 731 00ba FB7A     		ldrb	r3, [r7, #11]	@ zero_extendqisi2
+ 732 00bc 4A4A     		ldr	r2, .L49+20
+ 733 00be D35C     		ldrb	r3, [r2, r3]	@ zero_extendqisi2
+ 734 00c0 1846     		mov	r0, r3
+ 735 00c2 FFF7FEFF 		bl	UART_3_PutChar
+ 131:printer.c     ****     for(uint8 x = 0; x < 13; x ++){
+ 736              		.loc 1 131 0 discriminator 3
+ 737 00c6 FB7A     		ldrb	r3, [r7, #11]	@ zero_extendqisi2
+ 738 00c8 0133     		adds	r3, r3, #1
+ 739 00ca FB72     		strb	r3, [r7, #11]
+ 740              	.L35:
+ 131:printer.c     ****     for(uint8 x = 0; x < 13; x ++){
+ 741              		.loc 1 131 0 is_stmt 0 discriminator 1
+ 742 00cc FB7A     		ldrb	r3, [r7, #11]	@ zero_extendqisi2
+ 743 00ce 0C2B     		cmp	r3, #12
+ 744 00d0 F3D9     		bls	.L36
+ 745              	.LBE17:
+ 133:printer.c     ****     }                                 //Hora y Fecha
+ 134:printer.c     ****     UART_3_PutChar(LINE_FEED);
+ 746              		.loc 1 134 0 is_stmt 1
+ 747 00d2 404B     		ldr	r3, .L49
+ 748 00d4 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 749 00d6 1846     		mov	r0, r3
+ 750 00d8 FFF7FEFF 		bl	UART_3_PutChar
+ 751              	.LBB18:
+ 135:printer.c     ****     for(uint8 x = 0; x < 13; x ++){
+ 752              		.loc 1 135 0
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccPB1gwT.s 			page 19
 
 
- 796 01b0 6E010000 		.4byte	.LBB11
- 797 01b4 1E000000 		.4byte	.LBE11-.LBB11
- 798 01b8 C9010000 		.4byte	0x1c9
- 799 01bc 08       		.uleb128 0x8
- 800 01bd 7800     		.ascii	"x\000"
- 801 01bf 01       		.byte	0x1
- 802 01c0 60       		.byte	0x60
- 803 01c1 81000000 		.4byte	0x81
- 804 01c5 02       		.uleb128 0x2
- 805 01c6 91       		.byte	0x91
- 806 01c7 6E       		.sleb128 -18
- 807 01c8 00       		.byte	0
- 808 01c9 09       		.uleb128 0x9
- 809 01ca 96010000 		.4byte	.LBB12
- 810 01ce 1E000000 		.4byte	.LBE12-.LBB12
- 811 01d2 08       		.uleb128 0x8
- 812 01d3 7800     		.ascii	"x\000"
- 813 01d5 01       		.byte	0x1
- 814 01d6 64       		.byte	0x64
- 815 01d7 81000000 		.4byte	0x81
- 816 01db 02       		.uleb128 0x2
- 817 01dc 91       		.byte	0x91
- 818 01dd 6D       		.sleb128 -19
- 819 01de 00       		.byte	0
- 820 01df 00       		.byte	0
- 821 01e0 0A       		.uleb128 0xa
- 822 01e1 A5010000 		.4byte	.LASF17
- 823 01e5 05       		.byte	0x5
- 824 01e6 1207     		.2byte	0x712
- 825 01e8 EC010000 		.4byte	0x1ec
- 826 01ec 0B       		.uleb128 0xb
- 827 01ed 76000000 		.4byte	0x76
- 828 01f1 0C       		.uleb128 0xc
- 829 01f2 BA020000 		.4byte	.LASF18
- 830 01f6 01       		.byte	0x1
- 831 01f7 0E       		.byte	0xe
- 832 01f8 81000000 		.4byte	0x81
- 833 01fc 05       		.uleb128 0x5
- 834 01fd 03       		.byte	0x3
- 835 01fe 00000000 		.4byte	LINE_FEED
- 836 0202 0D       		.uleb128 0xd
- 837 0203 81000000 		.4byte	0x81
- 838 0207 12020000 		.4byte	0x212
- 839 020b 0E       		.uleb128 0xe
- 840 020c A9000000 		.4byte	0xa9
- 841 0210 15       		.byte	0x15
- 842 0211 00       		.byte	0
- 843 0212 0C       		.uleb128 0xc
- 844 0213 BD010000 		.4byte	.LASF19
- 845 0217 01       		.byte	0x1
- 846 0218 12       		.byte	0x12
- 847 0219 02020000 		.4byte	0x202
- 848 021d 05       		.uleb128 0x5
- 849 021e 03       		.byte	0x3
- 850 021f 00000000 		.4byte	msn_EDS
- 851 0223 0C       		.uleb128 0xc
- 852 0224 C4020000 		.4byte	.LASF20
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc23jVim.s 			page 20
+ 753 00dc 0023     		movs	r3, #0
+ 754 00de BB72     		strb	r3, [r7, #10]
+ 755 00e0 08E0     		b	.L37
+ 756              	.L38:
+ 136:printer.c     ****         UART_3_PutChar(msn_fecha[x]);
+ 757              		.loc 1 136 0 discriminator 3
+ 758 00e2 BB7A     		ldrb	r3, [r7, #10]	@ zero_extendqisi2
+ 759 00e4 414A     		ldr	r2, .L49+24
+ 760 00e6 D35C     		ldrb	r3, [r2, r3]	@ zero_extendqisi2
+ 761 00e8 1846     		mov	r0, r3
+ 762 00ea FFF7FEFF 		bl	UART_3_PutChar
+ 135:printer.c     ****     for(uint8 x = 0; x < 13; x ++){
+ 763              		.loc 1 135 0 discriminator 3
+ 764 00ee BB7A     		ldrb	r3, [r7, #10]	@ zero_extendqisi2
+ 765 00f0 0133     		adds	r3, r3, #1
+ 766 00f2 BB72     		strb	r3, [r7, #10]
+ 767              	.L37:
+ 135:printer.c     ****     for(uint8 x = 0; x < 13; x ++){
+ 768              		.loc 1 135 0 is_stmt 0 discriminator 1
+ 769 00f4 BB7A     		ldrb	r3, [r7, #10]	@ zero_extendqisi2
+ 770 00f6 0C2B     		cmp	r3, #12
+ 771 00f8 F3D9     		bls	.L38
+ 772              	.LBE18:
+ 137:printer.c     ****     }
+ 138:printer.c     ****     ///////////////////////////////////////////////
+ 139:printer.c     ****     
+ 140:printer.c     ****     UART_3_PutChar(LINE_FEED);
+ 773              		.loc 1 140 0 is_stmt 1
+ 774 00fa 364B     		ldr	r3, .L49
+ 775 00fc 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 776 00fe 1846     		mov	r0, r3
+ 777 0100 FFF7FEFF 		bl	UART_3_PutChar
+ 778              	.LBB19:
+ 141:printer.c     ****     for(uint8 x = 0; x < 24; x ++){
+ 779              		.loc 1 141 0
+ 780 0104 0023     		movs	r3, #0
+ 781 0106 7B72     		strb	r3, [r7, #9]
+ 782 0108 08E0     		b	.L39
+ 783              	.L40:
+ 142:printer.c     ****         UART_3_PutChar(SEPARATOR[x]); //Separador de sección
+ 784              		.loc 1 142 0 discriminator 3
+ 785 010a 7B7A     		ldrb	r3, [r7, #9]	@ zero_extendqisi2
+ 786 010c 354A     		ldr	r2, .L49+16
+ 787 010e D35C     		ldrb	r3, [r2, r3]	@ zero_extendqisi2
+ 788 0110 1846     		mov	r0, r3
+ 789 0112 FFF7FEFF 		bl	UART_3_PutChar
+ 141:printer.c     ****     for(uint8 x = 0; x < 24; x ++){
+ 790              		.loc 1 141 0 discriminator 3
+ 791 0116 7B7A     		ldrb	r3, [r7, #9]	@ zero_extendqisi2
+ 792 0118 0133     		adds	r3, r3, #1
+ 793 011a 7B72     		strb	r3, [r7, #9]
+ 794              	.L39:
+ 141:printer.c     ****     for(uint8 x = 0; x < 24; x ++){
+ 795              		.loc 1 141 0 is_stmt 0 discriminator 1
+ 796 011c 7B7A     		ldrb	r3, [r7, #9]	@ zero_extendqisi2
+ 797 011e 172B     		cmp	r3, #23
+ 798 0120 F3D9     		bls	.L40
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccPB1gwT.s 			page 20
 
 
- 853 0228 01       		.byte	0x1
- 854 0229 13       		.byte	0x13
- 855 022a 02020000 		.4byte	0x202
- 856 022e 05       		.uleb128 0x5
- 857 022f 03       		.byte	0x3
- 858 0230 00000000 		.4byte	msn_EDS2
- 859 0234 0C       		.uleb128 0xc
- 860 0235 68010000 		.4byte	.LASF21
- 861 0239 01       		.byte	0x1
- 862 023a 14       		.byte	0x14
- 863 023b 02020000 		.4byte	0x202
- 864 023f 05       		.uleb128 0x5
- 865 0240 03       		.byte	0x3
- 866 0241 00000000 		.4byte	msn_EDS3
- 867 0245 0C       		.uleb128 0xc
- 868 0246 71010000 		.4byte	.LASF22
- 869 024a 01       		.byte	0x1
- 870 024b 15       		.byte	0x15
- 871 024c 02020000 		.4byte	0x202
- 872 0250 05       		.uleb128 0x5
- 873 0251 03       		.byte	0x3
- 874 0252 00000000 		.4byte	msn_EDS4
- 875 0256 0D       		.uleb128 0xd
- 876 0257 81000000 		.4byte	0x81
- 877 025b 66020000 		.4byte	0x266
- 878 025f 0E       		.uleb128 0xe
- 879 0260 A9000000 		.4byte	0xa9
- 880 0264 0C       		.byte	0xc
- 881 0265 00       		.byte	0
- 882 0266 0C       		.uleb128 0xc
- 883 0267 01010000 		.4byte	.LASF23
- 884 026b 01       		.byte	0x1
- 885 026c 19       		.byte	0x19
- 886 026d 56020000 		.4byte	0x256
- 887 0271 05       		.uleb128 0x5
- 888 0272 03       		.byte	0x3
- 889 0273 00000000 		.4byte	msn_fecha
- 890 0277 0C       		.uleb128 0xc
- 891 0278 81010000 		.4byte	.LASF24
- 892 027c 01       		.byte	0x1
- 893 027d 1A       		.byte	0x1a
- 894 027e 56020000 		.4byte	0x256
- 895 0282 05       		.uleb128 0x5
- 896 0283 03       		.byte	0x3
- 897 0284 00000000 		.4byte	msn_hora
- 898 0288 0C       		.uleb128 0xc
- 899 0289 B0020000 		.4byte	.LASF25
- 900 028d 01       		.byte	0x1
- 901 028e 1B       		.byte	0x1b
- 902 028f 56020000 		.4byte	0x256
- 903 0293 05       		.uleb128 0x5
- 904 0294 03       		.byte	0x3
- 905 0295 00000000 		.4byte	msn_placa
- 906 0299 0C       		.uleb128 0xc
- 907 029a 0F000000 		.4byte	.LASF26
- 908 029e 01       		.byte	0x1
- 909 029f 1C       		.byte	0x1c
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc23jVim.s 			page 21
+ 799              	.LBE19:
+ 143:printer.c     ****     }
+ 144:printer.c     ****     UART_3_PutChar(LINE_FEED);
+ 800              		.loc 1 144 0 is_stmt 1
+ 801 0122 2C4B     		ldr	r3, .L49
+ 802 0124 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 803 0126 1846     		mov	r0, r3
+ 804 0128 FFF7FEFF 		bl	UART_3_PutChar
+ 805              	.LBB20:
+ 145:printer.c     ****     for(uint8 x = 0; x < 20; x ++){
+ 806              		.loc 1 145 0
+ 807 012c 0023     		movs	r3, #0
+ 808 012e 3B72     		strb	r3, [r7, #8]
+ 809 0130 08E0     		b	.L41
+ 810              	.L42:
+ 146:printer.c     ****         UART_3_PutChar(msn_EDS4[x]);
+ 811              		.loc 1 146 0 discriminator 3
+ 812 0132 3B7A     		ldrb	r3, [r7, #8]	@ zero_extendqisi2
+ 813 0134 2E4A     		ldr	r2, .L49+28
+ 814 0136 D35C     		ldrb	r3, [r2, r3]	@ zero_extendqisi2
+ 815 0138 1846     		mov	r0, r3
+ 816 013a FFF7FEFF 		bl	UART_3_PutChar
+ 145:printer.c     ****     for(uint8 x = 0; x < 20; x ++){
+ 817              		.loc 1 145 0 discriminator 3
+ 818 013e 3B7A     		ldrb	r3, [r7, #8]	@ zero_extendqisi2
+ 819 0140 0133     		adds	r3, r3, #1
+ 820 0142 3B72     		strb	r3, [r7, #8]
+ 821              	.L41:
+ 145:printer.c     ****     for(uint8 x = 0; x < 20; x ++){
+ 822              		.loc 1 145 0 is_stmt 0 discriminator 1
+ 823 0144 3B7A     		ldrb	r3, [r7, #8]	@ zero_extendqisi2
+ 824 0146 132B     		cmp	r3, #19
+ 825 0148 F3D9     		bls	.L42
+ 826              	.LBE20:
+ 147:printer.c     ****     }
+ 148:printer.c     ****     UART_3_PutChar(LINE_FEED);
+ 827              		.loc 1 148 0 is_stmt 1
+ 828 014a 224B     		ldr	r3, .L49
+ 829 014c 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 830 014e 1846     		mov	r0, r3
+ 831 0150 FFF7FEFF 		bl	UART_3_PutChar
+ 832              	.LBB21:
+ 149:printer.c     ****     for(uint8 x = 0; x < 20; x ++){
+ 833              		.loc 1 149 0
+ 834 0154 0023     		movs	r3, #0
+ 835 0156 FB71     		strb	r3, [r7, #7]
+ 836 0158 08E0     		b	.L43
+ 837              	.L44:
+ 150:printer.c     ****         UART_3_PutChar(msn_EDS3[x]);
+ 838              		.loc 1 150 0 discriminator 3
+ 839 015a FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 840 015c 254A     		ldr	r2, .L49+32
+ 841 015e D35C     		ldrb	r3, [r2, r3]	@ zero_extendqisi2
+ 842 0160 1846     		mov	r0, r3
+ 843 0162 FFF7FEFF 		bl	UART_3_PutChar
+ 149:printer.c     ****     for(uint8 x = 0; x < 20; x ++){
+ 844              		.loc 1 149 0 discriminator 3
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccPB1gwT.s 			page 21
 
 
- 910 02a0 56020000 		.4byte	0x256
- 911 02a4 05       		.uleb128 0x5
- 912 02a5 03       		.byte	0x3
- 913 02a6 00000000 		.4byte	PRN_MILLEAGE
- 914 02aa 0C       		.uleb128 0xc
- 915 02ab AA000000 		.4byte	.LASF27
- 916 02af 01       		.byte	0x1
- 917 02b0 1D       		.byte	0x1d
- 918 02b1 56020000 		.4byte	0x256
- 919 02b5 05       		.uleb128 0x5
- 920 02b6 03       		.byte	0x3
- 921 02b7 00000000 		.4byte	PRN_TRANSTYPE
- 922 02bb 0C       		.uleb128 0xc
- 923 02bc 58010000 		.4byte	.LASF28
- 924 02c0 01       		.byte	0x1
- 925 02c1 1E       		.byte	0x1e
- 926 02c2 56020000 		.4byte	0x256
- 927 02c6 05       		.uleb128 0x5
- 928 02c7 03       		.byte	0x3
- 929 02c8 00000000 		.4byte	msn_pos
- 930 02cc 0C       		.uleb128 0xc
- 931 02cd 4C010000 		.4byte	.LASF29
- 932 02d1 01       		.byte	0x1
- 933 02d2 1F       		.byte	0x1f
- 934 02d3 56020000 		.4byte	0x256
- 935 02d7 05       		.uleb128 0x5
- 936 02d8 03       		.byte	0x3
- 937 02d9 00000000 		.4byte	msn_product
- 938 02dd 0C       		.uleb128 0xc
- 939 02de 02030000 		.4byte	.LASF30
- 940 02e2 01       		.byte	0x1
- 941 02e3 20       		.byte	0x20
- 942 02e4 56020000 		.4byte	0x256
- 943 02e8 05       		.uleb128 0x5
- 944 02e9 03       		.byte	0x3
- 945 02ea 00000000 		.4byte	msn_ppu
- 946 02ee 0D       		.uleb128 0xd
- 947 02ef 81000000 		.4byte	0x81
- 948 02f3 FE020000 		.4byte	0x2fe
- 949 02f7 0E       		.uleb128 0xe
- 950 02f8 A9000000 		.4byte	0xa9
- 951 02fc 0E       		.byte	0xe
- 952 02fd 00       		.byte	0
- 953 02fe 0C       		.uleb128 0xc
- 954 02ff 60010000 		.4byte	.LASF31
- 955 0303 01       		.byte	0x1
- 956 0304 21       		.byte	0x21
- 957 0305 EE020000 		.4byte	0x2ee
- 958 0309 05       		.uleb128 0x5
- 959 030a 03       		.byte	0x3
- 960 030b 00000000 		.4byte	msn_vol
- 961 030f 0C       		.uleb128 0xc
- 962 0310 11010000 		.4byte	.LASF32
- 963 0314 01       		.byte	0x1
- 964 0315 22       		.byte	0x22
- 965 0316 EE020000 		.4byte	0x2ee
- 966 031a 05       		.uleb128 0x5
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc23jVim.s 			page 22
+ 845 0166 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 846 0168 0133     		adds	r3, r3, #1
+ 847 016a FB71     		strb	r3, [r7, #7]
+ 848              	.L43:
+ 149:printer.c     ****     for(uint8 x = 0; x < 20; x ++){
+ 849              		.loc 1 149 0 is_stmt 0 discriminator 1
+ 850 016c FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 851 016e 132B     		cmp	r3, #19
+ 852 0170 F3D9     		bls	.L44
+ 853              	.LBE21:
+ 151:printer.c     ****     }                                 // Encabezado de estación
+ 152:printer.c     ****     UART_3_PutChar(LINE_FEED);
+ 854              		.loc 1 152 0 is_stmt 1
+ 855 0172 184B     		ldr	r3, .L49
+ 856 0174 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 857 0176 1846     		mov	r0, r3
+ 858 0178 FFF7FEFF 		bl	UART_3_PutChar
+ 859              	.LBB22:
+ 153:printer.c     ****     for(uint8 x = 0; x < 20; x ++){
+ 860              		.loc 1 153 0
+ 861 017c 0023     		movs	r3, #0
+ 862 017e BB71     		strb	r3, [r7, #6]
+ 863 0180 08E0     		b	.L45
+ 864              	.L46:
+ 154:printer.c     ****         UART_3_PutChar(msn_EDS2[x]);
+ 865              		.loc 1 154 0 discriminator 3
+ 866 0182 BB79     		ldrb	r3, [r7, #6]	@ zero_extendqisi2
+ 867 0184 1C4A     		ldr	r2, .L49+36
+ 868 0186 D35C     		ldrb	r3, [r2, r3]	@ zero_extendqisi2
+ 869 0188 1846     		mov	r0, r3
+ 870 018a FFF7FEFF 		bl	UART_3_PutChar
+ 153:printer.c     ****     for(uint8 x = 0; x < 20; x ++){
+ 871              		.loc 1 153 0 discriminator 3
+ 872 018e BB79     		ldrb	r3, [r7, #6]	@ zero_extendqisi2
+ 873 0190 0133     		adds	r3, r3, #1
+ 874 0192 BB71     		strb	r3, [r7, #6]
+ 875              	.L45:
+ 153:printer.c     ****     for(uint8 x = 0; x < 20; x ++){
+ 876              		.loc 1 153 0 is_stmt 0 discriminator 1
+ 877 0194 BB79     		ldrb	r3, [r7, #6]	@ zero_extendqisi2
+ 878 0196 132B     		cmp	r3, #19
+ 879 0198 F3D9     		bls	.L46
+ 880              	.LBE22:
+ 155:printer.c     ****     }
+ 156:printer.c     ****     UART_3_PutChar(LINE_FEED);
+ 881              		.loc 1 156 0 is_stmt 1
+ 882 019a 0E4B     		ldr	r3, .L49
+ 883 019c 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 884 019e 1846     		mov	r0, r3
+ 885 01a0 FFF7FEFF 		bl	UART_3_PutChar
+ 886              	.LBB23:
+ 157:printer.c     ****     for(uint8 x = 0; x < 20; x ++){
+ 887              		.loc 1 157 0
+ 888 01a4 0023     		movs	r3, #0
+ 889 01a6 7B71     		strb	r3, [r7, #5]
+ 890 01a8 08E0     		b	.L47
+ 891              	.L48:
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccPB1gwT.s 			page 22
 
 
- 967 031b 03       		.byte	0x3
- 968 031c 00000000 		.4byte	msn_din
- 969 0320 0C       		.uleb128 0xc
- 970 0321 2E030000 		.4byte	.LASF33
- 971 0325 01       		.byte	0x1
- 972 0326 23       		.byte	0x23
- 973 0327 56020000 		.4byte	0x256
- 974 032b 05       		.uleb128 0x5
- 975 032c 03       		.byte	0x3
- 976 032d 00000000 		.4byte	msn_numero
- 977 0331 0C       		.uleb128 0xc
- 978 0332 E7000000 		.4byte	.LASF34
- 979 0336 01       		.byte	0x1
- 980 0337 24       		.byte	0x24
- 981 0338 56020000 		.4byte	0x256
- 982 033c 05       		.uleb128 0x5
- 983 033d 03       		.byte	0x3
- 984 033e 00000000 		.4byte	PRN_BALANCE
- 985 0342 0C       		.uleb128 0xc
- 986 0343 05020000 		.4byte	.LASF35
- 987 0347 01       		.byte	0x1
- 988 0348 25       		.byte	0x25
- 989 0349 56020000 		.4byte	0x256
- 990 034d 05       		.uleb128 0x5
- 991 034e 03       		.byte	0x3
- 992 034f 00000000 		.4byte	PRN_COMPANY
- 993 0353 0C       		.uleb128 0xc
- 994 0354 22030000 		.4byte	.LASF36
- 995 0358 01       		.byte	0x1
- 996 0359 26       		.byte	0x26
- 997 035a 56020000 		.4byte	0x256
- 998 035e 05       		.uleb128 0x5
- 999 035f 03       		.byte	0x3
- 1000 0360 00000000 		.4byte	PRN_ACCOUNT
- 1001 0364 0C       		.uleb128 0xc
- 1002 0365 B2010000 		.4byte	.LASF37
- 1003 0369 01       		.byte	0x1
- 1004 036a 27       		.byte	0x27
- 1005 036b 56020000 		.4byte	0x256
- 1006 036f 05       		.uleb128 0x5
- 1007 0370 03       		.byte	0x3
- 1008 0371 00000000 		.4byte	PRN_SERIAL
- 1009 0375 0C       		.uleb128 0xc
- 1010 0376 8A010000 		.4byte	.LASF38
- 1011 037a 01       		.byte	0x1
- 1012 037b 28       		.byte	0x28
- 1013 037c 56020000 		.4byte	0x256
- 1014 0380 05       		.uleb128 0x5
- 1015 0381 03       		.byte	0x3
- 1016 0382 00000000 		.4byte	PRN_ACCOUNTTYPE
- 1017 0386 0C       		.uleb128 0xc
- 1018 0387 D2010000 		.4byte	.LASF39
- 1019 038b 01       		.byte	0x1
- 1020 038c 29       		.byte	0x29
- 1021 038d 56020000 		.4byte	0x256
- 1022 0391 05       		.uleb128 0x5
- 1023 0392 03       		.byte	0x3
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc23jVim.s 			page 23
+ 158:printer.c     ****         UART_3_PutChar(msn_EDS[x]);
+ 892              		.loc 1 158 0 discriminator 3
+ 893 01aa 7B79     		ldrb	r3, [r7, #5]	@ zero_extendqisi2
+ 894 01ac 134A     		ldr	r2, .L49+40
+ 895 01ae D35C     		ldrb	r3, [r2, r3]	@ zero_extendqisi2
+ 896 01b0 1846     		mov	r0, r3
+ 897 01b2 FFF7FEFF 		bl	UART_3_PutChar
+ 157:printer.c     ****     for(uint8 x = 0; x < 20; x ++){
+ 898              		.loc 1 157 0 discriminator 3
+ 899 01b6 7B79     		ldrb	r3, [r7, #5]	@ zero_extendqisi2
+ 900 01b8 0133     		adds	r3, r3, #1
+ 901 01ba 7B71     		strb	r3, [r7, #5]
+ 902              	.L47:
+ 157:printer.c     ****     for(uint8 x = 0; x < 20; x ++){
+ 903              		.loc 1 157 0 is_stmt 0 discriminator 1
+ 904 01bc 7B79     		ldrb	r3, [r7, #5]	@ zero_extendqisi2
+ 905 01be 132B     		cmp	r3, #19
+ 906 01c0 F3D9     		bls	.L48
+ 907              	.LBE23:
+ 159:printer.c     ****     }
+ 160:printer.c     ****     UART_3_PutChar(LINE_FEED);    
+ 908              		.loc 1 160 0 is_stmt 1
+ 909 01c2 044B     		ldr	r3, .L49
+ 910 01c4 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 911 01c6 1846     		mov	r0, r3
+ 912 01c8 FFF7FEFF 		bl	UART_3_PutChar
+ 161:printer.c     **** }
+ 913              		.loc 1 161 0
+ 914 01cc 00BF     		nop
+ 915 01ce 1037     		adds	r7, r7, #16
+ 916              		.cfi_def_cfa_offset 8
+ 917 01d0 BD46     		mov	sp, r7
+ 918              		.cfi_def_cfa_register 13
+ 919              		@ sp needed
+ 920 01d2 80BD     		pop	{r7, pc}
+ 921              	.L50:
+ 922              		.align	2
+ 923              	.L49:
+ 924 01d4 00000000 		.word	LINE_FEED
+ 925 01d8 00000000 		.word	side
+ 926 01dc 00000000 		.word	msn_pos
+ 927 01e0 00000000 		.word	msn_cierre
+ 928 01e4 00000000 		.word	SEPARATOR
+ 929 01e8 00000000 		.word	msn_hora
+ 930 01ec 00000000 		.word	msn_fecha
+ 931 01f0 00000000 		.word	msn_EDS4
+ 932 01f4 00000000 		.word	msn_EDS3
+ 933 01f8 00000000 		.word	msn_EDS2
+ 934 01fc 00000000 		.word	msn_EDS
+ 935              		.cfi_endproc
+ 936              	.LFE64:
+ 937              		.size	PrintShift, .-PrintShift
+ 938              		.text
+ 939              	.Letext0:
+ 940              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.2\\psoc creator\\import\\gnu\\arm\\5.4.
+ 941              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.2\\psoc creator\\import\\gnu\\arm\\5.4.
+ 942              		.file 4 "Generated_Source\\PSoC5/cytypes.h"
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccPB1gwT.s 			page 23
 
 
- 1024 0393 00000000 		.4byte	PRN_VISITSDAY
- 1025 0397 0C       		.uleb128 0xc
- 1026 0398 00000000 		.4byte	.LASF40
- 1027 039c 01       		.byte	0x1
- 1028 039d 2A       		.byte	0x2a
- 1029 039e 56020000 		.4byte	0x256
- 1030 03a2 05       		.uleb128 0x5
- 1031 03a3 03       		.byte	0x3
- 1032 03a4 00000000 		.4byte	PRN_VISITSWEEK
- 1033 03a8 0C       		.uleb128 0xc
- 1034 03a9 20020000 		.4byte	.LASF41
- 1035 03ad 01       		.byte	0x1
- 1036 03ae 2B       		.byte	0x2b
- 1037 03af 56020000 		.4byte	0x256
- 1038 03b3 05       		.uleb128 0x5
- 1039 03b4 03       		.byte	0x3
- 1040 03b5 00000000 		.4byte	PRN_VISITSMONTH
- 1041 03b9 0C       		.uleb128 0xc
- 1042 03ba 0A030000 		.4byte	.LASF42
- 1043 03be 01       		.byte	0x1
- 1044 03bf 2C       		.byte	0x2c
- 1045 03c0 56020000 		.4byte	0x256
- 1046 03c4 05       		.uleb128 0x5
- 1047 03c5 03       		.byte	0x3
- 1048 03c6 00000000 		.4byte	PRN_VOLUMEDAY
- 1049 03ca 0C       		.uleb128 0xc
- 1050 03cb D8000000 		.4byte	.LASF43
- 1051 03cf 01       		.byte	0x1
- 1052 03d0 2D       		.byte	0x2d
- 1053 03d1 56020000 		.4byte	0x256
- 1054 03d5 05       		.uleb128 0x5
- 1055 03d6 03       		.byte	0x3
- 1056 03d7 00000000 		.4byte	PRN_VOLUMEWEEK
- 1057 03db 0C       		.uleb128 0xc
- 1058 03dc CD020000 		.4byte	.LASF44
- 1059 03e0 01       		.byte	0x1
- 1060 03e1 2E       		.byte	0x2e
- 1061 03e2 56020000 		.4byte	0x256
- 1062 03e6 05       		.uleb128 0x5
- 1063 03e7 03       		.byte	0x3
- 1064 03e8 00000000 		.4byte	PRN_VOLUMEMONTH
- 1065 03ec 0C       		.uleb128 0xc
- 1066 03ed 89020000 		.4byte	.LASF45
- 1067 03f1 01       		.byte	0x1
- 1068 03f2 2F       		.byte	0x2f
- 1069 03f3 56020000 		.4byte	0x256
- 1070 03f7 05       		.uleb128 0x5
- 1071 03f8 03       		.byte	0x3
- 1072 03f9 00000000 		.4byte	PRN_MONEYDAY
- 1073 03fd 0C       		.uleb128 0xc
- 1074 03fe E0010000 		.4byte	.LASF46
- 1075 0402 01       		.byte	0x1
- 1076 0403 30       		.byte	0x30
- 1077 0404 56020000 		.4byte	0x256
- 1078 0408 05       		.uleb128 0x5
- 1079 0409 03       		.byte	0x3
- 1080 040a 00000000 		.4byte	PRN_MONEYWEEK
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc23jVim.s 			page 24
+ 943              		.file 5 "./GVar.h"
+ 944              		.file 6 "Generated_Source\\PSoC5/core_cm3.h"
+ 945              		.section	.debug_info,"",%progbits
+ 946              	.Ldebug_info0:
+ 947 0000 21080000 		.4byte	0x821
+ 948 0004 0400     		.2byte	0x4
+ 949 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 950 000a 04       		.byte	0x4
+ 951 000b 01       		.uleb128 0x1
+ 952 000c 68000000 		.4byte	.LASF81
+ 953 0010 0C       		.byte	0xc
+ 954 0011 B7030000 		.4byte	.LASF82
+ 955 0015 58030000 		.4byte	.LASF83
+ 956 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 957 001d 00000000 		.4byte	0
+ 958 0021 00000000 		.4byte	.Ldebug_line0
+ 959 0025 02       		.uleb128 0x2
+ 960 0026 01       		.byte	0x1
+ 961 0027 06       		.byte	0x6
+ 962 0028 6C020000 		.4byte	.LASF0
+ 963 002c 02       		.uleb128 0x2
+ 964 002d 01       		.byte	0x1
+ 965 002e 08       		.byte	0x8
+ 966 002f 4B020000 		.4byte	.LASF1
+ 967 0033 02       		.uleb128 0x2
+ 968 0034 02       		.byte	0x2
+ 969 0035 05       		.byte	0x5
+ 970 0036 3C000000 		.4byte	.LASF2
+ 971 003a 02       		.uleb128 0x2
+ 972 003b 02       		.byte	0x2
+ 973 003c 07       		.byte	0x7
+ 974 003d FF020000 		.4byte	.LASF3
+ 975 0041 03       		.uleb128 0x3
+ 976 0042 D7030000 		.4byte	.LASF9
+ 977 0046 02       		.byte	0x2
+ 978 0047 3F       		.byte	0x3f
+ 979 0048 4C000000 		.4byte	0x4c
+ 980 004c 02       		.uleb128 0x2
+ 981 004d 04       		.byte	0x4
+ 982 004e 05       		.byte	0x5
+ 983 004f 96010000 		.4byte	.LASF4
+ 984 0053 02       		.uleb128 0x2
+ 985 0054 04       		.byte	0x4
+ 986 0055 07       		.byte	0x7
+ 987 0056 A5030000 		.4byte	.LASF5
+ 988 005a 02       		.uleb128 0x2
+ 989 005b 08       		.byte	0x8
+ 990 005c 05       		.byte	0x5
+ 991 005d F6000000 		.4byte	.LASF6
+ 992 0061 02       		.uleb128 0x2
+ 993 0062 08       		.byte	0x8
+ 994 0063 07       		.byte	0x7
+ 995 0064 78020000 		.4byte	.LASF7
+ 996 0068 04       		.uleb128 0x4
+ 997 0069 04       		.byte	0x4
+ 998 006a 05       		.byte	0x5
+ 999 006b 696E7400 		.ascii	"int\000"
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccPB1gwT.s 			page 24
 
 
- 1081 040e 0C       		.uleb128 0xc
- 1082 040f 11020000 		.4byte	.LASF47
- 1083 0413 01       		.byte	0x1
- 1084 0414 31       		.byte	0x31
- 1085 0415 56020000 		.4byte	0x256
- 1086 0419 05       		.uleb128 0x5
- 1087 041a 03       		.byte	0x3
- 1088 041b 00000000 		.4byte	PRN_MONEYMONTH
- 1089 041f 0C       		.uleb128 0xc
- 1090 0420 9A010000 		.4byte	.LASF48
- 1091 0424 01       		.byte	0x1
- 1092 0425 32       		.byte	0x32
- 1093 0426 56020000 		.4byte	0x256
- 1094 042a 05       		.uleb128 0x5
- 1095 042b 03       		.byte	0x3
- 1096 042c 00000000 		.4byte	PRN_PRESET
- 1097 0430 0C       		.uleb128 0xc
- 1098 0431 F3000000 		.4byte	.LASF49
- 1099 0435 01       		.byte	0x1
- 1100 0436 33       		.byte	0x33
- 1101 0437 56020000 		.4byte	0x256
- 1102 043b 05       		.uleb128 0x5
- 1103 043c 03       		.byte	0x3
- 1104 043d 00000000 		.4byte	PRN_SIGNATURE
- 1105 0441 0C       		.uleb128 0xc
- 1106 0442 39030000 		.4byte	.LASF50
- 1107 0446 01       		.byte	0x1
- 1108 0447 34       		.byte	0x34
- 1109 0448 56020000 		.4byte	0x256
- 1110 044c 05       		.uleb128 0x5
- 1111 044d 03       		.byte	0x3
- 1112 044e 00000000 		.4byte	PRN_ID
- 1113 0452 0D       		.uleb128 0xd
- 1114 0453 81000000 		.4byte	0x81
- 1115 0457 62040000 		.4byte	0x462
- 1116 045b 0E       		.uleb128 0xe
- 1117 045c A9000000 		.4byte	0xa9
- 1118 0460 00       		.byte	0
- 1119 0461 00       		.byte	0
- 1120 0462 0C       		.uleb128 0xc
- 1121 0463 F5020000 		.4byte	.LASF51
- 1122 0467 01       		.byte	0x1
- 1123 0468 35       		.byte	0x35
- 1124 0469 52040000 		.4byte	0x452
- 1125 046d 05       		.uleb128 0x5
- 1126 046e 03       		.byte	0x3
- 1127 046f 00000000 		.4byte	PRN_CURRENCY
- 1128 0473 0D       		.uleb128 0xd
- 1129 0474 81000000 		.4byte	0x81
- 1130 0478 83040000 		.4byte	0x483
- 1131 047c 0E       		.uleb128 0xe
- 1132 047d A9000000 		.4byte	0xa9
- 1133 0481 17       		.byte	0x17
- 1134 0482 00       		.byte	0
- 1135 0483 0C       		.uleb128 0xc
- 1136 0484 A0020000 		.4byte	.LASF52
- 1137 0488 01       		.byte	0x1
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc23jVim.s 			page 25
+ 1000 006f 02       		.uleb128 0x2
+ 1001 0070 04       		.byte	0x4
+ 1002 0071 07       		.byte	0x7
+ 1003 0072 9D020000 		.4byte	.LASF8
+ 1004 0076 03       		.uleb128 0x3
+ 1005 0077 38030000 		.4byte	.LASF10
+ 1006 007b 03       		.byte	0x3
+ 1007 007c 2C       		.byte	0x2c
+ 1008 007d 41000000 		.4byte	0x41
+ 1009 0081 05       		.uleb128 0x5
+ 1010 0082 3C010000 		.4byte	.LASF11
+ 1011 0086 04       		.byte	0x4
+ 1012 0087 E401     		.2byte	0x1e4
+ 1013 0089 2C000000 		.4byte	0x2c
+ 1014 008d 05       		.uleb128 0x5
+ 1015 008e 2B010000 		.4byte	.LASF12
+ 1016 0092 04       		.byte	0x4
+ 1017 0093 E501     		.2byte	0x1e5
+ 1018 0095 3A000000 		.4byte	0x3a
+ 1019 0099 02       		.uleb128 0x2
+ 1020 009a 04       		.byte	0x4
+ 1021 009b 04       		.byte	0x4
+ 1022 009c 73010000 		.4byte	.LASF13
+ 1023 00a0 02       		.uleb128 0x2
+ 1024 00a1 08       		.byte	0x8
+ 1025 00a2 04       		.byte	0x4
+ 1026 00a3 C1030000 		.4byte	.LASF14
+ 1027 00a7 02       		.uleb128 0x2
+ 1028 00a8 01       		.byte	0x1
+ 1029 00a9 08       		.byte	0x8
+ 1030 00aa 2C030000 		.4byte	.LASF15
+ 1031 00ae 02       		.uleb128 0x2
+ 1032 00af 08       		.byte	0x8
+ 1033 00b0 04       		.byte	0x4
+ 1034 00b1 33020000 		.4byte	.LASF16
+ 1035 00b5 02       		.uleb128 0x2
+ 1036 00b6 04       		.byte	0x4
+ 1037 00b7 07       		.byte	0x7
+ 1038 00b8 46000000 		.4byte	.LASF17
+ 1039 00bc 06       		.uleb128 0x6
+ 1040 00bd 2E040000 		.4byte	.LASF29
+ 1041 00c1 3301     		.2byte	0x133
+ 1042 00c3 05       		.byte	0x5
+ 1043 00c4 1B       		.byte	0x1b
+ 1044 00c5 5C010000 		.4byte	0x15c
+ 1045 00c9 07       		.uleb128 0x7
+ 1046 00ca 64697200 		.ascii	"dir\000"
+ 1047 00ce 05       		.byte	0x5
+ 1048 00cf 1C       		.byte	0x1c
+ 1049 00d0 81000000 		.4byte	0x81
+ 1050 00d4 00       		.byte	0
+ 1051 00d5 08       		.uleb128 0x8
+ 1052 00d6 E3020000 		.4byte	.LASF18
+ 1053 00da 05       		.byte	0x5
+ 1054 00db 1D       		.byte	0x1d
+ 1055 00dc 5C010000 		.4byte	0x15c
+ 1056 00e0 01       		.byte	0x1
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccPB1gwT.s 			page 25
 
 
- 1138 0489 36       		.byte	0x36
- 1139 048a 73040000 		.4byte	0x473
- 1140 048e 05       		.uleb128 0x5
- 1141 048f 03       		.byte	0x3
- 1142 0490 00000000 		.4byte	SEPARATOR
- 1143 0494 00       		.byte	0
- 1144              		.section	.debug_abbrev,"",%progbits
- 1145              	.Ldebug_abbrev0:
- 1146 0000 01       		.uleb128 0x1
- 1147 0001 11       		.uleb128 0x11
- 1148 0002 01       		.byte	0x1
- 1149 0003 25       		.uleb128 0x25
- 1150 0004 0E       		.uleb128 0xe
- 1151 0005 13       		.uleb128 0x13
- 1152 0006 0B       		.uleb128 0xb
- 1153 0007 03       		.uleb128 0x3
- 1154 0008 0E       		.uleb128 0xe
- 1155 0009 1B       		.uleb128 0x1b
- 1156 000a 0E       		.uleb128 0xe
- 1157 000b 55       		.uleb128 0x55
- 1158 000c 17       		.uleb128 0x17
- 1159 000d 11       		.uleb128 0x11
- 1160 000e 01       		.uleb128 0x1
- 1161 000f 10       		.uleb128 0x10
- 1162 0010 17       		.uleb128 0x17
- 1163 0011 00       		.byte	0
- 1164 0012 00       		.byte	0
- 1165 0013 02       		.uleb128 0x2
- 1166 0014 24       		.uleb128 0x24
- 1167 0015 00       		.byte	0
- 1168 0016 0B       		.uleb128 0xb
- 1169 0017 0B       		.uleb128 0xb
- 1170 0018 3E       		.uleb128 0x3e
- 1171 0019 0B       		.uleb128 0xb
- 1172 001a 03       		.uleb128 0x3
- 1173 001b 0E       		.uleb128 0xe
- 1174 001c 00       		.byte	0
- 1175 001d 00       		.byte	0
- 1176 001e 03       		.uleb128 0x3
- 1177 001f 16       		.uleb128 0x16
- 1178 0020 00       		.byte	0
- 1179 0021 03       		.uleb128 0x3
- 1180 0022 0E       		.uleb128 0xe
- 1181 0023 3A       		.uleb128 0x3a
- 1182 0024 0B       		.uleb128 0xb
- 1183 0025 3B       		.uleb128 0x3b
- 1184 0026 0B       		.uleb128 0xb
- 1185 0027 49       		.uleb128 0x49
- 1186 0028 13       		.uleb128 0x13
- 1187 0029 00       		.byte	0
- 1188 002a 00       		.byte	0
- 1189 002b 04       		.uleb128 0x4
- 1190 002c 24       		.uleb128 0x24
- 1191 002d 00       		.byte	0
- 1192 002e 0B       		.uleb128 0xb
- 1193 002f 0B       		.uleb128 0xb
- 1194 0030 3E       		.uleb128 0x3e
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc23jVim.s 			page 26
+ 1057 00e1 08       		.uleb128 0x8
+ 1058 00e2 32010000 		.4byte	.LASF19
+ 1059 00e6 05       		.byte	0x5
+ 1060 00e7 1E       		.byte	0x1e
+ 1061 00e8 78010000 		.4byte	0x178
+ 1062 00ec 3D       		.byte	0x3d
+ 1063 00ed 08       		.uleb128 0x8
+ 1064 00ee 12030000 		.4byte	.LASF20
+ 1065 00f2 05       		.byte	0x5
+ 1066 00f3 1F       		.byte	0x1f
+ 1067 00f4 8E010000 		.4byte	0x18e
+ 1068 00f8 5D       		.byte	0x5d
+ 1069 00f9 08       		.uleb128 0x8
+ 1070 00fa C4010000 		.4byte	.LASF21
+ 1071 00fe 05       		.byte	0x5
+ 1072 00ff 20       		.byte	0x20
+ 1073 0100 8E010000 		.4byte	0x18e
+ 1074 0104 61       		.byte	0x61
+ 1075 0105 08       		.uleb128 0x8
+ 1076 0106 AA020000 		.4byte	.LASF22
+ 1077 010a 05       		.byte	0x5
+ 1078 010b 21       		.byte	0x21
+ 1079 010c 9E010000 		.4byte	0x19e
+ 1080 0110 65       		.byte	0x65
+ 1081 0111 08       		.uleb128 0x8
+ 1082 0112 27020000 		.4byte	.LASF23
+ 1083 0116 05       		.byte	0x5
+ 1084 0117 22       		.byte	0x22
+ 1085 0118 81000000 		.4byte	0x81
+ 1086 011c 73       		.byte	0x73
+ 1087 011d 08       		.uleb128 0x8
+ 1088 011e 83010000 		.4byte	.LASF24
+ 1089 0122 05       		.byte	0x5
+ 1090 0123 23       		.byte	0x23
+ 1091 0124 AE010000 		.4byte	0x1ae
+ 1092 0128 74       		.byte	0x74
+ 1093 0129 08       		.uleb128 0x8
+ 1094 012a F2030000 		.4byte	.LASF25
+ 1095 012e 05       		.byte	0x5
+ 1096 012f 24       		.byte	0x24
+ 1097 0130 BE010000 		.4byte	0x1be
+ 1098 0134 79       		.byte	0x79
+ 1099 0135 08       		.uleb128 0x8
+ 1100 0136 2C000000 		.4byte	.LASF26
+ 1101 013a 05       		.byte	0x5
+ 1102 013b 25       		.byte	0x25
+ 1103 013c CE010000 		.4byte	0x1ce
+ 1104 0140 AB       		.byte	0xab
+ 1105 0141 09       		.uleb128 0x9
+ 1106 0142 FE030000 		.4byte	.LASF27
+ 1107 0146 05       		.byte	0x5
+ 1108 0147 26       		.byte	0x26
+ 1109 0148 EA010000 		.4byte	0x1ea
+ 1110 014c 2301     		.2byte	0x123
+ 1111 014e 09       		.uleb128 0x9
+ 1112 014f A9010000 		.4byte	.LASF28
+ 1113 0153 05       		.byte	0x5
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccPB1gwT.s 			page 26
 
 
- 1195 0031 0B       		.uleb128 0xb
- 1196 0032 03       		.uleb128 0x3
- 1197 0033 08       		.uleb128 0x8
- 1198 0034 00       		.byte	0
- 1199 0035 00       		.byte	0
- 1200 0036 05       		.uleb128 0x5
- 1201 0037 16       		.uleb128 0x16
- 1202 0038 00       		.byte	0
- 1203 0039 03       		.uleb128 0x3
- 1204 003a 0E       		.uleb128 0xe
- 1205 003b 3A       		.uleb128 0x3a
- 1206 003c 0B       		.uleb128 0xb
- 1207 003d 3B       		.uleb128 0x3b
- 1208 003e 05       		.uleb128 0x5
- 1209 003f 49       		.uleb128 0x49
- 1210 0040 13       		.uleb128 0x13
- 1211 0041 00       		.byte	0
- 1212 0042 00       		.byte	0
- 1213 0043 06       		.uleb128 0x6
- 1214 0044 2E       		.uleb128 0x2e
- 1215 0045 01       		.byte	0x1
- 1216 0046 3F       		.uleb128 0x3f
- 1217 0047 19       		.uleb128 0x19
- 1218 0048 03       		.uleb128 0x3
- 1219 0049 0E       		.uleb128 0xe
- 1220 004a 3A       		.uleb128 0x3a
- 1221 004b 0B       		.uleb128 0xb
- 1222 004c 3B       		.uleb128 0x3b
- 1223 004d 0B       		.uleb128 0xb
- 1224 004e 27       		.uleb128 0x27
- 1225 004f 19       		.uleb128 0x19
- 1226 0050 11       		.uleb128 0x11
- 1227 0051 01       		.uleb128 0x1
- 1228 0052 12       		.uleb128 0x12
- 1229 0053 06       		.uleb128 0x6
- 1230 0054 40       		.uleb128 0x40
- 1231 0055 18       		.uleb128 0x18
- 1232 0056 9642     		.uleb128 0x2116
- 1233 0058 19       		.uleb128 0x19
- 1234 0059 01       		.uleb128 0x1
- 1235 005a 13       		.uleb128 0x13
- 1236 005b 00       		.byte	0
- 1237 005c 00       		.byte	0
- 1238 005d 07       		.uleb128 0x7
- 1239 005e 0B       		.uleb128 0xb
- 1240 005f 01       		.byte	0x1
- 1241 0060 11       		.uleb128 0x11
- 1242 0061 01       		.uleb128 0x1
- 1243 0062 12       		.uleb128 0x12
- 1244 0063 06       		.uleb128 0x6
- 1245 0064 01       		.uleb128 0x1
- 1246 0065 13       		.uleb128 0x13
- 1247 0066 00       		.byte	0
- 1248 0067 00       		.byte	0
- 1249 0068 08       		.uleb128 0x8
- 1250 0069 34       		.uleb128 0x34
- 1251 006a 00       		.byte	0
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc23jVim.s 			page 27
+ 1114 0154 27       		.byte	0x27
+ 1115 0155 EA010000 		.4byte	0x1ea
+ 1116 0159 2B01     		.2byte	0x12b
+ 1117 015b 00       		.byte	0
+ 1118 015c 0A       		.uleb128 0xa
+ 1119 015d 81000000 		.4byte	0x81
+ 1120 0161 78010000 		.4byte	0x178
+ 1121 0165 0B       		.uleb128 0xb
+ 1122 0166 B5000000 		.4byte	0xb5
+ 1123 016a 03       		.byte	0x3
+ 1124 016b 0B       		.uleb128 0xb
+ 1125 016c B5000000 		.4byte	0xb5
+ 1126 0170 02       		.byte	0x2
+ 1127 0171 0B       		.uleb128 0xb
+ 1128 0172 B5000000 		.4byte	0xb5
+ 1129 0176 04       		.byte	0x4
+ 1130 0177 00       		.byte	0
+ 1131 0178 0A       		.uleb128 0xa
+ 1132 0179 81000000 		.4byte	0x81
+ 1133 017d 8E010000 		.4byte	0x18e
+ 1134 0181 0B       		.uleb128 0xb
+ 1135 0182 B5000000 		.4byte	0xb5
+ 1136 0186 03       		.byte	0x3
+ 1137 0187 0B       		.uleb128 0xb
+ 1138 0188 B5000000 		.4byte	0xb5
+ 1139 018c 07       		.byte	0x7
+ 1140 018d 00       		.byte	0
+ 1141 018e 0A       		.uleb128 0xa
+ 1142 018f 81000000 		.4byte	0x81
+ 1143 0193 9E010000 		.4byte	0x19e
+ 1144 0197 0B       		.uleb128 0xb
+ 1145 0198 B5000000 		.4byte	0xb5
+ 1146 019c 03       		.byte	0x3
+ 1147 019d 00       		.byte	0
+ 1148 019e 0A       		.uleb128 0xa
+ 1149 019f 81000000 		.4byte	0x81
+ 1150 01a3 AE010000 		.4byte	0x1ae
+ 1151 01a7 0B       		.uleb128 0xb
+ 1152 01a8 B5000000 		.4byte	0xb5
+ 1153 01ac 0D       		.byte	0xd
+ 1154 01ad 00       		.byte	0
+ 1155 01ae 0A       		.uleb128 0xa
+ 1156 01af 81000000 		.4byte	0x81
+ 1157 01b3 BE010000 		.4byte	0x1be
+ 1158 01b7 0B       		.uleb128 0xb
+ 1159 01b8 B5000000 		.4byte	0xb5
+ 1160 01bc 04       		.byte	0x4
+ 1161 01bd 00       		.byte	0
+ 1162 01be 0A       		.uleb128 0xa
+ 1163 01bf 81000000 		.4byte	0x81
+ 1164 01c3 CE010000 		.4byte	0x1ce
+ 1165 01c7 0B       		.uleb128 0xb
+ 1166 01c8 B5000000 		.4byte	0xb5
+ 1167 01cc 31       		.byte	0x31
+ 1168 01cd 00       		.byte	0
+ 1169 01ce 0A       		.uleb128 0xa
+ 1170 01cf 81000000 		.4byte	0x81
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccPB1gwT.s 			page 27
 
 
- 1252 006b 03       		.uleb128 0x3
- 1253 006c 08       		.uleb128 0x8
- 1254 006d 3A       		.uleb128 0x3a
- 1255 006e 0B       		.uleb128 0xb
- 1256 006f 3B       		.uleb128 0x3b
- 1257 0070 0B       		.uleb128 0xb
- 1258 0071 49       		.uleb128 0x49
- 1259 0072 13       		.uleb128 0x13
- 1260 0073 02       		.uleb128 0x2
- 1261 0074 18       		.uleb128 0x18
- 1262 0075 00       		.byte	0
- 1263 0076 00       		.byte	0
- 1264 0077 09       		.uleb128 0x9
- 1265 0078 0B       		.uleb128 0xb
- 1266 0079 01       		.byte	0x1
- 1267 007a 11       		.uleb128 0x11
- 1268 007b 01       		.uleb128 0x1
- 1269 007c 12       		.uleb128 0x12
- 1270 007d 06       		.uleb128 0x6
- 1271 007e 00       		.byte	0
- 1272 007f 00       		.byte	0
- 1273 0080 0A       		.uleb128 0xa
- 1274 0081 34       		.uleb128 0x34
- 1275 0082 00       		.byte	0
- 1276 0083 03       		.uleb128 0x3
- 1277 0084 0E       		.uleb128 0xe
- 1278 0085 3A       		.uleb128 0x3a
- 1279 0086 0B       		.uleb128 0xb
- 1280 0087 3B       		.uleb128 0x3b
- 1281 0088 05       		.uleb128 0x5
- 1282 0089 49       		.uleb128 0x49
- 1283 008a 13       		.uleb128 0x13
- 1284 008b 3F       		.uleb128 0x3f
- 1285 008c 19       		.uleb128 0x19
- 1286 008d 3C       		.uleb128 0x3c
- 1287 008e 19       		.uleb128 0x19
- 1288 008f 00       		.byte	0
- 1289 0090 00       		.byte	0
- 1290 0091 0B       		.uleb128 0xb
- 1291 0092 35       		.uleb128 0x35
- 1292 0093 00       		.byte	0
- 1293 0094 49       		.uleb128 0x49
- 1294 0095 13       		.uleb128 0x13
- 1295 0096 00       		.byte	0
- 1296 0097 00       		.byte	0
- 1297 0098 0C       		.uleb128 0xc
- 1298 0099 34       		.uleb128 0x34
- 1299 009a 00       		.byte	0
- 1300 009b 03       		.uleb128 0x3
- 1301 009c 0E       		.uleb128 0xe
- 1302 009d 3A       		.uleb128 0x3a
- 1303 009e 0B       		.uleb128 0xb
- 1304 009f 3B       		.uleb128 0x3b
- 1305 00a0 0B       		.uleb128 0xb
- 1306 00a1 49       		.uleb128 0x49
- 1307 00a2 13       		.uleb128 0x13
- 1308 00a3 3F       		.uleb128 0x3f
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc23jVim.s 			page 28
+ 1171 01d3 EA010000 		.4byte	0x1ea
+ 1172 01d7 0B       		.uleb128 0xb
+ 1173 01d8 B5000000 		.4byte	0xb5
+ 1174 01dc 03       		.byte	0x3
+ 1175 01dd 0B       		.uleb128 0xb
+ 1176 01de B5000000 		.4byte	0xb5
+ 1177 01e2 02       		.byte	0x2
+ 1178 01e3 0B       		.uleb128 0xb
+ 1179 01e4 B5000000 		.4byte	0xb5
+ 1180 01e8 09       		.byte	0x9
+ 1181 01e9 00       		.byte	0
+ 1182 01ea 0A       		.uleb128 0xa
+ 1183 01eb 81000000 		.4byte	0x81
+ 1184 01ef FA010000 		.4byte	0x1fa
+ 1185 01f3 0B       		.uleb128 0xb
+ 1186 01f4 B5000000 		.4byte	0xb5
+ 1187 01f8 07       		.byte	0x7
+ 1188 01f9 00       		.byte	0
+ 1189 01fa 06       		.uleb128 0x6
+ 1190 01fb 53030000 		.4byte	.LASF30
+ 1191 01ff CC04     		.2byte	0x4cc
+ 1192 0201 05       		.byte	0x5
+ 1193 0202 2B       		.byte	0x2b
+ 1194 0203 33020000 		.4byte	0x233
+ 1195 0207 07       		.uleb128 0x7
+ 1196 0208 6100     		.ascii	"a\000"
+ 1197 020a 05       		.byte	0x5
+ 1198 020b 2C       		.byte	0x2c
+ 1199 020c BC000000 		.4byte	0xbc
+ 1200 0210 00       		.byte	0
+ 1201 0211 0C       		.uleb128 0xc
+ 1202 0212 6200     		.ascii	"b\000"
+ 1203 0214 05       		.byte	0x5
+ 1204 0215 2D       		.byte	0x2d
+ 1205 0216 BC000000 		.4byte	0xbc
+ 1206 021a 3301     		.2byte	0x133
+ 1207 021c 0C       		.uleb128 0xc
+ 1208 021d 6300     		.ascii	"c\000"
+ 1209 021f 05       		.byte	0x5
+ 1210 0220 2E       		.byte	0x2e
+ 1211 0221 BC000000 		.4byte	0xbc
+ 1212 0225 6602     		.2byte	0x266
+ 1213 0227 0C       		.uleb128 0xc
+ 1214 0228 6400     		.ascii	"d\000"
+ 1215 022a 05       		.byte	0x5
+ 1216 022b 2F       		.byte	0x2f
+ 1217 022c BC000000 		.4byte	0xbc
+ 1218 0230 9903     		.2byte	0x399
+ 1219 0232 00       		.byte	0
+ 1220 0233 0D       		.uleb128 0xd
+ 1221 0234 E3010000 		.4byte	.LASF31
+ 1222 0238 01       		.byte	0x1
+ 1223 0239 3D       		.byte	0x3d
+ 1224 023a 00000000 		.4byte	.LFB63
+ 1225 023e F4010000 		.4byte	.LFE63-.LFB63
+ 1226 0242 01       		.uleb128 0x1
+ 1227 0243 9C       		.byte	0x9c
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccPB1gwT.s 			page 28
 
 
- 1309 00a4 19       		.uleb128 0x19
- 1310 00a5 02       		.uleb128 0x2
- 1311 00a6 18       		.uleb128 0x18
- 1312 00a7 00       		.byte	0
- 1313 00a8 00       		.byte	0
- 1314 00a9 0D       		.uleb128 0xd
- 1315 00aa 01       		.uleb128 0x1
- 1316 00ab 01       		.byte	0x1
- 1317 00ac 49       		.uleb128 0x49
- 1318 00ad 13       		.uleb128 0x13
- 1319 00ae 01       		.uleb128 0x1
- 1320 00af 13       		.uleb128 0x13
- 1321 00b0 00       		.byte	0
- 1322 00b1 00       		.byte	0
- 1323 00b2 0E       		.uleb128 0xe
- 1324 00b3 21       		.uleb128 0x21
- 1325 00b4 00       		.byte	0
- 1326 00b5 49       		.uleb128 0x49
- 1327 00b6 13       		.uleb128 0x13
- 1328 00b7 2F       		.uleb128 0x2f
- 1329 00b8 0B       		.uleb128 0xb
- 1330 00b9 00       		.byte	0
- 1331 00ba 00       		.byte	0
- 1332 00bb 00       		.byte	0
- 1333              		.section	.debug_aranges,"",%progbits
- 1334 0000 1C000000 		.4byte	0x1c
- 1335 0004 0200     		.2byte	0x2
- 1336 0006 00000000 		.4byte	.Ldebug_info0
- 1337 000a 04       		.byte	0x4
- 1338 000b 00       		.byte	0
- 1339 000c 0000     		.2byte	0
- 1340 000e 0000     		.2byte	0
- 1341 0010 00000000 		.4byte	.LFB63
- 1342 0014 F4010000 		.4byte	.LFE63-.LFB63
- 1343 0018 00000000 		.4byte	0
- 1344 001c 00000000 		.4byte	0
- 1345              		.section	.debug_ranges,"",%progbits
- 1346              	.Ldebug_ranges0:
- 1347 0000 00000000 		.4byte	.LFB63
- 1348 0004 F4010000 		.4byte	.LFE63
- 1349 0008 00000000 		.4byte	0
- 1350 000c 00000000 		.4byte	0
- 1351              		.section	.debug_line,"",%progbits
- 1352              	.Ldebug_line0:
- 1353 0000 36020000 		.section	.debug_str,"MS",%progbits,1
- 1353      02004F01 
- 1353      00000201 
- 1353      FB0E0D00 
- 1353      01010101 
- 1354              	.LASF40:
- 1355 0000 50524E5F 		.ascii	"PRN_VISITSWEEK\000"
- 1355      56495349 
- 1355      54535745 
- 1355      454B00
- 1356              	.LASF26:
- 1357 000f 50524E5F 		.ascii	"PRN_MILLEAGE\000"
- 1357      4D494C4C 
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc23jVim.s 			page 29
+ 1228 0244 63030000 		.4byte	0x363
+ 1229 0248 0E       		.uleb128 0xe
+ 1230 0249 06000000 		.4byte	.LBB2
+ 1231 024d 1E000000 		.4byte	.LBE2-.LBB2
+ 1232 0251 62020000 		.4byte	0x262
+ 1233 0255 0F       		.uleb128 0xf
+ 1234 0256 7800     		.ascii	"x\000"
+ 1235 0258 01       		.byte	0x1
+ 1236 0259 3E       		.byte	0x3e
+ 1237 025a 81000000 		.4byte	0x81
+ 1238 025e 02       		.uleb128 0x2
+ 1239 025f 91       		.byte	0x91
+ 1240 0260 77       		.sleb128 -9
+ 1241 0261 00       		.byte	0
+ 1242 0262 0E       		.uleb128 0xe
+ 1243 0263 2E000000 		.4byte	.LBB3
+ 1244 0267 1E000000 		.4byte	.LBE3-.LBB3
+ 1245 026b 7C020000 		.4byte	0x27c
+ 1246 026f 0F       		.uleb128 0xf
+ 1247 0270 7800     		.ascii	"x\000"
+ 1248 0272 01       		.byte	0x1
+ 1249 0273 42       		.byte	0x42
+ 1250 0274 81000000 		.4byte	0x81
+ 1251 0278 02       		.uleb128 0x2
+ 1252 0279 91       		.byte	0x91
+ 1253 027a 76       		.sleb128 -10
+ 1254 027b 00       		.byte	0
+ 1255 027c 0E       		.uleb128 0xe
+ 1256 027d 56000000 		.4byte	.LBB4
+ 1257 0281 1E000000 		.4byte	.LBE4-.LBB4
+ 1258 0285 96020000 		.4byte	0x296
+ 1259 0289 0F       		.uleb128 0xf
+ 1260 028a 7800     		.ascii	"x\000"
+ 1261 028c 01       		.byte	0x1
+ 1262 028d 46       		.byte	0x46
+ 1263 028e 81000000 		.4byte	0x81
+ 1264 0292 02       		.uleb128 0x2
+ 1265 0293 91       		.byte	0x91
+ 1266 0294 75       		.sleb128 -11
+ 1267 0295 00       		.byte	0
+ 1268 0296 0E       		.uleb128 0xe
+ 1269 0297 7E000000 		.4byte	.LBB5
+ 1270 029b 1E000000 		.4byte	.LBE5-.LBB5
+ 1271 029f B0020000 		.4byte	0x2b0
+ 1272 02a3 0F       		.uleb128 0xf
+ 1273 02a4 7800     		.ascii	"x\000"
+ 1274 02a6 01       		.byte	0x1
+ 1275 02a7 4A       		.byte	0x4a
+ 1276 02a8 81000000 		.4byte	0x81
+ 1277 02ac 02       		.uleb128 0x2
+ 1278 02ad 91       		.byte	0x91
+ 1279 02ae 74       		.sleb128 -12
+ 1280 02af 00       		.byte	0
+ 1281 02b0 0E       		.uleb128 0xe
+ 1282 02b1 A6000000 		.4byte	.LBB6
+ 1283 02b5 1E000000 		.4byte	.LBE6-.LBB6
+ 1284 02b9 CA020000 		.4byte	0x2ca
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccPB1gwT.s 			page 29
 
 
- 1357      45414745 
- 1357      00
- 1358              	.LASF53:
- 1359 001c 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
- 1359      43313120 
- 1359      352E342E 
- 1359      31203230 
- 1359      31363036 
- 1360 004f 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
- 1360      20726576 
- 1360      6973696F 
- 1360      6E203233 
- 1360      37373135 
- 1361 0082 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
- 1361      66756E63 
- 1361      74696F6E 
- 1361      2D736563 
- 1361      74696F6E 
- 1362              	.LASF27:
- 1363 00aa 50524E5F 		.ascii	"PRN_TRANSTYPE\000"
- 1363      5452414E 
- 1363      53545950 
- 1363      4500
- 1364              	.LASF9:
- 1365 00b8 5F5F696E 		.ascii	"__int32_t\000"
- 1365      7433325F 
- 1365      7400
- 1366              	.LASF56:
- 1367 00c2 5072696E 		.ascii	"PrintReceipt\000"
- 1367      74526563 
- 1367      65697074 
- 1367      00
- 1368              	.LASF4:
- 1369 00cf 6C6F6E67 		.ascii	"long int\000"
- 1369      20696E74 
- 1369      00
- 1370              	.LASF43:
- 1371 00d8 50524E5F 		.ascii	"PRN_VOLUMEWEEK\000"
- 1371      564F4C55 
- 1371      4D455745 
- 1371      454B00
- 1372              	.LASF34:
- 1373 00e7 50524E5F 		.ascii	"PRN_BALANCE\000"
- 1373      42414C41 
- 1373      4E434500 
- 1374              	.LASF49:
- 1375 00f3 50524E5F 		.ascii	"PRN_SIGNATURE\000"
- 1375      5349474E 
- 1375      41545552 
- 1375      4500
- 1376              	.LASF23:
- 1377 0101 6D736E5F 		.ascii	"msn_fecha\000"
- 1377      66656368 
- 1377      6100
- 1378              	.LASF12:
- 1379 010b 666C6F61 		.ascii	"float\000"
- 1379      7400
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc23jVim.s 			page 30
+ 1285 02bd 0F       		.uleb128 0xf
+ 1286 02be 7800     		.ascii	"x\000"
+ 1287 02c0 01       		.byte	0x1
+ 1288 02c1 4E       		.byte	0x4e
+ 1289 02c2 81000000 		.4byte	0x81
+ 1290 02c6 02       		.uleb128 0x2
+ 1291 02c7 91       		.byte	0x91
+ 1292 02c8 73       		.sleb128 -13
+ 1293 02c9 00       		.byte	0
+ 1294 02ca 0E       		.uleb128 0xe
+ 1295 02cb CE000000 		.4byte	.LBB7
+ 1296 02cf 1E000000 		.4byte	.LBE7-.LBB7
+ 1297 02d3 E4020000 		.4byte	0x2e4
+ 1298 02d7 0F       		.uleb128 0xf
+ 1299 02d8 7800     		.ascii	"x\000"
+ 1300 02da 01       		.byte	0x1
+ 1301 02db 52       		.byte	0x52
+ 1302 02dc 81000000 		.4byte	0x81
+ 1303 02e0 02       		.uleb128 0x2
+ 1304 02e1 91       		.byte	0x91
+ 1305 02e2 72       		.sleb128 -14
+ 1306 02e3 00       		.byte	0
+ 1307 02e4 0E       		.uleb128 0xe
+ 1308 02e5 F6000000 		.4byte	.LBB8
+ 1309 02e9 1E000000 		.4byte	.LBE8-.LBB8
+ 1310 02ed FE020000 		.4byte	0x2fe
+ 1311 02f1 0F       		.uleb128 0xf
+ 1312 02f2 7800     		.ascii	"x\000"
+ 1313 02f4 01       		.byte	0x1
+ 1314 02f5 56       		.byte	0x56
+ 1315 02f6 81000000 		.4byte	0x81
+ 1316 02fa 02       		.uleb128 0x2
+ 1317 02fb 91       		.byte	0x91
+ 1318 02fc 71       		.sleb128 -15
+ 1319 02fd 00       		.byte	0
+ 1320 02fe 0E       		.uleb128 0xe
+ 1321 02ff 1E010000 		.4byte	.LBB9
+ 1322 0303 1E000000 		.4byte	.LBE9-.LBB9
+ 1323 0307 18030000 		.4byte	0x318
+ 1324 030b 0F       		.uleb128 0xf
+ 1325 030c 7800     		.ascii	"x\000"
+ 1326 030e 01       		.byte	0x1
+ 1327 030f 5A       		.byte	0x5a
+ 1328 0310 81000000 		.4byte	0x81
+ 1329 0314 02       		.uleb128 0x2
+ 1330 0315 91       		.byte	0x91
+ 1331 0316 70       		.sleb128 -16
+ 1332 0317 00       		.byte	0
+ 1333 0318 0E       		.uleb128 0xe
+ 1334 0319 46010000 		.4byte	.LBB10
+ 1335 031d 1E000000 		.4byte	.LBE10-.LBB10
+ 1336 0321 32030000 		.4byte	0x332
+ 1337 0325 0F       		.uleb128 0xf
+ 1338 0326 7800     		.ascii	"x\000"
+ 1339 0328 01       		.byte	0x1
+ 1340 0329 5E       		.byte	0x5e
+ 1341 032a 81000000 		.4byte	0x81
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccPB1gwT.s 			page 30
 
 
- 1380              	.LASF32:
- 1381 0111 6D736E5F 		.ascii	"msn_din\000"
- 1381      64696E00 
- 1382              	.LASF1:
- 1383 0119 756E7369 		.ascii	"unsigned char\000"
- 1383      676E6564 
- 1383      20636861 
- 1383      7200
- 1384              	.LASF5:
- 1385 0127 6C6F6E67 		.ascii	"long unsigned int\000"
- 1385      20756E73 
- 1385      69676E65 
- 1385      6420696E 
- 1385      7400
- 1386              	.LASF3:
- 1387 0139 73686F72 		.ascii	"short unsigned int\000"
- 1387      7420756E 
- 1387      7369676E 
- 1387      65642069 
- 1387      6E7400
- 1388              	.LASF29:
- 1389 014c 6D736E5F 		.ascii	"msn_product\000"
- 1389      70726F64 
- 1389      75637400 
- 1390              	.LASF28:
- 1391 0158 6D736E5F 		.ascii	"msn_pos\000"
- 1391      706F7300 
- 1392              	.LASF31:
- 1393 0160 6D736E5F 		.ascii	"msn_vol\000"
- 1393      766F6C00 
- 1394              	.LASF21:
- 1395 0168 6D736E5F 		.ascii	"msn_EDS3\000"
- 1395      45445333 
- 1395      00
- 1396              	.LASF22:
- 1397 0171 6D736E5F 		.ascii	"msn_EDS4\000"
- 1397      45445334 
- 1397      00
- 1398              	.LASF13:
- 1399 017a 646F7562 		.ascii	"double\000"
- 1399      6C6500
- 1400              	.LASF24:
- 1401 0181 6D736E5F 		.ascii	"msn_hora\000"
- 1401      686F7261 
- 1401      00
- 1402              	.LASF38:
- 1403 018a 50524E5F 		.ascii	"PRN_ACCOUNTTYPE\000"
- 1403      4143434F 
- 1403      554E5454 
- 1403      59504500 
- 1404              	.LASF48:
- 1405 019a 50524E5F 		.ascii	"PRN_PRESET\000"
- 1405      50524553 
- 1405      455400
- 1406              	.LASF17:
- 1407 01a5 49544D5F 		.ascii	"ITM_RxBuffer\000"
- 1407      52784275 
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc23jVim.s 			page 31
+ 1342 032e 02       		.uleb128 0x2
+ 1343 032f 91       		.byte	0x91
+ 1344 0330 6F       		.sleb128 -17
+ 1345 0331 00       		.byte	0
+ 1346 0332 0E       		.uleb128 0xe
+ 1347 0333 6E010000 		.4byte	.LBB11
+ 1348 0337 1E000000 		.4byte	.LBE11-.LBB11
+ 1349 033b 4C030000 		.4byte	0x34c
+ 1350 033f 0F       		.uleb128 0xf
+ 1351 0340 7800     		.ascii	"x\000"
+ 1352 0342 01       		.byte	0x1
+ 1353 0343 62       		.byte	0x62
+ 1354 0344 81000000 		.4byte	0x81
+ 1355 0348 02       		.uleb128 0x2
+ 1356 0349 91       		.byte	0x91
+ 1357 034a 6E       		.sleb128 -18
+ 1358 034b 00       		.byte	0
+ 1359 034c 10       		.uleb128 0x10
+ 1360 034d 96010000 		.4byte	.LBB12
+ 1361 0351 1E000000 		.4byte	.LBE12-.LBB12
+ 1362 0355 0F       		.uleb128 0xf
+ 1363 0356 7800     		.ascii	"x\000"
+ 1364 0358 01       		.byte	0x1
+ 1365 0359 66       		.byte	0x66
+ 1366 035a 81000000 		.4byte	0x81
+ 1367 035e 02       		.uleb128 0x2
+ 1368 035f 91       		.byte	0x91
+ 1369 0360 6D       		.sleb128 -19
+ 1370 0361 00       		.byte	0
+ 1371 0362 00       		.byte	0
+ 1372 0363 0D       		.uleb128 0xd
+ 1373 0364 09000000 		.4byte	.LASF32
+ 1374 0368 01       		.byte	0x1
+ 1375 0369 6D       		.byte	0x6d
+ 1376 036a 00000000 		.4byte	.LFB64
+ 1377 036e 00020000 		.4byte	.LFE64-.LFB64
+ 1378 0372 01       		.uleb128 0x1
+ 1379 0373 9C       		.byte	0x9c
+ 1380 0374 93040000 		.4byte	0x493
+ 1381 0378 0E       		.uleb128 0xe
+ 1382 0379 10000000 		.4byte	.LBB13
+ 1383 037d 22000000 		.4byte	.LBE13-.LBB13
+ 1384 0381 92030000 		.4byte	0x392
+ 1385 0385 0F       		.uleb128 0xf
+ 1386 0386 7800     		.ascii	"x\000"
+ 1387 0388 01       		.byte	0x1
+ 1388 0389 71       		.byte	0x71
+ 1389 038a 81000000 		.4byte	0x81
+ 1390 038e 02       		.uleb128 0x2
+ 1391 038f 91       		.byte	0x91
+ 1392 0390 77       		.sleb128 -9
+ 1393 0391 00       		.byte	0
+ 1394 0392 0E       		.uleb128 0xe
+ 1395 0393 3C000000 		.4byte	.LBB14
+ 1396 0397 1E000000 		.4byte	.LBE14-.LBB14
+ 1397 039b AC030000 		.4byte	0x3ac
+ 1398 039f 0F       		.uleb128 0xf
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccPB1gwT.s 			page 31
 
 
- 1407      66666572 
- 1407      00
- 1408              	.LASF37:
- 1409 01b2 50524E5F 		.ascii	"PRN_SERIAL\000"
- 1409      53455249 
- 1409      414C00
- 1410              	.LASF19:
- 1411 01bd 6D736E5F 		.ascii	"msn_EDS\000"
- 1411      45445300 
- 1412              	.LASF8:
- 1413 01c5 756E7369 		.ascii	"unsigned int\000"
- 1413      676E6564 
- 1413      20696E74 
- 1413      00
- 1414              	.LASF39:
- 1415 01d2 50524E5F 		.ascii	"PRN_VISITSDAY\000"
- 1415      56495349 
- 1415      54534441 
- 1415      5900
- 1416              	.LASF46:
- 1417 01e0 50524E5F 		.ascii	"PRN_MONEYWEEK\000"
- 1417      4D4F4E45 
- 1417      59574545 
- 1417      4B00
- 1418              	.LASF7:
- 1419 01ee 6C6F6E67 		.ascii	"long long unsigned int\000"
- 1419      206C6F6E 
- 1419      6720756E 
- 1419      7369676E 
- 1419      65642069 
- 1420              	.LASF35:
- 1421 0205 50524E5F 		.ascii	"PRN_COMPANY\000"
- 1421      434F4D50 
- 1421      414E5900 
- 1422              	.LASF47:
- 1423 0211 50524E5F 		.ascii	"PRN_MONEYMONTH\000"
- 1423      4D4F4E45 
- 1423      594D4F4E 
- 1423      544800
- 1424              	.LASF41:
- 1425 0220 50524E5F 		.ascii	"PRN_VISITSMONTH\000"
- 1425      56495349 
- 1425      54534D4F 
- 1425      4E544800 
- 1426              	.LASF10:
- 1427 0230 696E7433 		.ascii	"int32_t\000"
- 1427      325F7400 
- 1428              	.LASF16:
- 1429 0238 73697A65 		.ascii	"sizetype\000"
- 1429      74797065 
- 1429      00
- 1430              	.LASF55:
- 1431 0241 433A5C55 		.ascii	"C:\\Users\\Lenovo\\Documents\\GitHub\\Mepsan\\Mepsa"
- 1431      73657273 
- 1431      5C4C656E 
- 1431      6F766F5C 
- 1431      446F6375 
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc23jVim.s 			page 32
+ 1399 03a0 7800     		.ascii	"x\000"
+ 1400 03a2 01       		.byte	0x1
+ 1401 03a3 75       		.byte	0x75
+ 1402 03a4 81000000 		.4byte	0x81
+ 1403 03a8 02       		.uleb128 0x2
+ 1404 03a9 91       		.byte	0x91
+ 1405 03aa 76       		.sleb128 -10
+ 1406 03ab 00       		.byte	0
+ 1407 03ac 0E       		.uleb128 0xe
+ 1408 03ad 64000000 		.4byte	.LBB15
+ 1409 03b1 1E000000 		.4byte	.LBE15-.LBB15
+ 1410 03b5 C6030000 		.4byte	0x3c6
+ 1411 03b9 0F       		.uleb128 0xf
+ 1412 03ba 7800     		.ascii	"x\000"
+ 1413 03bc 01       		.byte	0x1
+ 1414 03bd 79       		.byte	0x79
+ 1415 03be 81000000 		.4byte	0x81
+ 1416 03c2 02       		.uleb128 0x2
+ 1417 03c3 91       		.byte	0x91
+ 1418 03c4 75       		.sleb128 -11
+ 1419 03c5 00       		.byte	0
+ 1420 03c6 0E       		.uleb128 0xe
+ 1421 03c7 8C000000 		.4byte	.LBB16
+ 1422 03cb 1E000000 		.4byte	.LBE16-.LBB16
+ 1423 03cf E0030000 		.4byte	0x3e0
+ 1424 03d3 0F       		.uleb128 0xf
+ 1425 03d4 7800     		.ascii	"x\000"
+ 1426 03d6 01       		.byte	0x1
+ 1427 03d7 7F       		.byte	0x7f
+ 1428 03d8 81000000 		.4byte	0x81
+ 1429 03dc 02       		.uleb128 0x2
+ 1430 03dd 91       		.byte	0x91
+ 1431 03de 74       		.sleb128 -12
+ 1432 03df 00       		.byte	0
+ 1433 03e0 0E       		.uleb128 0xe
+ 1434 03e1 B4000000 		.4byte	.LBB17
+ 1435 03e5 1E000000 		.4byte	.LBE17-.LBB17
+ 1436 03e9 FA030000 		.4byte	0x3fa
+ 1437 03ed 0F       		.uleb128 0xf
+ 1438 03ee 7800     		.ascii	"x\000"
+ 1439 03f0 01       		.byte	0x1
+ 1440 03f1 83       		.byte	0x83
+ 1441 03f2 81000000 		.4byte	0x81
+ 1442 03f6 02       		.uleb128 0x2
+ 1443 03f7 91       		.byte	0x91
+ 1444 03f8 73       		.sleb128 -13
+ 1445 03f9 00       		.byte	0
+ 1446 03fa 0E       		.uleb128 0xe
+ 1447 03fb DC000000 		.4byte	.LBB18
+ 1448 03ff 1E000000 		.4byte	.LBE18-.LBB18
+ 1449 0403 14040000 		.4byte	0x414
+ 1450 0407 0F       		.uleb128 0xf
+ 1451 0408 7800     		.ascii	"x\000"
+ 1452 040a 01       		.byte	0x1
+ 1453 040b 87       		.byte	0x87
+ 1454 040c 81000000 		.4byte	0x81
+ 1455 0410 02       		.uleb128 0x2
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccPB1gwT.s 			page 32
 
 
- 1432 026e 6E2E6379 		.ascii	"n.cydsn\000"
- 1432      64736E00 
- 1433              	.LASF6:
- 1434 0276 6C6F6E67 		.ascii	"long long int\000"
- 1434      206C6F6E 
- 1434      6720696E 
- 1434      7400
- 1435              	.LASF14:
- 1436 0284 63686172 		.ascii	"char\000"
- 1436      00
- 1437              	.LASF45:
- 1438 0289 50524E5F 		.ascii	"PRN_MONEYDAY\000"
- 1438      4D4F4E45 
- 1438      59444159 
- 1438      00
- 1439              	.LASF2:
- 1440 0296 73686F72 		.ascii	"short int\000"
- 1440      7420696E 
- 1440      7400
- 1441              	.LASF52:
- 1442 02a0 53455041 		.ascii	"SEPARATOR\000"
- 1442      5241544F 
- 1442      5200
- 1443              	.LASF11:
- 1444 02aa 75696E74 		.ascii	"uint8\000"
- 1444      3800
- 1445              	.LASF25:
- 1446 02b0 6D736E5F 		.ascii	"msn_placa\000"
- 1446      706C6163 
- 1446      6100
- 1447              	.LASF18:
- 1448 02ba 4C494E45 		.ascii	"LINE_FEED\000"
- 1448      5F464545 
- 1448      4400
- 1449              	.LASF20:
- 1450 02c4 6D736E5F 		.ascii	"msn_EDS2\000"
- 1450      45445332 
- 1450      00
- 1451              	.LASF44:
- 1452 02cd 50524E5F 		.ascii	"PRN_VOLUMEMONTH\000"
- 1452      564F4C55 
- 1452      4D454D4F 
- 1452      4E544800 
- 1453              	.LASF15:
- 1454 02dd 6C6F6E67 		.ascii	"long double\000"
- 1454      20646F75 
- 1454      626C6500 
- 1455              	.LASF0:
- 1456 02e9 7369676E 		.ascii	"signed char\000"
- 1456      65642063 
- 1456      68617200 
- 1457              	.LASF51:
- 1458 02f5 50524E5F 		.ascii	"PRN_CURRENCY\000"
- 1458      43555252 
- 1458      454E4359 
- 1458      00
- 1459              	.LASF30:
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc23jVim.s 			page 33
+ 1456 0411 91       		.byte	0x91
+ 1457 0412 72       		.sleb128 -14
+ 1458 0413 00       		.byte	0
+ 1459 0414 0E       		.uleb128 0xe
+ 1460 0415 04010000 		.4byte	.LBB19
+ 1461 0419 1E000000 		.4byte	.LBE19-.LBB19
+ 1462 041d 2E040000 		.4byte	0x42e
+ 1463 0421 0F       		.uleb128 0xf
+ 1464 0422 7800     		.ascii	"x\000"
+ 1465 0424 01       		.byte	0x1
+ 1466 0425 8D       		.byte	0x8d
+ 1467 0426 81000000 		.4byte	0x81
+ 1468 042a 02       		.uleb128 0x2
+ 1469 042b 91       		.byte	0x91
+ 1470 042c 71       		.sleb128 -15
+ 1471 042d 00       		.byte	0
+ 1472 042e 0E       		.uleb128 0xe
+ 1473 042f 2C010000 		.4byte	.LBB20
+ 1474 0433 1E000000 		.4byte	.LBE20-.LBB20
+ 1475 0437 48040000 		.4byte	0x448
+ 1476 043b 0F       		.uleb128 0xf
+ 1477 043c 7800     		.ascii	"x\000"
+ 1478 043e 01       		.byte	0x1
+ 1479 043f 91       		.byte	0x91
+ 1480 0440 81000000 		.4byte	0x81
+ 1481 0444 02       		.uleb128 0x2
+ 1482 0445 91       		.byte	0x91
+ 1483 0446 70       		.sleb128 -16
+ 1484 0447 00       		.byte	0
+ 1485 0448 0E       		.uleb128 0xe
+ 1486 0449 54010000 		.4byte	.LBB21
+ 1487 044d 1E000000 		.4byte	.LBE21-.LBB21
+ 1488 0451 62040000 		.4byte	0x462
+ 1489 0455 0F       		.uleb128 0xf
+ 1490 0456 7800     		.ascii	"x\000"
+ 1491 0458 01       		.byte	0x1
+ 1492 0459 95       		.byte	0x95
+ 1493 045a 81000000 		.4byte	0x81
+ 1494 045e 02       		.uleb128 0x2
+ 1495 045f 91       		.byte	0x91
+ 1496 0460 6F       		.sleb128 -17
+ 1497 0461 00       		.byte	0
+ 1498 0462 0E       		.uleb128 0xe
+ 1499 0463 7C010000 		.4byte	.LBB22
+ 1500 0467 1E000000 		.4byte	.LBE22-.LBB22
+ 1501 046b 7C040000 		.4byte	0x47c
+ 1502 046f 0F       		.uleb128 0xf
+ 1503 0470 7800     		.ascii	"x\000"
+ 1504 0472 01       		.byte	0x1
+ 1505 0473 99       		.byte	0x99
+ 1506 0474 81000000 		.4byte	0x81
+ 1507 0478 02       		.uleb128 0x2
+ 1508 0479 91       		.byte	0x91
+ 1509 047a 6E       		.sleb128 -18
+ 1510 047b 00       		.byte	0
+ 1511 047c 10       		.uleb128 0x10
+ 1512 047d A4010000 		.4byte	.LBB23
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccPB1gwT.s 			page 33
 
 
- 1460 0302 6D736E5F 		.ascii	"msn_ppu\000"
- 1460      70707500 
- 1461              	.LASF42:
- 1462 030a 50524E5F 		.ascii	"PRN_VOLUMEDAY\000"
- 1462      564F4C55 
- 1462      4D454441 
- 1462      5900
- 1463              	.LASF54:
- 1464 0318 7072696E 		.ascii	"printer.c\000"
- 1464      7465722E 
- 1464      6300
- 1465              	.LASF36:
- 1466 0322 50524E5F 		.ascii	"PRN_ACCOUNT\000"
- 1466      4143434F 
- 1466      554E5400 
- 1467              	.LASF33:
- 1468 032e 6D736E5F 		.ascii	"msn_numero\000"
- 1468      6E756D65 
- 1468      726F00
- 1469              	.LASF50:
- 1470 0339 50524E5F 		.ascii	"PRN_ID\000"
- 1470      494400
- 1471              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
+ 1513 0481 1E000000 		.4byte	.LBE23-.LBB23
+ 1514 0485 0F       		.uleb128 0xf
+ 1515 0486 7800     		.ascii	"x\000"
+ 1516 0488 01       		.byte	0x1
+ 1517 0489 9D       		.byte	0x9d
+ 1518 048a 81000000 		.4byte	0x81
+ 1519 048e 02       		.uleb128 0x2
+ 1520 048f 91       		.byte	0x91
+ 1521 0490 6D       		.sleb128 -19
+ 1522 0491 00       		.byte	0
+ 1523 0492 00       		.byte	0
+ 1524 0493 11       		.uleb128 0x11
+ 1525 0494 3C040000 		.4byte	.LASF33
+ 1526 0498 06       		.byte	0x6
+ 1527 0499 1207     		.2byte	0x712
+ 1528 049b 9F040000 		.4byte	0x49f
+ 1529 049f 12       		.uleb128 0x12
+ 1530 04a0 76000000 		.4byte	0x76
+ 1531 04a4 13       		.uleb128 0x13
+ 1532 04a5 4F000000 		.4byte	.LASF34
+ 1533 04a9 05       		.byte	0x5
+ 1534 04aa 10       		.byte	0x10
+ 1535 04ab 8D000000 		.4byte	0x8d
+ 1536 04af 05       		.uleb128 0x5
+ 1537 04b0 03       		.byte	0x3
+ 1538 04b1 00000000 		.4byte	PollCounter
+ 1539 04b5 13       		.uleb128 0x13
+ 1540 04b6 CA020000 		.4byte	.LASF35
+ 1541 04ba 05       		.byte	0x5
+ 1542 04bb 11       		.byte	0x11
+ 1543 04bc 81000000 		.4byte	0x81
+ 1544 04c0 05       		.uleb128 0x5
+ 1545 04c1 03       		.byte	0x3
+ 1546 04c2 00000000 		.4byte	CurrentState
+ 1547 04c6 13       		.uleb128 0x13
+ 1548 04c7 37040000 		.4byte	.LASF36
+ 1549 04cb 05       		.byte	0x5
+ 1550 04cc 32       		.byte	0x32
+ 1551 04cd FA010000 		.4byte	0x1fa
+ 1552 04d1 05       		.uleb128 0x5
+ 1553 04d2 03       		.byte	0x3
+ 1554 04d3 00000000 		.4byte	side
+ 1555 04d7 13       		.uleb128 0x13
+ 1556 04d8 C8030000 		.4byte	.LASF37
+ 1557 04dc 05       		.byte	0x5
+ 1558 04dd 3B       		.byte	0x3b
+ 1559 04de BE010000 		.4byte	0x1be
+ 1560 04e2 05       		.uleb128 0x5
+ 1561 04e3 03       		.byte	0x3
+ 1562 04e4 00000000 		.4byte	MepsanResponse
+ 1563 04e8 13       		.uleb128 0x13
+ 1564 04e9 11020000 		.4byte	.LASF38
+ 1565 04ed 05       		.byte	0x5
+ 1566 04ee 3C       		.byte	0x3c
+ 1567 04ef BE010000 		.4byte	0x1be
+ 1568 04f3 05       		.uleb128 0x5
+ 1569 04f4 03       		.byte	0x3
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccPB1gwT.s 			page 34
+
+
+ 1570 04f5 00000000 		.4byte	MepsanSendTo
+ 1571 04f9 0A       		.uleb128 0xa
+ 1572 04fa 81000000 		.4byte	0x81
+ 1573 04fe 09050000 		.4byte	0x509
+ 1574 0502 0B       		.uleb128 0xb
+ 1575 0503 B5000000 		.4byte	0xb5
+ 1576 0507 0E       		.byte	0xe
+ 1577 0508 00       		.byte	0
+ 1578 0509 13       		.uleb128 0x13
+ 1579 050a 3F020000 		.4byte	.LASF39
+ 1580 050e 05       		.byte	0x5
+ 1581 050f 3D       		.byte	0x3d
+ 1582 0510 F9040000 		.4byte	0x4f9
+ 1583 0514 05       		.uleb128 0x5
+ 1584 0515 03       		.byte	0x3
+ 1585 0516 00000000 		.4byte	PumpAddress
+ 1586 051a 14       		.uleb128 0x14
+ 1587 051b 43524300 		.ascii	"CRC\000"
+ 1588 051f 05       		.byte	0x5
+ 1589 0520 3E       		.byte	0x3e
+ 1590 0521 8D000000 		.4byte	0x8d
+ 1591 0525 05       		.uleb128 0x5
+ 1592 0526 03       		.byte	0x3
+ 1593 0527 00000000 		.4byte	CRC
+ 1594 052b 13       		.uleb128 0x13
+ 1595 052c 31030000 		.4byte	.LASF40
+ 1596 0530 05       		.byte	0x5
+ 1597 0531 3F       		.byte	0x3f
+ 1598 0532 81000000 		.4byte	0x81
+ 1599 0536 05       		.uleb128 0x5
+ 1600 0537 03       		.byte	0x3
+ 1601 0538 00000000 		.4byte	crc_lo
+ 1602 053c 13       		.uleb128 0x13
+ 1603 053d 54040000 		.4byte	.LASF41
+ 1604 0541 05       		.byte	0x5
+ 1605 0542 3F       		.byte	0x3f
+ 1606 0543 81000000 		.4byte	0x81
+ 1607 0547 05       		.uleb128 0x5
+ 1608 0548 03       		.byte	0x3
+ 1609 0549 00000000 		.4byte	crc_hi
+ 1610 054d 13       		.uleb128 0x13
+ 1611 054e 12010000 		.4byte	.LASF42
+ 1612 0552 05       		.byte	0x5
+ 1613 0553 40       		.byte	0x40
+ 1614 0554 81000000 		.4byte	0x81
+ 1615 0558 05       		.uleb128 0x5
+ 1616 0559 03       		.byte	0x3
+ 1617 055a 00000000 		.4byte	Positions
+ 1618 055e 13       		.uleb128 0x13
+ 1619 055f E1030000 		.4byte	.LASF43
+ 1620 0563 05       		.byte	0x5
+ 1621 0564 41       		.byte	0x41
+ 1622 0565 81000000 		.4byte	0x81
+ 1623 0569 05       		.uleb128 0x5
+ 1624 056a 03       		.byte	0x3
+ 1625 056b 00000000 		.4byte	TotalRequestType
+ 1626 056f 13       		.uleb128 0x13
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccPB1gwT.s 			page 35
+
+
+ 1627 0570 BD010000 		.4byte	.LASF44
+ 1628 0574 05       		.byte	0x5
+ 1629 0575 4B       		.byte	0x4b
+ 1630 0576 81000000 		.4byte	0x81
+ 1631 057a 05       		.uleb128 0x5
+ 1632 057b 03       		.byte	0x3
+ 1633 057c 00000000 		.4byte	dirGbr
+ 1634 0580 13       		.uleb128 0x13
+ 1635 0581 07020000 		.4byte	.LASF45
+ 1636 0585 01       		.byte	0x1
+ 1637 0586 0F       		.byte	0xf
+ 1638 0587 81000000 		.4byte	0x81
+ 1639 058b 05       		.uleb128 0x5
+ 1640 058c 03       		.byte	0x3
+ 1641 058d 00000000 		.4byte	LINE_FEED
+ 1642 0591 0A       		.uleb128 0xa
+ 1643 0592 81000000 		.4byte	0x81
+ 1644 0596 A1050000 		.4byte	0x5a1
+ 1645 059a 0B       		.uleb128 0xb
+ 1646 059b B5000000 		.4byte	0xb5
+ 1647 059f 15       		.byte	0x15
+ 1648 05a0 00       		.byte	0
+ 1649 05a1 13       		.uleb128 0x13
+ 1650 05a2 24000000 		.4byte	.LASF46
+ 1651 05a6 01       		.byte	0x1
+ 1652 05a7 13       		.byte	0x13
+ 1653 05a8 91050000 		.4byte	0x591
+ 1654 05ac 05       		.uleb128 0x5
+ 1655 05ad 03       		.byte	0x3
+ 1656 05ae 00000000 		.4byte	msn_EDS
+ 1657 05b2 13       		.uleb128 0x13
+ 1658 05b3 1E020000 		.4byte	.LASF47
+ 1659 05b7 01       		.byte	0x1
+ 1660 05b8 14       		.byte	0x14
+ 1661 05b9 91050000 		.4byte	0x591
+ 1662 05bd 05       		.uleb128 0x5
+ 1663 05be 03       		.byte	0x3
+ 1664 05bf 00000000 		.4byte	msn_EDS2
+ 1665 05c3 13       		.uleb128 0x13
+ 1666 05c4 CF010000 		.4byte	.LASF48
+ 1667 05c8 01       		.byte	0x1
+ 1668 05c9 15       		.byte	0x15
+ 1669 05ca 91050000 		.4byte	0x591
+ 1670 05ce 05       		.uleb128 0x5
+ 1671 05cf 03       		.byte	0x3
+ 1672 05d0 00000000 		.4byte	msn_EDS3
+ 1673 05d4 13       		.uleb128 0x13
+ 1674 05d5 F0010000 		.4byte	.LASF49
+ 1675 05d9 01       		.byte	0x1
+ 1676 05da 16       		.byte	0x16
+ 1677 05db 91050000 		.4byte	0x591
+ 1678 05df 05       		.uleb128 0x5
+ 1679 05e0 03       		.byte	0x3
+ 1680 05e1 00000000 		.4byte	msn_EDS4
+ 1681 05e5 0A       		.uleb128 0xa
+ 1682 05e6 81000000 		.4byte	0x81
+ 1683 05ea F5050000 		.4byte	0x5f5
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccPB1gwT.s 			page 36
+
+
+ 1684 05ee 0B       		.uleb128 0xb
+ 1685 05ef B5000000 		.4byte	0xb5
+ 1686 05f3 0C       		.byte	0xc
+ 1687 05f4 00       		.byte	0
+ 1688 05f5 13       		.uleb128 0x13
+ 1689 05f6 9F010000 		.4byte	.LASF50
+ 1690 05fa 01       		.byte	0x1
+ 1691 05fb 1A       		.byte	0x1a
+ 1692 05fc E5050000 		.4byte	0x5e5
+ 1693 0600 05       		.uleb128 0x5
+ 1694 0601 03       		.byte	0x3
+ 1695 0602 00000000 		.4byte	msn_fecha
+ 1696 0606 13       		.uleb128 0x13
+ 1697 0607 00000000 		.4byte	.LASF51
+ 1698 060b 01       		.byte	0x1
+ 1699 060c 1B       		.byte	0x1b
+ 1700 060d E5050000 		.4byte	0x5e5
+ 1701 0611 05       		.uleb128 0x5
+ 1702 0612 03       		.byte	0x3
+ 1703 0613 00000000 		.4byte	msn_hora
+ 1704 0617 13       		.uleb128 0x13
+ 1705 0618 79010000 		.4byte	.LASF52
+ 1706 061c 01       		.byte	0x1
+ 1707 061d 1C       		.byte	0x1c
+ 1708 061e E5050000 		.4byte	0x5e5
+ 1709 0622 05       		.uleb128 0x5
+ 1710 0623 03       		.byte	0x3
+ 1711 0624 00000000 		.4byte	msn_placa
+ 1712 0628 13       		.uleb128 0x13
+ 1713 0629 5B000000 		.4byte	.LASF53
+ 1714 062d 01       		.byte	0x1
+ 1715 062e 1D       		.byte	0x1d
+ 1716 062f E5050000 		.4byte	0x5e5
+ 1717 0633 05       		.uleb128 0x5
+ 1718 0634 03       		.byte	0x3
+ 1719 0635 00000000 		.4byte	PRN_MILLEAGE
+ 1720 0639 13       		.uleb128 0x13
+ 1721 063a B2020000 		.4byte	.LASF54
+ 1722 063e 01       		.byte	0x1
+ 1723 063f 1E       		.byte	0x1e
+ 1724 0640 E5050000 		.4byte	0x5e5
+ 1725 0644 05       		.uleb128 0x5
+ 1726 0645 03       		.byte	0x3
+ 1727 0646 00000000 		.4byte	PRN_TRANSTYPE
+ 1728 064a 13       		.uleb128 0x13
+ 1729 064b 40030000 		.4byte	.LASF55
+ 1730 064f 01       		.byte	0x1
+ 1731 0650 1F       		.byte	0x1f
+ 1732 0651 E5050000 		.4byte	0x5e5
+ 1733 0655 05       		.uleb128 0x5
+ 1734 0656 03       		.byte	0x3
+ 1735 0657 00000000 		.4byte	msn_pos
+ 1736 065b 13       		.uleb128 0x13
+ 1737 065c D7020000 		.4byte	.LASF56
+ 1738 0660 01       		.byte	0x1
+ 1739 0661 20       		.byte	0x20
+ 1740 0662 E5050000 		.4byte	0x5e5
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccPB1gwT.s 			page 37
+
+
+ 1741 0666 05       		.uleb128 0x5
+ 1742 0667 03       		.byte	0x3
+ 1743 0668 00000000 		.4byte	msn_product
+ 1744 066c 13       		.uleb128 0x13
+ 1745 066d 5B040000 		.4byte	.LASF57
+ 1746 0671 01       		.byte	0x1
+ 1747 0672 21       		.byte	0x21
+ 1748 0673 E5050000 		.4byte	0x5e5
+ 1749 0677 05       		.uleb128 0x5
+ 1750 0678 03       		.byte	0x3
+ 1751 0679 00000000 		.4byte	msn_ppu
+ 1752 067d 13       		.uleb128 0x13
+ 1753 067e 63040000 		.4byte	.LASF58
+ 1754 0682 01       		.byte	0x1
+ 1755 0683 22       		.byte	0x22
+ 1756 0684 E5050000 		.4byte	0x5e5
+ 1757 0688 05       		.uleb128 0x5
+ 1758 0689 03       		.byte	0x3
+ 1759 068a 00000000 		.4byte	msn_vol
+ 1760 068e 13       		.uleb128 0x13
+ 1761 068f 42010000 		.4byte	.LASF59
+ 1762 0693 01       		.byte	0x1
+ 1763 0694 23       		.byte	0x23
+ 1764 0695 E5050000 		.4byte	0x5e5
+ 1765 0699 05       		.uleb128 0x5
+ 1766 069a 03       		.byte	0x3
+ 1767 069b 00000000 		.4byte	msn_din
+ 1768 069f 13       		.uleb128 0x13
+ 1769 06a0 49040000 		.4byte	.LASF60
+ 1770 06a4 01       		.byte	0x1
+ 1771 06a5 24       		.byte	0x24
+ 1772 06a6 E5050000 		.4byte	0x5e5
+ 1773 06aa 05       		.uleb128 0x5
+ 1774 06ab 03       		.byte	0x3
+ 1775 06ac 00000000 		.4byte	msn_cierre
+ 1776 06b0 13       		.uleb128 0x13
+ 1777 06b1 48030000 		.4byte	.LASF61
+ 1778 06b5 01       		.byte	0x1
+ 1779 06b6 25       		.byte	0x25
+ 1780 06b7 E5050000 		.4byte	0x5e5
+ 1781 06bb 05       		.uleb128 0x5
+ 1782 06bc 03       		.byte	0x3
+ 1783 06bd 00000000 		.4byte	msn_numero
+ 1784 06c1 13       		.uleb128 0x13
+ 1785 06c2 67010000 		.4byte	.LASF62
+ 1786 06c6 01       		.byte	0x1
+ 1787 06c7 26       		.byte	0x26
+ 1788 06c8 E5050000 		.4byte	0x5e5
+ 1789 06cc 05       		.uleb128 0x5
+ 1790 06cd 03       		.byte	0x3
+ 1791 06ce 00000000 		.4byte	PRN_BALANCE
+ 1792 06d2 13       		.uleb128 0x13
+ 1793 06d3 59020000 		.4byte	.LASF63
+ 1794 06d7 01       		.byte	0x1
+ 1795 06d8 27       		.byte	0x27
+ 1796 06d9 E5050000 		.4byte	0x5e5
+ 1797 06dd 05       		.uleb128 0x5
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccPB1gwT.s 			page 38
+
+
+ 1798 06de 03       		.byte	0x3
+ 1799 06df 00000000 		.4byte	PRN_COMPANY
+ 1800 06e3 13       		.uleb128 0x13
+ 1801 06e4 8A010000 		.4byte	.LASF64
+ 1802 06e8 01       		.byte	0x1
+ 1803 06e9 28       		.byte	0x28
+ 1804 06ea E5050000 		.4byte	0x5e5
+ 1805 06ee 05       		.uleb128 0x5
+ 1806 06ef 03       		.byte	0x3
+ 1807 06f0 00000000 		.4byte	PRN_ACCOUNT
+ 1808 06f4 13       		.uleb128 0x13
+ 1809 06f5 9A030000 		.4byte	.LASF65
+ 1810 06f9 01       		.byte	0x1
+ 1811 06fa 29       		.byte	0x29
+ 1812 06fb E5050000 		.4byte	0x5e5
+ 1813 06ff 05       		.uleb128 0x5
+ 1814 0700 03       		.byte	0x3
+ 1815 0701 00000000 		.4byte	PRN_SERIAL
+ 1816 0705 13       		.uleb128 0x13
+ 1817 0706 4A010000 		.4byte	.LASF66
+ 1818 070a 01       		.byte	0x1
+ 1819 070b 2A       		.byte	0x2a
+ 1820 070c E5050000 		.4byte	0x5e5
+ 1821 0710 05       		.uleb128 0x5
+ 1822 0711 03       		.byte	0x3
+ 1823 0712 00000000 		.4byte	PRN_ACCOUNTTYPE
+ 1824 0716 13       		.uleb128 0x13
+ 1825 0717 F9010000 		.4byte	.LASF67
+ 1826 071b 01       		.byte	0x1
+ 1827 071c 2B       		.byte	0x2b
+ 1828 071d E5050000 		.4byte	0x5e5
+ 1829 0721 05       		.uleb128 0x5
+ 1830 0722 03       		.byte	0x3
+ 1831 0723 00000000 		.4byte	PRN_VISITSDAY
+ 1832 0727 13       		.uleb128 0x13
+ 1833 0728 1C010000 		.4byte	.LASF68
+ 1834 072c 01       		.byte	0x1
+ 1835 072d 2C       		.byte	0x2c
+ 1836 072e E5050000 		.4byte	0x5e5
+ 1837 0732 05       		.uleb128 0x5
+ 1838 0733 03       		.byte	0x3
+ 1839 0734 00000000 		.4byte	PRN_VISITSWEEK
+ 1840 0738 13       		.uleb128 0x13
+ 1841 0739 14000000 		.4byte	.LASF69
+ 1842 073d 01       		.byte	0x1
+ 1843 073e 2D       		.byte	0x2d
+ 1844 073f E5050000 		.4byte	0x5e5
+ 1845 0743 05       		.uleb128 0x5
+ 1846 0744 03       		.byte	0x3
+ 1847 0745 00000000 		.4byte	PRN_VISITSMONTH
+ 1848 0749 13       		.uleb128 0x13
+ 1849 074a 8F020000 		.4byte	.LASF70
+ 1850 074e 01       		.byte	0x1
+ 1851 074f 2E       		.byte	0x2e
+ 1852 0750 E5050000 		.4byte	0x5e5
+ 1853 0754 05       		.uleb128 0x5
+ 1854 0755 03       		.byte	0x3
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccPB1gwT.s 			page 39
+
+
+ 1855 0756 00000000 		.4byte	PRN_VOLUMEDAY
+ 1856 075a 13       		.uleb128 0x13
+ 1857 075b 1F040000 		.4byte	.LASF71
+ 1858 075f 01       		.byte	0x1
+ 1859 0760 2F       		.byte	0x2f
+ 1860 0761 E5050000 		.4byte	0x5e5
+ 1861 0765 05       		.uleb128 0x5
+ 1862 0766 03       		.byte	0x3
+ 1863 0767 00000000 		.4byte	PRN_VOLUMEWEEK
+ 1864 076b 13       		.uleb128 0x13
+ 1865 076c 1C030000 		.4byte	.LASF72
+ 1866 0770 01       		.byte	0x1
+ 1867 0771 30       		.byte	0x30
+ 1868 0772 E5050000 		.4byte	0x5e5
+ 1869 0776 05       		.uleb128 0x5
+ 1870 0777 03       		.byte	0x3
+ 1871 0778 00000000 		.4byte	PRN_VOLUMEMONTH
+ 1872 077c 13       		.uleb128 0x13
+ 1873 077d 8D030000 		.4byte	.LASF73
+ 1874 0781 01       		.byte	0x1
+ 1875 0782 31       		.byte	0x31
+ 1876 0783 E5050000 		.4byte	0x5e5
+ 1877 0787 05       		.uleb128 0x5
+ 1878 0788 03       		.byte	0x3
+ 1879 0789 00000000 		.4byte	PRN_MONEYDAY
+ 1880 078d 13       		.uleb128 0x13
+ 1881 078e 04010000 		.4byte	.LASF74
+ 1882 0792 01       		.byte	0x1
+ 1883 0793 32       		.byte	0x32
+ 1884 0794 E5050000 		.4byte	0x5e5
+ 1885 0798 05       		.uleb128 0x5
+ 1886 0799 03       		.byte	0x3
+ 1887 079a 00000000 		.4byte	PRN_MONEYWEEK
+ 1888 079e 13       		.uleb128 0x13
+ 1889 079f F0020000 		.4byte	.LASF75
+ 1890 07a3 01       		.byte	0x1
+ 1891 07a4 33       		.byte	0x33
+ 1892 07a5 E5050000 		.4byte	0x5e5
+ 1893 07a9 05       		.uleb128 0x5
+ 1894 07aa 03       		.byte	0x3
+ 1895 07ab 00000000 		.4byte	PRN_MONEYMONTH
+ 1896 07af 13       		.uleb128 0x13
+ 1897 07b0 D8010000 		.4byte	.LASF76
+ 1898 07b4 01       		.byte	0x1
+ 1899 07b5 34       		.byte	0x34
+ 1900 07b6 E5050000 		.4byte	0x5e5
+ 1901 07ba 05       		.uleb128 0x5
+ 1902 07bb 03       		.byte	0x3
+ 1903 07bc 00000000 		.4byte	PRN_PRESET
+ 1904 07c0 13       		.uleb128 0x13
+ 1905 07c1 11040000 		.4byte	.LASF77
+ 1906 07c5 01       		.byte	0x1
+ 1907 07c6 35       		.byte	0x35
+ 1908 07c7 E5050000 		.4byte	0x5e5
+ 1909 07cb 05       		.uleb128 0x5
+ 1910 07cc 03       		.byte	0x3
+ 1911 07cd 00000000 		.4byte	PRN_SIGNATURE
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccPB1gwT.s 			page 40
+
+
+ 1912 07d1 13       		.uleb128 0x13
+ 1913 07d2 65020000 		.4byte	.LASF78
+ 1914 07d6 01       		.byte	0x1
+ 1915 07d7 36       		.byte	0x36
+ 1916 07d8 E5050000 		.4byte	0x5e5
+ 1917 07dc 05       		.uleb128 0x5
+ 1918 07dd 03       		.byte	0x3
+ 1919 07de 00000000 		.4byte	PRN_ID
+ 1920 07e2 0A       		.uleb128 0xa
+ 1921 07e3 81000000 		.4byte	0x81
+ 1922 07e7 F2070000 		.4byte	0x7f2
+ 1923 07eb 0B       		.uleb128 0xb
+ 1924 07ec B5000000 		.4byte	0xb5
+ 1925 07f0 00       		.byte	0
+ 1926 07f1 00       		.byte	0
+ 1927 07f2 13       		.uleb128 0x13
+ 1928 07f3 5A010000 		.4byte	.LASF79
+ 1929 07f7 01       		.byte	0x1
+ 1930 07f8 37       		.byte	0x37
+ 1931 07f9 E2070000 		.4byte	0x7e2
+ 1932 07fd 05       		.uleb128 0x5
+ 1933 07fe 03       		.byte	0x3
+ 1934 07ff 00000000 		.4byte	PRN_CURRENCY
+ 1935 0803 0A       		.uleb128 0xa
+ 1936 0804 81000000 		.4byte	0x81
+ 1937 0808 13080000 		.4byte	0x813
+ 1938 080c 0B       		.uleb128 0xb
+ 1939 080d B5000000 		.4byte	0xb5
+ 1940 0811 17       		.byte	0x17
+ 1941 0812 00       		.byte	0
+ 1942 0813 13       		.uleb128 0x13
+ 1943 0814 C0020000 		.4byte	.LASF80
+ 1944 0818 01       		.byte	0x1
+ 1945 0819 38       		.byte	0x38
+ 1946 081a 03080000 		.4byte	0x803
+ 1947 081e 05       		.uleb128 0x5
+ 1948 081f 03       		.byte	0x3
+ 1949 0820 00000000 		.4byte	SEPARATOR
+ 1950 0824 00       		.byte	0
+ 1951              		.section	.debug_abbrev,"",%progbits
+ 1952              	.Ldebug_abbrev0:
+ 1953 0000 01       		.uleb128 0x1
+ 1954 0001 11       		.uleb128 0x11
+ 1955 0002 01       		.byte	0x1
+ 1956 0003 25       		.uleb128 0x25
+ 1957 0004 0E       		.uleb128 0xe
+ 1958 0005 13       		.uleb128 0x13
+ 1959 0006 0B       		.uleb128 0xb
+ 1960 0007 03       		.uleb128 0x3
+ 1961 0008 0E       		.uleb128 0xe
+ 1962 0009 1B       		.uleb128 0x1b
+ 1963 000a 0E       		.uleb128 0xe
+ 1964 000b 55       		.uleb128 0x55
+ 1965 000c 17       		.uleb128 0x17
+ 1966 000d 11       		.uleb128 0x11
+ 1967 000e 01       		.uleb128 0x1
+ 1968 000f 10       		.uleb128 0x10
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccPB1gwT.s 			page 41
+
+
+ 1969 0010 17       		.uleb128 0x17
+ 1970 0011 00       		.byte	0
+ 1971 0012 00       		.byte	0
+ 1972 0013 02       		.uleb128 0x2
+ 1973 0014 24       		.uleb128 0x24
+ 1974 0015 00       		.byte	0
+ 1975 0016 0B       		.uleb128 0xb
+ 1976 0017 0B       		.uleb128 0xb
+ 1977 0018 3E       		.uleb128 0x3e
+ 1978 0019 0B       		.uleb128 0xb
+ 1979 001a 03       		.uleb128 0x3
+ 1980 001b 0E       		.uleb128 0xe
+ 1981 001c 00       		.byte	0
+ 1982 001d 00       		.byte	0
+ 1983 001e 03       		.uleb128 0x3
+ 1984 001f 16       		.uleb128 0x16
+ 1985 0020 00       		.byte	0
+ 1986 0021 03       		.uleb128 0x3
+ 1987 0022 0E       		.uleb128 0xe
+ 1988 0023 3A       		.uleb128 0x3a
+ 1989 0024 0B       		.uleb128 0xb
+ 1990 0025 3B       		.uleb128 0x3b
+ 1991 0026 0B       		.uleb128 0xb
+ 1992 0027 49       		.uleb128 0x49
+ 1993 0028 13       		.uleb128 0x13
+ 1994 0029 00       		.byte	0
+ 1995 002a 00       		.byte	0
+ 1996 002b 04       		.uleb128 0x4
+ 1997 002c 24       		.uleb128 0x24
+ 1998 002d 00       		.byte	0
+ 1999 002e 0B       		.uleb128 0xb
+ 2000 002f 0B       		.uleb128 0xb
+ 2001 0030 3E       		.uleb128 0x3e
+ 2002 0031 0B       		.uleb128 0xb
+ 2003 0032 03       		.uleb128 0x3
+ 2004 0033 08       		.uleb128 0x8
+ 2005 0034 00       		.byte	0
+ 2006 0035 00       		.byte	0
+ 2007 0036 05       		.uleb128 0x5
+ 2008 0037 16       		.uleb128 0x16
+ 2009 0038 00       		.byte	0
+ 2010 0039 03       		.uleb128 0x3
+ 2011 003a 0E       		.uleb128 0xe
+ 2012 003b 3A       		.uleb128 0x3a
+ 2013 003c 0B       		.uleb128 0xb
+ 2014 003d 3B       		.uleb128 0x3b
+ 2015 003e 05       		.uleb128 0x5
+ 2016 003f 49       		.uleb128 0x49
+ 2017 0040 13       		.uleb128 0x13
+ 2018 0041 00       		.byte	0
+ 2019 0042 00       		.byte	0
+ 2020 0043 06       		.uleb128 0x6
+ 2021 0044 13       		.uleb128 0x13
+ 2022 0045 01       		.byte	0x1
+ 2023 0046 03       		.uleb128 0x3
+ 2024 0047 0E       		.uleb128 0xe
+ 2025 0048 0B       		.uleb128 0xb
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccPB1gwT.s 			page 42
+
+
+ 2026 0049 05       		.uleb128 0x5
+ 2027 004a 3A       		.uleb128 0x3a
+ 2028 004b 0B       		.uleb128 0xb
+ 2029 004c 3B       		.uleb128 0x3b
+ 2030 004d 0B       		.uleb128 0xb
+ 2031 004e 01       		.uleb128 0x1
+ 2032 004f 13       		.uleb128 0x13
+ 2033 0050 00       		.byte	0
+ 2034 0051 00       		.byte	0
+ 2035 0052 07       		.uleb128 0x7
+ 2036 0053 0D       		.uleb128 0xd
+ 2037 0054 00       		.byte	0
+ 2038 0055 03       		.uleb128 0x3
+ 2039 0056 08       		.uleb128 0x8
+ 2040 0057 3A       		.uleb128 0x3a
+ 2041 0058 0B       		.uleb128 0xb
+ 2042 0059 3B       		.uleb128 0x3b
+ 2043 005a 0B       		.uleb128 0xb
+ 2044 005b 49       		.uleb128 0x49
+ 2045 005c 13       		.uleb128 0x13
+ 2046 005d 38       		.uleb128 0x38
+ 2047 005e 0B       		.uleb128 0xb
+ 2048 005f 00       		.byte	0
+ 2049 0060 00       		.byte	0
+ 2050 0061 08       		.uleb128 0x8
+ 2051 0062 0D       		.uleb128 0xd
+ 2052 0063 00       		.byte	0
+ 2053 0064 03       		.uleb128 0x3
+ 2054 0065 0E       		.uleb128 0xe
+ 2055 0066 3A       		.uleb128 0x3a
+ 2056 0067 0B       		.uleb128 0xb
+ 2057 0068 3B       		.uleb128 0x3b
+ 2058 0069 0B       		.uleb128 0xb
+ 2059 006a 49       		.uleb128 0x49
+ 2060 006b 13       		.uleb128 0x13
+ 2061 006c 38       		.uleb128 0x38
+ 2062 006d 0B       		.uleb128 0xb
+ 2063 006e 00       		.byte	0
+ 2064 006f 00       		.byte	0
+ 2065 0070 09       		.uleb128 0x9
+ 2066 0071 0D       		.uleb128 0xd
+ 2067 0072 00       		.byte	0
+ 2068 0073 03       		.uleb128 0x3
+ 2069 0074 0E       		.uleb128 0xe
+ 2070 0075 3A       		.uleb128 0x3a
+ 2071 0076 0B       		.uleb128 0xb
+ 2072 0077 3B       		.uleb128 0x3b
+ 2073 0078 0B       		.uleb128 0xb
+ 2074 0079 49       		.uleb128 0x49
+ 2075 007a 13       		.uleb128 0x13
+ 2076 007b 38       		.uleb128 0x38
+ 2077 007c 05       		.uleb128 0x5
+ 2078 007d 00       		.byte	0
+ 2079 007e 00       		.byte	0
+ 2080 007f 0A       		.uleb128 0xa
+ 2081 0080 01       		.uleb128 0x1
+ 2082 0081 01       		.byte	0x1
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccPB1gwT.s 			page 43
+
+
+ 2083 0082 49       		.uleb128 0x49
+ 2084 0083 13       		.uleb128 0x13
+ 2085 0084 01       		.uleb128 0x1
+ 2086 0085 13       		.uleb128 0x13
+ 2087 0086 00       		.byte	0
+ 2088 0087 00       		.byte	0
+ 2089 0088 0B       		.uleb128 0xb
+ 2090 0089 21       		.uleb128 0x21
+ 2091 008a 00       		.byte	0
+ 2092 008b 49       		.uleb128 0x49
+ 2093 008c 13       		.uleb128 0x13
+ 2094 008d 2F       		.uleb128 0x2f
+ 2095 008e 0B       		.uleb128 0xb
+ 2096 008f 00       		.byte	0
+ 2097 0090 00       		.byte	0
+ 2098 0091 0C       		.uleb128 0xc
+ 2099 0092 0D       		.uleb128 0xd
+ 2100 0093 00       		.byte	0
+ 2101 0094 03       		.uleb128 0x3
+ 2102 0095 08       		.uleb128 0x8
+ 2103 0096 3A       		.uleb128 0x3a
+ 2104 0097 0B       		.uleb128 0xb
+ 2105 0098 3B       		.uleb128 0x3b
+ 2106 0099 0B       		.uleb128 0xb
+ 2107 009a 49       		.uleb128 0x49
+ 2108 009b 13       		.uleb128 0x13
+ 2109 009c 38       		.uleb128 0x38
+ 2110 009d 05       		.uleb128 0x5
+ 2111 009e 00       		.byte	0
+ 2112 009f 00       		.byte	0
+ 2113 00a0 0D       		.uleb128 0xd
+ 2114 00a1 2E       		.uleb128 0x2e
+ 2115 00a2 01       		.byte	0x1
+ 2116 00a3 3F       		.uleb128 0x3f
+ 2117 00a4 19       		.uleb128 0x19
+ 2118 00a5 03       		.uleb128 0x3
+ 2119 00a6 0E       		.uleb128 0xe
+ 2120 00a7 3A       		.uleb128 0x3a
+ 2121 00a8 0B       		.uleb128 0xb
+ 2122 00a9 3B       		.uleb128 0x3b
+ 2123 00aa 0B       		.uleb128 0xb
+ 2124 00ab 27       		.uleb128 0x27
+ 2125 00ac 19       		.uleb128 0x19
+ 2126 00ad 11       		.uleb128 0x11
+ 2127 00ae 01       		.uleb128 0x1
+ 2128 00af 12       		.uleb128 0x12
+ 2129 00b0 06       		.uleb128 0x6
+ 2130 00b1 40       		.uleb128 0x40
+ 2131 00b2 18       		.uleb128 0x18
+ 2132 00b3 9642     		.uleb128 0x2116
+ 2133 00b5 19       		.uleb128 0x19
+ 2134 00b6 01       		.uleb128 0x1
+ 2135 00b7 13       		.uleb128 0x13
+ 2136 00b8 00       		.byte	0
+ 2137 00b9 00       		.byte	0
+ 2138 00ba 0E       		.uleb128 0xe
+ 2139 00bb 0B       		.uleb128 0xb
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccPB1gwT.s 			page 44
+
+
+ 2140 00bc 01       		.byte	0x1
+ 2141 00bd 11       		.uleb128 0x11
+ 2142 00be 01       		.uleb128 0x1
+ 2143 00bf 12       		.uleb128 0x12
+ 2144 00c0 06       		.uleb128 0x6
+ 2145 00c1 01       		.uleb128 0x1
+ 2146 00c2 13       		.uleb128 0x13
+ 2147 00c3 00       		.byte	0
+ 2148 00c4 00       		.byte	0
+ 2149 00c5 0F       		.uleb128 0xf
+ 2150 00c6 34       		.uleb128 0x34
+ 2151 00c7 00       		.byte	0
+ 2152 00c8 03       		.uleb128 0x3
+ 2153 00c9 08       		.uleb128 0x8
+ 2154 00ca 3A       		.uleb128 0x3a
+ 2155 00cb 0B       		.uleb128 0xb
+ 2156 00cc 3B       		.uleb128 0x3b
+ 2157 00cd 0B       		.uleb128 0xb
+ 2158 00ce 49       		.uleb128 0x49
+ 2159 00cf 13       		.uleb128 0x13
+ 2160 00d0 02       		.uleb128 0x2
+ 2161 00d1 18       		.uleb128 0x18
+ 2162 00d2 00       		.byte	0
+ 2163 00d3 00       		.byte	0
+ 2164 00d4 10       		.uleb128 0x10
+ 2165 00d5 0B       		.uleb128 0xb
+ 2166 00d6 01       		.byte	0x1
+ 2167 00d7 11       		.uleb128 0x11
+ 2168 00d8 01       		.uleb128 0x1
+ 2169 00d9 12       		.uleb128 0x12
+ 2170 00da 06       		.uleb128 0x6
+ 2171 00db 00       		.byte	0
+ 2172 00dc 00       		.byte	0
+ 2173 00dd 11       		.uleb128 0x11
+ 2174 00de 34       		.uleb128 0x34
+ 2175 00df 00       		.byte	0
+ 2176 00e0 03       		.uleb128 0x3
+ 2177 00e1 0E       		.uleb128 0xe
+ 2178 00e2 3A       		.uleb128 0x3a
+ 2179 00e3 0B       		.uleb128 0xb
+ 2180 00e4 3B       		.uleb128 0x3b
+ 2181 00e5 05       		.uleb128 0x5
+ 2182 00e6 49       		.uleb128 0x49
+ 2183 00e7 13       		.uleb128 0x13
+ 2184 00e8 3F       		.uleb128 0x3f
+ 2185 00e9 19       		.uleb128 0x19
+ 2186 00ea 3C       		.uleb128 0x3c
+ 2187 00eb 19       		.uleb128 0x19
+ 2188 00ec 00       		.byte	0
+ 2189 00ed 00       		.byte	0
+ 2190 00ee 12       		.uleb128 0x12
+ 2191 00ef 35       		.uleb128 0x35
+ 2192 00f0 00       		.byte	0
+ 2193 00f1 49       		.uleb128 0x49
+ 2194 00f2 13       		.uleb128 0x13
+ 2195 00f3 00       		.byte	0
+ 2196 00f4 00       		.byte	0
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccPB1gwT.s 			page 45
+
+
+ 2197 00f5 13       		.uleb128 0x13
+ 2198 00f6 34       		.uleb128 0x34
+ 2199 00f7 00       		.byte	0
+ 2200 00f8 03       		.uleb128 0x3
+ 2201 00f9 0E       		.uleb128 0xe
+ 2202 00fa 3A       		.uleb128 0x3a
+ 2203 00fb 0B       		.uleb128 0xb
+ 2204 00fc 3B       		.uleb128 0x3b
+ 2205 00fd 0B       		.uleb128 0xb
+ 2206 00fe 49       		.uleb128 0x49
+ 2207 00ff 13       		.uleb128 0x13
+ 2208 0100 3F       		.uleb128 0x3f
+ 2209 0101 19       		.uleb128 0x19
+ 2210 0102 02       		.uleb128 0x2
+ 2211 0103 18       		.uleb128 0x18
+ 2212 0104 00       		.byte	0
+ 2213 0105 00       		.byte	0
+ 2214 0106 14       		.uleb128 0x14
+ 2215 0107 34       		.uleb128 0x34
+ 2216 0108 00       		.byte	0
+ 2217 0109 03       		.uleb128 0x3
+ 2218 010a 08       		.uleb128 0x8
+ 2219 010b 3A       		.uleb128 0x3a
+ 2220 010c 0B       		.uleb128 0xb
+ 2221 010d 3B       		.uleb128 0x3b
+ 2222 010e 0B       		.uleb128 0xb
+ 2223 010f 49       		.uleb128 0x49
+ 2224 0110 13       		.uleb128 0x13
+ 2225 0111 3F       		.uleb128 0x3f
+ 2226 0112 19       		.uleb128 0x19
+ 2227 0113 02       		.uleb128 0x2
+ 2228 0114 18       		.uleb128 0x18
+ 2229 0115 00       		.byte	0
+ 2230 0116 00       		.byte	0
+ 2231 0117 00       		.byte	0
+ 2232              		.section	.debug_aranges,"",%progbits
+ 2233 0000 24000000 		.4byte	0x24
+ 2234 0004 0200     		.2byte	0x2
+ 2235 0006 00000000 		.4byte	.Ldebug_info0
+ 2236 000a 04       		.byte	0x4
+ 2237 000b 00       		.byte	0
+ 2238 000c 0000     		.2byte	0
+ 2239 000e 0000     		.2byte	0
+ 2240 0010 00000000 		.4byte	.LFB63
+ 2241 0014 F4010000 		.4byte	.LFE63-.LFB63
+ 2242 0018 00000000 		.4byte	.LFB64
+ 2243 001c 00020000 		.4byte	.LFE64-.LFB64
+ 2244 0020 00000000 		.4byte	0
+ 2245 0024 00000000 		.4byte	0
+ 2246              		.section	.debug_ranges,"",%progbits
+ 2247              	.Ldebug_ranges0:
+ 2248 0000 00000000 		.4byte	.LFB63
+ 2249 0004 F4010000 		.4byte	.LFE63
+ 2250 0008 00000000 		.4byte	.LFB64
+ 2251 000c 00020000 		.4byte	.LFE64
+ 2252 0010 00000000 		.4byte	0
+ 2253 0014 00000000 		.4byte	0
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccPB1gwT.s 			page 46
+
+
+ 2254              		.section	.debug_line,"",%progbits
+ 2255              	.Ldebug_line0:
+ 2256 0000 25030000 		.section	.debug_str,"MS",%progbits,1
+ 2256      02005B01 
+ 2256      00000201 
+ 2256      FB0E0D00 
+ 2256      01010101 
+ 2257              	.LASF51:
+ 2258 0000 6D736E5F 		.ascii	"msn_hora\000"
+ 2258      686F7261 
+ 2258      00
+ 2259              	.LASF32:
+ 2260 0009 5072696E 		.ascii	"PrintShift\000"
+ 2260      74536869 
+ 2260      667400
+ 2261              	.LASF69:
+ 2262 0014 50524E5F 		.ascii	"PRN_VISITSMONTH\000"
+ 2262      56495349 
+ 2262      54534D4F 
+ 2262      4E544800 
+ 2263              	.LASF46:
+ 2264 0024 6D736E5F 		.ascii	"msn_EDS\000"
+ 2264      45445300 
+ 2265              	.LASF26:
+ 2266 002c 50726F63 		.ascii	"ProcessedTotals\000"
+ 2266      65737365 
+ 2266      64546F74 
+ 2266      616C7300 
+ 2267              	.LASF2:
+ 2268 003c 73686F72 		.ascii	"short int\000"
+ 2268      7420696E 
+ 2268      7400
+ 2269              	.LASF17:
+ 2270 0046 73697A65 		.ascii	"sizetype\000"
+ 2270      74797065 
+ 2270      00
+ 2271              	.LASF34:
+ 2272 004f 506F6C6C 		.ascii	"PollCounter\000"
+ 2272      436F756E 
+ 2272      74657200 
+ 2273              	.LASF53:
+ 2274 005b 50524E5F 		.ascii	"PRN_MILLEAGE\000"
+ 2274      4D494C4C 
+ 2274      45414745 
+ 2274      00
+ 2275              	.LASF81:
+ 2276 0068 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 2276      43313120 
+ 2276      352E342E 
+ 2276      31203230 
+ 2276      31363036 
+ 2277 009b 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 2277      20726576 
+ 2277      6973696F 
+ 2277      6E203233 
+ 2277      37373135 
+ 2278 00ce 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccPB1gwT.s 			page 47
+
+
+ 2278      66756E63 
+ 2278      74696F6E 
+ 2278      2D736563 
+ 2278      74696F6E 
+ 2279              	.LASF6:
+ 2280 00f6 6C6F6E67 		.ascii	"long long int\000"
+ 2280      206C6F6E 
+ 2280      6720696E 
+ 2280      7400
+ 2281              	.LASF74:
+ 2282 0104 50524E5F 		.ascii	"PRN_MONEYWEEK\000"
+ 2282      4D4F4E45 
+ 2282      59574545 
+ 2282      4B00
+ 2283              	.LASF42:
+ 2284 0112 506F7369 		.ascii	"Positions\000"
+ 2284      74696F6E 
+ 2284      7300
+ 2285              	.LASF68:
+ 2286 011c 50524E5F 		.ascii	"PRN_VISITSWEEK\000"
+ 2286      56495349 
+ 2286      54535745 
+ 2286      454B00
+ 2287              	.LASF12:
+ 2288 012b 75696E74 		.ascii	"uint16\000"
+ 2288      313600
+ 2289              	.LASF19:
+ 2290 0132 7070754E 		.ascii	"ppuNozzle\000"
+ 2290      6F7A7A6C 
+ 2290      6500
+ 2291              	.LASF11:
+ 2292 013c 75696E74 		.ascii	"uint8\000"
+ 2292      3800
+ 2293              	.LASF59:
+ 2294 0142 6D736E5F 		.ascii	"msn_din\000"
+ 2294      64696E00 
+ 2295              	.LASF66:
+ 2296 014a 50524E5F 		.ascii	"PRN_ACCOUNTTYPE\000"
+ 2296      4143434F 
+ 2296      554E5454 
+ 2296      59504500 
+ 2297              	.LASF79:
+ 2298 015a 50524E5F 		.ascii	"PRN_CURRENCY\000"
+ 2298      43555252 
+ 2298      454E4359 
+ 2298      00
+ 2299              	.LASF62:
+ 2300 0167 50524E5F 		.ascii	"PRN_BALANCE\000"
+ 2300      42414C41 
+ 2300      4E434500 
+ 2301              	.LASF13:
+ 2302 0173 666C6F61 		.ascii	"float\000"
+ 2302      7400
+ 2303              	.LASF52:
+ 2304 0179 6D736E5F 		.ascii	"msn_placa\000"
+ 2304      706C6163 
+ 2304      6100
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccPB1gwT.s 			page 48
+
+
+ 2305              	.LASF24:
+ 2306 0183 73746174 		.ascii	"states\000"
+ 2306      657300
+ 2307              	.LASF64:
+ 2308 018a 50524E5F 		.ascii	"PRN_ACCOUNT\000"
+ 2308      4143434F 
+ 2308      554E5400 
+ 2309              	.LASF4:
+ 2310 0196 6C6F6E67 		.ascii	"long int\000"
+ 2310      20696E74 
+ 2310      00
+ 2311              	.LASF50:
+ 2312 019f 6D736E5F 		.ascii	"msn_fecha\000"
+ 2312      66656368 
+ 2312      6100
+ 2313              	.LASF28:
+ 2314 01a9 50726F63 		.ascii	"ProcessedvolumeSale\000"
+ 2314      65737365 
+ 2314      64766F6C 
+ 2314      756D6553 
+ 2314      616C6500 
+ 2315              	.LASF44:
+ 2316 01bd 64697247 		.ascii	"dirGbr\000"
+ 2316      627200
+ 2317              	.LASF21:
+ 2318 01c4 766F6C75 		.ascii	"volumeSale\000"
+ 2318      6D655361 
+ 2318      6C6500
+ 2319              	.LASF48:
+ 2320 01cf 6D736E5F 		.ascii	"msn_EDS3\000"
+ 2320      45445333 
+ 2320      00
+ 2321              	.LASF76:
+ 2322 01d8 50524E5F 		.ascii	"PRN_PRESET\000"
+ 2322      50524553 
+ 2322      455400
+ 2323              	.LASF31:
+ 2324 01e3 5072696E 		.ascii	"PrintReceipt\000"
+ 2324      74526563 
+ 2324      65697074 
+ 2324      00
+ 2325              	.LASF49:
+ 2326 01f0 6D736E5F 		.ascii	"msn_EDS4\000"
+ 2326      45445334 
+ 2326      00
+ 2327              	.LASF67:
+ 2328 01f9 50524E5F 		.ascii	"PRN_VISITSDAY\000"
+ 2328      56495349 
+ 2328      54534441 
+ 2328      5900
+ 2329              	.LASF45:
+ 2330 0207 4C494E45 		.ascii	"LINE_FEED\000"
+ 2330      5F464545 
+ 2330      4400
+ 2331              	.LASF38:
+ 2332 0211 4D657073 		.ascii	"MepsanSendTo\000"
+ 2332      616E5365 
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccPB1gwT.s 			page 49
+
+
+ 2332      6E64546F 
+ 2332      00
+ 2333              	.LASF47:
+ 2334 021e 6D736E5F 		.ascii	"msn_EDS2\000"
+ 2334      45445332 
+ 2334      00
+ 2335              	.LASF23:
+ 2336 0227 70726F64 		.ascii	"productSale\000"
+ 2336      75637453 
+ 2336      616C6500 
+ 2337              	.LASF16:
+ 2338 0233 6C6F6E67 		.ascii	"long double\000"
+ 2338      20646F75 
+ 2338      626C6500 
+ 2339              	.LASF39:
+ 2340 023f 50756D70 		.ascii	"PumpAddress\000"
+ 2340      41646472 
+ 2340      65737300 
+ 2341              	.LASF1:
+ 2342 024b 756E7369 		.ascii	"unsigned char\000"
+ 2342      676E6564 
+ 2342      20636861 
+ 2342      7200
+ 2343              	.LASF63:
+ 2344 0259 50524E5F 		.ascii	"PRN_COMPANY\000"
+ 2344      434F4D50 
+ 2344      414E5900 
+ 2345              	.LASF78:
+ 2346 0265 50524E5F 		.ascii	"PRN_ID\000"
+ 2346      494400
+ 2347              	.LASF0:
+ 2348 026c 7369676E 		.ascii	"signed char\000"
+ 2348      65642063 
+ 2348      68617200 
+ 2349              	.LASF7:
+ 2350 0278 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 2350      206C6F6E 
+ 2350      6720756E 
+ 2350      7369676E 
+ 2350      65642069 
+ 2351              	.LASF70:
+ 2352 028f 50524E5F 		.ascii	"PRN_VOLUMEDAY\000"
+ 2352      564F4C55 
+ 2352      4D454441 
+ 2352      5900
+ 2353              	.LASF8:
+ 2354 029d 756E7369 		.ascii	"unsigned int\000"
+ 2354      676E6564 
+ 2354      20696E74 
+ 2354      00
+ 2355              	.LASF22:
+ 2356 02aa 70707553 		.ascii	"ppuSale\000"
+ 2356      616C6500 
+ 2357              	.LASF54:
+ 2358 02b2 50524E5F 		.ascii	"PRN_TRANSTYPE\000"
+ 2358      5452414E 
+ 2358      53545950 
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccPB1gwT.s 			page 50
+
+
+ 2358      4500
+ 2359              	.LASF80:
+ 2360 02c0 53455041 		.ascii	"SEPARATOR\000"
+ 2360      5241544F 
+ 2360      5200
+ 2361              	.LASF35:
+ 2362 02ca 43757272 		.ascii	"CurrentState\000"
+ 2362      656E7453 
+ 2362      74617465 
+ 2362      00
+ 2363              	.LASF56:
+ 2364 02d7 6D736E5F 		.ascii	"msn_product\000"
+ 2364      70726F64 
+ 2364      75637400 
+ 2365              	.LASF18:
+ 2366 02e3 746F7461 		.ascii	"totalsNozzle\000"
+ 2366      6C734E6F 
+ 2366      7A7A6C65 
+ 2366      00
+ 2367              	.LASF75:
+ 2368 02f0 50524E5F 		.ascii	"PRN_MONEYMONTH\000"
+ 2368      4D4F4E45 
+ 2368      594D4F4E 
+ 2368      544800
+ 2369              	.LASF3:
+ 2370 02ff 73686F72 		.ascii	"short unsigned int\000"
+ 2370      7420756E 
+ 2370      7369676E 
+ 2370      65642069 
+ 2370      6E7400
+ 2371              	.LASF20:
+ 2372 0312 6D6F6E65 		.ascii	"moneySale\000"
+ 2372      7953616C 
+ 2372      6500
+ 2373              	.LASF72:
+ 2374 031c 50524E5F 		.ascii	"PRN_VOLUMEMONTH\000"
+ 2374      564F4C55 
+ 2374      4D454D4F 
+ 2374      4E544800 
+ 2375              	.LASF15:
+ 2376 032c 63686172 		.ascii	"char\000"
+ 2376      00
+ 2377              	.LASF40:
+ 2378 0331 6372635F 		.ascii	"crc_lo\000"
+ 2378      6C6F00
+ 2379              	.LASF10:
+ 2380 0338 696E7433 		.ascii	"int32_t\000"
+ 2380      325F7400 
+ 2381              	.LASF55:
+ 2382 0340 6D736E5F 		.ascii	"msn_pos\000"
+ 2382      706F7300 
+ 2383              	.LASF61:
+ 2384 0348 6D736E5F 		.ascii	"msn_numero\000"
+ 2384      6E756D65 
+ 2384      726F00
+ 2385              	.LASF30:
+ 2386 0353 70756D70 		.ascii	"pump\000"
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccPB1gwT.s 			page 51
+
+
+ 2386      00
+ 2387              	.LASF83:
+ 2388 0358 433A5C55 		.ascii	"C:\\Users\\Lenovo\\Documents\\GitHub\\Mepsan\\Mepsa"
+ 2388      73657273 
+ 2388      5C4C656E 
+ 2388      6F766F5C 
+ 2388      446F6375 
+ 2389 0385 6E2E6379 		.ascii	"n.cydsn\000"
+ 2389      64736E00 
+ 2390              	.LASF73:
+ 2391 038d 50524E5F 		.ascii	"PRN_MONEYDAY\000"
+ 2391      4D4F4E45 
+ 2391      59444159 
+ 2391      00
+ 2392              	.LASF65:
+ 2393 039a 50524E5F 		.ascii	"PRN_SERIAL\000"
+ 2393      53455249 
+ 2393      414C00
+ 2394              	.LASF5:
+ 2395 03a5 6C6F6E67 		.ascii	"long unsigned int\000"
+ 2395      20756E73 
+ 2395      69676E65 
+ 2395      6420696E 
+ 2395      7400
+ 2396              	.LASF82:
+ 2397 03b7 7072696E 		.ascii	"printer.c\000"
+ 2397      7465722E 
+ 2397      6300
+ 2398              	.LASF14:
+ 2399 03c1 646F7562 		.ascii	"double\000"
+ 2399      6C6500
+ 2400              	.LASF37:
+ 2401 03c8 4D657073 		.ascii	"MepsanResponse\000"
+ 2401      616E5265 
+ 2401      73706F6E 
+ 2401      736500
+ 2402              	.LASF9:
+ 2403 03d7 5F5F696E 		.ascii	"__int32_t\000"
+ 2403      7433325F 
+ 2403      7400
+ 2404              	.LASF43:
+ 2405 03e1 546F7461 		.ascii	"TotalRequestType\000"
+ 2405      6C526571 
+ 2405      75657374 
+ 2405      54797065 
+ 2405      00
+ 2406              	.LASF25:
+ 2407 03f2 4D657073 		.ascii	"MepsanStore\000"
+ 2407      616E5374 
+ 2407      6F726500 
+ 2408              	.LASF27:
+ 2409 03fe 50726F63 		.ascii	"ProcessedmoneySale\000"
+ 2409      65737365 
+ 2409      646D6F6E 
+ 2409      65795361 
+ 2409      6C6500
+ 2410              	.LASF77:
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccPB1gwT.s 			page 52
+
+
+ 2411 0411 50524E5F 		.ascii	"PRN_SIGNATURE\000"
+ 2411      5349474E 
+ 2411      41545552 
+ 2411      4500
+ 2412              	.LASF71:
+ 2413 041f 50524E5F 		.ascii	"PRN_VOLUMEWEEK\000"
+ 2413      564F4C55 
+ 2413      4D455745 
+ 2413      454B00
+ 2414              	.LASF29:
+ 2415 042e 706F7369 		.ascii	"position\000"
+ 2415      74696F6E 
+ 2415      00
+ 2416              	.LASF36:
+ 2417 0437 73696465 		.ascii	"side\000"
+ 2417      00
+ 2418              	.LASF33:
+ 2419 043c 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 2419      52784275 
+ 2419      66666572 
+ 2419      00
+ 2420              	.LASF60:
+ 2421 0449 6D736E5F 		.ascii	"msn_cierre\000"
+ 2421      63696572 
+ 2421      726500
+ 2422              	.LASF41:
+ 2423 0454 6372635F 		.ascii	"crc_hi\000"
+ 2423      686900
+ 2424              	.LASF57:
+ 2425 045b 6D736E5F 		.ascii	"msn_ppu\000"
+ 2425      70707500 
+ 2426              	.LASF58:
+ 2427 0463 6D736E5F 		.ascii	"msn_vol\000"
+ 2427      766F6C00 
+ 2428              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

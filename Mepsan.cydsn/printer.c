@@ -10,6 +10,7 @@
  * ========================================
 */
 #include <project.h>
+#include <GVar.h>
 
 uint8 LINE_FEED = 0x0A;
 
@@ -30,8 +31,9 @@ uint8 PRN_TRANSTYPE[13]   = "Tipo       : ";
 uint8 msn_pos[13]         = "Posicion   : ";
 uint8 msn_product[13]     = "Producto   : ";
 uint8 msn_ppu[13]         = "Ppu        : ";
-uint8 msn_vol[15]         = "Volumen    : ";
-uint8 msn_din[15]         = "Dinero     : ";
+uint8 msn_vol[13]         = "Volumen    : ";
+uint8 msn_din[13]         = "Dinero     : ";
+uint8 msn_cierre[13]      = "Cierre No  : ";
 uint8 msn_numero[13]      = "Consecutivo: ";
 uint8 PRN_BALANCE[13]     = "Saldo      : ";
 uint8 PRN_COMPANY[13]     = "Empresa    : ";
@@ -104,7 +106,59 @@ void PrintReceipt(void){
     
 }
 
-
+void PrintShift(void){
+    
+    
+    UART_3_PutChar(LINE_FEED);
+    for(uint8 x = 0; x < 10; x ++){
+        UART_3_PutChar(side.a.ProcessedTotals[0][0][x]);
+    }
+    UART_3_PutChar(LINE_FEED);
+    for(uint8 x = 0; x < 13; x ++){
+        UART_3_PutChar(msn_pos[x]);
+    }
+    UART_3_PutChar(LINE_FEED);
+    for(uint8 x = 0; x < 13; x ++){
+        UART_3_PutChar(msn_cierre[x]);
+    }
+    
+    ///////////////////////////////////////////////
+    UART_3_PutChar(LINE_FEED);
+    for(uint8 x = 0; x < 24; x ++){
+        UART_3_PutChar(SEPARATOR[x]);
+    }    
+    UART_3_PutChar(LINE_FEED);
+    for(uint8 x = 0; x < 13; x ++){
+        UART_3_PutChar(msn_hora[x]);
+    }                                 //Hora y Fecha
+    UART_3_PutChar(LINE_FEED);
+    for(uint8 x = 0; x < 13; x ++){
+        UART_3_PutChar(msn_fecha[x]);
+    }
+    ///////////////////////////////////////////////
+    
+    UART_3_PutChar(LINE_FEED);
+    for(uint8 x = 0; x < 24; x ++){
+        UART_3_PutChar(SEPARATOR[x]); //Separador de sección
+    }
+    UART_3_PutChar(LINE_FEED);
+    for(uint8 x = 0; x < 20; x ++){
+        UART_3_PutChar(msn_EDS4[x]);
+    }
+    UART_3_PutChar(LINE_FEED);
+    for(uint8 x = 0; x < 20; x ++){
+        UART_3_PutChar(msn_EDS3[x]);
+    }                                 // Encabezado de estación
+    UART_3_PutChar(LINE_FEED);
+    for(uint8 x = 0; x < 20; x ++){
+        UART_3_PutChar(msn_EDS2[x]);
+    }
+    UART_3_PutChar(LINE_FEED);
+    for(uint8 x = 0; x < 20; x ++){
+        UART_3_PutChar(msn_EDS[x]);
+    }
+    UART_3_PutChar(LINE_FEED);    
+}
 
 
 
