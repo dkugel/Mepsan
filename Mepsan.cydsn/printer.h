@@ -9,6 +9,9 @@
  *
  * ========================================
 */
-void PrintReceipt(void);
-void PrintShift(void);
+#include <project.h>
+
+void PrintReceipt(uint8 address);
+void PrintShift(uint8 address);
+
 /* [] END OF FILE */

@@ -77,10 +77,10 @@ void PollingPos(void){
         //ReturnStatus(side.a.dir);        
     }
     if(Positions == 2){
-        for(x = 0; x < 5; x++){
-            side.a.states[x] = PumpState(side.a.dir);
-            side.b.states[x] = PumpState(side.b.dir);
-        }            
+        
+        side.a.states[0] = PumpState(side.a.dir);
+        side.b.states[0] = PumpState(side.b.dir);
+                    
     }
     if(Positions == 3){
         for(x = 0; x < 5; x++){
@@ -112,6 +112,7 @@ int main()
 {
     /* Prepare components */
     uint8 x;
+    DecVol = 3;
     PWM_1_Start(); 
     CyGlobalIntEnable;
     UART_1_Start();
@@ -119,32 +120,71 @@ int main()
     UART_3_Start();
     Timer_1_Start();    
     side.a.ppuNozzle[0][0]=0x01;
-    side.a.ppuNozzle[0][1]=0x05;
-    side.a.ppuNozzle[0][2]=0x30;    
-    for(uint8 y = 0; y < 16; y ++){
-        PumpAddress[y] = GetAddress(y); //Posiciones activas      
-    }    
+    side.a.ppuNozzle[0][1]=0x04;
+    side.a.ppuNozzle[0][2]=0x20;
+    
+    side.b.ppuNozzle[0][0]=0x00;
+    side.b.ppuNozzle[0][1]=0x84;
+    side.b.ppuNozzle[0][2]=0x55;
+    
+    side.a.ProcessedPPU[0][0] = (side.a.ppuNozzle[0][0] >> 4) + 0x30;
+    side.a.ProcessedPPU[0][1] = (side.a.ppuNozzle[0][0] & 0x0F) + 0x30;
+    side.a.ProcessedPPU[0][2] = (side.a.ppuNozzle[0][1] >> 4) + 0x30;
+    side.a.ProcessedPPU[0][3] = (side.a.ppuNozzle[0][1] & 0x0F) + 0x30;
+    side.a.ProcessedPPU[0][4] = (side.a.ppuNozzle[0][2] >> 4) + 0x30;
+    side.a.ProcessedPPU[0][5] = (side.a.ppuNozzle[0][2] & 0x0F) + 0x30;
+    
+    side.b.ProcessedPPU[0][0] = (side.b.ppuNozzle[0][0] >> 4) + 0x30;
+    side.b.ProcessedPPU[0][1] = (side.b.ppuNozzle[0][0] & 0x0F) + 0x30;
+    side.b.ProcessedPPU[0][2] = (side.b.ppuNozzle[0][1] >> 4) + 0x30;
+    side.b.ProcessedPPU[0][3] = (side.b.ppuNozzle[0][1] & 0x0F) + 0x30;
+    side.b.ProcessedPPU[0][4] = (side.b.ppuNozzle[0][2] >> 4) + 0x30;
+    side.b.ProcessedPPU[0][5] = (side.b.ppuNozzle[0][2] & 0x0F) + 0x30;
+    
+    //while(side.a.dir == 0xFF){
+        for(uint8 y = 0; y < 16; y ++){
+            PumpAddress[y] = GetAddress(y); //Posiciones activas      
+        } 
+    //}
+    
     side.a.dir = PumpAddress[1];
     side.b.dir = PumpAddress[2];
     side.c.dir = PumpAddress[3];
     side.d.dir = PumpAddress[4]; 
+    side.a.dir = 0x00;
+    side.b.dir = 0x01;
     TotalRequestType = 0; 
-            
+    Receipt = 0;        
     for (;;)
     {
         if(EnablePin_1_Read() == 1u){
-            PriceUpdate(0,side.a.ppuNozzle[0]);
-            Authorize(side.a.dir);
-            PrintReceipt();
+            PriceUpdate(side.b.dir,side.b.ppuNozzle[0]);
+            Authorize(side.b.dir);            
         }else{
             PollingPos();                       
         }                
         if(Kill_Switch_Read() == 0u){
             //PriceUpdate(0,side.a.ppuNozzle[0]);
             //ReturnStatus(0);
-            PumpState(0);            
-            TotalRequest(0, TotalRequestType, 1); //dir 0, volume, nozzle 1                           
-            PumpState(0);
+            PumpState(side.b.dir);            
+            TotalRequest(side.b.dir, TotalRequestType, 1); //dir 0, volume, nozzle 1                           
+            PumpState(side.a.dir);            
+            if(Receipt == 1){
+                Receipt = 0;
+                PrintReceipt(side.a.dir);
+            }
+            if(Receipt == 2){
+                Receipt = 0;
+                PrintReceipt(side.b.dir);
+            }
+            if(Receipt == 4){
+                Receipt = 0;
+                PrintShift(side.a.dir);
+            }
+            if(Receipt == 5){
+                Receipt = 0;
+                PrintShift(side.b.dir);
+            }
         }        
     }
 }

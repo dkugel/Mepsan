@@ -15,6 +15,7 @@
 
 uint16 PollCounter;
 uint8 CurrentState;
+uint8 Receipt;
 
 /*
 *********************************************************************************************************
@@ -26,8 +27,8 @@ uint8 CurrentState;
 
 struct position{
     uint8 dir;                      //Direccion
-    uint8 totalsNozzle[4][3][5];   //Totales Manguera: [0-3] // [0]=Volumen [1]=Dinero [2]=PPU // [8 ó 12 - 4 ó 5]
-    uint8 ppuNozzle[4][8];         //PPU autorizados [Manguera 0-3][Datos]
+    uint8 totalsNozzle[4][2][5];   //Totales Manguera: [0-3] // [0]=Volumen [1]=Dinero // [8 ó 12 - 4 ó 5]
+    uint8 ppuNozzle[4][3];         //PPU autorizados [Manguera 0-3][Datos]
     uint8 moneySale[4];            //Venta de Dinero vendido
     uint8 volumeSale[4];           //Venta de Volumen vendido
     uint8 ppuSale[14];              //Venta de PPU vendido
@@ -37,6 +38,7 @@ struct position{
     uint8 ProcessedTotals[4][3][10];//Totales en ASCII
     uint8 ProcessedmoneySale[8];            //Venta de Dinero vendido
     uint8 ProcessedvolumeSale[8];           //Venta de Volumen vendido
+    uint8 ProcessedPPU[4][6];
     
 };
 
@@ -63,6 +65,8 @@ uint16 CRC;
 uint8 crc_lo,crc_hi;
 uint8 Positions;
 uint8 TotalRequestType;
+uint8 DecVol;
+
 
 /*
 *********************************************************************************************************

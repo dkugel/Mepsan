@@ -23,6 +23,5 @@ void GetResponse(void);
 void TotalRequest(uint8 address, uint8 type, uint8 nozzle);
 void GetTotal(void);
 void GetACK(void);
-void ProccessResponse(uint8 address);
 
 /* [] END OF FILE */

@@ -84,8 +84,8 @@ uint16_t gen_crc16(const uint8_t *data, uint16_t size)
 void GetResponse(void){
     uint8 size, address;
     size = MepsanResponse[0];          
-    CyDelay(10); 
-    address = MepsanResponse[1] & 0x00;
+    //CyDelay(10); 
+    address = MepsanResponse[1] & 0x0F;
     if(address == side.a.dir){
         for(uint8 MepRx = 1; MepRx < size + 1; MepRx++){
             side.a.MepsanStore[MepRx - 1] = MepsanResponse[MepRx];
@@ -106,6 +106,8 @@ void GetResponse(void){
             side.a.ProcessedTotals[((side.a.MepsanStore[4])&0x0F)-1][TotalRequestType][8] = (side.a.totalsNozzle[((side.a.MepsanStore[4])&0x0F)-1][TotalRequestType][4] >> 4) + 0x30;
             side.a.ProcessedTotals[((side.a.MepsanStore[4])&0x0F)-1][TotalRequestType][9] = (side.a.totalsNozzle[((side.a.MepsanStore[4])&0x0F)-1][TotalRequestType][4] & 0x0F) + 0x30;
             
+            Receipt = 4;
+            
             EnablePin_Write (1u);
             UART_1_PutChar((0x50|address));
             UART_1_PutChar(0xC0|(side.a.MepsanStore[1]&0x0F));
@@ -118,11 +120,25 @@ void GetResponse(void){
                 side.a.volumeSale[x-4] = side.a.MepsanStore[x];
                 side.a.moneySale[x-4] = side.a.MepsanStore[x+4];
             }
-            EnablePin_Write (1u);
-            UART_1_PutChar((0x50|address));
-            UART_1_PutChar(0xC0|(side.a.MepsanStore[1]&0x0F));
-            UART_1_PutChar(0xFA); 
-            CyDelay(4);
+            side.a.ProcessedvolumeSale[0] = (side.a.volumeSale[0]  >> 4) + 0x30;
+            side.a.ProcessedvolumeSale[1] = (side.a.volumeSale[0]  & 0x0F) + 0x30;
+            side.a.ProcessedvolumeSale[2] = (side.a.volumeSale[1]  >> 4) + 0x30;
+            side.a.ProcessedvolumeSale[3] = (side.a.volumeSale[1]  & 0x0F) + 0x30;
+            side.a.ProcessedvolumeSale[4] = (side.a.volumeSale[2]  >> 4) + 0x30;
+            side.a.ProcessedvolumeSale[5] = (side.a.volumeSale[2]  & 0x0F) + 0x30;
+            side.a.ProcessedvolumeSale[6] = (side.a.volumeSale[3]  >> 4) + 0x30;
+            side.a.ProcessedvolumeSale[7] = (side.a.volumeSale[3]  & 0x0F) + 0x30;
+            
+            side.a.ProcessedmoneySale[0] = (side.a.moneySale[0]  >> 4) + 0x30;
+            side.a.ProcessedmoneySale[1] = (side.a.moneySale[0]  & 0x0F) + 0x30;
+            side.a.ProcessedmoneySale[2] = (side.a.moneySale[1]  >> 4) + 0x30;
+            side.a.ProcessedmoneySale[3] = (side.a.moneySale[1]  & 0x0F) + 0x30;
+            side.a.ProcessedmoneySale[4] = (side.a.moneySale[2]  >> 4) + 0x30;
+            side.a.ProcessedmoneySale[5] = (side.a.moneySale[2]  & 0x0F) + 0x30;
+            side.a.ProcessedmoneySale[6] = (side.a.moneySale[3]  >> 4) + 0x30;
+            side.a.ProcessedmoneySale[7] = (side.a.moneySale[3]  & 0x0F) + 0x30;
+            
+            Receipt = 1;
             EnablePin_Write (0u);
         }
     }
@@ -130,15 +146,164 @@ void GetResponse(void){
         for(uint8 MepRx = 1; MepRx < size + 1; MepRx++){
             side.b.MepsanStore[MepRx - 1] = MepsanResponse[MepRx];
         }
+        if(side.b.MepsanStore[2] == 0x65){
+            for(uint8 x = 5; x < (side.b.MepsanStore[3]-1) + 5; x++ ){
+                side.b.totalsNozzle[((side.b.MepsanStore[4])&0x0F)-1][TotalRequestType][x-5] = side.b.MepsanStore[x] ;
+            }
+            
+            side.b.ProcessedTotals[((side.b.MepsanStore[4])&0x0F)-1][TotalRequestType][0] = (side.b.totalsNozzle[((side.b.MepsanStore[4])&0x0F)-1][TotalRequestType][0] >> 4) + 0x30;
+            side.b.ProcessedTotals[((side.b.MepsanStore[4])&0x0F)-1][TotalRequestType][1] = (side.b.totalsNozzle[((side.b.MepsanStore[4])&0x0F)-1][TotalRequestType][0] & 0x0F) + 0x30;
+            side.b.ProcessedTotals[((side.b.MepsanStore[4])&0x0F)-1][TotalRequestType][2] = (side.b.totalsNozzle[((side.b.MepsanStore[4])&0x0F)-1][TotalRequestType][1] >> 4) + 0x30;
+            side.b.ProcessedTotals[((side.b.MepsanStore[4])&0x0F)-1][TotalRequestType][3] = (side.b.totalsNozzle[((side.b.MepsanStore[4])&0x0F)-1][TotalRequestType][1] & 0x0F) + 0x30;
+            side.b.ProcessedTotals[((side.b.MepsanStore[4])&0x0F)-1][TotalRequestType][4] = (side.b.totalsNozzle[((side.b.MepsanStore[4])&0x0F)-1][TotalRequestType][2] >> 4) + 0x30;
+            side.b.ProcessedTotals[((side.b.MepsanStore[4])&0x0F)-1][TotalRequestType][5] = (side.b.totalsNozzle[((side.b.MepsanStore[4])&0x0F)-1][TotalRequestType][2] & 0x0F) + 0x30;
+            side.b.ProcessedTotals[((side.b.MepsanStore[4])&0x0F)-1][TotalRequestType][6] = (side.b.totalsNozzle[((side.b.MepsanStore[4])&0x0F)-1][TotalRequestType][3] >> 4) + 0x30;
+            side.b.ProcessedTotals[((side.b.MepsanStore[4])&0x0F)-1][TotalRequestType][7] = (side.b.totalsNozzle[((side.b.MepsanStore[4])&0x0F)-1][TotalRequestType][3] & 0x0F) + 0x30;
+            side.b.ProcessedTotals[((side.b.MepsanStore[4])&0x0F)-1][TotalRequestType][8] = (side.b.totalsNozzle[((side.b.MepsanStore[4])&0x0F)-1][TotalRequestType][4] >> 4) + 0x30;
+            side.b.ProcessedTotals[((side.b.MepsanStore[4])&0x0F)-1][TotalRequestType][9] = (side.b.totalsNozzle[((side.b.MepsanStore[4])&0x0F)-1][TotalRequestType][4] & 0x0F) + 0x30;
+            
+            Receipt = 5;
+            
+            EnablePin_Write (1u);
+            UART_1_PutChar((0x50|address));
+            UART_1_PutChar(0xC0|(side.b.MepsanStore[1]&0x0F));
+            UART_1_PutChar(0xFA); 
+            CyDelay(4);
+            EnablePin_Write (0u);
+        }
+        if(side.b.MepsanStore[2] == 0x02){
+            for(uint8 x = 4; x < 8; x++ ){
+                side.b.volumeSale[x-4] = side.b.MepsanStore[x];
+                side.b.moneySale[x-4] = side.b.MepsanStore[x+4];
+            }
+            side.b.ProcessedvolumeSale[0] = (side.b.volumeSale[0]  >> 4) + 0x30;
+            side.b.ProcessedvolumeSale[1] = (side.b.volumeSale[0]  & 0x0F) + 0x30;
+            side.b.ProcessedvolumeSale[2] = (side.b.volumeSale[1]  >> 4) + 0x30;
+            side.b.ProcessedvolumeSale[3] = (side.b.volumeSale[1]  & 0x0F) + 0x30;
+            side.b.ProcessedvolumeSale[4] = (side.b.volumeSale[2]  >> 4) + 0x30;
+            side.b.ProcessedvolumeSale[5] = (side.b.volumeSale[2]  & 0x0F) + 0x30;
+            side.b.ProcessedvolumeSale[6] = (side.b.volumeSale[3]  >> 4) + 0x30;
+            side.b.ProcessedvolumeSale[7] = (side.b.volumeSale[3]  & 0x0F) + 0x30;
+            
+            side.b.ProcessedmoneySale[0] = (side.b.moneySale[0]  >> 4) + 0x30;
+            side.b.ProcessedmoneySale[1] = (side.b.moneySale[0]  & 0x0F) + 0x30;
+            side.b.ProcessedmoneySale[2] = (side.b.moneySale[1]  >> 4) + 0x30;
+            side.b.ProcessedmoneySale[3] = (side.b.moneySale[1]  & 0x0F) + 0x30;
+            side.b.ProcessedmoneySale[4] = (side.b.moneySale[2]  >> 4) + 0x30;
+            side.b.ProcessedmoneySale[5] = (side.b.moneySale[2]  & 0x0F) + 0x30;
+            side.b.ProcessedmoneySale[6] = (side.b.moneySale[3]  >> 4) + 0x30;
+            side.b.ProcessedmoneySale[7] = (side.b.moneySale[3]  & 0x0F) + 0x30;
+            
+            Receipt = 2;
+            EnablePin_Write (0u);
+        }
     }
     if(address == side.c.dir){
         for(uint8 MepRx = 1; MepRx < size + 1; MepRx++){
             side.c.MepsanStore[MepRx - 1] = MepsanResponse[MepRx];
         }
+        if(side.c.MepsanStore[2] == 0x65){
+            for(uint8 x = 5; x < (side.c.MepsanStore[3]-1) + 5; x++ ){
+                side.c.totalsNozzle[((side.c.MepsanStore[4])&0x0F)-1][TotalRequestType][x-5] = side.c.MepsanStore[x] ;
+            }
+            
+            side.c.ProcessedTotals[((side.c.MepsanStore[4])&0x0F)-1][TotalRequestType][0] = (side.c.totalsNozzle[((side.c.MepsanStore[4])&0x0F)-1][TotalRequestType][0] >> 4) + 0x30;
+            side.c.ProcessedTotals[((side.c.MepsanStore[4])&0x0F)-1][TotalRequestType][1] = (side.c.totalsNozzle[((side.c.MepsanStore[4])&0x0F)-1][TotalRequestType][0] & 0x0F) + 0x30;
+            side.c.ProcessedTotals[((side.c.MepsanStore[4])&0x0F)-1][TotalRequestType][2] = (side.c.totalsNozzle[((side.c.MepsanStore[4])&0x0F)-1][TotalRequestType][1] >> 4) + 0x30;
+            side.c.ProcessedTotals[((side.c.MepsanStore[4])&0x0F)-1][TotalRequestType][3] = (side.c.totalsNozzle[((side.c.MepsanStore[4])&0x0F)-1][TotalRequestType][1] & 0x0F) + 0x30;
+            side.c.ProcessedTotals[((side.c.MepsanStore[4])&0x0F)-1][TotalRequestType][4] = (side.c.totalsNozzle[((side.c.MepsanStore[4])&0x0F)-1][TotalRequestType][2] >> 4) + 0x30;
+            side.c.ProcessedTotals[((side.c.MepsanStore[4])&0x0F)-1][TotalRequestType][5] = (side.c.totalsNozzle[((side.c.MepsanStore[4])&0x0F)-1][TotalRequestType][2] & 0x0F) + 0x30;
+            side.c.ProcessedTotals[((side.c.MepsanStore[4])&0x0F)-1][TotalRequestType][6] = (side.c.totalsNozzle[((side.c.MepsanStore[4])&0x0F)-1][TotalRequestType][3] >> 4) + 0x30;
+            side.c.ProcessedTotals[((side.c.MepsanStore[4])&0x0F)-1][TotalRequestType][7] = (side.c.totalsNozzle[((side.c.MepsanStore[4])&0x0F)-1][TotalRequestType][3] & 0x0F) + 0x30;
+            side.c.ProcessedTotals[((side.c.MepsanStore[4])&0x0F)-1][TotalRequestType][8] = (side.c.totalsNozzle[((side.c.MepsanStore[4])&0x0F)-1][TotalRequestType][4] >> 4) + 0x30;
+            side.c.ProcessedTotals[((side.c.MepsanStore[4])&0x0F)-1][TotalRequestType][9] = (side.c.totalsNozzle[((side.c.MepsanStore[4])&0x0F)-1][TotalRequestType][4] & 0x0F) + 0x30;
+            
+            EnablePin_Write (1u);
+            UART_1_PutChar((0x50|address));
+            UART_1_PutChar(0xC0|(side.c.MepsanStore[1]&0x0F));
+            UART_1_PutChar(0xFA); 
+            CyDelay(4);
+            EnablePin_Write (0u);
+        }
+        if(side.c.MepsanStore[2] == 0x02){
+            for(uint8 x = 4; x < 8; x++ ){
+                side.c.volumeSale[x-4] = side.c.MepsanStore[x];
+                side.c.moneySale[x-4] = side.c.MepsanStore[x+4];
+            }
+            side.c.ProcessedvolumeSale[0] = (side.c.volumeSale[0]  >> 4) + 0x30;
+            side.c.ProcessedvolumeSale[1] = (side.c.volumeSale[0]  & 0x0F) + 0x30;
+            side.c.ProcessedvolumeSale[2] = (side.c.volumeSale[1]  >> 4) + 0x30;
+            side.c.ProcessedvolumeSale[3] = (side.c.volumeSale[1]  & 0x0F) + 0x30;
+            side.c.ProcessedvolumeSale[4] = (side.c.volumeSale[2]  >> 4) + 0x30;
+            side.c.ProcessedvolumeSale[5] = (side.c.volumeSale[2]  & 0x0F) + 0x30;
+            side.c.ProcessedvolumeSale[6] = (side.c.volumeSale[3]  >> 4) + 0x30;
+            side.c.ProcessedvolumeSale[7] = (side.c.volumeSale[3]  & 0x0F) + 0x30;
+            
+            side.c.ProcessedmoneySale[0] = (side.c.moneySale[0]  >> 4) + 0x30;
+            side.c.ProcessedmoneySale[1] = (side.c.moneySale[0]  & 0x0F) + 0x30;
+            side.c.ProcessedmoneySale[2] = (side.c.moneySale[1]  >> 4) + 0x30;
+            side.c.ProcessedmoneySale[3] = (side.c.moneySale[1]  & 0x0F) + 0x30;
+            side.c.ProcessedmoneySale[4] = (side.c.moneySale[2]  >> 4) + 0x30;
+            side.c.ProcessedmoneySale[5] = (side.c.moneySale[2]  & 0x0F) + 0x30;
+            side.c.ProcessedmoneySale[6] = (side.c.moneySale[3]  >> 4) + 0x30;
+            side.c.ProcessedmoneySale[7] = (side.c.moneySale[3]  & 0x0F) + 0x30;
+            
+            Receipt = 3;
+            EnablePin_Write (0u);
+        }
     }
     if(address == side.d.dir){
         for(uint8 MepRx = 1; MepRx < size + 1; MepRx++){
             side.d.MepsanStore[MepRx - 1] = MepsanResponse[MepRx];
+        }
+        if(side.d.MepsanStore[2] == 0x65){
+            for(uint8 x = 5; x < (side.d.MepsanStore[3]-1) + 5; x++ ){
+                side.d.totalsNozzle[((side.d.MepsanStore[4])&0x0F)-1][TotalRequestType][x-5] = side.d.MepsanStore[x] ;
+            }
+            
+            side.d.ProcessedTotals[((side.d.MepsanStore[4])&0x0F)-1][TotalRequestType][0] = (side.d.totalsNozzle[((side.d.MepsanStore[4])&0x0F)-1][TotalRequestType][0] >> 4) + 0x30;
+            side.d.ProcessedTotals[((side.d.MepsanStore[4])&0x0F)-1][TotalRequestType][1] = (side.d.totalsNozzle[((side.d.MepsanStore[4])&0x0F)-1][TotalRequestType][0] & 0x0F) + 0x30;
+            side.d.ProcessedTotals[((side.d.MepsanStore[4])&0x0F)-1][TotalRequestType][2] = (side.d.totalsNozzle[((side.d.MepsanStore[4])&0x0F)-1][TotalRequestType][1] >> 4) + 0x30;
+            side.d.ProcessedTotals[((side.d.MepsanStore[4])&0x0F)-1][TotalRequestType][3] = (side.d.totalsNozzle[((side.d.MepsanStore[4])&0x0F)-1][TotalRequestType][1] & 0x0F) + 0x30;
+            side.d.ProcessedTotals[((side.d.MepsanStore[4])&0x0F)-1][TotalRequestType][4] = (side.d.totalsNozzle[((side.d.MepsanStore[4])&0x0F)-1][TotalRequestType][2] >> 4) + 0x30;
+            side.d.ProcessedTotals[((side.d.MepsanStore[4])&0x0F)-1][TotalRequestType][5] = (side.d.totalsNozzle[((side.d.MepsanStore[4])&0x0F)-1][TotalRequestType][2] & 0x0F) + 0x30;
+            side.d.ProcessedTotals[((side.d.MepsanStore[4])&0x0F)-1][TotalRequestType][6] = (side.d.totalsNozzle[((side.d.MepsanStore[4])&0x0F)-1][TotalRequestType][3] >> 4) + 0x30;
+            side.d.ProcessedTotals[((side.d.MepsanStore[4])&0x0F)-1][TotalRequestType][7] = (side.d.totalsNozzle[((side.d.MepsanStore[4])&0x0F)-1][TotalRequestType][3] & 0x0F) + 0x30;
+            side.d.ProcessedTotals[((side.d.MepsanStore[4])&0x0F)-1][TotalRequestType][8] = (side.d.totalsNozzle[((side.d.MepsanStore[4])&0x0F)-1][TotalRequestType][4] >> 4) + 0x30;
+            side.d.ProcessedTotals[((side.d.MepsanStore[4])&0x0F)-1][TotalRequestType][9] = (side.d.totalsNozzle[((side.d.MepsanStore[4])&0x0F)-1][TotalRequestType][4] & 0x0F) + 0x30;
+            
+            EnablePin_Write (1u);
+            UART_1_PutChar((0x50|address));
+            UART_1_PutChar(0xC0|(side.d.MepsanStore[1]&0x0F));
+            UART_1_PutChar(0xFA); 
+            CyDelay(4);
+            EnablePin_Write (0u);
+        }
+        if(side.d.MepsanStore[2] == 0x02){
+            for(uint8 x = 4; x < 8; x++ ){
+                side.d.volumeSale[x-4] = side.d.MepsanStore[x];
+                side.d.moneySale[x-4] = side.d.MepsanStore[x+4];
+            }
+            side.d.ProcessedvolumeSale[0] = (side.d.volumeSale[0]  >> 4) + 0x30;
+            side.d.ProcessedvolumeSale[1] = (side.d.volumeSale[0]  & 0x0F) + 0x30;
+            side.d.ProcessedvolumeSale[2] = (side.d.volumeSale[1]  >> 4) + 0x30;
+            side.d.ProcessedvolumeSale[3] = (side.d.volumeSale[1]  & 0x0F) + 0x30;
+            side.d.ProcessedvolumeSale[4] = (side.d.volumeSale[2]  >> 4) + 0x30;
+            side.d.ProcessedvolumeSale[5] = (side.d.volumeSale[2]  & 0x0F) + 0x30;
+            side.d.ProcessedvolumeSale[6] = (side.d.volumeSale[3]  >> 4) + 0x30;
+            side.d.ProcessedvolumeSale[7] = (side.d.volumeSale[3]  & 0x0F) + 0x30;
+            
+            side.d.ProcessedmoneySale[0] = (side.d.moneySale[0]  >> 4) + 0x30;
+            side.d.ProcessedmoneySale[1] = (side.d.moneySale[0]  & 0x0F) + 0x30;
+            side.d.ProcessedmoneySale[2] = (side.d.moneySale[1]  >> 4) + 0x30;
+            side.d.ProcessedmoneySale[3] = (side.d.moneySale[1]  & 0x0F) + 0x30;
+            side.d.ProcessedmoneySale[4] = (side.d.moneySale[2]  >> 4) + 0x30;
+            side.d.ProcessedmoneySale[5] = (side.d.moneySale[2]  & 0x0F) + 0x30;
+            side.d.ProcessedmoneySale[6] = (side.d.moneySale[3]  >> 4) + 0x30;
+            side.d.ProcessedmoneySale[7] = (side.d.moneySale[3]  & 0x0F) + 0x30;
+            
+            Receipt = 4;
+            EnablePin_Write (0u);
         }
     } 
 }
@@ -190,7 +355,7 @@ uint8 Authorize(uint8 address){
     EnablePin_Write (1u);
     MepsanSendTo[0] = (0x50|address);
     MepsanSendTo[1] = (0x30);
-    MepsanSendTo[2] = (address + 1);
+    MepsanSendTo[2] = (0x01);
     MepsanSendTo[3] = (0x01);
     MepsanSendTo[4] = (MEPSAN_AUTHORIZE);
     CRC    = gen_crc16(MepsanSendTo,5);
@@ -264,37 +429,40 @@ uint8 PumpState(uint8 address)
     UART_1_PutChar((0x50|address));
     UART_1_PutChar(0x20);
     UART_1_PutChar(0xFA); 
-    CyDelay(4);
+    CyDelay(3);
     EnablePin_Write (0u);
-    size = UART_1_GetRxBufferSize();   
-    MepsanResponse[0] = size;
+    size = UART_1_GetRxBufferSize();       
     for(uint8 MepRx = 1; MepRx < size + 1; MepRx++){
         MepsanResponse[MepRx] = UART_1_ReadRxData();
-    }          
-    UART_1_ClearRxBuffer();
-    if(size > 3)
-        GetResponse();
-    CyDelay(300); 
-    if(address == side.a.dir){
-        for(uint8 MepRx = 0; MepRx < size; MepRx++){
-            side.a.MepsanStore[MepRx] = MepsanResponse[MepRx];
-        }        
-    }
-    if(address == side.b.dir){
-        for(uint8 MepRx = 0; MepRx < size; MepRx++){
-            side.b.MepsanStore[MepRx] = MepsanResponse[MepRx];
-        }
-    }
-    if(address == side.c.dir){
-        for(uint8 MepRx = 0; MepRx < size; MepRx++){
-            side.c.MepsanStore[MepRx] = MepsanResponse[MepRx];
-        }
-    }
-    if(address == side.d.dir){
-        for(uint8 MepRx = 0; MepRx < size; MepRx++){
-            side.d.MepsanStore[MepRx] = MepsanResponse[MepRx];
-        }
     } 
+    MepsanResponse[0] = size;
+    UART_1_ClearRxBuffer();
+    if(size > 3){
+        GetResponse();
+        CyDelay(100);
+    }else{
+        CyDelay(100); 
+        if(address == side.a.dir){
+            for(uint8 MepRx = 0; MepRx < size; MepRx++){
+                side.a.MepsanStore[MepRx] = MepsanResponse[MepRx];
+            }        
+        }
+        if(address == side.b.dir){
+            for(uint8 MepRx = 0; MepRx < size; MepRx++){
+                side.b.MepsanStore[MepRx] = MepsanResponse[MepRx];
+            }
+        }
+        if(address == side.c.dir){
+            for(uint8 MepRx = 0; MepRx < size; MepRx++){
+                side.c.MepsanStore[MepRx] = MepsanResponse[MepRx];
+            }
+        }
+        if(address == side.d.dir){
+            for(uint8 MepRx = 0; MepRx < size; MepRx++){
+                side.d.MepsanStore[MepRx] = MepsanResponse[MepRx];
+            }
+        } 
+    }
     if(size>=1){              
         return MepsanResponse[1];
     }
@@ -414,47 +582,3 @@ void GetACK(){
     UART_1_ClearRxBuffer();
 }
 
-
-void ProccessResponse(uint8 address){
-    uint8 ValidateA,ValidateB,x;            
-    if(address == side.a.dir){
-        ValidateA = (side.a.MepsanStore[1]|0xF0);
-        ValidateB =  side.a.MepsanStore[2];
-        if(ValidateB == 0x65){
-            for(x = 5; x < side.a.MepsanStore[3]+5; x++ ){
-                side.a.totalsNozzle[(side.a.MepsanStore[4])&0x0F][(side.a.MepsanStore[4]&0xF0)>>4][x] = side.a.MepsanStore[x] ;
-            }
-        }
-//        for(uint8 MepRx = 0; MepRx < 50; MepRx++){
-//            side.a.MepsanStore[MepRx] = MepsanResponse[MepRx];
-//        }
-    }
-//    if(address == side.b.dir){
-//        for(uint8 MepRx = 0; MepRx < 50; MepRx++){
-//            side.b.MepsanStore[MepRx] = MepsanResponse[MepRx];
-//        }
-//    }
-//    if(address == side.c.dir){
-//        for(uint8 MepRx = 0; MepRx < 50; MepRx++){
-//            side.c.MepsanStore[MepRx] = MepsanResponse[MepRx];
-//        }
-//    }
-//    if(address == side.d.dir){
-//        for(uint8 MepRx = 0; MepRx < 50; MepRx++){
-//            side.d.MepsanStore[MepRx] = MepsanResponse[MepRx];
-//        }
-//    }
-    
-    
-    
-    
-    
-    
-    UART_1_ClearRxBuffer();        
-    if(ValidateA == 0xC0 && ValidateB != 0x65){
-        GetACK();
-    }
-    if(ValidateB == 0x65){
-        GetTotal();
-    }    
-}
