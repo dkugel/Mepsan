@@ -61,11 +61,24 @@ uint8 PRN_SIGNATURE[13]   = "Firma      : ";
 uint8 PRN_ID[13]          = "Cedula     : ";
 uint8 PRN_CURRENCY[1]     = "$";
 uint8 SEPARATOR[24]       = "************************";
-
+uint8 ASK_TIME[]={0x5A, 0xA5, 0x03, 0x81, 0x20, 0x07};
 
 
 
 void PrintReceipt(uint8 address){
+    int8 screen_size;
+    for(uint8 LCDRx = 0; LCDRx < 6; LCDRx++){
+        screen_PutChar(ASK_TIME[LCDRx]);
+    }
+    CyDelay(4);
+    screen_size = screen_GetRxBufferSize();
+    if(screen_size >= 13 ){
+        for(uint8 LCDRx = 0; LCDRx < screen_size; LCDRx++){
+            touch1[LCDRx] = screen_ReadRxData();
+        }
+        screen_size = 0;
+    }
+    
     if(address == side.a.dir){
         for(uint8 x = 0; x < 22; x ++){
             UART_3_PutChar(msn_footer2[x]);
@@ -82,6 +95,8 @@ void PrintReceipt(uint8 address){
         for(uint8 x = 0; x < 13; x ++){
             UART_3_PutChar(msn_ppu[x]);
         }
+        UART_3_PutChar(PRN_CURRENCY[0]);  
+        UART_3_PutChar(' ');
         for(uint8 x = 1; x < 6; x ++){
             UART_3_PutChar(side.a.ProcessedPPU[0][x]);
         }
@@ -89,7 +104,8 @@ void PrintReceipt(uint8 address){
         for(uint8 x = 0; x < 13; x ++){
             UART_3_PutChar(msn_din[x]);
         }     
-        UART_3_PutChar(PRN_CURRENCY[0]);        
+        UART_3_PutChar(PRN_CURRENCY[0]);  
+        UART_3_PutChar(' ');
         for(uint8 x = 0; x < 8; x ++){
             UART_3_PutChar(side.a.ProcessedmoneySale[x]);
         } 
@@ -101,7 +117,8 @@ void PrintReceipt(uint8 address){
             if((8-x) == DecVol)
                 UART_3_PutChar('.');
             UART_3_PutChar(side.a.ProcessedvolumeSale[x]);        
-        }            
+        }
+        UART_3_PutChar(' ');
         UART_3_PutChar(VolSimbol[0]);           
         UART_3_PutChar(LINE_FEED);
         for(uint8 x = 0; x < 13; x ++){
@@ -130,10 +147,28 @@ void PrintReceipt(uint8 address){
         for(uint8 x = 0; x < 13; x ++){
             UART_3_PutChar(msn_hora[x]);
         }
+        UART_3_PutChar(((touch1[10] >> 4) + 0x30)) ;
+        UART_3_PutChar(((touch1[10] & 0x0F) + 0x30));
+        UART_3_PutChar(':');
+        UART_3_PutChar(((touch1[11] >> 4) + 0x30)) ;
+        UART_3_PutChar(((touch1[11] & 0x0F) + 0x30));
+        UART_3_PutChar(':');
+        UART_3_PutChar(((touch1[12] >> 4) + 0x30)) ;
+        UART_3_PutChar(((touch1[12] & 0x0F) + 0x30));
+
         UART_3_PutChar(LINE_FEED);
         for(uint8 x = 0; x < 13; x ++){
             UART_3_PutChar(msn_fecha[x]);
-        }
+        }  
+        UART_3_PutChar(((touch1[6] >> 4) + 0x30)) ;
+        UART_3_PutChar(((touch1[6] & 0x0F) + 0x30));
+        UART_3_PutChar('/');
+        UART_3_PutChar(((touch1[7] >> 4) + 0x30)) ;
+        UART_3_PutChar(((touch1[7] & 0x0F) + 0x30));
+        UART_3_PutChar('/');
+        UART_3_PutChar(((touch1[8] >> 4) + 0x30)) ;
+        UART_3_PutChar(((touch1[8] & 0x0F) + 0x30));
+ 
         UART_3_PutChar(LINE_FEED);
         for(uint8 x = 0; x < 24; x ++){
             UART_3_PutChar(SEPARATOR[x]);
@@ -426,6 +461,9 @@ void PrintReceipt(uint8 address){
         }
         UART_3_PutChar(LINE_FEED);
     }
+    UART_3_PutChar(LINE_FEED);
+    UART_3_PutChar(LINE_FEED);
+    UART_3_PutChar(LINE_FEED);
 }
 
 void PrintShift(uint8 address){

@@ -225,10 +225,12 @@
       <Data key="1425177d-0d0e-4468-8bcc-e638e5509a9b" value="Rx_1" />
       <Data key="a2212c6c-cc48-4183-ba7c-e44854e4e0be" value="Tx_2" />
       <Data key="ab34c8d8-1746-4280-bf09-cbd68f88c82d" value="Pin_2" />
+      <Data key="b073a1c1-87ec-4266-a61f-1f6ed114d332" value="screen_rx" />
       <Data key="b6494bb0-e978-4238-a06a-6abffd4a621b/77253644-2d29-412d-87e5-52485cd7a6d7" value="CharLCD_1_LCDPort" />
       <Data key="b6494bb0-e978-4238-a06a-6abffd4a621b/ed092b9b-d398-4703-be89-cebf998501f6" value="CharLCD_1_LCDPort" />
       <Data key="ca4041a2-1c05-4034-87b4-5a50bffcf874" value="Pin_3" />
       <Data key="dbb98464-9dc2-4773-86c1-a8d2bfa30654" value="Tx_1" />
+      <Data key="dcb9bcb5-e05c-4dc9-b013-edf3b7f05728" value="screen_tx" />
       <Data key="ed092b9b-d398-4703-be89-cebf998501f6" value="PWM_Out" />
       <Data key="fdd9153f-929b-4b02-b5ea-63f805612230" value="EnablePin_1" />
     </Group>
@@ -277,6 +279,11 @@
     <Group key="ab34c8d8-1746-4280-bf09-cbd68f88c82d">
       <Group key="0">
         <Data key="Port Format" value="0,1" />
+      </Group>
+    </Group>
+    <Group key="b073a1c1-87ec-4266-a61f-1f6ed114d332">
+      <Group key="0">
+        <Data key="Port Format" value="3,3" />
       </Group>
     </Group>
     <Group key="b6494bb0-e978-4238-a06a-6abffd4a621b/77253644-2d29-412d-87e5-52485cd7a6d7">
@@ -333,6 +340,11 @@
     <Group key="dbb98464-9dc2-4773-86c1-a8d2bfa30654">
       <Group key="0">
         <Data key="Port Format" value="1,7" />
+      </Group>
+    </Group>
+    <Group key="dcb9bcb5-e05c-4dc9-b013-edf3b7f05728">
+      <Group key="0">
+        <Data key="Port Format" value="3,4" />
       </Group>
     </Group>
     <Group key="ed092b9b-d398-4703-be89-cebf998501f6">

@@ -111,13 +111,14 @@ void PollingPos(void){
 int main()
 {
     /* Prepare components */
-    uint8 x;
+    uint8 x,screen_size;
     DecVol = 3;
     PWM_1_Start(); 
     CyGlobalIntEnable;
     UART_1_Start();
     UART_2_Start();
     UART_3_Start();
+    screen_Start();
     Timer_1_Start();    
     side.a.ppuNozzle[0][0]=0x01;
     side.a.ppuNozzle[0][1]=0x04;
@@ -154,38 +155,64 @@ int main()
     side.a.dir = 0x00;
     side.b.dir = 0x01;
     TotalRequestType = 0; 
-    Receipt = 0;        
+    Receipt = 1;        
     for (;;)
     {
-        if(EnablePin_1_Read() == 1u){
-            PriceUpdate(side.b.dir,side.b.ppuNozzle[0]);
-            Authorize(side.b.dir);            
+        screen_size = screen_GetRxBufferSize();
+        if(screen_size >= 9 ){
+            for(uint8 LCDRx = 0; LCDRx < screen_size; LCDRx++){
+                touch1[LCDRx] = screen_ReadRxData();
+            }
+            screen_size = 0;
+        }
+        screen_PutChar(0x5A);
+        if(touch1[8] == 0x30){
+            PriceUpdate(side.a.dir,side.a.ppuNozzle[0]);
+            Authorize(side.a.dir);
+            for(uint8 LCDRx = 0; LCDRx < 20; LCDRx++){
+                touch1[LCDRx] = 0x00;
+            }
         }else{
             PollingPos();                       
         }                
-        if(Kill_Switch_Read() == 0u){
+        if(touch1[8] == 0x35){
+            //PriceUpdate(0,side.a.ppuNozzle[0]);
+            //ReturnStatus(0);
+            PumpState(side.a.dir);            
+            TotalRequest(side.a.dir, TotalRequestType, 1); //dir 0, volume, nozzle 1                           
+            PumpState(side.a.dir); 
+            for(uint8 LCDRx = 0; LCDRx < 20; LCDRx++){
+                touch1[LCDRx] = 0x00;
+            }            
+            PrintReceipt(side.a.dir);                        
+        }        
+         if(touch1[8] == 0x36){
             //PriceUpdate(0,side.a.ppuNozzle[0]);
             //ReturnStatus(0);
             PumpState(side.b.dir);            
             TotalRequest(side.b.dir, TotalRequestType, 1); //dir 0, volume, nozzle 1                           
-            PumpState(side.a.dir);            
-            if(Receipt == 1){
-                Receipt = 0;
-                PrintReceipt(side.a.dir);
-            }
-            if(Receipt == 2){
-                Receipt = 0;
-                PrintReceipt(side.b.dir);
-            }
-            if(Receipt == 4){
-                Receipt = 0;
-                PrintShift(side.a.dir);
-            }
-            if(Receipt == 5){
-                Receipt = 0;
-                PrintShift(side.b.dir);
-            }
+            PumpState(side.b.dir); 
+            for(uint8 LCDRx = 0; LCDRx < 20; LCDRx++){
+                touch1[LCDRx] = 0x00;
+            }            
+            PrintReceipt(side.b.dir);
+                       
         }        
+         if(touch1[8] == 0x37){
+            //PriceUpdate(0,side.a.ppuNozzle[0]);
+            //ReturnStatus(0);
+            PumpState(side.a.dir);            
+            TotalRequest(side.a.dir, TotalRequestType, 1); //dir 0, volume, nozzle 1                           
+            PumpState(side.a.dir); 
+            PumpState(side.b.dir);            
+            TotalRequest(side.b.dir, TotalRequestType, 1); //dir 0, volume, nozzle 1                           
+            PumpState(side.b.dir);
+            for(uint8 LCDRx = 0; LCDRx < 20; LCDRx++){
+                touch1[LCDRx] = 0x00;
+            }                        
+            PrintShift(side.a.dir);       
+            PrintShift(side.b.dir);            
+        }                      
     }
 }
 

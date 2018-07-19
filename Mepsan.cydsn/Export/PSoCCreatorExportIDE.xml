@@ -146,6 +146,13 @@
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\UART_3_BOOT.c</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\UART_3_IntClock.c</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\UART_3_IntClock.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\screen.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\screen.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\screen_PM.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\screen_INT.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\screen_BOOT.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\screen_IntClock.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\screen_IntClock.h</File>
         </Files>
       </Folder>
       <Folder BuildType="STRICT" Path="C:\Users\Lenovo\Documents\GitHub\Mepsan\Mepsan.cydsn\Export\ARM_GCC_Generic">

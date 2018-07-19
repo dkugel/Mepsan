@@ -62,10 +62,17 @@
   <file name="C:\Users\Lenovo\Documents\GitHub\Mepsan\Mepsan.cydsn\codegentemp\UART_3_PM.c" value="SOURCE_C;CortexM3;;;;UART_3" />
   <file name="C:\Users\Lenovo\Documents\GitHub\Mepsan\Mepsan.cydsn\codegentemp\UART_3_INT.c" value="SOURCE_C;CortexM3;;;;UART_3" />
   <file name="C:\Users\Lenovo\Documents\GitHub\Mepsan\Mepsan.cydsn\codegentemp\UART_3_BOOT.c" value="SOURCE_C;CortexM3;;;;UART_3" />
+  <file name="C:\Users\Lenovo\Documents\GitHub\Mepsan\Mepsan.cydsn\codegentemp\screen.c" value="SOURCE_C;CortexM3;;;;screen" />
+  <file name="C:\Users\Lenovo\Documents\GitHub\Mepsan\Mepsan.cydsn\codegentemp\screen.h" value="HEADER;;;;;screen" />
+  <file name="C:\Users\Lenovo\Documents\GitHub\Mepsan\Mepsan.cydsn\codegentemp\screen_PM.c" value="SOURCE_C;CortexM3;;;;screen" />
+  <file name="C:\Users\Lenovo\Documents\GitHub\Mepsan\Mepsan.cydsn\codegentemp\screen_INT.c" value="SOURCE_C;CortexM3;;;;screen" />
+  <file name="C:\Users\Lenovo\Documents\GitHub\Mepsan\Mepsan.cydsn\codegentemp\screen_BOOT.c" value="SOURCE_C;CortexM3;;;;screen" />
   <file name="C:\Users\Lenovo\Documents\GitHub\Mepsan\Mepsan.cydsn\codegentemp\UART_1_IntClock.c" value="SOURCE_C;CortexM3;;;;UART_1_IntClock" />
   <file name="C:\Users\Lenovo\Documents\GitHub\Mepsan\Mepsan.cydsn\codegentemp\UART_1_IntClock.h" value="HEADER;;;;;UART_1_IntClock" />
   <file name="C:\Users\Lenovo\Documents\GitHub\Mepsan\Mepsan.cydsn\codegentemp\UART_3_IntClock.c" value="SOURCE_C;CortexM3;;;;UART_3_IntClock" />
   <file name="C:\Users\Lenovo\Documents\GitHub\Mepsan\Mepsan.cydsn\codegentemp\UART_3_IntClock.h" value="HEADER;;;;;UART_3_IntClock" />
+  <file name="C:\Users\Lenovo\Documents\GitHub\Mepsan\Mepsan.cydsn\codegentemp\screen_IntClock.c" value="SOURCE_C;CortexM3;;;;screen_IntClock" />
+  <file name="C:\Users\Lenovo\Documents\GitHub\Mepsan\Mepsan.cydsn\codegentemp\screen_IntClock.h" value="HEADER;;;;;screen_IntClock" />
   <file name="C:\Users\Lenovo\Documents\GitHub\Mepsan\Mepsan.cydsn\codegentemp\cm3gcc.ld" value="LINKER_SCRIPT;;;b98f980c-3bd1-4fc7-a887-c56a20a46fdd;;cy_boot" />
   <file name="C:\Users\Lenovo\Documents\GitHub\Mepsan\Mepsan.cydsn\codegentemp\Cm3RealView.scat" value="LINKER_SCRIPT;;;fdb8e1ae-f83a-46cf-9446-1d703716f38a;;cy_boot" />
   <file name="C:\Users\Lenovo\Documents\GitHub\Mepsan\Mepsan.cydsn\codegentemp\Cm3Start.c" value="SOURCE_C;CortexM3;;;;cy_boot" />

@@ -128,6 +128,11 @@ void GetResponse(void){
             side.a.ProcessedvolumeSale[5] = (side.a.volumeSale[2]  & 0x0F) + 0x30;
             side.a.ProcessedvolumeSale[6] = (side.a.volumeSale[3]  >> 4) + 0x30;
             side.a.ProcessedvolumeSale[7] = (side.a.volumeSale[3]  & 0x0F) + 0x30;
+            for(int8 i = 0; i < 8; i++){
+                if(side.a.ProcessedvolumeSale[i] != 0x30)
+                    break;
+                side.a.ProcessedvolumeSale[i] = 0x00;                
+            }
             
             side.a.ProcessedmoneySale[0] = (side.a.moneySale[0]  >> 4) + 0x30;
             side.a.ProcessedmoneySale[1] = (side.a.moneySale[0]  & 0x0F) + 0x30;
@@ -138,6 +143,11 @@ void GetResponse(void){
             side.a.ProcessedmoneySale[6] = (side.a.moneySale[3]  >> 4) + 0x30;
             side.a.ProcessedmoneySale[7] = (side.a.moneySale[3]  & 0x0F) + 0x30;
             
+            for(int8 i = 0; i < 8; i++){
+                if(side.a.ProcessedmoneySale[i] != 0x30)
+                    break;
+                side.a.ProcessedmoneySale[i] = 0x00;                
+            }
             Receipt = 1;
             EnablePin_Write (0u);
         }
