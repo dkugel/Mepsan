@@ -60,6 +60,8 @@ uint8 PRN_PRESET[13]      = "Valor Prog.: ";
 uint8 PRN_SIGNATURE[13]   = "Firma      : ";
 uint8 PRN_ID[13]          = "Cedula     : ";
 uint8 PRN_CURRENCY[1]     = "$";
+uint8 msn_lecact[16]      ="Valor actual:   ";
+uint8 msn_lecaan[16]      ="Valor anterior: ";
 uint8 SEPARATOR[24]       = "************************";
 uint8 ASK_TIME[]={0x5A, 0xA5, 0x03, 0x81, 0x20, 0x07};
 
@@ -67,6 +69,15 @@ uint8 ASK_TIME[]={0x5A, 0xA5, 0x03, 0x81, 0x20, 0x07};
 
 void PrintReceipt(uint8 address){
     int8 screen_size;
+    int_salenumber++;
+    sale_number[5]=(int_salenumber/10000)+48;
+	sale_number[4]=((int_salenumber%10000)/1000)+48;
+	sale_number[3]=(((int_salenumber%10000)%1000)/100)+48;
+	sale_number[2]=((((int_salenumber%10000)%1000)%100)/10)+48;	
+	sale_number[1]=((((int_salenumber%10000)%1000)%100)%10)+48;
+    for(uint8 i = 1; i<6; i++){
+        EEPROM_1_WriteByte(sale_number[i],i);
+    }
     for(uint8 LCDRx = 0; LCDRx < 6; LCDRx++){
         screen_PutChar(ASK_TIME[LCDRx]);
     }
@@ -340,140 +351,159 @@ void PrintReceipt(uint8 address){
 }
 
 void PrintShift(uint8 address){
+    int_shiftnumber++;
+    shift_number[5]=(int_shiftnumber/10000)+48;
+	shift_number[4]=((int_shiftnumber%10000)/1000)+48;
+	shift_number[3]=(((int_shiftnumber%10000)%1000)/100)+48;
+	shift_number[2]=((((int_shiftnumber%10000)%1000)%100)/10)+48;	
+	shift_number[1]=((((int_shiftnumber%10000)%1000)%100)%10)+48;
+    for(uint8 i = 7; i<13; i++){
+        EEPROM_1_WriteByte(shift_number[i-6],i);
+    }
+    UART_3_PutChar(LINE_FEED);
+	for(uint8 x = 0; x < 22; x ++){
+		UART_3_PutChar(msn_EDS[x]);   // Encabezado de estación
+	}
+	UART_3_PutChar(LINE_FEED);
+	for(uint8 x = 0; x < 22; x ++){
+		UART_3_PutChar(msn_EDS2[x]);
+	}
+	UART_3_PutChar(LINE_FEED);
+	for(uint8 x = 0; x < 22; x ++){
+		UART_3_PutChar(msn_EDS3[x]);
+	}
+	UART_3_PutChar(LINE_FEED);
+	for(uint8 x = 0; x < 22; x ++){
+		UART_3_PutChar(msn_EDS4[x]);
+	}
+	UART_3_PutChar(LINE_FEED);  
+	for(uint8 x = 0; x < 24; x ++){
+		UART_3_PutChar(SEPARATOR[x]); //Separador de sección
+	}
+	UART_3_PutChar(LINE_FEED);
+    /********** FECHA ***************/
+	for(uint8 x = 0; x < 13; x ++){
+		UART_3_PutChar(msn_fecha[x]);
+	} 
+	UART_3_PutChar(((touch1[8] & 0x0F) + 0x30));
+	UART_3_PutChar(((touch1[8] >> 4) + 0x30)) ;
+	UART_3_PutChar('/');
+	UART_3_PutChar(((touch1[7] & 0x0F) + 0x30));
+	UART_3_PutChar(((touch1[7] >> 4) + 0x30)) ;
+	UART_3_PutChar('/');
+	UART_3_PutChar(((touch1[6] & 0x0F) + 0x30));
+    UART_3_PutChar(((touch1[6] >> 4) + 0x30));
     
-    if(address == side.a.dir){
-        for(uint8 x = 0; x < 22; x ++){
-            UART_3_PutChar(msn_footer2[x]);
-        }
-        UART_3_PutChar(LINE_FEED);
-        for(uint8 x = 0; x < 22; x ++){
-            UART_3_PutChar(msn_footer[x]);
-        }
-        UART_3_PutChar(LINE_FEED);
-        for(uint8 x = 0; x < 24; x ++){
-            UART_3_PutChar(SEPARATOR[x]);
-        }
-        UART_3_PutChar(LINE_FEED);
-        for(uint8 x = 0; x < 13; x ++){
-            UART_3_PutChar(msn_voltot[x]);
-        }
-        for(uint8 x = 2; x < 10; x ++){ //recorta los dos primeros datos de totales
+	UART_3_PutChar(LINE_FEED);
+    /********** HORA ***************/
+	for(uint8 x = 0; x < 13; x ++){
+		UART_3_PutChar(msn_hora[x]);
+	}
+	UART_3_PutChar(((touch1[12] & 0x0F) + 0x30));
+	UART_3_PutChar(((touch1[12] >> 4) + 0x30));
+	UART_3_PutChar(':');
+	UART_3_PutChar(((touch1[11] & 0x0F) + 0x30));
+	UART_3_PutChar(((touch1[11] >> 4) + 0x30)) ;
+	UART_3_PutChar(':');
+	UART_3_PutChar(((touch1[10] & 0x0F) + 0x30));
+    UART_3_PutChar(((touch1[10] >> 4) + 0x30)) ;
+    UART_3_PutChar(LINE_FEED);
+    for(uint8 x = 0; x < 24; x ++){
+		UART_3_PutChar(SEPARATOR[x]);
+	}
+    UART_3_PutChar(LINE_FEED); 
+	for(uint8 x = 0; x < 13; x ++){
+		UART_3_PutChar(msn_cierre[x]);
+	}     
+	for(uint8 x = 1; x < 6; x ++){
+		UART_3_PutChar(shift_number[x]);
+	}
+	UART_3_PutChar(LINE_FEED);
+    for(uint8 x = 0; x < 13; x ++){
+        UART_3_PutChar(msn_pos[x]);
+    }
+    UART_3_PutChar(address + 0x31);
+    UART_3_PutChar(LINE_FEED);
+	for(uint8 x = 0; x < 16; x ++){
+		UART_3_PutChar(msn_lecact[x]);
+	}
+	UART_3_PutChar(LINE_FEED);	
+    if(address == side.a.dir){                       
+        for(uint8 x = 0; x < 10; x ++){ 
             if((10-x) == DecVol)
                 UART_3_PutChar('.');
             UART_3_PutChar(side.a.ProcessedTotals[0][0][x]);
         }
         UART_3_PutChar(LINE_FEED);
-        for(uint8 x = 0; x < 13; x ++){
-            UART_3_PutChar(msn_pos[x]);
-        }
-        UART_3_PutChar((side.a.dir)+ 0x31);
-        UART_3_PutChar(LINE_FEED);
-        for(uint8 x = 0; x < 13; x ++){
-            UART_3_PutChar(msn_cierre[x]);
-        }        
-        ///////////////////////////////////////////////
-        UART_3_PutChar(LINE_FEED);
+    	for(uint8 x = 0; x < 16; x ++){
+    		UART_3_PutChar(msn_lecaan[x]);
+    	}
+        
         for(uint8 x = 0; x < 24; x ++){
             UART_3_PutChar(SEPARATOR[x]);
-        }    
-        UART_3_PutChar(LINE_FEED);
-        for(uint8 x = 0; x < 13; x ++){
-            UART_3_PutChar(msn_hora[x]);
-        }                                 //Hora y Fecha
-        UART_3_PutChar(LINE_FEED);
-        for(uint8 x = 0; x < 13; x ++){
-            UART_3_PutChar(msn_fecha[x]);
-        }
-        ///////////////////////////////////////////////        
-        UART_3_PutChar(LINE_FEED);
-        for(uint8 x = 0; x < 24; x ++){
-            UART_3_PutChar(SEPARATOR[x]); //Separador de sección
-        }
-        UART_3_PutChar(LINE_FEED);
-        for(uint8 x = 0; x < 22; x ++){
-            UART_3_PutChar(msn_EDS4[x]);
-        }
-        UART_3_PutChar(LINE_FEED);
-        for(uint8 x = 0; x < 22; x ++){
-            UART_3_PutChar(msn_EDS3[x]);
-        }                                 // Encabezado de estación
-        UART_3_PutChar(LINE_FEED);
-        for(uint8 x = 0; x < 22; x ++){
-            UART_3_PutChar(msn_EDS2[x]);
-        }
-        UART_3_PutChar(LINE_FEED);
-        for(uint8 x = 0; x < 22; x ++){
-            UART_3_PutChar(msn_EDS[x]);
-        }
-        UART_3_PutChar(LINE_FEED);   
+        }            
     }
-    if(address == side.b.dir){
-        for(uint8 x = 0; x < 22; x ++){
-            UART_3_PutChar(msn_footer2[x]);
-        }
-        UART_3_PutChar(LINE_FEED);
-        for(uint8 x = 0; x < 22; x ++){
-            UART_3_PutChar(msn_footer[x]);
-        }
-        UART_3_PutChar(LINE_FEED);
-        for(uint8 x = 0; x < 24; x ++){
-            UART_3_PutChar(SEPARATOR[x]);
-        }
-        UART_3_PutChar(LINE_FEED);
-        for(uint8 x = 0; x < 13; x ++){
-            UART_3_PutChar(msn_voltot[x]);
-        }
-        for(uint8 x = 2; x < 10; x ++){ //recorta los dos primeros datos de totales
+	if(address == side.b.dir){                       
+        for(uint8 x = 0; x < 10; x ++){ 
             if((10-x) == DecVol)
                 UART_3_PutChar('.');
             UART_3_PutChar(side.b.ProcessedTotals[0][0][x]);
         }
         UART_3_PutChar(LINE_FEED);
-        for(uint8 x = 0; x < 13; x ++){
-            UART_3_PutChar(msn_pos[x]);
-        }
-        UART_3_PutChar((side.b.dir)+ 0x31);
-        UART_3_PutChar(LINE_FEED);
-        for(uint8 x = 0; x < 13; x ++){
-            UART_3_PutChar(msn_cierre[x]);
-        }        
-        ///////////////////////////////////////////////
-        UART_3_PutChar(LINE_FEED);
+    	for(uint8 x = 0; x < 16; x ++){
+    		UART_3_PutChar(msn_lecaan[x]);
+    	}
+        
         for(uint8 x = 0; x < 24; x ++){
             UART_3_PutChar(SEPARATOR[x]);
-        }    
-        UART_3_PutChar(LINE_FEED);
-        for(uint8 x = 0; x < 13; x ++){
-            UART_3_PutChar(msn_hora[x]);
-        }                                 //Hora y Fecha
-        UART_3_PutChar(LINE_FEED);
-        for(uint8 x = 0; x < 13; x ++){
-            UART_3_PutChar(msn_fecha[x]);
-        }
-        ///////////////////////////////////////////////        
-        UART_3_PutChar(LINE_FEED);
-        for(uint8 x = 0; x < 24; x ++){
-            UART_3_PutChar(SEPARATOR[x]); //Separador de sección
-        }
-        UART_3_PutChar(LINE_FEED);
-        for(uint8 x = 0; x < 22; x ++){
-            UART_3_PutChar(msn_EDS4[x]);
-        }
-        UART_3_PutChar(LINE_FEED);
-        for(uint8 x = 0; x < 22; x ++){
-            UART_3_PutChar(msn_EDS3[x]);
-        }                                 // Encabezado de estación
-        UART_3_PutChar(LINE_FEED);
-        for(uint8 x = 0; x < 22; x ++){
-            UART_3_PutChar(msn_EDS2[x]);
-        }
-        UART_3_PutChar(LINE_FEED);
-        for(uint8 x = 0; x < 22; x ++){
-            UART_3_PutChar(msn_EDS[x]);
-        }
-        UART_3_PutChar(LINE_FEED);   
+        }           
     }
+	if(address == side.c.dir){                       
+        for(uint8 x = 0; x < 10; x ++){ 
+            if((10-x) == DecVol)
+                UART_3_PutChar('.');
+            UART_3_PutChar(side.c.ProcessedTotals[0][0][x]);
+        }
+        UART_3_PutChar(LINE_FEED);
+    	for(uint8 x = 0; x < 16; x ++){
+    		UART_3_PutChar(msn_lecaan[x]);
+    	}
+        
+        for(uint8 x = 0; x < 24; x ++){
+            UART_3_PutChar(SEPARATOR[x]);
+        }   
+    }
+	if(address == side.d.dir){                       
+        for(uint8 x = 0; x < 10; x ++){ 
+            if((10-x) == DecVol)
+                UART_3_PutChar('.');
+            UART_3_PutChar(side.d.ProcessedTotals[0][0][x]);
+        }
+        UART_3_PutChar(LINE_FEED);
+    	for(uint8 x = 0; x < 16; x ++){
+    		UART_3_PutChar(msn_lecaan[x]);
+    	}
+        
+        for(uint8 x = 0; x < 24; x ++){
+            UART_3_PutChar(SEPARATOR[x]);
+        }            
+    }
+	UART_3_PutChar(LINE_FEED);
+    /******FOOTER*****/
+	for(uint8 x = 0; x < 24; x ++){
+		UART_3_PutChar(SEPARATOR[x]);
+	}
+	UART_3_PutChar(LINE_FEED);
+	for(uint8 x = 0; x < 22; x ++){
+		UART_3_PutChar(msn_footer[x]);
+	}
+	UART_3_PutChar(LINE_FEED);
+	for(uint8 x = 0; x < 22; x ++){
+		UART_3_PutChar(msn_footer2[x]);
+	}           
+    UART_3_PutChar(LINE_FEED);
 }
+
 
 
 

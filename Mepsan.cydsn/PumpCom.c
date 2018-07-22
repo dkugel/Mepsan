@@ -94,7 +94,6 @@ void GetResponse(void){
             for(uint8 x = 5; x < (side.a.MepsanStore[3]-1) + 5; x++ ){
                 side.a.totalsNozzle[((side.a.MepsanStore[4])&0x0F)-1][TotalRequestType][x-5] = side.a.MepsanStore[x] ;
             }
-            
             side.a.ProcessedTotals[((side.a.MepsanStore[4])&0x0F)-1][TotalRequestType][0] = (side.a.totalsNozzle[((side.a.MepsanStore[4])&0x0F)-1][TotalRequestType][0] >> 4) + 0x30;
             side.a.ProcessedTotals[((side.a.MepsanStore[4])&0x0F)-1][TotalRequestType][1] = (side.a.totalsNozzle[((side.a.MepsanStore[4])&0x0F)-1][TotalRequestType][0] & 0x0F) + 0x30;
             side.a.ProcessedTotals[((side.a.MepsanStore[4])&0x0F)-1][TotalRequestType][2] = (side.a.totalsNozzle[((side.a.MepsanStore[4])&0x0F)-1][TotalRequestType][1] >> 4) + 0x30;
@@ -173,8 +172,6 @@ void GetResponse(void){
             side.b.ProcessedTotals[((side.b.MepsanStore[4])&0x0F)-1][TotalRequestType][8] = (side.b.totalsNozzle[((side.b.MepsanStore[4])&0x0F)-1][TotalRequestType][4] >> 4) + 0x30;
             side.b.ProcessedTotals[((side.b.MepsanStore[4])&0x0F)-1][TotalRequestType][9] = (side.b.totalsNozzle[((side.b.MepsanStore[4])&0x0F)-1][TotalRequestType][4] & 0x0F) + 0x30;
             
-            Receipt = 5;
-            
             EnablePin_Write (1u);
             UART_1_PutChar((0x50|address));
             UART_1_PutChar(0xC0|(side.b.MepsanStore[1]&0x0F));
@@ -204,8 +201,7 @@ void GetResponse(void){
             side.b.ProcessedmoneySale[5] = (side.b.moneySale[2]  & 0x0F) + 0x30;
             side.b.ProcessedmoneySale[6] = (side.b.moneySale[3]  >> 4) + 0x30;
             side.b.ProcessedmoneySale[7] = (side.b.moneySale[3]  & 0x0F) + 0x30;
-            
-            Receipt = 2;
+
             EnablePin_Write (0u);
         }
     }
@@ -259,7 +255,6 @@ void GetResponse(void){
             side.c.ProcessedmoneySale[6] = (side.c.moneySale[3]  >> 4) + 0x30;
             side.c.ProcessedmoneySale[7] = (side.c.moneySale[3]  & 0x0F) + 0x30;
             
-            Receipt = 3;
             EnablePin_Write (0u);
         }
     }
@@ -313,7 +308,6 @@ void GetResponse(void){
             side.d.ProcessedmoneySale[6] = (side.d.moneySale[3]  >> 4) + 0x30;
             side.d.ProcessedmoneySale[7] = (side.d.moneySale[3]  & 0x0F) + 0x30;
             
-            Receipt = 4;
             EnablePin_Write (0u);
         }
     } 

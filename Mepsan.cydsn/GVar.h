@@ -16,7 +16,10 @@
 uint16 PollCounter;
 uint8 CurrentState;
 uint8 Receipt;
-
+uint8 sale_number[6];
+uint8 int_salenumber;
+uint8 shift_number[6];
+uint8 int_shiftnumber;
 
 /*
 *********************************************************************************************************

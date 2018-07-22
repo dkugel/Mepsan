@@ -120,7 +120,31 @@ int main()
     UART_3_Start();
     screen_Start();
     EEPROM_1_Start();
+    if(EEPROM_1_ReadByte(0) == 0x5A){
+        for(x=0;x<6;x++){
+    		sale_number[x]=EEPROM_1_ReadByte(x);
+    	}
+    }else{
+        EEPROM_1_WriteByte(0x5A,0);
+        for(x=1;x<6;x++){
+    		sale_number[x]='0';
+    	}
+    }
+    int_salenumber=((sale_number[5]&0x0F)*10000)+((sale_number[4]&0x0F)*1000)+((sale_number[3]&0x0F)*100)+((sale_number[2]&0x0F)*10)+((sale_number[1]&0x0F));
+    if(EEPROM_1_ReadByte(6) == 0x5A){
+        for(x=0;x<6;x++){
+    		shift_number[x+6]=EEPROM_1_ReadByte(x+6);
+    	}
+    }else{
+        EEPROM_1_WriteByte(0x5A,0);
+        for(x=1;x<6;x++){
+    		shift_number[x+6]='0';
+    	}
+    }
+    int_shiftnumber=((shift_number[5]&0x0F)*10000)+((shift_number[4]&0x0F)*1000)+((shift_number[3]&0x0F)*100)+((shift_number[2]&0x0F)*10)+((shift_number[1]&0x0F));
+    
     Timer_1_Start();    
+    
     side.a.ppuNozzle[0][0]=0x01;
     side.a.ppuNozzle[0][1]=0x04;
     side.a.ppuNozzle[0][2]=0x20;
