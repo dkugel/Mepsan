@@ -67,6 +67,8 @@
   <file name="C:\Users\Lenovo\Documents\GitHub\Mepsan\Mepsan.cydsn\codegentemp\screen_PM.c" value="SOURCE_C;CortexM3;;;;screen" />
   <file name="C:\Users\Lenovo\Documents\GitHub\Mepsan\Mepsan.cydsn\codegentemp\screen_INT.c" value="SOURCE_C;CortexM3;;;;screen" />
   <file name="C:\Users\Lenovo\Documents\GitHub\Mepsan\Mepsan.cydsn\codegentemp\screen_BOOT.c" value="SOURCE_C;CortexM3;;;;screen" />
+  <file name="C:\Users\Lenovo\Documents\GitHub\Mepsan\Mepsan.cydsn\codegentemp\EEPROM_1.c" value="SOURCE_C;CortexM3;;;;EEPROM_1" />
+  <file name="C:\Users\Lenovo\Documents\GitHub\Mepsan\Mepsan.cydsn\codegentemp\EEPROM_1.h" value="HEADER;;;;;EEPROM_1" />
   <file name="C:\Users\Lenovo\Documents\GitHub\Mepsan\Mepsan.cydsn\codegentemp\UART_1_IntClock.c" value="SOURCE_C;CortexM3;;;;UART_1_IntClock" />
   <file name="C:\Users\Lenovo\Documents\GitHub\Mepsan\Mepsan.cydsn\codegentemp\UART_1_IntClock.h" value="HEADER;;;;;UART_1_IntClock" />
   <file name="C:\Users\Lenovo\Documents\GitHub\Mepsan\Mepsan.cydsn\codegentemp\UART_3_IntClock.c" value="SOURCE_C;CortexM3;;;;UART_3_IntClock" />

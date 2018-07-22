@@ -38,6 +38,7 @@
 #include "EnablePin_1.h"
 #include "UART_3.h"
 #include "screen.h"
+#include "EEPROM_1.h"
 #include "UART_1_IntClock.h"
 #include "UART_3_IntClock.h"
 #include "screen_IntClock.h"

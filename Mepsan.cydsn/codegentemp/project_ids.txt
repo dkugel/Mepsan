@@ -1,8 +1,7 @@
-C:\Users\Lenovo\Documents\GitHub\Mepsan\Mepsan.cydsn\Mepsan.cyprj|b58fe0df-7ac1-43b9-bdaf-cc88181a1715
-C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|f123ec39-fe0b-402b-b16a-9efb62827de8
-C:\Users\Lenovo\Documents\PSoC Creator\4.2\Downloads ( 4.2).cylib\Downloads ( 4.2).cyprj|61052363-4164-4dab-ac33-e94a64fe1e16
-C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|6e11ccdd-751b-43a7-b872-7a7662eef8c9
-C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|c6672ffc-91cc-4d41-9db1-ab9ac136a501
-C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|79223627-fe6e-4fb3-8c99-dc89ce153aa8
-C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\default\CyReferenceLibrary\CyReferenceLibrary.cylib\CyReferenceLibrary.cyprj|ceb7fd08-331c-4df3-b82e-9e9564541e80
-C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\dev\psoc3\AnalogDevice\PSoC35AnalogDevice.cylib\PSoC35AnalogDevice.cyprj|b9e12839-0a22-4934-9a30-afe97f2c2990
+C:\Users\Lenovo\Documents\GitHub\Mepsan\Mepsan.cydsn\Mepsan.cyprj|0880aad5-25e3-4f0e-9265-95f954609b36
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|9d6ab686-3cdb-4389-b3ff-09704da2b965
+C:\Users\Lenovo\Documents\PSoC Creator\4.2\Downloads ( 4.2).cylib\Downloads ( 4.2).cyprj|209108ca-43a4-49b1-8966-07c0f60c3402
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|8adc3322-8c79-44ef-8d6a-0f1a7c06bea3
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|28308676-fa11-4cbe-b755-8b12f7234059
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|1f7e80a7-9aa2-47ef-97a8-a95312ce0be2
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\default\CyReferenceLibrary\CyReferenceLibrary.cylib\CyReferenceLibrary.cyprj|266ae9d3-2e45-45f3-87a4-6a0a9c75996b

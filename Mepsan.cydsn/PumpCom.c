@@ -104,10 +104,12 @@ void GetResponse(void){
             side.a.ProcessedTotals[((side.a.MepsanStore[4])&0x0F)-1][TotalRequestType][6] = (side.a.totalsNozzle[((side.a.MepsanStore[4])&0x0F)-1][TotalRequestType][3] >> 4) + 0x30;
             side.a.ProcessedTotals[((side.a.MepsanStore[4])&0x0F)-1][TotalRequestType][7] = (side.a.totalsNozzle[((side.a.MepsanStore[4])&0x0F)-1][TotalRequestType][3] & 0x0F) + 0x30;
             side.a.ProcessedTotals[((side.a.MepsanStore[4])&0x0F)-1][TotalRequestType][8] = (side.a.totalsNozzle[((side.a.MepsanStore[4])&0x0F)-1][TotalRequestType][4] >> 4) + 0x30;
-            side.a.ProcessedTotals[((side.a.MepsanStore[4])&0x0F)-1][TotalRequestType][9] = (side.a.totalsNozzle[((side.a.MepsanStore[4])&0x0F)-1][TotalRequestType][4] & 0x0F) + 0x30;
-            
-            Receipt = 4;
-            
+            side.a.ProcessedTotals[((side.a.MepsanStore[4])&0x0F)-1][TotalRequestType][9] = (side.a.totalsNozzle[((side.a.MepsanStore[4])&0x0F)-1][TotalRequestType][4] & 0x0F) + 0x30;                        
+            for(int8 i = 0; i < 8; i++){
+                if(side.a.ProcessedTotals[((side.a.MepsanStore[4])&0x0F)-1][TotalRequestType][i] != 0x30)
+                    break;
+                side.a.ProcessedTotals[((side.a.MepsanStore[4])&0x0F)-1][TotalRequestType][i] = 0x00;                
+            }
             EnablePin_Write (1u);
             UART_1_PutChar((0x50|address));
             UART_1_PutChar(0xC0|(side.a.MepsanStore[1]&0x0F));
@@ -133,7 +135,6 @@ void GetResponse(void){
                     break;
                 side.a.ProcessedvolumeSale[i] = 0x00;                
             }
-            
             side.a.ProcessedmoneySale[0] = (side.a.moneySale[0]  >> 4) + 0x30;
             side.a.ProcessedmoneySale[1] = (side.a.moneySale[0]  & 0x0F) + 0x30;
             side.a.ProcessedmoneySale[2] = (side.a.moneySale[1]  >> 4) + 0x30;

@@ -119,6 +119,7 @@ int main()
     UART_2_Start();
     UART_3_Start();
     screen_Start();
+    EEPROM_1_Start();
     Timer_1_Start();    
     side.a.ppuNozzle[0][0]=0x01;
     side.a.ppuNozzle[0][1]=0x04;
