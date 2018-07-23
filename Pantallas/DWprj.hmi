@@ -1,0 +1,13 @@
+[INIT]
+PICFIX=1
+SCREENDSIZE=480X272
+SPADDRESS=5000
+VARCount=64
+[IMG]
+0=0_Screen.bmp
+1=1_Screen.bmp
+2=2_Screen.bmp
+3=3_Screen.bmp
+4=4_Screen.bmp
+5=5_Screen.bmp
+6=6_Screen.bmp
