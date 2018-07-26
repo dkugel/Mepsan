@@ -12,6 +12,6 @@
 #include <project.h>
 
 void PrintReceipt(uint8 address);
-void PrintShift(uint8 address);
+void PrintShift(void);
 
 /* [] END OF FILE */

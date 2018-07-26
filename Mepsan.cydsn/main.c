@@ -111,7 +111,10 @@ void PollingPos(void){
 int main()
 {
     /* Prepare components */
-    uint8 x,screen_size;
+    uint8 x,screen_size,W_autorize;
+    uint8 passw[4]={'1','2','3','4'};
+    uint8 change_pic[7]={0x5A,0xA5,0x04,0x80,0x03,0x00,0x06};
+    uint8 change_pic2[7]={0x5A,0xA5,0x04,0x80,0x03,0x00,0x09};
     DecVol = 3;
     PWM_1_Start(); 
     CyGlobalIntEnable;
@@ -136,7 +139,7 @@ int main()
     		shift_number[x+6]=EEPROM_1_ReadByte(x+6);
     	}
     }else{
-        EEPROM_1_WriteByte(0x5A,0);
+        EEPROM_1_WriteByte(0x5A,6);
         for(x=1;x<6;x++){
     		shift_number[x+6]='0';
     	}
@@ -180,9 +183,12 @@ int main()
     side.a.dir = 0x00;
     side.b.dir = 0x01;
     TotalRequestType = 0; 
-    Receipt = 1;        
+    W_autorize = 0;        
+    
     for (;;)
     {
+        PollingPos(); 
+        screen_PutChar(0x5A);
         screen_size = screen_GetRxBufferSize();
         if(screen_size >= 9 ){
             for(uint8 LCDRx = 0; LCDRx < screen_size; LCDRx++){
@@ -190,19 +196,43 @@ int main()
             }
             screen_size = 0;
         }
-        screen_PutChar(0x5A);
-        if(touch1[8] == 0x30){
+        if(touch1[8] == 0xAA){
+            W_autorize = 1;
+            for(uint8 LCDRx = 0; LCDRx < 20; LCDRx++){
+                touch1[LCDRx] = 0x00;
+            }
+        }
+        if(touch1[8] == 0x1C){
+            W_autorize = 2;
+            for(uint8 LCDRx = 0; LCDRx < 20; LCDRx++){
+                touch1[LCDRx] = 0x00;
+            }
+        }
+        if(touch1[8] == 0xCA){
+            W_autorize = 3;
+            for(uint8 LCDRx = 0; LCDRx < 20; LCDRx++){
+                touch1[LCDRx] = 0x00;
+            }
+        }
+        
+        if(touch1[8] == 0x0A && W_autorize == 1){
+            W_autorize = 0;
             PriceUpdate(side.a.dir,side.a.ppuNozzle[0]);
             Authorize(side.a.dir);
             for(uint8 LCDRx = 0; LCDRx < 20; LCDRx++){
                 touch1[LCDRx] = 0x00;
             }
-        }else{
-            PollingPos();                       
-        }                
-        if(touch1[8] == 0x35){
-            //PriceUpdate(0,side.a.ppuNozzle[0]);
-            //ReturnStatus(0);
+        }
+        if(touch1[8] == 0x0B && W_autorize == 1){
+            W_autorize = 0;
+            PriceUpdate(side.b.dir,side.b.ppuNozzle[0]);
+            Authorize(side.b.dir);
+            for(uint8 LCDRx = 0; LCDRx < 20; LCDRx++){
+                touch1[LCDRx] = 0x00;
+            }
+        }                                            
+        if(touch1[8] == 0x0A && W_autorize == 2){
+            W_autorize = 0;
             PumpState(side.a.dir);            
             TotalRequest(side.a.dir, TotalRequestType, 1); //dir 0, volume, nozzle 1                           
             PumpState(side.a.dir); 
@@ -211,9 +241,8 @@ int main()
             }            
             PrintReceipt(side.a.dir);                        
         }        
-         if(touch1[8] == 0x36){
-            //PriceUpdate(0,side.a.ppuNozzle[0]);
-            //ReturnStatus(0);
+         if(touch1[8] == 0x0B && W_autorize == 2){
+            W_autorize = 0;
             PumpState(side.b.dir);            
             TotalRequest(side.b.dir, TotalRequestType, 1); //dir 0, volume, nozzle 1                           
             PumpState(side.b.dir); 
@@ -223,7 +252,7 @@ int main()
             PrintReceipt(side.b.dir);
                        
         }        
-         if(touch1[8] == 0x37){
+        if(touch1[8] == 0xCC){
             //PriceUpdate(0,side.a.ppuNozzle[0]);
             //ReturnStatus(0);
             PumpState(side.a.dir);            
@@ -235,9 +264,21 @@ int main()
             for(uint8 LCDRx = 0; LCDRx < 20; LCDRx++){
                 touch1[LCDRx] = 0x00;
             }                        
-            PrintShift(side.a.dir);       
-            PrintShift(side.b.dir);            
-        }                      
+            PrintShift();                  
+        }
+        if(touch1[3] == 0x83 && W_autorize == 3 ){
+             
+            W_autorize = 0;
+            if((touch1[7] == passw[0])&&(touch1[8] == passw[1])&&(touch1[9] == passw[2]) && (touch1[10] == passw[3]) &&(touch1[11] == 0xFF) ){
+                for(uint8 LCDRx = 0; LCDRx < 6; LCDRx++){
+                    screen_PutChar(change_pic[LCDRx]);
+                }
+            }else{                
+                for(uint8 LCDRx = 0; LCDRx < 6; LCDRx++){
+                    screen_PutChar(change_pic2[LCDRx]);
+                }
+            }
+        }
     }
 }
 
