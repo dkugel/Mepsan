@@ -58,7 +58,7 @@ Common symbol       size              file
 
 UART_2_rxBuffer     0x80              .\ARM_GCC_541\Debug\Mepsan.a(UART_2.o)
 sale_number         0x6               .\ARM_GCC_541\Debug\main.o
-side                0x48c             .\ARM_GCC_541\Debug\main.o
+side                0x4ac             .\ARM_GCC_541\Debug\main.o
 crc_hi              0x1               .\ARM_GCC_541\Debug\main.o
 PumpAddress         0xf               .\ARM_GCC_541\Debug\main.o
 MepsanResponse      0x32              .\ARM_GCC_541\Debug\main.o
@@ -72,6 +72,7 @@ shift_number        0x6               .\ARM_GCC_541\Debug\main.o
 int_shiftnumber     0x1               .\ARM_GCC_541\Debug\main.o
 TotalRequestType    0x1               .\ARM_GCC_541\Debug\main.o
 UART_1_rxBuffer     0x80              .\ARM_GCC_541\Debug\Mepsan.a(UART_1.o)
+LCDhose             0x1               .\ARM_GCC_541\Debug\main.o
 Receipt             0x1               .\ARM_GCC_541\Debug\main.o
 Positions           0x1               .\ARM_GCC_541\Debug\main.o
 int_salenumber      0x1               .\ARM_GCC_541\Debug\main.o
@@ -751,7 +752,7 @@ END GROUP
                 0x00000800                ee_size = (CY_APPL_LOADABLE && ! (CY_EE_IN_BTLDR))?(CY_EE_SIZE / CY_APPL_MAX):CY_EE_SIZE
                 [!provide]                PROVIDE (CY_ECC_OFFSET, ecc_offset)
 
-.text           0x00000000     0x61ca
+.text           0x00000000     0x69da
  CREATE_OBJECT_SYMBOLS
                 0x00000000                PROVIDE (__cy_interrupt_vector, RomVectors)
  *(.romvectors)
@@ -772,346 +773,346 @@ END GROUP
  .text.PollingPos
                 0x0000035c      0x1b0 .\ARM_GCC_541\Debug\main.o
                 0x0000035c                PollingPos
- .text.main     0x0000050c      0x748 .\ARM_GCC_541\Debug\main.o
+ .text.main     0x0000050c      0xbac .\ARM_GCC_541\Debug\main.o
                 0x0000050c                main
  .text.gen_crc16
-                0x00000c54       0xfc .\ARM_GCC_541\Debug\PumpCom.o
-                0x00000c54                gen_crc16
+                0x000010b8       0xfc .\ARM_GCC_541\Debug\PumpCom.o
+                0x000010b8                gen_crc16
  .text.GetResponse
-                0x00000d50     0x1b48 .\ARM_GCC_541\Debug\PumpCom.o
-                0x00000d50                GetResponse
+                0x000011b4     0x1c58 .\ARM_GCC_541\Debug\PumpCom.o
+                0x000011b4                GetResponse
  .text.GetAddress
-                0x00002898       0xb0 .\ARM_GCC_541\Debug\PumpCom.o
-                0x00002898                GetAddress
+                0x00002e0c       0xb0 .\ARM_GCC_541\Debug\PumpCom.o
+                0x00002e0c                GetAddress
  .text.Authorize
-                0x00002948       0xdc .\ARM_GCC_541\Debug\PumpCom.o
-                0x00002948                Authorize
+                0x00002ebc       0xdc .\ARM_GCC_541\Debug\PumpCom.o
+                0x00002ebc                Authorize
  .text.PumpState
-                0x00002a24      0x184 .\ARM_GCC_541\Debug\PumpCom.o
-                0x00002a24                PumpState
+                0x00002f98      0x184 .\ARM_GCC_541\Debug\PumpCom.o
+                0x00002f98                PumpState
  .text.PriceUpdate
-                0x00002ba8      0x118 .\ARM_GCC_541\Debug\PumpCom.o
-                0x00002ba8                PriceUpdate
+                0x0000311c      0x114 .\ARM_GCC_541\Debug\PumpCom.o
+                0x0000311c                PriceUpdate
  .text.TotalRequest
-                0x00002cc0      0x10c .\ARM_GCC_541\Debug\PumpCom.o
-                0x00002cc0                TotalRequest
+                0x00003230      0x10c .\ARM_GCC_541\Debug\PumpCom.o
+                0x00003230                TotalRequest
  .text.PrintReceipt
-                0x00002dcc      0xf00 .\ARM_GCC_541\Debug\printer.o
-                0x00002dcc                PrintReceipt
+                0x0000333c      0xf18 .\ARM_GCC_541\Debug\printer.o
+                0x0000333c                PrintReceipt
  .text.PrintShift
-                0x00003ccc      0x7d0 .\ARM_GCC_541\Debug\printer.o
-                0x00003ccc                PrintShift
+                0x00004254      0xa58 .\ARM_GCC_541\Debug\printer.o
+                0x00004254                PrintShift
  .text.CYCONFIGCPY
-                0x0000449c       0x20 .\ARM_GCC_541\Debug\cyfitter_cfg.o
+                0x00004cac       0x20 .\ARM_GCC_541\Debug\cyfitter_cfg.o
  .text.CyClockStartupError
-                0x000044bc        0xc .\ARM_GCC_541\Debug\cyfitter_cfg.o
+                0x00004ccc        0xc .\ARM_GCC_541\Debug\cyfitter_cfg.o
  .text.cfg_dma_init
-                0x000044c8      0x174 .\ARM_GCC_541\Debug\cyfitter_cfg.o
+                0x00004cd8      0x174 .\ARM_GCC_541\Debug\cyfitter_cfg.o
  .text.ClockSetup
-                0x0000463c      0x158 .\ARM_GCC_541\Debug\cyfitter_cfg.o
+                0x00004e4c      0x158 .\ARM_GCC_541\Debug\cyfitter_cfg.o
  .text.AnalogSetDefault
-                0x00004794       0x44 .\ARM_GCC_541\Debug\cyfitter_cfg.o
+                0x00004fa4       0x44 .\ARM_GCC_541\Debug\cyfitter_cfg.o
  .text.cyfitter_cfg
-                0x000047d8      0x100 .\ARM_GCC_541\Debug\cyfitter_cfg.o
-                0x000047d8                cyfitter_cfg
+                0x00004fe8      0x100 .\ARM_GCC_541\Debug\cyfitter_cfg.o
+                0x00004fe8                cyfitter_cfg
  .text.IntDefaultHandler
-                0x000048d8       0x14 .\ARM_GCC_541\Debug\Cm3Start.o
-                0x000048d8                IntDefaultHandler
- .text.Start_c  0x000048ec       0x98 .\ARM_GCC_541\Debug\Cm3Start.o
-                0x000048ec                Start_c
+                0x000050e8       0x14 .\ARM_GCC_541\Debug\Cm3Start.o
+                0x000050e8                IntDefaultHandler
+ .text.Start_c  0x000050fc       0x98 .\ARM_GCC_541\Debug\Cm3Start.o
+                0x000050fc                Start_c
  .text.initialize_psoc
-                0x00004984       0x90 .\ARM_GCC_541\Debug\Cm3Start.o
-                0x00004984                initialize_psoc
+                0x00005194       0x90 .\ARM_GCC_541\Debug\Cm3Start.o
+                0x00005194                initialize_psoc
  .text.PWM_1_Start
-                0x00004a14       0x24 .\ARM_GCC_541\Debug\Mepsan.a(PWM_1.o)
-                0x00004a14                PWM_1_Start
+                0x00005224       0x24 .\ARM_GCC_541\Debug\Mepsan.a(PWM_1.o)
+                0x00005224                PWM_1_Start
  .text.PWM_1_Init
-                0x00004a38       0xbc .\ARM_GCC_541\Debug\Mepsan.a(PWM_1.o)
-                0x00004a38                PWM_1_Init
+                0x00005248       0xbc .\ARM_GCC_541\Debug\Mepsan.a(PWM_1.o)
+                0x00005248                PWM_1_Init
  .text.PWM_1_Enable
-                0x00004af4       0x48 .\ARM_GCC_541\Debug\Mepsan.a(PWM_1.o)
-                0x00004af4                PWM_1_Enable
+                0x00005304       0x48 .\ARM_GCC_541\Debug\Mepsan.a(PWM_1.o)
+                0x00005304                PWM_1_Enable
  .text.PWM_1_WritePeriod
-                0x00004b3c       0x20 .\ARM_GCC_541\Debug\Mepsan.a(PWM_1.o)
-                0x00004b3c                PWM_1_WritePeriod
+                0x0000534c       0x20 .\ARM_GCC_541\Debug\Mepsan.a(PWM_1.o)
+                0x0000534c                PWM_1_WritePeriod
  .text.PWM_1_WriteCompare
-                0x00004b5c       0x20 .\ARM_GCC_541\Debug\Mepsan.a(PWM_1.o)
-                0x00004b5c                PWM_1_WriteCompare
+                0x0000536c       0x20 .\ARM_GCC_541\Debug\Mepsan.a(PWM_1.o)
+                0x0000536c                PWM_1_WriteCompare
  .text.PWM_1_SetInterruptMode
-                0x00004b7c       0x20 .\ARM_GCC_541\Debug\Mepsan.a(PWM_1.o)
-                0x00004b7c                PWM_1_SetInterruptMode
- .text.CyHalt   0x00004b9c       0x18 .\ARM_GCC_541\Debug\Mepsan.a(CyLib.o)
-                0x00004b9c                CyHalt
- .text.CyDelay  0x00004bb4       0x44 .\ARM_GCC_541\Debug\Mepsan.a(CyLib.o)
-                0x00004bb4                CyDelay
+                0x0000538c       0x20 .\ARM_GCC_541\Debug\Mepsan.a(PWM_1.o)
+                0x0000538c                PWM_1_SetInterruptMode
+ .text.CyHalt   0x000053ac       0x18 .\ARM_GCC_541\Debug\Mepsan.a(CyLib.o)
+                0x000053ac                CyHalt
+ .text.CyDelay  0x000053c4       0x44 .\ARM_GCC_541\Debug\Mepsan.a(CyLib.o)
+                0x000053c4                CyDelay
  .text.CyDelayUs
-                0x00004bf8       0x28 .\ARM_GCC_541\Debug\Mepsan.a(CyLib.o)
-                0x00004bf8                CyDelayUs
+                0x00005408       0x28 .\ARM_GCC_541\Debug\Mepsan.a(CyLib.o)
+                0x00005408                CyDelayUs
  .text.CyIntSetVector
-                0x00004c20       0x50 .\ARM_GCC_541\Debug\Mepsan.a(CyLib.o)
-                0x00004c20                CyIntSetVector
+                0x00005430       0x50 .\ARM_GCC_541\Debug\Mepsan.a(CyLib.o)
+                0x00005430                CyIntSetVector
  .text.CyIntSetPriority
-                0x00004c70       0x48 .\ARM_GCC_541\Debug\Mepsan.a(CyLib.o)
-                0x00004c70                CyIntSetPriority
+                0x00005480       0x48 .\ARM_GCC_541\Debug\Mepsan.a(CyLib.o)
+                0x00005480                CyIntSetPriority
  .text.UART_1_Start
-                0x00004cb8       0x24 .\ARM_GCC_541\Debug\Mepsan.a(UART_1.o)
-                0x00004cb8                UART_1_Start
+                0x000054c8       0x24 .\ARM_GCC_541\Debug\Mepsan.a(UART_1.o)
+                0x000054c8                UART_1_Start
  .text.UART_1_Init
-                0x00004cdc       0x58 .\ARM_GCC_541\Debug\Mepsan.a(UART_1.o)
-                0x00004cdc                UART_1_Init
+                0x000054ec       0x58 .\ARM_GCC_541\Debug\Mepsan.a(UART_1.o)
+                0x000054ec                UART_1_Init
  .text.UART_1_Enable
-                0x00004d34       0x68 .\ARM_GCC_541\Debug\Mepsan.a(UART_1.o)
-                0x00004d34                UART_1_Enable
+                0x00005544       0x68 .\ARM_GCC_541\Debug\Mepsan.a(UART_1.o)
+                0x00005544                UART_1_Enable
  .text.UART_1_ReadRxData
-                0x00004d9c       0x90 .\ARM_GCC_541\Debug\Mepsan.a(UART_1.o)
-                0x00004d9c                UART_1_ReadRxData
+                0x000055ac       0x90 .\ARM_GCC_541\Debug\Mepsan.a(UART_1.o)
+                0x000055ac                UART_1_ReadRxData
  .text.UART_1_GetRxBufferSize
-                0x00004e2c       0x90 .\ARM_GCC_541\Debug\Mepsan.a(UART_1.o)
-                0x00004e2c                UART_1_GetRxBufferSize
+                0x0000563c       0x90 .\ARM_GCC_541\Debug\Mepsan.a(UART_1.o)
+                0x0000563c                UART_1_GetRxBufferSize
  .text.UART_1_ClearRxBuffer
-                0x00004ebc       0x80 .\ARM_GCC_541\Debug\Mepsan.a(UART_1.o)
-                0x00004ebc                UART_1_ClearRxBuffer
+                0x000056cc       0x80 .\ARM_GCC_541\Debug\Mepsan.a(UART_1.o)
+                0x000056cc                UART_1_ClearRxBuffer
  .text.UART_1_PutChar
-                0x00004f3c       0x34 .\ARM_GCC_541\Debug\Mepsan.a(UART_1.o)
-                0x00004f3c                UART_1_PutChar
+                0x0000574c       0x34 .\ARM_GCC_541\Debug\Mepsan.a(UART_1.o)
+                0x0000574c                UART_1_PutChar
  .text.UART_1_RXISR
-                0x00004f70       0xdc .\ARM_GCC_541\Debug\Mepsan.a(UART_1_INT.o)
-                0x00004f70                UART_1_RXISR
+                0x00005780       0xdc .\ARM_GCC_541\Debug\Mepsan.a(UART_1_INT.o)
+                0x00005780                UART_1_RXISR
  .text.UART_1_IntClock_Start
-                0x0000504c       0x34 .\ARM_GCC_541\Debug\Mepsan.a(UART_1_IntClock.o)
-                0x0000504c                UART_1_IntClock_Start
+                0x0000585c       0x34 .\ARM_GCC_541\Debug\Mepsan.a(UART_1_IntClock.o)
+                0x0000585c                UART_1_IntClock_Start
  .text.Timer_1_Init
-                0x00005080       0xa0 .\ARM_GCC_541\Debug\Mepsan.a(Timer_1.o)
-                0x00005080                Timer_1_Init
+                0x00005890       0xa0 .\ARM_GCC_541\Debug\Mepsan.a(Timer_1.o)
+                0x00005890                Timer_1_Init
  .text.Timer_1_Enable
-                0x00005120       0x48 .\ARM_GCC_541\Debug\Mepsan.a(Timer_1.o)
-                0x00005120                Timer_1_Enable
+                0x00005930       0x48 .\ARM_GCC_541\Debug\Mepsan.a(Timer_1.o)
+                0x00005930                Timer_1_Enable
  .text.Timer_1_Start
-                0x00005168       0x24 .\ARM_GCC_541\Debug\Mepsan.a(Timer_1.o)
-                0x00005168                Timer_1_Start
+                0x00005978       0x24 .\ARM_GCC_541\Debug\Mepsan.a(Timer_1.o)
+                0x00005978                Timer_1_Start
  .text.Timer_1_SetInterruptMode
-                0x0000518c       0x20 .\ARM_GCC_541\Debug\Mepsan.a(Timer_1.o)
-                0x0000518c                Timer_1_SetInterruptMode
+                0x0000599c       0x20 .\ARM_GCC_541\Debug\Mepsan.a(Timer_1.o)
+                0x0000599c                Timer_1_SetInterruptMode
  .text.Timer_1_WritePeriod
-                0x000051ac       0x24 .\ARM_GCC_541\Debug\Mepsan.a(Timer_1.o)
-                0x000051ac                Timer_1_WritePeriod
+                0x000059bc       0x24 .\ARM_GCC_541\Debug\Mepsan.a(Timer_1.o)
+                0x000059bc                Timer_1_WritePeriod
  .text.Timer_1_WriteCounter
-                0x000051d0       0x20 .\ARM_GCC_541\Debug\Mepsan.a(Timer_1.o)
-                0x000051d0                Timer_1_WriteCounter
+                0x000059e0       0x20 .\ARM_GCC_541\Debug\Mepsan.a(Timer_1.o)
+                0x000059e0                Timer_1_WriteCounter
  .text.UART_2_Start
-                0x000051f0       0x24 .\ARM_GCC_541\Debug\Mepsan.a(UART_2.o)
-                0x000051f0                UART_2_Start
+                0x00005a00       0x24 .\ARM_GCC_541\Debug\Mepsan.a(UART_2.o)
+                0x00005a00                UART_2_Start
  .text.UART_2_Init
-                0x00005214       0x58 .\ARM_GCC_541\Debug\Mepsan.a(UART_2.o)
-                0x00005214                UART_2_Init
+                0x00005a24       0x58 .\ARM_GCC_541\Debug\Mepsan.a(UART_2.o)
+                0x00005a24                UART_2_Init
  .text.UART_2_Enable
-                0x0000526c       0x64 .\ARM_GCC_541\Debug\Mepsan.a(UART_2.o)
-                0x0000526c                UART_2_Enable
+                0x00005a7c       0x64 .\ARM_GCC_541\Debug\Mepsan.a(UART_2.o)
+                0x00005a7c                UART_2_Enable
  .text.UART_2_RXISR
-                0x000052d0       0xdc .\ARM_GCC_541\Debug\Mepsan.a(UART_2_INT.o)
-                0x000052d0                UART_2_RXISR
+                0x00005ae0       0xdc .\ARM_GCC_541\Debug\Mepsan.a(UART_2_INT.o)
+                0x00005ae0                UART_2_RXISR
  .text.EnablePin_Write
-                0x000053ac       0x38 .\ARM_GCC_541\Debug\Mepsan.a(EnablePin.o)
-                0x000053ac                EnablePin_Write
+                0x00005bbc       0x38 .\ARM_GCC_541\Debug\Mepsan.a(EnablePin.o)
+                0x00005bbc                EnablePin_Write
  .text.UART_3_Start
-                0x000053e4       0x24 .\ARM_GCC_541\Debug\Mepsan.a(UART_3.o)
-                0x000053e4                UART_3_Start
+                0x00005bf4       0x24 .\ARM_GCC_541\Debug\Mepsan.a(UART_3.o)
+                0x00005bf4                UART_3_Start
  .text.UART_3_Init
-                0x00005408       0x3c .\ARM_GCC_541\Debug\Mepsan.a(UART_3.o)
-                0x00005408                UART_3_Init
+                0x00005c18       0x3c .\ARM_GCC_541\Debug\Mepsan.a(UART_3.o)
+                0x00005c18                UART_3_Init
  .text.UART_3_Enable
-                0x00005444       0x4c .\ARM_GCC_541\Debug\Mepsan.a(UART_3.o)
-                0x00005444                UART_3_Enable
+                0x00005c54       0x4c .\ARM_GCC_541\Debug\Mepsan.a(UART_3.o)
+                0x00005c54                UART_3_Enable
  .text.UART_3_PutChar
-                0x00005490       0xb8 .\ARM_GCC_541\Debug\Mepsan.a(UART_3.o)
-                0x00005490                UART_3_PutChar
+                0x00005ca0       0xb8 .\ARM_GCC_541\Debug\Mepsan.a(UART_3.o)
+                0x00005ca0                UART_3_PutChar
  .text.UART_3_TXISR
-                0x00005548       0x70 .\ARM_GCC_541\Debug\Mepsan.a(UART_3_INT.o)
-                0x00005548                UART_3_TXISR
+                0x00005d58       0x70 .\ARM_GCC_541\Debug\Mepsan.a(UART_3_INT.o)
+                0x00005d58                UART_3_TXISR
  .text.UART_3_IntClock_Start
-                0x000055b8       0x34 .\ARM_GCC_541\Debug\Mepsan.a(UART_3_IntClock.o)
-                0x000055b8                UART_3_IntClock_Start
+                0x00005dc8       0x34 .\ARM_GCC_541\Debug\Mepsan.a(UART_3_IntClock.o)
+                0x00005dc8                UART_3_IntClock_Start
  .text.screen_Start
-                0x000055ec       0x24 .\ARM_GCC_541\Debug\Mepsan.a(screen.o)
-                0x000055ec                screen_Start
+                0x00005dfc       0x24 .\ARM_GCC_541\Debug\Mepsan.a(screen.o)
+                0x00005dfc                screen_Start
  .text.screen_Init
-                0x00005610       0x6c .\ARM_GCC_541\Debug\Mepsan.a(screen.o)
-                0x00005610                screen_Init
+                0x00005e20       0x6c .\ARM_GCC_541\Debug\Mepsan.a(screen.o)
+                0x00005e20                screen_Init
  .text.screen_Enable
-                0x0000567c       0x78 .\ARM_GCC_541\Debug\Mepsan.a(screen.o)
-                0x0000567c                screen_Enable
+                0x00005e8c       0x78 .\ARM_GCC_541\Debug\Mepsan.a(screen.o)
+                0x00005e8c                screen_Enable
  .text.screen_ReadRxData
-                0x000056f4       0x90 .\ARM_GCC_541\Debug\Mepsan.a(screen.o)
-                0x000056f4                screen_ReadRxData
+                0x00005f04       0x90 .\ARM_GCC_541\Debug\Mepsan.a(screen.o)
+                0x00005f04                screen_ReadRxData
  .text.screen_GetRxBufferSize
-                0x00005784       0x90 .\ARM_GCC_541\Debug\Mepsan.a(screen.o)
-                0x00005784                screen_GetRxBufferSize
+                0x00005f94       0x90 .\ARM_GCC_541\Debug\Mepsan.a(screen.o)
+                0x00005f94                screen_GetRxBufferSize
  .text.screen_PutChar
-                0x00005814       0xb8 .\ARM_GCC_541\Debug\Mepsan.a(screen.o)
-                0x00005814                screen_PutChar
+                0x00006024       0xb8 .\ARM_GCC_541\Debug\Mepsan.a(screen.o)
+                0x00006024                screen_PutChar
  .text.screen_RXISR
-                0x000058cc       0xd8 .\ARM_GCC_541\Debug\Mepsan.a(screen_INT.o)
-                0x000058cc                screen_RXISR
+                0x000060dc       0xd8 .\ARM_GCC_541\Debug\Mepsan.a(screen_INT.o)
+                0x000060dc                screen_RXISR
  .text.screen_TXISR
-                0x000059a4       0x70 .\ARM_GCC_541\Debug\Mepsan.a(screen_INT.o)
-                0x000059a4                screen_TXISR
+                0x000061b4       0x70 .\ARM_GCC_541\Debug\Mepsan.a(screen_INT.o)
+                0x000061b4                screen_TXISR
  .text.screen_IntClock_Start
-                0x00005a14       0x34 .\ARM_GCC_541\Debug\Mepsan.a(screen_IntClock.o)
-                0x00005a14                screen_IntClock_Start
+                0x00006224       0x34 .\ARM_GCC_541\Debug\Mepsan.a(screen_IntClock.o)
+                0x00006224                screen_IntClock_Start
  .text.EEPROM_1_Enable
-                0x00005a48       0x10 .\ARM_GCC_541\Debug\Mepsan.a(EEPROM_1.o)
-                0x00005a48                EEPROM_1_Enable
+                0x00006258       0x10 .\ARM_GCC_541\Debug\Mepsan.a(EEPROM_1.o)
+                0x00006258                EEPROM_1_Enable
  .text.EEPROM_1_Start
-                0x00005a58        0xc .\ARM_GCC_541\Debug\Mepsan.a(EEPROM_1.o)
-                0x00005a58                EEPROM_1_Start
+                0x00006268        0xc .\ARM_GCC_541\Debug\Mepsan.a(EEPROM_1.o)
+                0x00006268                EEPROM_1_Start
  .text.EEPROM_1_WriteByte
-                0x00005a64      0x114 .\ARM_GCC_541\Debug\Mepsan.a(EEPROM_1.o)
-                0x00005a64                EEPROM_1_WriteByte
+                0x00006274      0x114 .\ARM_GCC_541\Debug\Mepsan.a(EEPROM_1.o)
+                0x00006274                EEPROM_1_WriteByte
  .text.EEPROM_1_ReadByte
-                0x00005b78       0x3c .\ARM_GCC_541\Debug\Mepsan.a(EEPROM_1.o)
-                0x00005b78                EEPROM_1_ReadByte
- *fill*         0x00005bb4        0x4 
- .text          0x00005bb8       0x54 .\ARM_GCC_541\Debug\Mepsan.a(CyBootAsmGnu.o)
-                0x00005bb8                CyDelayCycles
-                0x00005bf6                CyEnterCriticalSection
-                0x00005bfe                CyExitCriticalSection
+                0x00006388       0x3c .\ARM_GCC_541\Debug\Mepsan.a(EEPROM_1.o)
+                0x00006388                EEPROM_1_ReadByte
+ *fill*         0x000063c4        0x4 
+ .text          0x000063c8       0x54 .\ARM_GCC_541\Debug\Mepsan.a(CyBootAsmGnu.o)
+                0x000063c8                CyDelayCycles
+                0x00006406                CyEnterCriticalSection
+                0x0000640e                CyExitCriticalSection
  .text.CySetTempInt
-                0x00005c0c       0x7c .\ARM_GCC_541\Debug\Mepsan.a(CyFlash.o)
+                0x0000641c       0x7c .\ARM_GCC_541\Debug\Mepsan.a(CyFlash.o)
  .text.CyFlashGetSpcAlgorithm
-                0x00005c88       0x70 .\ARM_GCC_541\Debug\Mepsan.a(CyFlash.o)
-                0x00005c88                CyFlashGetSpcAlgorithm
+                0x00006498       0x70 .\ARM_GCC_541\Debug\Mepsan.a(CyFlash.o)
+                0x00006498                CyFlashGetSpcAlgorithm
  .text.CySetTemp
-                0x00005cf8       0x24 .\ARM_GCC_541\Debug\Mepsan.a(CyFlash.o)
-                0x00005cf8                CySetTemp
+                0x00006508       0x24 .\ARM_GCC_541\Debug\Mepsan.a(CyFlash.o)
+                0x00006508                CySetTemp
  .text.CyEEPROM_Start
-                0x00005d1c       0x8c .\ARM_GCC_541\Debug\Mepsan.a(CyFlash.o)
-                0x00005d1c                CyEEPROM_Start
+                0x0000652c       0x8c .\ARM_GCC_541\Debug\Mepsan.a(CyFlash.o)
+                0x0000652c                CyEEPROM_Start
  .text.CyEEPROM_ReadReserve
-                0x00005da8       0x30 .\ARM_GCC_541\Debug\Mepsan.a(CyFlash.o)
-                0x00005da8                CyEEPROM_ReadReserve
+                0x000065b8       0x30 .\ARM_GCC_541\Debug\Mepsan.a(CyFlash.o)
+                0x000065b8                CyEEPROM_ReadReserve
  .text.CyEEPROM_ReadRelease
-                0x00005dd8       0x20 .\ARM_GCC_541\Debug\Mepsan.a(CyFlash.o)
-                0x00005dd8                CyEEPROM_ReadRelease
+                0x000065e8       0x20 .\ARM_GCC_541\Debug\Mepsan.a(CyFlash.o)
+                0x000065e8                CyEEPROM_ReadRelease
  .text.CySpcStart
-                0x00005df8       0x48 .\ARM_GCC_541\Debug\Mepsan.a(CySpc.o)
-                0x00005df8                CySpcStart
+                0x00006608       0x48 .\ARM_GCC_541\Debug\Mepsan.a(CySpc.o)
+                0x00006608                CySpcStart
  .text.CySpcReadData
-                0x00005e40       0x54 .\ARM_GCC_541\Debug\Mepsan.a(CySpc.o)
-                0x00005e40                CySpcReadData
+                0x00006650       0x54 .\ARM_GCC_541\Debug\Mepsan.a(CySpc.o)
+                0x00006650                CySpcReadData
  .text.CySpcLoadMultiByte
-                0x00005e94       0xd0 .\ARM_GCC_541\Debug\Mepsan.a(CySpc.o)
-                0x00005e94                CySpcLoadMultiByte
+                0x000066a4       0xd0 .\ARM_GCC_541\Debug\Mepsan.a(CySpc.o)
+                0x000066a4                CySpcLoadMultiByte
  .text.CySpcWriteRow
-                0x00005f64       0x98 .\ARM_GCC_541\Debug\Mepsan.a(CySpc.o)
-                0x00005f64                CySpcWriteRow
+                0x00006774       0x98 .\ARM_GCC_541\Debug\Mepsan.a(CySpc.o)
+                0x00006774                CySpcWriteRow
  .text.CySpcGetTemp
-                0x00005ffc       0x64 .\ARM_GCC_541\Debug\Mepsan.a(CySpc.o)
-                0x00005ffc                CySpcGetTemp
+                0x0000680c       0x64 .\ARM_GCC_541\Debug\Mepsan.a(CySpc.o)
+                0x0000680c                CySpcGetTemp
  .text.CySpcLock
-                0x00006060       0x68 .\ARM_GCC_541\Debug\Mepsan.a(CySpc.o)
-                0x00006060                CySpcLock
+                0x00006870       0x68 .\ARM_GCC_541\Debug\Mepsan.a(CySpc.o)
+                0x00006870                CySpcLock
  .text.CySpcUnlock
-                0x000060c8       0x50 .\ARM_GCC_541\Debug\Mepsan.a(CySpc.o)
-                0x000060c8                CySpcUnlock
+                0x000068d8       0x50 .\ARM_GCC_541\Debug\Mepsan.a(CySpc.o)
+                0x000068d8                CySpcUnlock
  .text.CySpcGetAlgorithm
-                0x00006118       0x44 .\ARM_GCC_541\Debug\Mepsan.a(CySpc.o)
-                0x00006118                CySpcGetAlgorithm
- .text.__errno  0x0000615c        0xc c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-errno.o)
-                0x0000615c                __errno
+                0x00006928       0x44 .\ARM_GCC_541\Debug\Mepsan.a(CySpc.o)
+                0x00006928                CySpcGetAlgorithm
+ .text.__errno  0x0000696c        0xc c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-errno.o)
+                0x0000696c                __errno
  .text.__libc_init_array
-                0x00006168       0x4c c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-init.o)
-                0x00006168                __libc_init_array
- .text.memcpy   0x000061b4       0x16 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memcpy-stub.o)
-                0x000061b4                memcpy
+                0x00006978       0x4c c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-init.o)
+                0x00006978                __libc_init_array
+ .text.memcpy   0x000069c4       0x16 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memcpy-stub.o)
+                0x000069c4                memcpy
  *(.plt)
  *(.gnu.warning)
  *(.glue_7t)
- .glue_7t       0x000061ca        0x0 linker stubs
+ .glue_7t       0x000069da        0x0 linker stubs
  *(.glue_7)
- .glue_7        0x000061ca        0x0 linker stubs
+ .glue_7        0x000069da        0x0 linker stubs
  *(.vfp11_veneer)
- .vfp11_veneer  0x000061ca        0x0 linker stubs
+ .vfp11_veneer  0x000069da        0x0 linker stubs
  *(.bootloader)
  *(.ARM.extab* .gnu.linkonce.armextab.*)
  *(.gcc_except_table)
 
-.v4_bx          0x000061cc        0x0
- .v4_bx         0x000061cc        0x0 linker stubs
+.v4_bx          0x000069dc        0x0
+ .v4_bx         0x000069dc        0x0 linker stubs
 
-.iplt           0x000061cc        0x0
- .iplt          0x000061cc        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
+.iplt           0x000069dc        0x0
+ .iplt          0x000069dc        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
 
 .eh_frame_hdr
  *(.eh_frame_hdr)
 
-.eh_frame       0x000061cc        0x4
+.eh_frame       0x000069dc        0x4
  *(.eh_frame)
- .eh_frame      0x000061cc        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
- .eh_frame      0x000061cc        0x4 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtend.o
+ .eh_frame      0x000069dc        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
+ .eh_frame      0x000069dc        0x4 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtend.o
                 [!provide]                PROVIDE (__exidx_start, .)
 
 .ARM.exidx
  *(.ARM.exidx* .gnu.linkonce.armexidx.*)
-                0x000061d0                __exidx_end = .
+                0x000069e0                __exidx_end = .
 
-.rodata         0x000061d0      0x1a8
+.rodata         0x000069e0      0x1a8
  *(.rodata .rodata.* .gnu.linkonce.r.*)
- .rodata        0x000061d0       0x13 .\ARM_GCC_541\Debug\main.o
- *fill*         0x000061e3        0x1 
- .rodata        0x000061e4      0x158 .\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .rodata        0x000069e0       0x13 .\ARM_GCC_541\Debug\main.o
+ *fill*         0x000069f3        0x1 
+ .rodata        0x000069f4      0x158 .\ARM_GCC_541\Debug\cyfitter_cfg.o
  .rodata.str1.1
-                0x0000633c        0x2 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-impure.o)
-                0x00006340                . = ALIGN (0x4)
- *fill*         0x0000633e        0x2 
+                0x00006b4c        0x2 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-impure.o)
+                0x00006b50                . = ALIGN (0x4)
+ *fill*         0x00006b4e        0x2 
  *(.init)
- .init          0x00006340        0x4 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crti.o
-                0x00006340                _init
- .init          0x00006344        0x8 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtn.o
-                0x0000634c                . = ALIGN (0x4)
-                0x0000634c                __preinit_array_start = .
+ .init          0x00006b50        0x4 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crti.o
+                0x00006b50                _init
+ .init          0x00006b54        0x8 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtn.o
+                0x00006b5c                . = ALIGN (0x4)
+                0x00006b5c                __preinit_array_start = .
  *(.preinit_array)
-                0x0000634c                __preinit_array_end = .
-                0x0000634c                . = ALIGN (0x4)
-                0x0000634c                __init_array_start = .
+                0x00006b5c                __preinit_array_end = .
+                0x00006b5c                . = ALIGN (0x4)
+                0x00006b5c                __init_array_start = .
  *(SORT(.init_array.*))
  *(.init_array)
- .init_array    0x0000634c        0x4 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
- .init_array    0x00006350        0x4 .\ARM_GCC_541\Debug\Cm3Start.o
-                0x00006354                __init_array_end = .
-                0x00006354                . = ALIGN (0x4)
+ .init_array    0x00006b5c        0x4 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
+ .init_array    0x00006b60        0x4 .\ARM_GCC_541\Debug\Cm3Start.o
+                0x00006b64                __init_array_end = .
+                0x00006b64                . = ALIGN (0x4)
  *(.fini)
- .fini          0x00006354        0x4 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crti.o
-                0x00006354                _fini
- .fini          0x00006358        0x8 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtn.o
-                0x00006360                . = ALIGN (0x4)
-                0x00006360                __fini_array_start = .
+ .fini          0x00006b64        0x4 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crti.o
+                0x00006b64                _fini
+ .fini          0x00006b68        0x8 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtn.o
+                0x00006b70                . = ALIGN (0x4)
+                0x00006b70                __fini_array_start = .
  *(.fini_array)
- .fini_array    0x00006360        0x4 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
+ .fini_array    0x00006b70        0x4 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
  *(SORT(.fini_array.*))
-                0x00006364                __fini_array_end = .
-                0x00006364                . = ALIGN (0x4)
+                0x00006b74                __fini_array_end = .
+                0x00006b74                . = ALIGN (0x4)
  *crtbegin.o(.ctors)
  *(EXCLUDE_FILE(*crtend.o) .ctors)
  *(SORT(.ctors.*))
  *crtend.o(.ctors)
-                0x00006364                . = ALIGN (0x4)
+                0x00006b74                . = ALIGN (0x4)
  *crtbegin.o(.dtors)
  *(EXCLUDE_FILE(*crtend.o) .dtors)
  *(SORT(.dtors.*))
  *crtend.o(.dtors)
-                0x00006364                . = ALIGN (0x4)
-                0x00006364                __cy_regions = .
-                0x00006364        0x4 LONG 0x6378 __cy_region_init_ram
-                0x00006368        0x4 LONG 0x1fff80c8 __cy_region_start_data
-                0x0000636c        0x4 LONG 0x360 __cy_region_init_size_ram
-                0x00006370        0x4 LONG 0x6b0 __cy_region_zero_size_ram
-                0x00006374                __cy_regions_end = .
-                0x00006378                . = ALIGN (0x8)
- *fill*         0x00006374        0x4 
-                0x00006378                _etext = .
+                0x00006b74                . = ALIGN (0x4)
+                0x00006b74                __cy_regions = .
+                0x00006b74        0x4 LONG 0x6b88 __cy_region_init_ram
+                0x00006b78        0x4 LONG 0x1fff80c8 __cy_region_start_data
+                0x00006b7c        0x4 LONG 0x358 __cy_region_init_size_ram
+                0x00006b80        0x4 LONG 0x6d0 __cy_region_zero_size_ram
+                0x00006b84                __cy_regions_end = .
+                0x00006b88                . = ALIGN (0x8)
+ *fill*         0x00006b84        0x4 
+                0x00006b88                _etext = .
 
 .cy_checksum_exclude
-                0x00006378        0x0
+                0x00006b88        0x0
  *(.cy_checksum_exclude)
 
 .ramvectors     0x1fff8000       0xc0
@@ -1126,7 +1127,7 @@ END GROUP
  .noinit        0x1fff80c4        0x1 .\ARM_GCC_541\Debug\Mepsan.a(CyLib.o)
                 0x1fff80c4                CyResetStatus
 
-.data           0x1fff80c8      0x360 load address 0x00006378
+.data           0x1fff80c8      0x358 load address 0x00006b88
                 0x1fff80c8                __cy_region_start_data = .
  *(.jcr)
  .jcr           0x1fff80c8        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
@@ -1135,163 +1136,163 @@ END GROUP
  *(.got)
  *(.shdata)
  *(.data .data.* .gnu.linkonce.d.*)
- .data          0x1fff80cc      0x2e6 .\ARM_GCC_541\Debug\printer.o
+ .data          0x1fff80cc      0x2de .\ARM_GCC_541\Debug\printer.o
                 0x1fff80cc                LINE_FEED
                 0x1fff80d0                VolSimbol
                 0x1fff80d4                msn_EDS
                 0x1fff80ec                msn_EDS2
                 0x1fff8104                msn_EDS3
                 0x1fff811c                msn_EDS4
-                0x1fff8134                msn_plate
-                0x1fff813c                msn_footer
-                0x1fff8154                msn_footer2
-                0x1fff816c                msn_diesel
-                0x1fff8174                msn_gasoline
-                0x1fff8180                msn_fecha
-                0x1fff8190                msn_hora
-                0x1fff81a0                msn_placa
-                0x1fff81b0                PRN_MILLEAGE
-                0x1fff81c0                PRN_TRANSTYPE
-                0x1fff81d0                msn_pos
-                0x1fff81e0                msn_product
-                0x1fff81f0                msn_ppu
-                0x1fff8200                msn_vol
-                0x1fff8210                msn_voltot
-                0x1fff8220                msn_din
-                0x1fff8230                msn_cierre
-                0x1fff8240                msn_venta
-                0x1fff8250                msn_numero
-                0x1fff8260                PRN_BALANCE
-                0x1fff8270                PRN_COMPANY
-                0x1fff8280                PRN_ACCOUNT
-                0x1fff8290                PRN_SERIAL
-                0x1fff82a0                PRN_ACCOUNTTYPE
-                0x1fff82b0                PRN_VISITSDAY
-                0x1fff82c0                PRN_VISITSWEEK
-                0x1fff82d0                PRN_VISITSMONTH
-                0x1fff82e0                PRN_VOLUMEDAY
-                0x1fff82f0                PRN_VOLUMEWEEK
-                0x1fff8300                PRN_VOLUMEMONTH
-                0x1fff8310                PRN_MONEYDAY
-                0x1fff8320                PRN_MONEYWEEK
-                0x1fff8330                PRN_MONEYMONTH
-                0x1fff8340                PRN_PRESET
-                0x1fff8350                PRN_SIGNATURE
-                0x1fff8360                PRN_ID
-                0x1fff8370                PRN_CURRENCY
-                0x1fff8374                msn_lecact
-                0x1fff8384                msn_lecaan
-                0x1fff8394                SEPARATOR
-                0x1fff83ac                ASK_TIME
- *fill*         0x1fff83b2        0x2 
- .data          0x1fff83b4       0x10 .\ARM_GCC_541\Debug\Mepsan.a(CyLib.o)
-                0x1fff83b4                cydelay_freq_hz
-                0x1fff83b8                cydelay_freq_khz
-                0x1fff83bc                cydelay_freq_mhz
-                0x1fff83c0                cydelay_32k_ms
+                0x1fff8134                msn_footer
+                0x1fff814c                msn_footer2
+                0x1fff8164                msn_diesel
+                0x1fff816c                msn_gasoline
+                0x1fff8178                msn_fecha
+                0x1fff8188                msn_hora
+                0x1fff8198                msn_placa
+                0x1fff81a8                PRN_MILLEAGE
+                0x1fff81b8                PRN_TRANSTYPE
+                0x1fff81c8                msn_pos
+                0x1fff81d8                msn_product
+                0x1fff81e8                msn_ppu
+                0x1fff81f8                msn_vol
+                0x1fff8208                msn_voltot
+                0x1fff8218                msn_din
+                0x1fff8228                msn_cierre
+                0x1fff8238                msn_venta
+                0x1fff8248                msn_numero
+                0x1fff8258                PRN_BALANCE
+                0x1fff8268                PRN_COMPANY
+                0x1fff8278                PRN_ACCOUNT
+                0x1fff8288                PRN_SERIAL
+                0x1fff8298                PRN_ACCOUNTTYPE
+                0x1fff82a8                PRN_VISITSDAY
+                0x1fff82b8                PRN_VISITSWEEK
+                0x1fff82c8                PRN_VISITSMONTH
+                0x1fff82d8                PRN_VOLUMEDAY
+                0x1fff82e8                PRN_VOLUMEWEEK
+                0x1fff82f8                PRN_VOLUMEMONTH
+                0x1fff8308                PRN_MONEYDAY
+                0x1fff8318                PRN_MONEYWEEK
+                0x1fff8328                PRN_MONEYMONTH
+                0x1fff8338                PRN_PRESET
+                0x1fff8348                PRN_SIGNATURE
+                0x1fff8358                PRN_ID
+                0x1fff8368                PRN_CURRENCY
+                0x1fff836c                msn_lecact
+                0x1fff837c                msn_lecaan
+                0x1fff838c                SEPARATOR
+                0x1fff83a4                ASK_TIME
+ *fill*         0x1fff83aa        0x2 
+ .data          0x1fff83ac       0x10 .\ARM_GCC_541\Debug\Mepsan.a(CyLib.o)
+                0x1fff83ac                cydelay_freq_hz
+                0x1fff83b0                cydelay_freq_khz
+                0x1fff83b4                cydelay_freq_mhz
+                0x1fff83b8                cydelay_32k_ms
  .data.impure_data
-                0x1fff83c4       0x60 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-impure.o)
+                0x1fff83bc       0x60 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-impure.o)
  .data._impure_ptr
-                0x1fff8424        0x4 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-impure.o)
-                0x1fff8424                _impure_ptr
-                0x1fff8428                . = ALIGN (0x8)
+                0x1fff841c        0x4 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-impure.o)
+                0x1fff841c                _impure_ptr
+                0x1fff8420                . = ALIGN (0x8)
  *(.ram)
-                0x1fff8428                _edata = .
+                0x1fff8420                _edata = .
 
-.igot.plt       0x1fff8428        0x0 load address 0x000066d8
- .igot.plt      0x1fff8428        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
+.igot.plt       0x1fff8420        0x0 load address 0x00006ee0
+ .igot.plt      0x1fff8420        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
 
-.bss            0x1fff8428      0x6b0 load address 0x000066d8
-                0x1fff8428                PROVIDE (__bss_start__, .)
+.bss            0x1fff8420      0x6d0 load address 0x00006ee0
+                0x1fff8420                PROVIDE (__bss_start__, .)
  *(.shbss)
  *(.bss .bss.* .gnu.linkonce.b.*)
- .bss           0x1fff8428       0x1c c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
- *fill*         0x1fff8444        0x4 
- .bss           0x1fff8448        0x4 .\ARM_GCC_541\Debug\cyfitter_cfg.o
- .bss           0x1fff844c        0x1 .\ARM_GCC_541\Debug\Mepsan.a(PWM_1.o)
-                0x1fff844c                PWM_1_initVar
- .bss           0x1fff844d        0x7 .\ARM_GCC_541\Debug\Mepsan.a(UART_1.o)
-                0x1fff844d                UART_1_initVar
-                0x1fff844e                UART_1_errorStatus
-                0x1fff844f                UART_1_rxBufferRead
-                0x1fff8450                UART_1_rxBufferWrite
-                0x1fff8451                UART_1_rxBufferLoopDetect
-                0x1fff8452                UART_1_rxBufferOverflow
- .bss           0x1fff8454        0x1 .\ARM_GCC_541\Debug\Mepsan.a(Timer_1.o)
-                0x1fff8454                Timer_1_initVar
- .bss           0x1fff8455        0x7 .\ARM_GCC_541\Debug\Mepsan.a(UART_2.o)
-                0x1fff8455                UART_2_initVar
-                0x1fff8456                UART_2_errorStatus
-                0x1fff8457                UART_2_rxBufferRead
-                0x1fff8458                UART_2_rxBufferWrite
-                0x1fff8459                UART_2_rxBufferLoopDetect
-                0x1fff845a                UART_2_rxBufferOverflow
- .bss           0x1fff845c        0x4 .\ARM_GCC_541\Debug\Mepsan.a(UART_3.o)
-                0x1fff845c                UART_3_initVar
-                0x1fff845d                UART_3_txBufferRead
-                0x1fff845e                UART_3_txBufferWrite
- .bss           0x1fff8460        0x9 .\ARM_GCC_541\Debug\Mepsan.a(screen.o)
-                0x1fff8460                screen_initVar
-                0x1fff8461                screen_txBufferRead
-                0x1fff8462                screen_txBufferWrite
-                0x1fff8463                screen_errorStatus
-                0x1fff8464                screen_rxBufferRead
-                0x1fff8465                screen_rxBufferWrite
-                0x1fff8466                screen_rxBufferLoopDetect
-                0x1fff8467                screen_rxBufferOverflow
- *fill*         0x1fff8469        0x3 
- .bss           0x1fff846c        0x8 .\ARM_GCC_541\Debug\Mepsan.a(CySpc.o)
-                0x1fff846c                SpcLockState
+ .bss           0x1fff8420       0x1c c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
+ *fill*         0x1fff843c        0x4 
+ .bss           0x1fff8440        0x4 .\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .bss           0x1fff8444        0x1 .\ARM_GCC_541\Debug\Mepsan.a(PWM_1.o)
+                0x1fff8444                PWM_1_initVar
+ .bss           0x1fff8445        0x7 .\ARM_GCC_541\Debug\Mepsan.a(UART_1.o)
+                0x1fff8445                UART_1_initVar
+                0x1fff8446                UART_1_errorStatus
+                0x1fff8447                UART_1_rxBufferRead
+                0x1fff8448                UART_1_rxBufferWrite
+                0x1fff8449                UART_1_rxBufferLoopDetect
+                0x1fff844a                UART_1_rxBufferOverflow
+ .bss           0x1fff844c        0x1 .\ARM_GCC_541\Debug\Mepsan.a(Timer_1.o)
+                0x1fff844c                Timer_1_initVar
+ .bss           0x1fff844d        0x7 .\ARM_GCC_541\Debug\Mepsan.a(UART_2.o)
+                0x1fff844d                UART_2_initVar
+                0x1fff844e                UART_2_errorStatus
+                0x1fff844f                UART_2_rxBufferRead
+                0x1fff8450                UART_2_rxBufferWrite
+                0x1fff8451                UART_2_rxBufferLoopDetect
+                0x1fff8452                UART_2_rxBufferOverflow
+ .bss           0x1fff8454        0x4 .\ARM_GCC_541\Debug\Mepsan.a(UART_3.o)
+                0x1fff8454                UART_3_initVar
+                0x1fff8455                UART_3_txBufferRead
+                0x1fff8456                UART_3_txBufferWrite
+ .bss           0x1fff8458        0x9 .\ARM_GCC_541\Debug\Mepsan.a(screen.o)
+                0x1fff8458                screen_initVar
+                0x1fff8459                screen_txBufferRead
+                0x1fff845a                screen_txBufferWrite
+                0x1fff845b                screen_errorStatus
+                0x1fff845c                screen_rxBufferRead
+                0x1fff845d                screen_rxBufferWrite
+                0x1fff845e                screen_rxBufferLoopDetect
+                0x1fff845f                screen_rxBufferOverflow
+ *fill*         0x1fff8461        0x3 
+ .bss           0x1fff8464        0x8 .\ARM_GCC_541\Debug\Mepsan.a(CySpc.o)
+                0x1fff8464                SpcLockState
  *(COMMON)
- COMMON         0x1fff8474      0x536 .\ARM_GCC_541\Debug\main.o
-                0x1fff8474                sale_number
-                0x1fff847c                side
-                0x1fff8908                crc_hi
-                0x1fff890c                PumpAddress
-                0x1fff891c                MepsanResponse
-                0x1fff894e                DecVol
-                0x1fff894f                dirGbr
-                0x1fff8950                MepsanSendTo
-                0x1fff8984                shift_number
-                0x1fff898a                int_shiftnumber
-                0x1fff898b                TotalRequestType
-                0x1fff898c                Receipt
-                0x1fff898d                Positions
-                0x1fff898e                int_salenumber
-                0x1fff8990                CRC
-                0x1fff8992                crc_lo
-                0x1fff8993                CurrentState
-                0x1fff8994                touch1
-                0x1fff89a8                PollCounter
- *fill*         0x1fff89aa        0x2 
- COMMON         0x1fff89ac       0x80 .\ARM_GCC_541\Debug\Mepsan.a(UART_1.o)
-                0x1fff89ac                UART_1_rxBuffer
- COMMON         0x1fff8a2c       0x80 .\ARM_GCC_541\Debug\Mepsan.a(UART_2.o)
-                0x1fff8a2c                UART_2_rxBuffer
- COMMON         0x1fff8aac        0x5 .\ARM_GCC_541\Debug\Mepsan.a(UART_3.o)
-                0x1fff8aac                UART_3_txBuffer
- *fill*         0x1fff8ab1        0x3 
- COMMON         0x1fff8ab4       0x1c .\ARM_GCC_541\Debug\Mepsan.a(screen.o)
-                0x1fff8ab4                screen_txBuffer
-                0x1fff8abc                screen_rxBuffer
- COMMON         0x1fff8ad0        0x2 .\ARM_GCC_541\Debug\Mepsan.a(CyFlash.o)
-                0x1fff8ad0                dieTemperature
-                0x1fff8ad8                . = ALIGN (0x8)
- *fill*         0x1fff8ad2        0x6 
+ COMMON         0x1fff846c      0x556 .\ARM_GCC_541\Debug\main.o
+                0x1fff846c                sale_number
+                0x1fff8474                side
+                0x1fff8920                crc_hi
+                0x1fff8924                PumpAddress
+                0x1fff8934                MepsanResponse
+                0x1fff8966                DecVol
+                0x1fff8967                dirGbr
+                0x1fff8968                MepsanSendTo
+                0x1fff899c                shift_number
+                0x1fff89a2                int_shiftnumber
+                0x1fff89a3                TotalRequestType
+                0x1fff89a4                LCDhose
+                0x1fff89a5                Receipt
+                0x1fff89a6                Positions
+                0x1fff89a7                int_salenumber
+                0x1fff89a8                CRC
+                0x1fff89aa                crc_lo
+                0x1fff89ab                CurrentState
+                0x1fff89ac                touch1
+                0x1fff89c0                PollCounter
+ *fill*         0x1fff89c2        0x2 
+ COMMON         0x1fff89c4       0x80 .\ARM_GCC_541\Debug\Mepsan.a(UART_1.o)
+                0x1fff89c4                UART_1_rxBuffer
+ COMMON         0x1fff8a44       0x80 .\ARM_GCC_541\Debug\Mepsan.a(UART_2.o)
+                0x1fff8a44                UART_2_rxBuffer
+ COMMON         0x1fff8ac4        0x5 .\ARM_GCC_541\Debug\Mepsan.a(UART_3.o)
+                0x1fff8ac4                UART_3_txBuffer
+ *fill*         0x1fff8ac9        0x3 
+ COMMON         0x1fff8acc       0x1c .\ARM_GCC_541\Debug\Mepsan.a(screen.o)
+                0x1fff8acc                screen_txBuffer
+                0x1fff8ad4                screen_rxBuffer
+ COMMON         0x1fff8ae8        0x2 .\ARM_GCC_541\Debug\Mepsan.a(CyFlash.o)
+                0x1fff8ae8                dieTemperature
+                0x1fff8af0                . = ALIGN (0x8)
+ *fill*         0x1fff8aea        0x6 
  *(.ram.b)
-                0x1fff8ad8                _end = .
-                0x1fff8ad8                __end = .
-                0x1fff8ad8                PROVIDE (end, .)
-                0x1fff8ad8                PROVIDE (__bss_end__, .)
-                0x00006378                __cy_region_init_ram = LOADADDR (.data)
-                0x00000360                __cy_region_init_size_ram = (_edata - ADDR (.data))
-                0x000006b0                __cy_region_zero_size_ram = (_end - _edata)
+                0x1fff8af0                _end = .
+                0x1fff8af0                __end = .
+                0x1fff8af0                PROVIDE (end, .)
+                0x1fff8af0                PROVIDE (__bss_end__, .)
+                0x00006b88                __cy_region_init_ram = LOADADDR (.data)
+                0x00000358                __cy_region_init_size_ram = (_edata - ADDR (.data))
+                0x000006d0                __cy_region_zero_size_ram = (_end - _edata)
 
-.heap           0x1fff8ad8       0x80 load address 0x000066d8
-                0x1fff8ad8                . = _end
-                0x1fff8b58                . = (. + 0x80)
- *fill*         0x1fff8ad8       0x80 
-                0x1fff8b58                __cy_heap_limit = .
+.heap           0x1fff8af0       0x80 load address 0x00006ee0
+                0x1fff8af0                . = _end
+                0x1fff8b70                . = (. + 0x80)
+ *fill*         0x1fff8af0       0x80 
+                0x1fff8b70                __cy_heap_limit = .
 
 .stack          0x20007800      0x800
                 0x20007800                __cy_stack_limit = .
@@ -1338,8 +1339,8 @@ END GROUP
  .cymeta        0x90500000        0xc .\ARM_GCC_541\Debug\cymetadata.o
                 0x90500000                cy_metadata
 
-.rel.dyn        0x000066d8        0x0 load address 0x9050000c
- .rel.iplt      0x000066d8        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
+.rel.dyn        0x00006ee0        0x0 load address 0x9050000c
+ .rel.iplt      0x00006ee0        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
 
 .stab
  *(.stab)
@@ -1419,95 +1420,95 @@ END GROUP
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000     0x75bb
+.debug_info     0x00000000     0x7837
  *(.debug_info .gnu.linkonce.wi.*)
- .debug_info    0x00000000      0x5d6 .\ARM_GCC_541\Debug\main.o
- .debug_info    0x000005d6      0xa2f .\ARM_GCC_541\Debug\PumpCom.o
- .debug_info    0x00001005      0x46a .\ARM_GCC_541\Debug\Gbr.o
- .debug_info    0x0000146f     0x10f2 .\ARM_GCC_541\Debug\printer.o
- .debug_info    0x00002561      0x3ce .\ARM_GCC_541\Debug\cyfitter_cfg.o
- .debug_info    0x0000292f      0x139 .\ARM_GCC_541\Debug\cymetadata.o
- .debug_info    0x00002a68      0x32b .\ARM_GCC_541\Debug\Cm3Start.o
- .debug_info    0x00002d93      0x235 .\ARM_GCC_541\Debug\Mepsan.a(PWM_1.o)
- .debug_info    0x00002fc8      0xe51 .\ARM_GCC_541\Debug\Mepsan.a(CyLib.o)
- .debug_info    0x00003e19      0x57a .\ARM_GCC_541\Debug\Mepsan.a(cyPm.o)
- .debug_info    0x00004393      0x5f2 .\ARM_GCC_541\Debug\Mepsan.a(UART_1.o)
- .debug_info    0x00004985      0x149 .\ARM_GCC_541\Debug\Mepsan.a(UART_1_INT.o)
- .debug_info    0x00004ace      0x25d .\ARM_GCC_541\Debug\Mepsan.a(UART_1_IntClock.o)
- .debug_info    0x00004d2b      0x245 .\ARM_GCC_541\Debug\Mepsan.a(Timer_1.o)
- .debug_info    0x00004f70      0x5f2 .\ARM_GCC_541\Debug\Mepsan.a(UART_2.o)
- .debug_info    0x00005562      0x149 .\ARM_GCC_541\Debug\Mepsan.a(UART_2_INT.o)
- .debug_info    0x000056ab      0x11e .\ARM_GCC_541\Debug\Mepsan.a(EnablePin.o)
- .debug_info    0x000057c9      0x402 .\ARM_GCC_541\Debug\Mepsan.a(UART_3.o)
- .debug_info    0x00005bcb       0xf6 .\ARM_GCC_541\Debug\Mepsan.a(UART_3_INT.o)
- .debug_info    0x00005cc1      0x25d .\ARM_GCC_541\Debug\Mepsan.a(UART_3_IntClock.o)
- .debug_info    0x00005f1e      0x658 .\ARM_GCC_541\Debug\Mepsan.a(screen.o)
- .debug_info    0x00006576      0x193 .\ARM_GCC_541\Debug\Mepsan.a(screen_INT.o)
- .debug_info    0x00006709      0x25d .\ARM_GCC_541\Debug\Mepsan.a(screen_IntClock.o)
- .debug_info    0x00006966      0x359 .\ARM_GCC_541\Debug\Mepsan.a(EEPROM_1.o)
- .debug_info    0x00006cbf       0x83 .\ARM_GCC_541\Debug\Mepsan.a(CyBootAsmGnu.o)
- .debug_info    0x00006d42      0x3b9 .\ARM_GCC_541\Debug\Mepsan.a(CyFlash.o)
- .debug_info    0x000070fb      0x4c0 .\ARM_GCC_541\Debug\Mepsan.a(CySpc.o)
+ .debug_info    0x00000000      0x6f3 .\ARM_GCC_541\Debug\main.o
+ .debug_info    0x000006f3      0xa9b .\ARM_GCC_541\Debug\PumpCom.o
+ .debug_info    0x0000118e      0x488 .\ARM_GCC_541\Debug\Gbr.o
+ .debug_info    0x00001616     0x11c7 .\ARM_GCC_541\Debug\printer.o
+ .debug_info    0x000027dd      0x3ce .\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .debug_info    0x00002bab      0x139 .\ARM_GCC_541\Debug\cymetadata.o
+ .debug_info    0x00002ce4      0x32b .\ARM_GCC_541\Debug\Cm3Start.o
+ .debug_info    0x0000300f      0x235 .\ARM_GCC_541\Debug\Mepsan.a(PWM_1.o)
+ .debug_info    0x00003244      0xe51 .\ARM_GCC_541\Debug\Mepsan.a(CyLib.o)
+ .debug_info    0x00004095      0x57a .\ARM_GCC_541\Debug\Mepsan.a(cyPm.o)
+ .debug_info    0x0000460f      0x5f2 .\ARM_GCC_541\Debug\Mepsan.a(UART_1.o)
+ .debug_info    0x00004c01      0x149 .\ARM_GCC_541\Debug\Mepsan.a(UART_1_INT.o)
+ .debug_info    0x00004d4a      0x25d .\ARM_GCC_541\Debug\Mepsan.a(UART_1_IntClock.o)
+ .debug_info    0x00004fa7      0x245 .\ARM_GCC_541\Debug\Mepsan.a(Timer_1.o)
+ .debug_info    0x000051ec      0x5f2 .\ARM_GCC_541\Debug\Mepsan.a(UART_2.o)
+ .debug_info    0x000057de      0x149 .\ARM_GCC_541\Debug\Mepsan.a(UART_2_INT.o)
+ .debug_info    0x00005927      0x11e .\ARM_GCC_541\Debug\Mepsan.a(EnablePin.o)
+ .debug_info    0x00005a45      0x402 .\ARM_GCC_541\Debug\Mepsan.a(UART_3.o)
+ .debug_info    0x00005e47       0xf6 .\ARM_GCC_541\Debug\Mepsan.a(UART_3_INT.o)
+ .debug_info    0x00005f3d      0x25d .\ARM_GCC_541\Debug\Mepsan.a(UART_3_IntClock.o)
+ .debug_info    0x0000619a      0x658 .\ARM_GCC_541\Debug\Mepsan.a(screen.o)
+ .debug_info    0x000067f2      0x193 .\ARM_GCC_541\Debug\Mepsan.a(screen_INT.o)
+ .debug_info    0x00006985      0x25d .\ARM_GCC_541\Debug\Mepsan.a(screen_IntClock.o)
+ .debug_info    0x00006be2      0x359 .\ARM_GCC_541\Debug\Mepsan.a(EEPROM_1.o)
+ .debug_info    0x00006f3b       0x83 .\ARM_GCC_541\Debug\Mepsan.a(CyBootAsmGnu.o)
+ .debug_info    0x00006fbe      0x3b9 .\ARM_GCC_541\Debug\Mepsan.a(CyFlash.o)
+ .debug_info    0x00007377      0x4c0 .\ARM_GCC_541\Debug\Mepsan.a(CySpc.o)
 
-.debug_abbrev   0x00000000     0x1ed2
+.debug_abbrev   0x00000000     0x1edf
  *(.debug_abbrev)
- .debug_abbrev  0x00000000      0x168 .\ARM_GCC_541\Debug\main.o
- .debug_abbrev  0x00000168      0x22b .\ARM_GCC_541\Debug\PumpCom.o
- .debug_abbrev  0x00000393      0x132 .\ARM_GCC_541\Debug\Gbr.o
- .debug_abbrev  0x000004c5      0x16e .\ARM_GCC_541\Debug\printer.o
- .debug_abbrev  0x00000633      0x183 .\ARM_GCC_541\Debug\cyfitter_cfg.o
- .debug_abbrev  0x000007b6       0x77 .\ARM_GCC_541\Debug\cymetadata.o
- .debug_abbrev  0x0000082d      0x1d6 .\ARM_GCC_541\Debug\Cm3Start.o
- .debug_abbrev  0x00000a03      0x116 .\ARM_GCC_541\Debug\Mepsan.a(PWM_1.o)
- .debug_abbrev  0x00000b19      0x217 .\ARM_GCC_541\Debug\Mepsan.a(CyLib.o)
- .debug_abbrev  0x00000d30      0x161 .\ARM_GCC_541\Debug\Mepsan.a(cyPm.o)
- .debug_abbrev  0x00000e91      0x15f .\ARM_GCC_541\Debug\Mepsan.a(UART_1.o)
- .debug_abbrev  0x00000ff0       0x8a .\ARM_GCC_541\Debug\Mepsan.a(UART_1_INT.o)
- .debug_abbrev  0x0000107a      0x11d .\ARM_GCC_541\Debug\Mepsan.a(UART_1_IntClock.o)
- .debug_abbrev  0x00001197       0xe9 .\ARM_GCC_541\Debug\Mepsan.a(Timer_1.o)
- .debug_abbrev  0x00001280      0x15f .\ARM_GCC_541\Debug\Mepsan.a(UART_2.o)
- .debug_abbrev  0x000013df       0x8a .\ARM_GCC_541\Debug\Mepsan.a(UART_2_INT.o)
- .debug_abbrev  0x00001469       0x90 .\ARM_GCC_541\Debug\Mepsan.a(EnablePin.o)
- .debug_abbrev  0x000014f9      0x143 .\ARM_GCC_541\Debug\Mepsan.a(UART_3.o)
- .debug_abbrev  0x0000163c       0x79 .\ARM_GCC_541\Debug\Mepsan.a(UART_3_INT.o)
- .debug_abbrev  0x000016b5      0x11d .\ARM_GCC_541\Debug\Mepsan.a(UART_3_IntClock.o)
- .debug_abbrev  0x000017d2      0x15f .\ARM_GCC_541\Debug\Mepsan.a(screen.o)
- .debug_abbrev  0x00001931       0xa2 .\ARM_GCC_541\Debug\Mepsan.a(screen_INT.o)
- .debug_abbrev  0x000019d3      0x11d .\ARM_GCC_541\Debug\Mepsan.a(screen_IntClock.o)
- .debug_abbrev  0x00001af0      0x117 .\ARM_GCC_541\Debug\Mepsan.a(EEPROM_1.o)
- .debug_abbrev  0x00001c07       0x14 .\ARM_GCC_541\Debug\Mepsan.a(CyBootAsmGnu.o)
- .debug_abbrev  0x00001c1b      0x14b .\ARM_GCC_541\Debug\Mepsan.a(CyFlash.o)
- .debug_abbrev  0x00001d66      0x16c .\ARM_GCC_541\Debug\Mepsan.a(CySpc.o)
+ .debug_abbrev  0x00000000      0x175 .\ARM_GCC_541\Debug\main.o
+ .debug_abbrev  0x00000175      0x22b .\ARM_GCC_541\Debug\PumpCom.o
+ .debug_abbrev  0x000003a0      0x132 .\ARM_GCC_541\Debug\Gbr.o
+ .debug_abbrev  0x000004d2      0x16e .\ARM_GCC_541\Debug\printer.o
+ .debug_abbrev  0x00000640      0x183 .\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .debug_abbrev  0x000007c3       0x77 .\ARM_GCC_541\Debug\cymetadata.o
+ .debug_abbrev  0x0000083a      0x1d6 .\ARM_GCC_541\Debug\Cm3Start.o
+ .debug_abbrev  0x00000a10      0x116 .\ARM_GCC_541\Debug\Mepsan.a(PWM_1.o)
+ .debug_abbrev  0x00000b26      0x217 .\ARM_GCC_541\Debug\Mepsan.a(CyLib.o)
+ .debug_abbrev  0x00000d3d      0x161 .\ARM_GCC_541\Debug\Mepsan.a(cyPm.o)
+ .debug_abbrev  0x00000e9e      0x15f .\ARM_GCC_541\Debug\Mepsan.a(UART_1.o)
+ .debug_abbrev  0x00000ffd       0x8a .\ARM_GCC_541\Debug\Mepsan.a(UART_1_INT.o)
+ .debug_abbrev  0x00001087      0x11d .\ARM_GCC_541\Debug\Mepsan.a(UART_1_IntClock.o)
+ .debug_abbrev  0x000011a4       0xe9 .\ARM_GCC_541\Debug\Mepsan.a(Timer_1.o)
+ .debug_abbrev  0x0000128d      0x15f .\ARM_GCC_541\Debug\Mepsan.a(UART_2.o)
+ .debug_abbrev  0x000013ec       0x8a .\ARM_GCC_541\Debug\Mepsan.a(UART_2_INT.o)
+ .debug_abbrev  0x00001476       0x90 .\ARM_GCC_541\Debug\Mepsan.a(EnablePin.o)
+ .debug_abbrev  0x00001506      0x143 .\ARM_GCC_541\Debug\Mepsan.a(UART_3.o)
+ .debug_abbrev  0x00001649       0x79 .\ARM_GCC_541\Debug\Mepsan.a(UART_3_INT.o)
+ .debug_abbrev  0x000016c2      0x11d .\ARM_GCC_541\Debug\Mepsan.a(UART_3_IntClock.o)
+ .debug_abbrev  0x000017df      0x15f .\ARM_GCC_541\Debug\Mepsan.a(screen.o)
+ .debug_abbrev  0x0000193e       0xa2 .\ARM_GCC_541\Debug\Mepsan.a(screen_INT.o)
+ .debug_abbrev  0x000019e0      0x11d .\ARM_GCC_541\Debug\Mepsan.a(screen_IntClock.o)
+ .debug_abbrev  0x00001afd      0x117 .\ARM_GCC_541\Debug\Mepsan.a(EEPROM_1.o)
+ .debug_abbrev  0x00001c14       0x14 .\ARM_GCC_541\Debug\Mepsan.a(CyBootAsmGnu.o)
+ .debug_abbrev  0x00001c28      0x14b .\ARM_GCC_541\Debug\Mepsan.a(CyFlash.o)
+ .debug_abbrev  0x00001d73      0x16c .\ARM_GCC_541\Debug\Mepsan.a(CySpc.o)
 
-.debug_line     0x00000000     0x420b
+.debug_line     0x00000000     0x4412
  *(.debug_line)
- .debug_line    0x00000000      0x3b7 .\ARM_GCC_541\Debug\main.o
- .debug_line    0x000003b7      0x5fe .\ARM_GCC_541\Debug\PumpCom.o
- .debug_line    0x000009b5      0x18d .\ARM_GCC_541\Debug\Gbr.o
- .debug_line    0x00000b42      0x857 .\ARM_GCC_541\Debug\printer.o
- .debug_line    0x00001399      0x220 .\ARM_GCC_541\Debug\cyfitter_cfg.o
- .debug_line    0x000015b9      0x141 .\ARM_GCC_541\Debug\cymetadata.o
- .debug_line    0x000016fa      0x1dc .\ARM_GCC_541\Debug\Cm3Start.o
- .debug_line    0x000018d6      0x140 .\ARM_GCC_541\Debug\Mepsan.a(PWM_1.o)
- .debug_line    0x00001a16      0x883 .\ARM_GCC_541\Debug\Mepsan.a(CyLib.o)
- .debug_line    0x00002299      0x38e .\ARM_GCC_541\Debug\Mepsan.a(cyPm.o)
- .debug_line    0x00002627      0x30b .\ARM_GCC_541\Debug\Mepsan.a(UART_1.o)
- .debug_line    0x00002932       0x8a .\ARM_GCC_541\Debug\Mepsan.a(UART_1_INT.o)
- .debug_line    0x000029bc      0x1ae .\ARM_GCC_541\Debug\Mepsan.a(UART_1_IntClock.o)
- .debug_line    0x00002b6a      0x15f .\ARM_GCC_541\Debug\Mepsan.a(Timer_1.o)
- .debug_line    0x00002cc9      0x30b .\ARM_GCC_541\Debug\Mepsan.a(UART_2.o)
- .debug_line    0x00002fd4       0x8a .\ARM_GCC_541\Debug\Mepsan.a(UART_2_INT.o)
- .debug_line    0x0000305e       0x99 .\ARM_GCC_541\Debug\Mepsan.a(EnablePin.o)
- .debug_line    0x000030f7      0x235 .\ARM_GCC_541\Debug\Mepsan.a(UART_3.o)
- .debug_line    0x0000332c       0x84 .\ARM_GCC_541\Debug\Mepsan.a(UART_3_INT.o)
- .debug_line    0x000033b0      0x1ae .\ARM_GCC_541\Debug\Mepsan.a(UART_3_IntClock.o)
- .debug_line    0x0000355e      0x349 .\ARM_GCC_541\Debug\Mepsan.a(screen.o)
- .debug_line    0x000038a7       0xb1 .\ARM_GCC_541\Debug\Mepsan.a(screen_INT.o)
- .debug_line    0x00003958      0x1ae .\ARM_GCC_541\Debug\Mepsan.a(screen_IntClock.o)
- .debug_line    0x00003b06      0x228 .\ARM_GCC_541\Debug\Mepsan.a(EEPROM_1.o)
- .debug_line    0x00003d2e       0x7d .\ARM_GCC_541\Debug\Mepsan.a(CyBootAsmGnu.o)
- .debug_line    0x00003dab      0x22f .\ARM_GCC_541\Debug\Mepsan.a(CyFlash.o)
- .debug_line    0x00003fda      0x231 .\ARM_GCC_541\Debug\Mepsan.a(CySpc.o)
+ .debug_line    0x00000000      0x4d7 .\ARM_GCC_541\Debug\main.o
+ .debug_line    0x000004d7      0x63b .\ARM_GCC_541\Debug\PumpCom.o
+ .debug_line    0x00000b12      0x18d .\ARM_GCC_541\Debug\Gbr.o
+ .debug_line    0x00000c9f      0x901 .\ARM_GCC_541\Debug\printer.o
+ .debug_line    0x000015a0      0x220 .\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .debug_line    0x000017c0      0x141 .\ARM_GCC_541\Debug\cymetadata.o
+ .debug_line    0x00001901      0x1dc .\ARM_GCC_541\Debug\Cm3Start.o
+ .debug_line    0x00001add      0x140 .\ARM_GCC_541\Debug\Mepsan.a(PWM_1.o)
+ .debug_line    0x00001c1d      0x883 .\ARM_GCC_541\Debug\Mepsan.a(CyLib.o)
+ .debug_line    0x000024a0      0x38e .\ARM_GCC_541\Debug\Mepsan.a(cyPm.o)
+ .debug_line    0x0000282e      0x30b .\ARM_GCC_541\Debug\Mepsan.a(UART_1.o)
+ .debug_line    0x00002b39       0x8a .\ARM_GCC_541\Debug\Mepsan.a(UART_1_INT.o)
+ .debug_line    0x00002bc3      0x1ae .\ARM_GCC_541\Debug\Mepsan.a(UART_1_IntClock.o)
+ .debug_line    0x00002d71      0x15f .\ARM_GCC_541\Debug\Mepsan.a(Timer_1.o)
+ .debug_line    0x00002ed0      0x30b .\ARM_GCC_541\Debug\Mepsan.a(UART_2.o)
+ .debug_line    0x000031db       0x8a .\ARM_GCC_541\Debug\Mepsan.a(UART_2_INT.o)
+ .debug_line    0x00003265       0x99 .\ARM_GCC_541\Debug\Mepsan.a(EnablePin.o)
+ .debug_line    0x000032fe      0x235 .\ARM_GCC_541\Debug\Mepsan.a(UART_3.o)
+ .debug_line    0x00003533       0x84 .\ARM_GCC_541\Debug\Mepsan.a(UART_3_INT.o)
+ .debug_line    0x000035b7      0x1ae .\ARM_GCC_541\Debug\Mepsan.a(UART_3_IntClock.o)
+ .debug_line    0x00003765      0x349 .\ARM_GCC_541\Debug\Mepsan.a(screen.o)
+ .debug_line    0x00003aae       0xb1 .\ARM_GCC_541\Debug\Mepsan.a(screen_INT.o)
+ .debug_line    0x00003b5f      0x1ae .\ARM_GCC_541\Debug\Mepsan.a(screen_IntClock.o)
+ .debug_line    0x00003d0d      0x228 .\ARM_GCC_541\Debug\Mepsan.a(EEPROM_1.o)
+ .debug_line    0x00003f35       0x7d .\ARM_GCC_541\Debug\Mepsan.a(CyBootAsmGnu.o)
+ .debug_line    0x00003fb2      0x22f .\ARM_GCC_541\Debug\Mepsan.a(CyFlash.o)
+ .debug_line    0x000041e1      0x231 .\ARM_GCC_541\Debug\Mepsan.a(CySpc.o)
 
 .debug_frame    0x00000000     0x33f0
  *(.debug_frame)
@@ -1542,59 +1543,59 @@ END GROUP
  .debug_frame   0x000033a8       0x28 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memcpy-stub.o)
  .debug_frame   0x000033d0       0x20 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memset.o)
 
-.debug_str      0x00000000     0x2cae
+.debug_str      0x00000000     0x2ccc
  *(.debug_str)
- .debug_str     0x00000000      0x2f7 .\ARM_GCC_541\Debug\main.o
-                                0x35c (size before relaxing)
- .debug_str     0x000002f7       0xf6 .\ARM_GCC_541\Debug\PumpCom.o
-                                0x42d (size before relaxing)
- .debug_str     0x000003ed       0xa9 .\ARM_GCC_541\Debug\Gbr.o
-                                0x3b1 (size before relaxing)
- .debug_str     0x00000496      0x23a .\ARM_GCC_541\Debug\printer.o
-                                0x55c (size before relaxing)
- .debug_str     0x000006d0      0x192 .\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .debug_str     0x00000000      0x31f .\ARM_GCC_541\Debug\main.o
+                                0x389 (size before relaxing)
+ .debug_str     0x0000031f       0xf6 .\ARM_GCC_541\Debug\PumpCom.o
+                                0x43f (size before relaxing)
+ .debug_str     0x00000415       0xa9 .\ARM_GCC_541\Debug\Gbr.o
+                                0x3c3 (size before relaxing)
+ .debug_str     0x000004be      0x230 .\ARM_GCC_541\Debug\printer.o
+                                0x564 (size before relaxing)
+ .debug_str     0x000006ee      0x192 .\ARM_GCC_541\Debug\cyfitter_cfg.o
                                 0x312 (size before relaxing)
- .debug_str     0x00000862       0x75 .\ARM_GCC_541\Debug\cymetadata.o
+ .debug_str     0x00000880       0x75 .\ARM_GCC_541\Debug\cymetadata.o
                                 0x1d7 (size before relaxing)
- .debug_str     0x000008d7      0x124 .\ARM_GCC_541\Debug\Cm3Start.o
+ .debug_str     0x000008f5      0x124 .\ARM_GCC_541\Debug\Cm3Start.o
                                 0x2ca (size before relaxing)
- .debug_str     0x000009fb      0x13a .\ARM_GCC_541\Debug\Mepsan.a(PWM_1.o)
+ .debug_str     0x00000a19      0x13a .\ARM_GCC_541\Debug\Mepsan.a(PWM_1.o)
                                 0x2c0 (size before relaxing)
- .debug_str     0x00000b35      0x80b .\ARM_GCC_541\Debug\Mepsan.a(CyLib.o)
+ .debug_str     0x00000b53      0x80b .\ARM_GCC_541\Debug\Mepsan.a(CyLib.o)
                                 0x9dd (size before relaxing)
- .debug_str     0x00001340      0x371 .\ARM_GCC_541\Debug\Mepsan.a(cyPm.o)
+ .debug_str     0x0000135e      0x371 .\ARM_GCC_541\Debug\Mepsan.a(cyPm.o)
                                 0x536 (size before relaxing)
- .debug_str     0x000016b1      0x360 .\ARM_GCC_541\Debug\Mepsan.a(UART_1.o)
+ .debug_str     0x000016cf      0x360 .\ARM_GCC_541\Debug\Mepsan.a(UART_1.o)
                                 0x509 (size before relaxing)
- .debug_str     0x00001a11       0x57 .\ARM_GCC_541\Debug\Mepsan.a(UART_1_INT.o)
+ .debug_str     0x00001a2f       0x57 .\ARM_GCC_541\Debug\Mepsan.a(UART_1_INT.o)
                                 0x24e (size before relaxing)
- .debug_str     0x00001a68      0x1c2 .\ARM_GCC_541\Debug\Mepsan.a(UART_1_IntClock.o)
+ .debug_str     0x00001a86      0x1c2 .\ARM_GCC_541\Debug\Mepsan.a(UART_1_IntClock.o)
                                 0x341 (size before relaxing)
- .debug_str     0x00001c2a      0x165 .\ARM_GCC_541\Debug\Mepsan.a(Timer_1.o)
+ .debug_str     0x00001c48      0x165 .\ARM_GCC_541\Debug\Mepsan.a(Timer_1.o)
                                 0x308 (size before relaxing)
- .debug_str     0x00001d8f      0x2b8 .\ARM_GCC_541\Debug\Mepsan.a(UART_2.o)
+ .debug_str     0x00001dad      0x2b8 .\ARM_GCC_541\Debug\Mepsan.a(UART_2.o)
                                 0x509 (size before relaxing)
- .debug_str     0x00002047       0x31 .\ARM_GCC_541\Debug\Mepsan.a(UART_2_INT.o)
+ .debug_str     0x00002065       0x31 .\ARM_GCC_541\Debug\Mepsan.a(UART_2_INT.o)
                                 0x24e (size before relaxing)
- .debug_str     0x00002078       0x7a .\ARM_GCC_541\Debug\Mepsan.a(EnablePin.o)
+ .debug_str     0x00002096       0x7a .\ARM_GCC_541\Debug\Mepsan.a(EnablePin.o)
                                 0x1e9 (size before relaxing)
- .debug_str     0x000020f2      0x1c8 .\ARM_GCC_541\Debug\Mepsan.a(UART_3.o)
+ .debug_str     0x00002110      0x1c8 .\ARM_GCC_541\Debug\Mepsan.a(UART_3.o)
                                 0x3ca (size before relaxing)
- .debug_str     0x000022ba       0x31 .\ARM_GCC_541\Debug\Mepsan.a(UART_3_INT.o)
+ .debug_str     0x000022d8       0x31 .\ARM_GCC_541\Debug\Mepsan.a(UART_3_INT.o)
                                 0x1e3 (size before relaxing)
- .debug_str     0x000022eb      0x177 .\ARM_GCC_541\Debug\Mepsan.a(UART_3_IntClock.o)
+ .debug_str     0x00002309      0x177 .\ARM_GCC_541\Debug\Mepsan.a(UART_3_IntClock.o)
                                 0x341 (size before relaxing)
- .debug_str     0x00002462      0x2f1 .\ARM_GCC_541\Debug\Mepsan.a(screen.o)
+ .debug_str     0x00002480      0x2f1 .\ARM_GCC_541\Debug\Mepsan.a(screen.o)
                                 0x563 (size before relaxing)
- .debug_str     0x00002753       0x3e .\ARM_GCC_541\Debug\Mepsan.a(screen_INT.o)
+ .debug_str     0x00002771       0x3e .\ARM_GCC_541\Debug\Mepsan.a(screen_INT.o)
                                 0x294 (size before relaxing)
- .debug_str     0x00002791      0x177 .\ARM_GCC_541\Debug\Mepsan.a(screen_IntClock.o)
+ .debug_str     0x000027af      0x177 .\ARM_GCC_541\Debug\Mepsan.a(screen_IntClock.o)
                                 0x341 (size before relaxing)
- .debug_str     0x00002908      0x14a .\ARM_GCC_541\Debug\Mepsan.a(EEPROM_1.o)
+ .debug_str     0x00002926      0x14a .\ARM_GCC_541\Debug\Mepsan.a(EEPROM_1.o)
                                 0x2f1 (size before relaxing)
- .debug_str     0x00002a52      0x135 .\ARM_GCC_541\Debug\Mepsan.a(CyFlash.o)
+ .debug_str     0x00002a70      0x135 .\ARM_GCC_541\Debug\Mepsan.a(CyFlash.o)
                                 0x2fa (size before relaxing)
- .debug_str     0x00002b87      0x127 .\ARM_GCC_541\Debug\Mepsan.a(CySpc.o)
+ .debug_str     0x00002ba5      0x127 .\ARM_GCC_541\Debug\Mepsan.a(CySpc.o)
                                 0x2f4 (size before relaxing)
 
 .debug_loc

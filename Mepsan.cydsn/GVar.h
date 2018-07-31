@@ -20,6 +20,7 @@ uint8 sale_number[6];
 uint8 int_salenumber;
 uint8 shift_number[6];
 uint8 int_shiftnumber;
+uint8 LCDhose;
 
 /*
 *********************************************************************************************************
@@ -43,6 +44,7 @@ struct position{
     uint8 ProcessedmoneySale[8];            //Venta de Dinero vendido
     uint8 ProcessedvolumeSale[8];           //Venta de Volumen vendido
     uint8 ProcessedPPU[4][6];
+    uint8 msn_plate[8];             //placa vehiculo por lado
     
 };
 

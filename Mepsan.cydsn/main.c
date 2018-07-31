@@ -111,10 +111,12 @@ void PollingPos(void){
 int main()
 {
     /* Prepare components */
-    uint8 x,screen_size,W_autorize;
+    uint8 x,screen_size,W_autorize,y,temp;
     uint8 passw[4]={'1','2','3','4'};
-    uint8 change_pic[7]={0x5A,0xA5,0x04,0x80,0x03,0x00,0x06};
-    uint8 change_pic2[7]={0x5A,0xA5,0x04,0x80,0x03,0x00,0x09};
+    uint8 change_pic[]={0x5A,0xA5,0x04,0x80,0x03,0x00,0x06};
+    uint8 change_pic2[]={0x5A,0xA5,0x04,0x80,0x03,0x00,0x09};
+    uint8 price_change;
+    uint8 auxPrice[5];
     DecVol = 3;
     PWM_1_Start(); 
     CyGlobalIntEnable;
@@ -147,14 +149,16 @@ int main()
     int_shiftnumber=((shift_number[5]&0x0F)*10000)+((shift_number[4]&0x0F)*1000)+((shift_number[3]&0x0F)*100)+((shift_number[2]&0x0F)*10)+((shift_number[1]&0x0F));
     
     Timer_1_Start();    
-    
-    side.a.ppuNozzle[0][0]=0x01;
-    side.a.ppuNozzle[0][1]=0x04;
-    side.a.ppuNozzle[0][2]=0x20;
-    
-    side.b.ppuNozzle[0][0]=0x00;
-    side.b.ppuNozzle[0][1]=0x84;
-    side.b.ppuNozzle[0][2]=0x55;
+    for(x = 0; x < 3; x ++){
+        side.a.ppuNozzle[0][x] = EEPROM_1_ReadByte(12 + x);
+        side.a.ppuNozzle[1][x] = EEPROM_1_ReadByte(15 + x);
+        side.a.ppuNozzle[2][x] = EEPROM_1_ReadByte(18 + x);
+        side.a.ppuNozzle[3][x] = EEPROM_1_ReadByte(21 + x);
+        side.b.ppuNozzle[0][x] = EEPROM_1_ReadByte(24 + x);
+        side.b.ppuNozzle[1][x] = EEPROM_1_ReadByte(27 + x);
+        side.b.ppuNozzle[2][x] = EEPROM_1_ReadByte(30 + x);
+        side.b.ppuNozzle[3][x] = EEPROM_1_ReadByte(33 + x);
+    }
     
     side.a.ProcessedPPU[0][0] = (side.a.ppuNozzle[0][0] >> 4) + 0x30;
     side.a.ProcessedPPU[0][1] = (side.a.ppuNozzle[0][0] & 0x0F) + 0x30;
@@ -184,101 +188,170 @@ int main()
     side.b.dir = 0x01;
     TotalRequestType = 0; 
     W_autorize = 0;        
-    
+    LCDhose = 0;
     for (;;)
     {
         PollingPos(); 
-        screen_PutChar(0x5A);
+        //screen_PutChar(0x5A);
         screen_size = screen_GetRxBufferSize();
-        if(screen_size >= 9 ){
+        if(screen_size >= 5 ){
             for(uint8 LCDRx = 0; LCDRx < screen_size; LCDRx++){
                 touch1[LCDRx] = screen_ReadRxData();
-            }
-            screen_size = 0;
-        }
-        if(touch1[8] == 0xAA){
-            W_autorize = 1;
-            for(uint8 LCDRx = 0; LCDRx < 20; LCDRx++){
-                touch1[LCDRx] = 0x00;
-            }
-        }
-        if(touch1[8] == 0x1C){
-            W_autorize = 2;
-            for(uint8 LCDRx = 0; LCDRx < 20; LCDRx++){
-                touch1[LCDRx] = 0x00;
-            }
-        }
-        if(touch1[8] == 0xCA){
-            W_autorize = 3;
-            for(uint8 LCDRx = 0; LCDRx < 20; LCDRx++){
-                touch1[LCDRx] = 0x00;
-            }
-        }
-        
-        if(touch1[8] == 0x0A && W_autorize == 1){
-            W_autorize = 0;
-            PriceUpdate(side.a.dir,side.a.ppuNozzle[0]);
-            Authorize(side.a.dir);
-            for(uint8 LCDRx = 0; LCDRx < 20; LCDRx++){
-                touch1[LCDRx] = 0x00;
-            }
-        }
-        if(touch1[8] == 0x0B && W_autorize == 1){
-            W_autorize = 0;
-            PriceUpdate(side.b.dir,side.b.ppuNozzle[0]);
-            Authorize(side.b.dir);
-            for(uint8 LCDRx = 0; LCDRx < 20; LCDRx++){
-                touch1[LCDRx] = 0x00;
-            }
-        }                                            
-        if(touch1[8] == 0x0A && W_autorize == 2){
-            W_autorize = 0;
-            PumpState(side.a.dir);            
-            TotalRequest(side.a.dir, TotalRequestType, 1); //dir 0, volume, nozzle 1                           
-            PumpState(side.a.dir); 
-            for(uint8 LCDRx = 0; LCDRx < 20; LCDRx++){
-                touch1[LCDRx] = 0x00;
             }            
-            PrintReceipt(side.a.dir);                        
-        }        
-         if(touch1[8] == 0x0B && W_autorize == 2){
-            W_autorize = 0;
-            PumpState(side.b.dir);            
-            TotalRequest(side.b.dir, TotalRequestType, 1); //dir 0, volume, nozzle 1                           
-            PumpState(side.b.dir); 
-            for(uint8 LCDRx = 0; LCDRx < 20; LCDRx++){
-                touch1[LCDRx] = 0x00;
-            }            
-            PrintReceipt(side.b.dir);
-                       
-        }        
-        if(touch1[8] == 0xCC){
-            //PriceUpdate(0,side.a.ppuNozzle[0]);
-            //ReturnStatus(0);
-            PumpState(side.a.dir);            
-            TotalRequest(side.a.dir, TotalRequestType, 1); //dir 0, volume, nozzle 1                           
-            PumpState(side.a.dir); 
-            PumpState(side.b.dir);            
-            TotalRequest(side.b.dir, TotalRequestType, 1); //dir 0, volume, nozzle 1                           
-            PumpState(side.b.dir);
-            for(uint8 LCDRx = 0; LCDRx < 20; LCDRx++){
-                touch1[LCDRx] = 0x00;
-            }                        
-            PrintShift();                  
         }
-        if(touch1[3] == 0x83 && W_autorize == 3 ){
-             
-            W_autorize = 0;
-            if((touch1[7] == passw[0])&&(touch1[8] == passw[1])&&(touch1[9] == passw[2]) && (touch1[10] == passw[3]) &&(touch1[11] == 0xFF) ){
-                for(uint8 LCDRx = 0; LCDRx < 6; LCDRx++){
-                    screen_PutChar(change_pic[LCDRx]);
+        CyDelay(4);
+        switch(touch1[8]){
+        	case 0xAA:
+        		W_autorize = 1;
+        		for(uint8 LCDRx = 0; LCDRx < 20; LCDRx++){
+        			touch1[LCDRx] = 0x00;
+        		}
+        	break;
+        	case 0x1C:
+        		W_autorize = 2;
+        		for(uint8 LCDRx = 0; LCDRx < 20; LCDRx++){
+        			touch1[LCDRx] = 0x00;
+        		}		
+        	break;
+        	case 0xCA:
+        		W_autorize = 3;
+        		for(uint8 LCDRx = 0; LCDRx < 20; LCDRx++){
+        			touch1[LCDRx] = 0x00;
+        		}		
+        	break;
+        	case 0x0A:
+        		if(W_autorize == 1){
+        			W_autorize = 0;                    
+                    PriceUpdate(side.a.dir,side.a.ppuNozzle[0]);
+                    Authorize(side.a.dir);
+                    for(uint8 LCDRx = 0; LCDRx < 20; LCDRx++){
+                        touch1[LCDRx] = 0x00;
+                    }
+        		}
+        		if(W_autorize == 2){ 
+                    W_autorize = 0x0A;
+                    PumpState(side.a.dir);            
+                    TotalRequest(side.a.dir, TotalRequestType, 1); //dir 0, volume, nozzle 1                           
+                    PumpState(side.a.dir);
+                    for(uint8 LCDRx = 0; LCDRx < 20; LCDRx++){
+                        touch1[LCDRx] = 0x00;
+                    }
+        		}
+        	break;
+        	case 0x0B:
+        		if(W_autorize == 1){
+        			W_autorize = 0;
+                    PriceUpdate(side.b.dir,side.b.ppuNozzle[0]);
+                    Authorize(side.b.dir);
+                    for(uint8 LCDRx = 0; LCDRx < 20; LCDRx++){
+                        touch1[LCDRx] = 0x00;
+                    }
+        		}
+        		if(W_autorize == 2){
+                    W_autorize = 0x0B;
+                    PumpState(side.b.dir);            
+                    TotalRequest(side.b.dir, TotalRequestType, 1); //dir 0, volume, nozzle 1                           
+                    PumpState(side.b.dir); 
+                    for(uint8 LCDRx = 0; LCDRx < 20; LCDRx++){
+                        touch1[LCDRx] = 0x00;
+                    }                                                               
+                } 
+        	break;
+        	case 0xCC:
+        		PumpState(side.b.dir);            
+        		TotalRequest(side.b.dir, TotalRequestType, 1); //dir 0, volume, nozzle 1      
+                CyDelay(10);
+        		PumpState(side.b.dir); 
+        		PumpState(side.a.dir);            
+        		TotalRequest(side.a.dir, TotalRequestType, 1); //dir 0, volume, nozzle 1   
+                CyDelay(10);
+        		PumpState(side.a.dir);
+                PumpState(side.b.dir);
+                PumpState(side.a.dir);
+        		for(uint8 LCDRx = 0; LCDRx < 20; LCDRx++){
+        			touch1[LCDRx] = 0x00;
+        		}                        
+        		PrintShift(); 
+        	break;
+        	default:
+                if(touch1[3] == 0x83 && price_change == 0x0A && touch1[8] != 0xE1){
+                    for(uint8 LCDRx = 0; LCDRx < 6; LCDRx++){                        
+                        side.a.ProcessedPPU[0][LCDRx] = 0x30;
+            		}
+                    y = 0;
+                    LCDhose = 0;
+                    price_change = 0;
+                    for(uint8 LCDRx = 7; LCDRx < 12; LCDRx++){
+                        if((touch1[LCDRx] == 0x00) ||(touch1[LCDRx] == 0xFF))
+                            break;
+                        auxPrice[LCDRx-7] = touch1[LCDRx];
+                        y++;
+            		}
+                    for (x = 6; x >0; x--){
+                        side.a.ProcessedPPU[0][x] = auxPrice[y];                        
+                        if(y == 0 )
+                            break;
+                        y--;
+                    }
+                    
+                    side.a.ppuNozzle[0][0] = ((side.a.ProcessedPPU[0][0] - 0x30)<<4) |((side.a.ProcessedPPU[0][1] - 0x30));
+                    side.a.ppuNozzle[0][1] = ((side.a.ProcessedPPU[0][2] - 0x30)<<4) |((side.a.ProcessedPPU[0][3] - 0x30));
+                    side.a.ppuNozzle[0][2] = ((side.a.ProcessedPPU[0][4] - 0x30)<<4) |((side.a.ProcessedPPU[0][5] - 0x30));
+                    for(x = 0; x < 3; x++){
+                        EEPROM_1_WriteByte(side.a.ppuNozzle[0][x],12+x);
+                    }                                                            
+                    for(uint8 LCDRx = 0; LCDRx < 20; LCDRx++){
+            			touch1[LCDRx] = 0x00;
+            		}
                 }
-            }else{                
-                for(uint8 LCDRx = 0; LCDRx < 6; LCDRx++){
-                    screen_PutChar(change_pic2[LCDRx]);
+                if(touch1[3] == 0x83 && price_change == 1 ){
+                    LCDhose = touch1[8];
+                    price_change = 0x0A;
                 }
-            }
+        		if(touch1[3] == 0x83 && W_autorize == 3){             
+                    W_autorize = 0;
+                    if((touch1[7] == passw[0])&&(touch1[8] == passw[1])&&(touch1[9] == passw[2]) && (touch1[10] == passw[3]) &&(touch1[11] == 0xFF) ){
+                        for(uint8 LCDRx = 0; LCDRx < 6; LCDRx++){
+                            screen_PutChar(change_pic[LCDRx]);
+                        }
+                        CyDelay(4);
+                    }
+                    if(touch1[8] == 0x01)
+                        price_change = 1;
+                    if(touch1[8] == 0x02)
+                        price_change = 2;
+                    for(uint8 LCDRx = 0; LCDRx < 20; LCDRx++){
+            			touch1[LCDRx] = 0x00;
+            		}
+                }  
+                if(touch1[3] == 0x83 && W_autorize == 0x0A){             
+                    W_autorize = 0;
+                    for(uint8 LCDRx = 7; LCDRx < 15; LCDRx++){
+                        if((touch1[LCDRx] == 0x00) ||(touch1[LCDRx] == 0xFF))
+                            break;
+                        side.a.msn_plate[LCDRx-7] = touch1[LCDRx];
+            		}
+                    for(uint8 LCDRx = 0; LCDRx < 20; LCDRx++){
+            			touch1[LCDRx] = 0x00;
+            		}
+                    PrintReceipt(side.a.dir);
+                }
+                if(touch1[3] == 0x83 && W_autorize == 0x0B){             
+                    W_autorize = 0;
+                    for(uint8 LCDRx = 7; LCDRx < 15; LCDRx++){
+                        if((touch1[LCDRx] == 0x00) ||(touch1[LCDRx] == 0xFF))
+                            break;
+                        side.b.msn_plate[LCDRx-7] = touch1[LCDRx];
+            		}
+                    for(uint8 LCDRx = 0; LCDRx < 20; LCDRx++){
+            			touch1[LCDRx] = 0x00;
+            		}
+                    PrintReceipt(side.b.dir);
+                }
+                
+        	break;
         }
+        screen_size = 0;
     }
 }
 
