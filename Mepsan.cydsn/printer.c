@@ -11,6 +11,9 @@
 */
 #include <project.h>
 #include <GVar.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 uint8 LINE_FEED = 0x0A;
 char VolSimbol[1] = "G";
@@ -60,8 +63,9 @@ uint8 PRN_PRESET[13]      = "Valor Prog.: ";
 uint8 PRN_SIGNATURE[13]   = "Firma      : ";
 uint8 PRN_ID[13]          = "Cedula     : ";
 uint8 PRN_CURRENCY[1]     = "$";
-uint8 msn_lecact[16]      ="Valor actual:   ";
-uint8 msn_lecaan[16]      ="Valor anterior: ";
+uint8 msn_lecact[16]      ="Volumen actual: ";
+uint8 msn_lecaan[16]      ="Vol. anterior:  ";
+uint8 msn_dif[18]         ="Vol. dispensado:  ";
 uint8 SEPARATOR[24]       = "************************";
 uint8 ASK_TIME[]={0x5A, 0xA5, 0x03, 0x81, 0x20, 0x07};
 
@@ -364,10 +368,13 @@ void PrintReceipt(uint8 address){
 }
 
 void PrintShift(void){
-    int8 screen_size;
+    uint8 screen_size,pos;
+    char8 lectanterior[10],lectactual[10],memoria[10],resultado[10];
+    uint32 actual,anterior,resta;
     for(uint8 LCDRx = 0; LCDRx < 6; LCDRx++){
         screen_PutChar(ASK_TIME[LCDRx]);
     }
+    CyDelay(10);
     screen_size = screen_GetRxBufferSize();
     if(screen_size >= 13 ){
         for(uint8 LCDRx = 0; LCDRx < screen_size; LCDRx++){
@@ -375,7 +382,7 @@ void PrintShift(void){
         }
         screen_size = 0;
     }
-    CyDelay(4);
+    
     int_shiftnumber++;
     shift_number[5]=(int_shiftnumber/10000)+48;
 	shift_number[4]=((int_shiftnumber%10000)/1000)+48;
@@ -460,14 +467,44 @@ void PrintShift(void){
         UART_3_PutChar(side.a.ProcessedTotals[0][0][x]);
     }
     UART_3_PutChar(LINE_FEED);
+    for(uint8 x = 0; x < 10; x++){
+        pos = x;
+        if(side.a.ProcessedTotals[0][0][x] != 0x00 )
+            break;
+    }
 	for(uint8 x = 0; x < 16; x ++){
 		UART_3_PutChar(msn_lecaan[x]);
 	}
     UART_3_PutChar(LINE_FEED);
+    for(uint8 x = 0; x < 10; x ++){
+        memoria[x] = EEPROM_1_ReadByte(36+x);
+    }
     for(uint8 x = 0; x < 10; x ++){ 
         if((10-x) == DecVol)
             UART_3_PutChar('.');
-        UART_3_PutChar(EEPROM_1_ReadByte(36+x));
+        UART_3_PutChar(memoria[x]);
+    }
+    UART_3_PutChar(LINE_FEED);
+    
+    for(uint8 x = pos; x < 10; x++ ){
+        lectactual[x-pos] = side.a.ProcessedTotals[0][0][x];
+        lectanterior[x-pos] = memoria[x];
+        resultado[x] = 0x00;
+    }
+    
+    anterior = atoi(lectanterior);
+    actual = atoi(lectactual);
+    resta =  actual - anterior;
+    itoa(resta,resultado,10);
+    
+    for(uint8 x = 0; x < 18; x ++){
+        UART_3_PutChar(msn_dif[x]);
+    }
+    UART_3_PutChar(LINE_FEED);
+    for(uint8 x = 0; x < 10; x ++){
+        if((10-x) == DecVol)
+            UART_3_PutChar('.');
+        UART_3_PutChar(resultado[x]);
     }
     UART_3_PutChar(LINE_FEED);
     for(uint8 x = 0; x < 24; x ++){
@@ -493,12 +530,36 @@ void PrintShift(void){
 		UART_3_PutChar(msn_lecaan[x]);
 	}
     UART_3_PutChar(LINE_FEED);
+    for(uint8 x = 0; x < 10; x ++){
+        memoria[x] = EEPROM_1_ReadByte(46+x);
+    }
     for(uint8 x = 0; x < 10; x ++){ 
         if((10-x) == DecVol)
             UART_3_PutChar('.');
-        UART_3_PutChar(EEPROM_1_ReadByte(46+x));
+        UART_3_PutChar(memoria[x]);
     }
     UART_3_PutChar(LINE_FEED);
+    for(uint8 x = pos; x < 10; x++ ){
+        lectactual[x-pos] = side.b.ProcessedTotals[0][0][x];
+        lectanterior[x-pos] = memoria[x];
+        resultado[x] = 0x00;
+    }
+    
+    anterior = atoi(lectanterior);
+    actual = atoi(lectactual);
+    resta =  actual - anterior;
+    itoa(resta,resultado,10);
+    for(uint8 x = 0; x < 18; x ++){
+        UART_3_PutChar(msn_dif[x]);
+    }
+    UART_3_PutChar(LINE_FEED);
+    for(uint8 x = 0; x < 10; x ++){
+        if((10-x) == DecVol)
+            UART_3_PutChar('.');
+        UART_3_PutChar(resultado[x]);
+    }
+    UART_3_PutChar(LINE_FEED);
+    
     if((Positions-1)>= 3){
         for(uint8 x = 0; x < 24; x ++){
             UART_3_PutChar(SEPARATOR[x]);
@@ -561,11 +622,12 @@ void PrintShift(void){
     UART_3_PutChar(LINE_FEED);
     UART_3_PutChar(LINE_FEED);
     for(uint8 x = 0; x < 10; x++){
-        EEPROM_1_WriteByte(side.a.ProcessedTotals[0][0][x],36+x);
+        EEPROM_1_WriteByte(side.a.ProcessedTotals[0][0][x],36+x);        
     }
     for(uint8 x = 0; x < 10; x++){
         EEPROM_1_WriteByte(side.b.ProcessedTotals[0][0][x],46+x);
     }
+    
 }
 
 

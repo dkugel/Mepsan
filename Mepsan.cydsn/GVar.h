@@ -40,7 +40,7 @@ struct position{
     uint8 productSale;              //Venta de Producto vendido
     uint8 states[5];                //Estados a Gbr
     uint8 MepsanStore[50];          //Datos Mepsan por posición
-    uint8 ProcessedTotals[4][3][10];//Totales en ASCII
+    char8 ProcessedTotals[4][3][10];//Totales en ASCII
     uint8 ProcessedmoneySale[8];            //Venta de Dinero vendido
     uint8 ProcessedvolumeSale[8];           //Venta de Volumen vendido
     uint8 ProcessedPPU[4][6];
