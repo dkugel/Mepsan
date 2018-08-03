@@ -1,5 +1,5 @@
 # Mepsan
-# 2018-07-22 00:44:38Z
+# 2018-08-02 17:17:34Z
 
 # IO_0@[IOP=(1)][IoId=(0)] is reserved: SWDDebugEnabled
 dont_use_io iocell 1 0
@@ -11,10 +11,12 @@ set_io "PWM_Out(0)" iocell 2 1
 set_io "Kill_Switch(0)" iocell 2 2
 set_io "Rx_1(0)" iocell 1 6
 set_io "Tx_1(0)" iocell 1 7
+set_io "Tx_4(0)" iocell 2 5
 set_io "Rx_2(0)" iocell 15 4
 set_io "Tx_2(0)" iocell 15 5
-set_io "EnablePin(0)" iocell 2 0
-set_io "EnablePin_1(0)" iocell 2 3
+set_io "screen2_tx(0)" iocell 2 4
+set_io "screen2_rx(0)" iocell 2 3
+set_io "EnablePin(0)" iocell 1 2
 set_io "Tx_3(0)" iocell 3 7
 set_io "screen_rx(0)" iocell 3 3
 set_io "screen_tx(0)" iocell 3 4

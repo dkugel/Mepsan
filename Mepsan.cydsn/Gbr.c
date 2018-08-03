@@ -15,17 +15,17 @@
 
 void StateTransform(){
     //if(dirGbr == side.a.dir)
-    UART_2_PutChar(GILB_IDLE);
+    GBCL_PutChar(GILB_IDLE);
     
 }
 
 void SystemQ(){
     uint8 QSystem;
     uint8 size;
-    size = UART_2_GetRxBufferSize();
-    dirGbr = UART_2_ReadRxData()&0x0F;
+    size = GBCL_GetRxBufferSize();
+    dirGbr = GBCL_ReadRxData()&0x0F;
     if(size== 1){
-        QSystem = UART_2_ReadRxData();
+        QSystem = GBCL_ReadRxData();
         switch(QSystem){
             case 0:
                 StateTransform();

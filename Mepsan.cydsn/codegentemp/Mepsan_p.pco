@@ -1,139 +1,182 @@
 dont_use_io iocell 1 0
 dont_use_io iocell 1 1
 dont_use_io iocell 1 3
-set_location "\UART_1:BUART:tx_state_2\" macrocell 0 0 0 2
-set_location "\UART_2:BUART:tx_state_1\" macrocell 1 5 0 3
-set_location "\UART_2:BUART:sTX:TxShifter:u0\" datapathcell 1 3 2 
-set_location "\UART_1:BUART:sRX:RxBitCounter\" count7cell 1 1 7 
-set_location "\UART_1:BUART:tx_parity_bit\" macrocell 0 1 1 1
-set_location "\UART_1:BUART:rx_last\" macrocell 1 1 0 3
-set_location "\UART_1:BUART:rx_state_0\" macrocell 1 0 0 0
-set_location "\UART_2:BUART:tx_state_0\" macrocell 1 4 0 0
-set_location "\screen:BUART:rx_status_3\" macrocell 2 1 0 0
-set_location "Net_289" macrocell 0 1 0 3
-set_location "\screen:BUART:sRX:RxBitCounter\" count7cell 2 1 7 
-set_location "\screen:BUART:sTX:TxSts\" statusicell 1 3 4 
-set_location "\screen:BUART:sTX:sCLOCK:TxBitClkGen\" datapathcell 3 1 2 
-set_location "\UART_3:BUART:sTX:TxSts\" statusicell 0 3 4 
-set_location "\UART_1:BUART:rx_status_3\" macrocell 1 0 0 3
-set_location "MODIN1_0" macrocell 1 1 1 2
-set_location "\UART_1:BUART:rx_state_stop1_reg\" macrocell 1 1 0 2
-set_location "\screen:BUART:rx_load_fifo\" macrocell 2 0 0 2
-set_location "\screen:BUART:rx_state_0\" macrocell 2 1 0 3
-set_location "\screen:BUART:tx_bitclk\" macrocell 3 0 0 0
-set_location "\UART_1:BUART:tx_state_1\" macrocell 0 0 0 0
-set_location "\UART_3:BUART:txn\" macrocell 0 2 1 0
-set_location "\UART_2:BUART:tx_ctrl_mark_last\" macrocell 0 4 0 3
-set_location "\UART_1:BUART:rx_counter_load\" macrocell 1 1 0 1
-set_location "\UART_2:BUART:rx_postpoll\" macrocell 0 5 1 2
-set_location "\UART_1:BUART:rx_load_fifo\" macrocell 1 0 1 3
-set_location "\UART_2:BUART:counter_load_not\" macrocell 1 5 0 2
-set_location "\UART_3:BUART:counter_load_not\" macrocell 0 3 0 0
-set_location "MODIN1_1" macrocell 1 1 1 3
-set_location "\screen:BUART:tx_status_0\" macrocell 1 2 0 3
-set_location "\UART_1:BUART:tx_status_0\" macrocell 0 1 1 2
-set_location "\UART_1:BUART:rx_parity_bit\" macrocell 1 0 0 2
-set_location "MODIN5_0" macrocell 0 4 1 2
-set_location "\screen:BUART:rx_status_4\" macrocell 2 1 1 2
-set_location "\screen:BUART:rx_postpoll\" macrocell 2 0 1 2
-set_location "Net_437" macrocell 3 0 1 0
-set_location "Net_423" macrocell 3 0 1 2
-set_location "Net_333" macrocell 1 4 0 2
-set_location "\screen:BUART:rx_state_2\" macrocell 2 0 0 1
-set_location "\UART_2:BUART:sTX:sCLOCK:TxBitClkGen\" datapathcell 1 5 2 
-set_location "\UART_2:BUART:rx_state_stop1_reg\" macrocell 0 4 0 2
-set_location "MODIN5_1" macrocell 0 4 1 3
-set_location "\UART_1:BUART:sTX:TxShifter:u0\" datapathcell 0 1 2 
-set_location "\UART_1:BUART:rx_bitclk_enable\" macrocell 1 1 1 1
-set_location "\UART_1:BUART:tx_bitclk\" macrocell 0 0 0 1
-set_location "\UART_1:BUART:sTX:sCLOCK:TxBitClkGen\" datapathcell 0 0 2 
-set_location "\screen:BUART:rx_bitclk_enable\" macrocell 2 1 1 3
-set_location "\UART_1:BUART:rx_state_3\" macrocell 1 0 0 1
-set_location "\UART_2:BUART:rx_last\" macrocell 1 3 0 0
-set_location "__ONE__" macrocell 2 3 0 1
-set_location "\UART_2:BUART:tx_bitclk\" macrocell 1 5 0 0
-set_location "\UART_2:BUART:rx_status_2\" macrocell 0 5 1 1
-set_location "\UART_2:BUART:sRX:RxShifter:u0\" datapathcell 0 5 2 
-set_location "\UART_2:BUART:rx_state_2\" macrocell 0 4 0 0
-set_location "\screen:BUART:pollcount_1\" macrocell 2 0 1 0
-set_location "\UART_2:BUART:rx_status_5\" macrocell 0 4 1 0
-set_location "\screen:BUART:sTX:TxShifter:u0\" datapathcell 1 2 2 
-set_location "\UART_2:BUART:rx_bitclk_enable\" macrocell 0 4 1 1
-set_location "\screen:BUART:counter_load_not\" macrocell 3 1 0 0
-set_location "\UART_1:BUART:counter_load_not\" macrocell 0 0 1 0
-set_location "\UART_2:BUART:tx_status_0\" macrocell 1 4 1 1
-set_location "\UART_3:BUART:tx_status_0\" macrocell 0 3 1 1
-set_location "\screen:BUART:sRX:RxShifter:u0\" datapathcell 2 0 2 
-set_location "Net_267" macrocell 0 3 0 3
-set_location "\screen:BUART:tx_state_2\" macrocell 3 1 1 0
-set_location "\UART_2:BUART:rx_parity_error_pre\" macrocell 0 5 1 0
-set_location "\UART_2:BUART:rx_status_4\" macrocell 0 2 0 3
-set_location "\UART_3:BUART:tx_status_2\" macrocell 0 3 0 1
-set_location "\UART_2:BUART:tx_status_2\" macrocell 1 3 1 1
-set_location "\UART_2:BUART:rx_status_3\" macrocell 0 5 0 3
-set_location "\screen:BUART:rx_state_stop1_reg\" macrocell 2 1 0 1
-set_location "\UART_2:BUART:tx_state_2\" macrocell 1 5 0 1
-set_location "\UART_1:BUART:txn\" macrocell 0 1 0 0
-set_location "\UART_3:BUART:tx_state_1\" macrocell 0 2 1 1
-set_location "\screen:BUART:tx_ctrl_mark_last\" macrocell 2 1 1 0
-set_location "\UART_3:BUART:tx_bitclk\" macrocell 0 3 1 3
-set_location "\UART_3:BUART:tx_state_0\" macrocell 0 3 0 2
-set_location "\UART_1:BUART:rx_state_2\" macrocell 1 1 0 0
-set_location "\UART_2:BUART:tx_parity_bit\" macrocell 1 4 0 1
-set_location "\UART_2:BUART:txn\" macrocell 1 4 1 0
-set_location "\UART_1:BUART:rx_status_5\" macrocell 2 0 0 3
-set_location "\screen:BUART:rx_counter_load\" macrocell 2 0 1 3
-set_location "\screen:BUART:txn\" macrocell 3 1 0 1
-set_location "\UART_2:BUART:sRX:RxSts\" statusicell 0 4 4 
-set_location "\UART_1:BUART:sTX:TxSts\" statusicell 0 2 4 
-set_location "\UART_1:BUART:rx_status_4\" macrocell 1 0 1 2
-set_location "\UART_2:BUART:rx_state_0\" macrocell 0 5 0 0
-set_location "\screen:BUART:pollcount_0\" macrocell 2 0 1 1
-set_location "\UART_1:BUART:tx_status_2\" macrocell 0 2 0 1
-set_location "\screen:BUART:tx_status_2\" macrocell 1 3 1 3
-set_location "\screen:BUART:rx_last\" macrocell 2 0 0 0
-set_location "\UART_3:BUART:tx_state_2\" macrocell 0 3 1 2
-set_location "\UART_2:BUART:rx_state_3\" macrocell 0 5 0 1
-set_location "\UART_3:BUART:sTX:sCLOCK:TxBitClkGen\" datapathcell 0 2 2 
-set_location "\UART_1:BUART:sRX:RxShifter:u0\" datapathcell 1 0 2 
-set_location "\screen:BUART:sRX:RxSts\" statusicell 1 2 4 
-set_location "\UART_2:BUART:rx_load_fifo\" macrocell 0 4 0 1
-set_location "\UART_1:BUART:rx_parity_error_pre\" macrocell 1 0 1 0
-set_location "\UART_1:BUART:tx_ctrl_mark_last\" macrocell 1 1 1 0
-set_location "\UART_2:BUART:sTX:TxSts\" statusicell 1 4 4 
-set_location "\UART_1:BUART:rx_status_2\" macrocell 1 0 1 1
-set_location "\screen:BUART:tx_state_1\" macrocell 1 2 1 1
-set_location "\UART_2:BUART:rx_parity_bit\" macrocell 0 5 0 2
-set_location "\UART_3:BUART:sTX:TxShifter:u0\" datapathcell 0 3 2 
-set_location "\screen:BUART:rx_state_3\" macrocell 2 1 0 2
-set_location "\UART_1:BUART:sRX:RxSts\" statusicell 2 0 4 
-set_location "\UART_1:BUART:tx_state_0\" macrocell 0 1 1 0
-set_location "\screen:BUART:tx_state_0\" macrocell 1 2 1 0
-set_location "\screen:BUART:rx_status_5\" macrocell 1 2 0 0
-set_location "\UART_2:BUART:rx_counter_load\" macrocell 0 5 1 3
-set_location "\UART_2:BUART:sRX:RxBitCounter\" count7cell 0 5 7 
-set_location "\UART_1:BUART:rx_postpoll\" macrocell 0 0 1 3
+set_location "\MEPSAN:BUART:tx_state_1\" macrocell 1 3 1 3
+set_location "\GBCL:BUART:tx_state_0\" macrocell 3 2 0 0
+set_location "\MEPSAN:BUART:rx_bitclk_enable\" macrocell 0 0 1 3
+set_location "\screen:BUART:counter_load_not\" macrocell 2 0 0 0
+set_location "\PRINTER_A:BUART:tx_state_2\" macrocell 1 5 0 0
+set_location "\PRINTER_A:BUART:tx_status_0\" macrocell 1 4 0 2
+set_location "\MEPSAN:BUART:tx_status_0\" macrocell 1 1 1 1
+set_location "\screen2:BUART:tx_status_0\" macrocell 1 2 1 1
+set_location "\PRINTER_B:BUART:txn\" macrocell 2 2 1 0
+set_location "\GBCL:BUART:tx_state_1\" macrocell 3 2 0 2
+set_location "\MEPSAN:BUART:tx_state_0\" macrocell 1 1 1 2
+set_location "\screen:BUART:rx_status_3\" macrocell 3 1 1 3
+set_location "Net_267" macrocell 1 4 1 1
+set_location "\screen:BUART:tx_state_2\" macrocell 2 0 0 1
+set_location "\screen2:BUART:sRX:RxShifter:u0\" datapathcell 0 5 2 
+set_location "__ONE__" macrocell 3 4 0 1
+set_location "\screen2:BUART:rx_status_3\" macrocell 0 5 1 3
+set_location "\PRINTER_A:BUART:tx_state_0\" macrocell 1 4 0 0
+set_location "\screen:BUART:tx_status_2\" macrocell 3 0 1 1
+set_location "\GBCL:BUART:tx_status_2\" macrocell 3 2 1 3
+set_location "\PRINTER_B:BUART:tx_status_2\" macrocell 2 3 0 0
+set_location "\PRINTER_A:BUART:tx_status_2\" macrocell 1 3 0 1
+set_location "Net_463" macrocell 2 2 1 3
+set_location "\screen:BUART:sRX:RxBitCounter\" count7cell 3 2 7 
+set_location "\screen:BUART:sTX:TxSts\" statusicell 3 0 4 
+set_location "\screen2:BUART:rx_load_fifo\" macrocell 0 5 1 1
+set_location "\GBCL:BUART:tx_parity_bit\" macrocell 3 3 1 0
+set_location "\MEPSAN:BUART:tx_parity_bit\" macrocell 1 3 1 0
+set_location "\screen2:BUART:sTX:TxSts\" statusicell 2 2 4 
+set_location "\GBCL:BUART:tx_bitclk\" macrocell 3 3 1 1
+set_location "\MEPSAN:BUART:tx_state_2\" macrocell 1 3 1 1
+set_location "\PRINTER_B:BUART:tx_state_1\" macrocell 2 1 1 1
+set_location "\screen2:BUART:tx_bitclk\" macrocell 1 2 1 3
+set_location "\screen:BUART:rx_load_fifo\" macrocell 3 1 1 2
+set_location "\GBCL:BUART:sTX:TxSts\" statusicell 3 3 4 
+set_location "\MEPSAN:BUART:sTX:TxShifter:u0\" datapathcell 1 1 2 
+set_location "MODIN9_1" macrocell 0 4 0 1
+set_location "\screen:BUART:sTX:sCLOCK:TxBitClkGen\" datapathcell 2 0 2 
+set_location "\screen:BUART:rx_state_0\" macrocell 3 1 1 0
+set_location "\screen2:BUART:txn\" macrocell 1 2 0 0
+set_location "\PRINTER_A:BUART:txn\" macrocell 1 4 1 0
+set_location "\MEPSAN:BUART:tx_ctrl_mark_last\" macrocell 1 1 0 2
+set_location "\screen:BUART:rx_status_5\" macrocell 3 1 0 0
+set_location "\screen2:BUART:tx_ctrl_mark_last\" macrocell 0 2 1 1
+set_location "\PRINTER_A:BUART:tx_state_1\" macrocell 1 5 0 3
+set_location "\screen2:BUART:rx_state_stop1_reg\" macrocell 0 5 0 2
+set_location "\screen2:BUART:rx_postpoll\" macrocell 0 4 1 2
+set_location "\GBCL:BUART:tx_state_2\" macrocell 3 3 1 2
+set_location "\GBCL:BUART:rx_load_fifo\" macrocell 0 3 1 3
+set_location "\PRINTER_B:BUART:tx_status_0\" macrocell 2 3 1 1
+set_location "\GBCL:BUART:tx_status_0\" macrocell 3 3 0 1
+set_location "\GBCL:BUART:rx_parity_bit\" macrocell 0 3 1 2
+set_location "\PRINTER_A:BUART:sTX:sCLOCK:TxBitClkGen\" datapathcell 1 5 2 
+set_location "\MEPSAN:BUART:rx_parity_bit\" macrocell 0 0 0 2
+set_location "\GBCL:BUART:sTX:TxShifter:u0\" datapathcell 3 3 2 
+set_location "\screen:BUART:sTX:TxShifter:u0\" datapathcell 3 0 2 
+set_location "\screen2:BUART:tx_status_2\" macrocell 2 2 0 3
+set_location "\MEPSAN:BUART:tx_status_2\" macrocell 1 1 0 1
+set_location "\screen:BUART:rx_last\" macrocell 3 0 0 0
+set_location "\GBCL:BUART:rx_last\" macrocell 0 3 0 2
+set_location "Net_437" macrocell 2 1 1 3
+set_location "Net_289" macrocell 1 1 0 0
+set_location "Net_450" macrocell 0 4 0 3
+set_location "\GBCL:BUART:sRX:RxSts\" statusicell 0 3 4 
+set_location "\screen:BUART:rx_state_2\" macrocell 3 2 1 0
+set_location "\screen2:BUART:tx_state_2\" macrocell 0 2 1 2
+set_location "\MEPSAN:BUART:rx_state_stop1_reg\" macrocell 1 0 0 2
+set_location "\MEPSAN:BUART:sRX:RxShifter:u0\" datapathcell 1 0 2 
+set_location "\GBCL:BUART:txn\" macrocell 3 3 0 0
+set_location "\screen2:BUART:sRX:RxSts\" statusicell 1 4 4 
+set_location "\GBCL:BUART:sRX:RxShifter:u0\" datapathcell 0 4 2 
+set_location "\PRINTER_B:BUART:sTX:TxShifter:u0\" datapathcell 2 3 2 
+set_location "\GBCL:BUART:sTX:sCLOCK:TxBitClkGen\" datapathcell 3 2 2 
+set_location "\PRINTER_A:BUART:sTX:TxShifter:u0\" datapathcell 1 4 2 
+set_location "\MEPSAN:BUART:rx_status_2\" macrocell 0 1 0 1
+set_location "\MEPSAN:BUART:sTX:sCLOCK:TxBitClkGen\" datapathcell 1 3 2 
+set_location "\MEPSAN:BUART:rx_state_2\" macrocell 0 1 0 2
+set_location "\screen:BUART:pollcount_1\" macrocell 3 0 0 1
+set_location "\PRINTER_B:BUART:tx_state_2\" macrocell 2 1 1 0
+set_location "\GBCL:BUART:counter_load_not\" macrocell 3 2 0 1
+set_location "\PRINTER_B:BUART:counter_load_not\" macrocell 2 1 1 2
+set_location "\PRINTER_B:BUART:tx_state_0\" macrocell 2 3 1 0
+set_location "\GBCL:BUART:rx_state_0\" macrocell 0 1 1 0
+set_location "\MEPSAN:BUART:rx_parity_error_pre\" macrocell 0 1 0 3
+set_location "\MEPSAN:BUART:rx_status_4\" macrocell 1 0 1 2
+set_location "\screen:BUART:rx_postpoll\" macrocell 3 0 0 2
+set_location "Net_423" macrocell 2 2 0 1
+set_location "Net_333" macrocell 3 3 1 3
+set_location "\GBCL:BUART:rx_state_2\" macrocell 0 1 1 2
+set_location "MODIN9_0" macrocell 0 4 0 0
+set_location "\MEPSAN:BUART:rx_status_3\" macrocell 0 0 0 3
+set_location "\screen:BUART:rx_state_stop1_reg\" macrocell 3 1 1 1
+set_location "\MEPSAN:BUART:rx_last\" macrocell 0 1 0 0
+set_location "\screen2:BUART:tx_state_1\" macrocell 0 2 1 0
+set_location "MODIN5_1" macrocell 0 3 0 0
+set_location "\screen:BUART:tx_ctrl_mark_last\" macrocell 2 1 0 2
+set_location "\screen:BUART:sRX:RxShifter:u0\" datapathcell 3 1 2 
+set_location "\screen2:BUART:rx_last\" macrocell 0 4 1 1
+set_location "\GBCL:BUART:rx_status_2\" macrocell 0 3 1 1
+set_location "\screen2:BUART:tx_state_0\" macrocell 1 2 1 2
+set_location "\GBCL:BUART:rx_status_3\" macrocell 0 1 1 3
+set_location "\GBCL:BUART:rx_state_3\" macrocell 0 1 1 1
+set_location "\PRINTER_A:BUART:sTX:TxSts\" statusicell 1 3 4 
+set_location "\screen:BUART:tx_bitclk\" macrocell 2 0 0 2
+set_location "\MEPSAN:BUART:txn\" macrocell 1 3 0 0
+set_location "\GBCL:BUART:rx_parity_error_pre\" macrocell 0 3 1 0
+set_location "\MEPSAN:BUART:rx_status_5\" macrocell 1 0 1 3
+set_location "\screen:BUART:rx_counter_load\" macrocell 3 2 1 1
+set_location "\GBCL:BUART:rx_counter_load\" macrocell 0 2 0 1
+set_location "\GBCL:BUART:rx_postpoll\" macrocell 1 2 0 2
+set_location "\screen2:BUART:sRX:RxBitCounter\" count7cell 0 5 7 
+set_location "\screen:BUART:txn\" macrocell 2 0 1 0
+set_location "\PRINTER_A:BUART:counter_load_not\" macrocell 1 5 0 1
+set_location "\screen2:BUART:counter_load_not\" macrocell 0 2 1 3
+set_location "\MEPSAN:BUART:counter_load_not\" macrocell 1 3 1 2
+set_location "\MEPSAN:BUART:sRX:RxSts\" statusicell 1 0 4 
+set_location "\screen:BUART:tx_status_0\" macrocell 3 0 1 3
+set_location "\PRINTER_B:BUART:sTX:sCLOCK:TxBitClkGen\" datapathcell 2 1 2 
+set_location "MODIN1_0" macrocell 0 0 1 1
+set_location "\GBCL:BUART:rx_status_4\" macrocell 0 4 1 0
+set_location "\screen:BUART:rx_status_4\" macrocell 3 1 0 1
+set_location "\screen2:BUART:rx_status_4\" macrocell 0 4 1 3
+set_location "\MEPSAN:BUART:rx_state_0\" macrocell 0 0 0 0
+set_location "\screen2:BUART:rx_state_3\" macrocell 0 5 1 2
+set_location "\screen2:BUART:rx_state_0\" macrocell 0 5 1 0
+set_location "\GBCL:BUART:rx_state_stop1_reg\" macrocell 0 2 0 3
+set_location "\screen:BUART:pollcount_0\" macrocell 3 0 0 3
+set_location "\PRINTER_A:BUART:tx_bitclk\" macrocell 1 4 0 1
+set_location "\GBCL:BUART:sRX:RxBitCounter\" count7cell 0 2 7 
+set_location "\GBCL:BUART:rx_bitclk_enable\" macrocell 0 3 0 3
+set_location "\PRINTER_B:BUART:sTX:TxSts\" statusicell 2 3 4 
+set_location "\screen2:BUART:sTX:TxShifter:u0\" datapathcell 1 2 2 
+set_location "MODIN5_0" macrocell 0 3 0 1
+set_location "\MEPSAN:BUART:rx_state_3\" macrocell 0 0 0 1
+set_location "MODIN1_1" macrocell 0 0 1 0
+set_location "\PRINTER_B:BUART:tx_bitclk\" macrocell 2 3 1 3
+set_location "\screen:BUART:sRX:RxSts\" statusicell 3 1 4 
+set_location "\screen:BUART:rx_bitclk_enable\" macrocell 3 1 0 3
+set_location "\MEPSAN:BUART:rx_load_fifo\" macrocell 1 0 0 0
+set_location "\MEPSAN:BUART:sTX:TxSts\" statusicell 1 1 4 
+set_location "\screen:BUART:tx_state_1\" macrocell 2 0 1 1
+set_location "\screen2:BUART:rx_bitclk_enable\" macrocell 0 4 0 2
+set_location "\screen2:BUART:rx_state_2\" macrocell 0 5 0 0
+set_location "\MEPSAN:BUART:tx_bitclk\" macrocell 1 1 1 0
+set_location "\screen2:BUART:sTX:sCLOCK:TxBitClkGen\" datapathcell 0 2 2 
+set_location "\screen:BUART:rx_state_3\" macrocell 3 2 1 2
+set_location "\GBCL:BUART:tx_ctrl_mark_last\" macrocell 0 2 0 0
+set_location "\screen:BUART:tx_state_0\" macrocell 3 0 1 0
+set_location "\screen2:BUART:rx_status_5\" macrocell 0 5 0 3
+set_location "\GBCL:BUART:rx_status_5\" macrocell 0 2 0 2
+set_location "\screen2:BUART:rx_counter_load\" macrocell 0 5 0 1
+set_location "\MEPSAN:BUART:rx_counter_load\" macrocell 1 0 0 1
+set_location "\MEPSAN:BUART:sRX:RxBitCounter\" count7cell 0 0 7 
+set_location "\MEPSAN:BUART:rx_postpoll\" macrocell 0 0 1 2
 set_io "screen_tx(0)" iocell 3 4
 # Note: port 15 is the logical name for port 8
 set_io "Tx_2(0)" iocell 15 5
 set_io "Tx_3(0)" iocell 3 7
-set_io "EnablePin_1(0)" iocell 2 3
 set_location "\PWM_1:PWMHW\" timercell -1 -1 0
 set_io "PWM_Out(0)" iocell 2 1
 set_io "screen_rx(0)" iocell 3 3
-set_location "\Timer_1:TimerHW\" timercell -1 -1 1
-set_location "\Timer_2:TimerHW\" timercell -1 -1 2
 set_io "Kill_Switch(0)" iocell 2 2
-set_io "Rx_1(0)" iocell 1 6
 set_location "ClockBlock" clockblockcell -1 -1 0
+set_io "Rx_1(0)" iocell 1 6
+set_io "screen2_tx(0)" iocell 2 4
+set_io "Tx_4(0)" iocell 2 5
 set_io "Tx_1(0)" iocell 1 7
 # Note: port 15 is the logical name for port 8
 set_io "Rx_2(0)" iocell 15 4
-set_location "\UART_2:RXInternalInterrupt\" interrupt -1 -1 1
-set_location "\UART_1:RXInternalInterrupt\" interrupt -1 -1 0
-set_location "\screen:TXInternalInterrupt\" interrupt -1 -1 4
-set_location "\UART_3:TXInternalInterrupt\" interrupt -1 -1 2
-set_location "\screen:RXInternalInterrupt\" interrupt -1 -1 3
-set_io "EnablePin(0)" iocell 2 0
-set_location "isr_1" interrupt -1 -1 18
-set_location "isr_2" interrupt -1 -1 19
+set_location "\screen2:RXInternalInterrupt\" interrupt -1 -1 4
+set_location "\screen2:TXInternalInterrupt\" interrupt -1 -1 5
+set_location "\MEPSAN:RXInternalInterrupt\" interrupt -1 -1 1
+set_location "\screen:TXInternalInterrupt\" interrupt -1 -1 7
+set_location "\PRINTER_B:TXInternalInterrupt\" interrupt -1 -1 3
+set_location "\PRINTER_A:TXInternalInterrupt\" interrupt -1 -1 2
+set_location "\screen:RXInternalInterrupt\" interrupt -1 -1 6
+set_location "\GBCL:RXInternalInterrupt\" interrupt -1 -1 0
+set_io "EnablePin(0)" iocell 1 2
+set_io "screen2_rx(0)" iocell 2 3

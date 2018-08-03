@@ -47,15 +47,6 @@
 #include <Gbr.h>
 #include <printer.h>
 
-CY_ISR(polling);
-
-
-
-
-CY_ISR(polling){
-    Timer_1_ReadStatusRegister();    											 
-    PollCounter++; //Incrementa el contador    
-}
 
 
 void PollingPos(void){
@@ -120,9 +111,9 @@ int main()
     DecVol = 3;
     PWM_1_Start(); 
     CyGlobalIntEnable;
-    UART_1_Start();
-    UART_2_Start();
-    UART_3_Start();
+    MEPSAN_Start();
+    GBCL_Start();
+    PRINTER_A_Start();
     screen_Start();
     EEPROM_1_Start();
     if(EEPROM_1_ReadByte(0) == 0x5A){
@@ -148,7 +139,7 @@ int main()
     }
     int_shiftnumber=((shift_number[5]&0x0F)*10000)+((shift_number[4]&0x0F)*1000)+((shift_number[3]&0x0F)*100)+((shift_number[2]&0x0F)*10)+((shift_number[1]&0x0F));
     
-    Timer_1_Start();    
+        
     for(x = 0; x < 3; x ++){
         side.a.ppuNozzle[0][x] = EEPROM_1_ReadByte(12 + x);
         side.a.ppuNozzle[1][x] = EEPROM_1_ReadByte(15 + x);

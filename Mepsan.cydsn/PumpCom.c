@@ -110,9 +110,9 @@ void GetResponse(void){
                 side.a.ProcessedTotals[((side.a.MepsanStore[4])&0x0F)-1][TotalRequestType][i] = 0x00;                
             }
             EnablePin_Write (1u);
-            UART_1_PutChar((0x50|address));
-            UART_1_PutChar(0xC0|(side.a.MepsanStore[1]&0x0F));
-            UART_1_PutChar(0xFA); 
+            MEPSAN_PutChar((0x50|address));
+            MEPSAN_PutChar(0xC0|(side.a.MepsanStore[1]&0x0F));
+            MEPSAN_PutChar(0xFA); 
             CyDelay(4);
             EnablePin_Write (0u);
         }
@@ -176,9 +176,9 @@ void GetResponse(void){
                 side.b.ProcessedTotals[((side.b.MepsanStore[4])&0x0F)-1][TotalRequestType][i] = 0x00;                
             }
             EnablePin_Write (1u);
-            UART_1_PutChar((0x50|address));
-            UART_1_PutChar(0xC0|(side.b.MepsanStore[1]&0x0F));
-            UART_1_PutChar(0xFA); 
+            MEPSAN_PutChar((0x50|address));
+            MEPSAN_PutChar(0xC0|(side.b.MepsanStore[1]&0x0F));
+            MEPSAN_PutChar(0xFA); 
             CyDelay(4);
             EnablePin_Write (0u);
         }
@@ -237,9 +237,9 @@ void GetResponse(void){
             side.c.ProcessedTotals[((side.c.MepsanStore[4])&0x0F)-1][TotalRequestType][9] = (side.c.totalsNozzle[((side.c.MepsanStore[4])&0x0F)-1][TotalRequestType][4] & 0x0F) + 0x30;
             
             EnablePin_Write (1u);
-            UART_1_PutChar((0x50|address));
-            UART_1_PutChar(0xC0|(side.c.MepsanStore[1]&0x0F));
-            UART_1_PutChar(0xFA); 
+            MEPSAN_PutChar((0x50|address));
+            MEPSAN_PutChar(0xC0|(side.c.MepsanStore[1]&0x0F));
+            MEPSAN_PutChar(0xFA); 
             CyDelay(4);
             EnablePin_Write (0u);
         }
@@ -290,9 +290,9 @@ void GetResponse(void){
             side.d.ProcessedTotals[((side.d.MepsanStore[4])&0x0F)-1][TotalRequestType][9] = (side.d.totalsNozzle[((side.d.MepsanStore[4])&0x0F)-1][TotalRequestType][4] & 0x0F) + 0x30;
             
             EnablePin_Write (1u);
-            UART_1_PutChar((0x50|address));
-            UART_1_PutChar(0xC0|(side.d.MepsanStore[1]&0x0F));
-            UART_1_PutChar(0xFA); 
+            MEPSAN_PutChar((0x50|address));
+            MEPSAN_PutChar(0xC0|(side.d.MepsanStore[1]&0x0F));
+            MEPSAN_PutChar(0xFA); 
             CyDelay(4);
             EnablePin_Write (0u);
         }
@@ -337,16 +337,16 @@ uint8 GetAddress (uint8 pos){
     side.d.dir = 0xFF;
     uint8 size;
     EnablePin_Write (1u);
-    UART_1_PutChar((0x50|pos));
-    UART_1_PutChar(0x20);
-    UART_1_PutChar(0xFA); 
+    MEPSAN_PutChar((0x50|pos));
+    MEPSAN_PutChar(0x20);
+    MEPSAN_PutChar(0xFA); 
     CyDelay(4);
     EnablePin_Write (0u);
-    size = UART_1_GetRxBufferSize();
+    size = MEPSAN_GetRxBufferSize();
     for(uint8 MepRx = 0; MepRx < size; MepRx++){
-       MepsanResponse[MepRx] = UART_1_ReadRxData();        
+       MepsanResponse[MepRx] = MEPSAN_ReadRxData();        
     }
-    UART_1_ClearRxBuffer(); 
+    MEPSAN_ClearRxBuffer(); 
     CyDelay(300); 
     if(size>=1){              
         return MepsanResponse[0] & 0x0F;
@@ -382,7 +382,7 @@ uint8 Authorize(uint8 address){
     MepsanSendTo[7] = 0x03;
     MepsanSendTo[8] = 0xFA;
     for(uint8 x = 0; x <= 9; x++){    
-        UART_1_PutChar(MepsanSendTo[x]);
+        MEPSAN_PutChar(MepsanSendTo[x]);
     }
     CyDelay(4);
     EnablePin_Write (0u);
@@ -415,15 +415,15 @@ uint8 ReturnStatus(uint8 address){
     MepsanSendTo[7] = 0x03;
     MepsanSendTo[8] = 0xFA;
     for(uint8 x = 0; x <= 9; x++){    
-        UART_1_PutChar(MepsanSendTo[x]);
+        MEPSAN_PutChar(MepsanSendTo[x]);
     }
     CyDelay(4);
     EnablePin_Write (0u);
-    size = UART_1_GetRxBufferSize();
+    size = MEPSAN_GetRxBufferSize();
     for(uint8 MepRx = 0; MepRx < size; MepRx++){
-        MepsanResponse[MepRx] = UART_1_ReadRxData();
+        MepsanResponse[MepRx] = MEPSAN_ReadRxData();
     }       
-    UART_1_ClearRxBuffer();
+    MEPSAN_ClearRxBuffer();
     CyDelay(300); 
     return status;
 }
@@ -442,17 +442,17 @@ uint8 PumpState(uint8 address)
     }
     uint8 size;
     EnablePin_Write (1u);
-    UART_1_PutChar((0x50|address));
-    UART_1_PutChar(0x20);
-    UART_1_PutChar(0xFA); 
+    MEPSAN_PutChar((0x50|address));
+    MEPSAN_PutChar(0x20);
+    MEPSAN_PutChar(0xFA); 
     CyDelay(3);
     EnablePin_Write (0u);
-    size = UART_1_GetRxBufferSize();       
+    size = MEPSAN_GetRxBufferSize();       
     for(uint8 MepRx = 1; MepRx < size + 1; MepRx++){
-        MepsanResponse[MepRx] = UART_1_ReadRxData();
+        MepsanResponse[MepRx] = MEPSAN_ReadRxData();
     } 
     MepsanResponse[0] = size;
-    UART_1_ClearRxBuffer();
+    MEPSAN_ClearRxBuffer();
     if(size > 3){
         GetResponse();
         CyDelay(100);
@@ -515,15 +515,15 @@ uint8 PriceUpdate(uint8 address, uint8 *price)
     MepsanSendTo[9] = 0x03;
     MepsanSendTo[10] = 0xFA; 
     for(uint8 x = 0; x <= 11; x++){    
-        UART_1_PutChar(MepsanSendTo[x]);
+        MEPSAN_PutChar(MepsanSendTo[x]);
     }
     CyDelay(4);
     EnablePin_Write (0u);
-    size = UART_1_GetRxBufferSize();
+    size = MEPSAN_GetRxBufferSize();
     for(uint8 MepRx = 0; MepRx < size; MepRx++){
-        MepsanResponse[MepRx] = UART_1_ReadRxData();   
+        MepsanResponse[MepRx] = MEPSAN_ReadRxData();   
     }
-    UART_1_ClearRxBuffer();
+    MEPSAN_ClearRxBuffer();
     CyDelay(100); 
     
     if(size>=1){
@@ -560,15 +560,15 @@ void TotalRequest(uint8 address, uint8 type, uint8 nozzle)
     MepsanSendTo[7] = 0x03;
     MepsanSendTo[8] = 0xFA; 
     for(uint8 x = 0; x <= 9; x++){    
-        UART_1_PutChar(MepsanSendTo[x]);
+        MEPSAN_PutChar(MepsanSendTo[x]);
     }
     CyDelay(4);
     EnablePin_Write (0u);  
-    size = UART_1_GetRxBufferSize();
+    size = MEPSAN_GetRxBufferSize();
     for(uint8 MepRx = 0; MepRx < size; MepRx++){
-        MepsanResponse[MepRx] = UART_1_ReadRxData();
+        MepsanResponse[MepRx] = MEPSAN_ReadRxData();
     }       
-    UART_1_ClearRxBuffer();
+    MEPSAN_ClearRxBuffer();
     CyDelay(100); 
 }
 
@@ -592,10 +592,10 @@ void GetTotal(void){
 
 void GetACK(){
     uint8 size;
-    size = UART_1_GetRxBufferSize();        
+    size = MEPSAN_GetRxBufferSize();        
     for(uint8 MepRx = 0; MepRx < size; MepRx++){
-        MepsanResponse[MepRx] = UART_1_ReadRxData();        
+        MepsanResponse[MepRx] = MEPSAN_ReadRxData();        
     }    
-    UART_1_ClearRxBuffer();
+    MEPSAN_ClearRxBuffer();
 }
 
