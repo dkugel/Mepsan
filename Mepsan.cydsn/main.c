@@ -68,9 +68,12 @@ void PollingPos(void){
         //ReturnStatus(side.a.dir);        
     }
     if(Positions == 2){
-        
+        if(side.a.MepRequest == MEPSAN_AUTHORIZE)
+            Authorize(side.a.dir);
+        if(side.b.MepRequest == MEPSAN_AUTHORIZE)
+            Authorize(side.b.dir);
         side.a.states[0] = PumpState(side.a.dir);
-        side.b.states[0] = PumpState(side.b.dir);
+        side.b.states[0] = PumpState(side.b.dir);        
                     
     }
     if(Positions == 3){
@@ -320,7 +323,7 @@ int main()
                     for(uint8 LCDRx = 7; LCDRx < 15; LCDRx++){
                         if((touch1[LCDRx] == 0x00) ||(touch1[LCDRx] == 0xFF))
                             break;
-                        side.a.msn_plate[LCDRx-7] = touch1[LCDRx];
+                        side.a.msn_plate[LCDRx-7] = touch1[LCDRx]-0x20;
             		}
                     for(uint8 LCDRx = 0; LCDRx < 20; LCDRx++){
             			touch1[LCDRx] = 0x00;
@@ -332,7 +335,7 @@ int main()
                     for(uint8 LCDRx = 7; LCDRx < 15; LCDRx++){
                         if((touch1[LCDRx] == 0x00) ||(touch1[LCDRx] == 0xFF))
                             break;
-                        side.b.msn_plate[LCDRx-7] = touch1[LCDRx];
+                        side.b.msn_plate[LCDRx-7] = touch1[LCDRx]-0x20;
             		}
                     for(uint8 LCDRx = 0; LCDRx < 20; LCDRx++){
             			touch1[LCDRx] = 0x00;

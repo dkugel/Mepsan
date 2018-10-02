@@ -20,12 +20,14 @@ char VolSimbol[1] = "G";
 
 
 /***********  Temporal messages ******************/
-uint8 msn_EDS[22]       = " ESTACION DE SERVICIO ";
-uint8 msn_EDS2[22]      = "    PRUEBAS MEPSAN    ";
+uint8 msn_EDS[22]       = "   EDS LA PROVINCIA   ";
+uint8 msn_EDS2[22]      = "    OMAR MALAGON      ";
 uint8 msn_EDS3[22]      = "   Tel: (57)123456    ";
-uint8 msn_EDS4[22]      = "   NIT: 900.123.456   ";
-uint8 msn_footer[22]    = " SISPETROL INGENIERIA ";
-uint8 msn_footer2[22]   = "  SOLUCIONES PARA EDS ";
+uint8 msn_EDS4[22]      = "    NIT: 4172693-6    ";
+uint8 msn_EDS5[22]      = "   Km 2 via Tinjaca   ";
+uint8 msn_EDS6[22]      = "   TINJACA - BOYACA   ";
+uint8 msn_footer[22]    = "GRACIAS POR SU COMPRA ";
+uint8 msn_footer2[22]   = "    VUELVA PRONTO     ";
 uint8 msn_diesel[8]     = "Diesel  ";
 uint8 msn_gasoline[9]   = "Corriente";
 
@@ -109,6 +111,14 @@ void PrintReceipt(uint8 address){
 		PRINTER_A_PutChar(msn_EDS4[x]);
 	}
     PRINTER_A_PutChar(LINE_FEED);
+    for(uint8 x = 0; x < 22; x ++){
+		PRINTER_A_PutChar(msn_EDS5[x]);
+	}
+    PRINTER_A_PutChar(LINE_FEED);
+    for(uint8 x = 0; x < 22; x ++){
+		PRINTER_A_PutChar(msn_EDS6[x]);
+	}
+    PRINTER_A_PutChar(LINE_FEED);
 	for(uint8 x = 0; x < 24; x ++){
 		PRINTER_A_PutChar(SEPARATOR[x]);
 	}
@@ -117,15 +127,14 @@ void PrintReceipt(uint8 address){
 	for(uint8 x = 0; x < 13; x ++){
 		PRINTER_A_PutChar(msn_fecha[x]);
 	}
-    PRINTER_A_PutChar(((touch1[6] >> 4) + 0x30));
-    PRINTER_A_PutChar(((touch1[6] & 0x0F) + 0x30));
+    PRINTER_A_PutChar(((touch1[8] >> 4) + 0x30)) ;
+	PRINTER_A_PutChar(((touch1[8] & 0x0F) + 0x30));
     PRINTER_A_PutChar('/');
     PRINTER_A_PutChar(((touch1[7] >> 4) + 0x30)) ;
     PRINTER_A_PutChar(((touch1[7] & 0x0F) + 0x30));
-    PRINTER_A_PutChar('/');
-    PRINTER_A_PutChar(((touch1[8] >> 4) + 0x30)) ;
-	PRINTER_A_PutChar(((touch1[8] & 0x0F) + 0x30));
-
+    PRINTER_A_PutChar('/');    
+    PRINTER_A_PutChar(((touch1[6] >> 4) + 0x30));
+    PRINTER_A_PutChar(((touch1[6] & 0x0F) + 0x30));
 	PRINTER_A_PutChar(LINE_FEED);
     /********** HORA ***************/
 	for(uint8 x = 0; x < 13; x ++){
@@ -169,9 +178,15 @@ void PrintReceipt(uint8 address){
 		for(uint8 x = 0; x < 13; x ++){
 			PRINTER_A_PutChar(msn_product[x]);
 		}
-		for(uint8 x = 0; x < 8; x ++){
-			PRINTER_A_PutChar(msn_diesel[x]);
-		}
+        if(side.a.Nozzle == 0x01){
+    		for(uint8 x = 0; x < 8; x ++){
+    			PRINTER_A_PutChar(msn_diesel[x]);
+    		}
+        }else{
+            for(uint8 x = 0; x < 8; x ++){
+    			PRINTER_A_PutChar(msn_gasoline[x]);
+    		}
+        }        
         PRINTER_A_PutChar(LINE_FEED);
 		for(uint8 x = 0; x < 13; x ++){
 			PRINTER_A_PutChar(msn_vol[x]);
@@ -217,9 +232,15 @@ void PrintReceipt(uint8 address){
 		for(uint8 x = 0; x < 13; x ++){
 			PRINTER_A_PutChar(msn_product[x]);
 		}
-		for(uint8 x = 0; x < 8; x ++){
-			PRINTER_A_PutChar(msn_diesel[x]);
-		}
+		if(side.b.Nozzle == 0x02){
+    		for(uint8 x = 0; x < 8; x ++){
+    			PRINTER_A_PutChar(msn_diesel[x]);
+    		}
+        }else{
+            for(uint8 x = 0; x < 8; x ++){
+    			PRINTER_A_PutChar(msn_gasoline[x]);
+    		}
+        }
         PRINTER_A_PutChar(LINE_FEED);
 		for(uint8 x = 0; x < 13; x ++){
 			PRINTER_A_PutChar(msn_vol[x]);
@@ -382,7 +403,10 @@ void PrintShift(void){
         }
         screen_size = 0;
     }
-    
+    PRINTER_A_PutChar(0x1D);
+    PRINTER_A_PutChar(0x70);
+    PRINTER_A_PutChar(0x01);
+    PRINTER_A_PutChar(0x00);
     int_shiftnumber++;
     shift_number[5]=(int_shiftnumber/10000)+48;
 	shift_number[4]=((int_shiftnumber%10000)/1000)+48;
