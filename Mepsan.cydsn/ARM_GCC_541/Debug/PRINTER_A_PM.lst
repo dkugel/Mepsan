@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cclX5nzB.s 			page 1
+ARM GAS  C:\Users\THERMA~1\AppData\Local\Temp\cckorPM6.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cclX5nzB.s 			page 1
   24:Generated_Source\PSoC5/PRINTER_A_PM.c **** static PRINTER_A_BACKUP_STRUCT  PRINTER_A_backup =
   25:Generated_Source\PSoC5/PRINTER_A_PM.c **** {
   26:Generated_Source\PSoC5/PRINTER_A_PM.c ****     /* enableState - disabled */
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cclX5nzB.s 			page 2
+ARM GAS  C:\Users\THERMA~1\AppData\Local\Temp\cckorPM6.s 			page 2
 
 
   27:Generated_Source\PSoC5/PRINTER_A_PM.c ****     0u,
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cclX5nzB.s 			page 1
   53              		.size	PRINTER_A_SaveConfig, .-PRINTER_A_SaveConfig
   54              		.section	.text.PRINTER_A_RestoreConfig,"ax",%progbits
   55              		.align	2
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cclX5nzB.s 			page 3
+ARM GAS  C:\Users\THERMA~1\AppData\Local\Temp\cckorPM6.s 			page 3
 
 
   56              		.global	PRINTER_A_RestoreConfig
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cclX5nzB.s 			page 1
   77 0008 80BC     		pop	{r7}
   78              		.cfi_restore 7
   79              		.cfi_def_cfa_offset 0
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cclX5nzB.s 			page 4
+ARM GAS  C:\Users\THERMA~1\AppData\Local\Temp\cckorPM6.s 			page 4
 
 
   80 000a 7047     		bx	lr
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cclX5nzB.s 			page 1
  125:Generated_Source\PSoC5/PRINTER_A_PM.c ****             PRINTER_A_backup.enableState = 1u;
  126:Generated_Source\PSoC5/PRINTER_A_PM.c ****         }
  127:Generated_Source\PSoC5/PRINTER_A_PM.c ****         else
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cclX5nzB.s 			page 5
+ARM GAS  C:\Users\THERMA~1\AppData\Local\Temp\cckorPM6.s 			page 5
 
 
  128:Generated_Source\PSoC5/PRINTER_A_PM.c ****         {
@@ -286,7 +286,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cclX5nzB.s 			page 1
  127              	.L7:
  128              		.align	2
  129              	.L6:
- 130 002c 9B640040 		.word	1073767579
+ 130 002c 96640040 		.word	1073767574
  131 0030 00000000 		.word	PRINTER_A_backup
  132              		.cfi_endproc
  133              	.LFE2:
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cclX5nzB.s 			page 1
  139              		.thumb_func
  140              		.type	PRINTER_A_Wakeup, %function
  141              	PRINTER_A_Wakeup:
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cclX5nzB.s 			page 6
+ARM GAS  C:\Users\THERMA~1\AppData\Local\Temp\cckorPM6.s 			page 6
 
 
  142              	.LFB3:
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cclX5nzB.s 			page 1
  158 000c 034B     		ldr	r3, .L11
  159 000e 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
  160 0010 002B     		cmp	r3, #0
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cclX5nzB.s 			page 7
+ARM GAS  C:\Users\THERMA~1\AppData\Local\Temp\cckorPM6.s 			page 7
 
 
  161 0012 01D0     		beq	.L10
@@ -390,35 +390,35 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cclX5nzB.s 			page 1
  183 0006 00000000 		.4byte	.Ldebug_abbrev0
  184 000a 04       		.byte	0x4
  185 000b 01       		.uleb128 0x1
- 186 000c BE000000 		.4byte	.LASF21
+ 186 000c F8000000 		.4byte	.LASF21
  187 0010 0C       		.byte	0xc
  188 0011 0E000000 		.4byte	.LASF22
- 189 0015 EB010000 		.4byte	.LASF23
+ 189 0015 91000000 		.4byte	.LASF23
  190 0019 00000000 		.4byte	.Ldebug_ranges0+0
  191 001d 00000000 		.4byte	0
  192 0021 00000000 		.4byte	.Ldebug_line0
  193 0025 02       		.uleb128 0x2
  194 0026 01       		.byte	0x1
  195 0027 06       		.byte	0x6
- 196 0028 BB010000 		.4byte	.LASF0
+ 196 0028 EB010000 		.4byte	.LASF0
  197 002c 02       		.uleb128 0x2
  198 002d 01       		.byte	0x1
  199 002e 08       		.byte	0x8
- 200 002f 4C010000 		.4byte	.LASF1
+ 200 002f 86010000 		.4byte	.LASF1
  201 0033 02       		.uleb128 0x2
  202 0034 02       		.byte	0x2
  203 0035 05       		.byte	0x5
- 204 0036 8B010000 		.4byte	.LASF2
+ 204 0036 1B020000 		.4byte	.LASF2
  205 003a 02       		.uleb128 0x2
  206 003b 02       		.byte	0x2
  207 003c 07       		.byte	0x7
- 208 003d A8010000 		.4byte	.LASF3
+ 208 003d D8010000 		.4byte	.LASF3
  209 0041 02       		.uleb128 0x2
  210 0042 04       		.byte	0x4
  211 0043 05       		.byte	0x5
- 212 0044 82010000 		.4byte	.LASF4
+ 212 0044 BC010000 		.4byte	.LASF4
  213 0048 02       		.uleb128 0x2
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cclX5nzB.s 			page 8
+ARM GAS  C:\Users\THERMA~1\AppData\Local\Temp\cckorPM6.s 			page 8
 
 
  214 0049 04       		.byte	0x4
@@ -452,7 +452,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cclX5nzB.s 			page 1
  242 007e 02       		.uleb128 0x2
  243 007f 08       		.byte	0x8
  244 0080 04       		.byte	0x4
- 245 0081 A1010000 		.4byte	.LASF10
+ 245 0081 D1010000 		.4byte	.LASF10
  246 0085 02       		.uleb128 0x2
  247 0086 01       		.byte	0x1
  248 0087 08       		.byte	0x8
@@ -467,34 +467,34 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cclX5nzB.s 			page 1
  257 009d 02       		.uleb128 0x2
  258 009e 08       		.byte	0x8
  259 009f 04       		.byte	0x4
- 260 00a0 DF010000 		.4byte	.LASF14
+ 260 00a0 0F020000 		.4byte	.LASF14
  261 00a4 02       		.uleb128 0x2
  262 00a5 04       		.byte	0x4
  263 00a6 07       		.byte	0x7
- 264 00a7 31020000 		.4byte	.LASF15
+ 264 00a7 36020000 		.4byte	.LASF15
  265 00ab 06       		.uleb128 0x6
- 266 00ac 6A010000 		.4byte	.LASF24
+ 266 00ac A4010000 		.4byte	.LASF24
  267 00b0 01       		.byte	0x1
  268 00b1 03       		.byte	0x3
  269 00b2 45       		.byte	0x45
  270 00b3 C4000000 		.4byte	0xc4
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cclX5nzB.s 			page 9
+ARM GAS  C:\Users\THERMA~1\AppData\Local\Temp\cckorPM6.s 			page 9
 
 
  271 00b7 07       		.uleb128 0x7
- 272 00b8 95010000 		.4byte	.LASF25
+ 272 00b8 C5010000 		.4byte	.LASF25
  273 00bc 03       		.byte	0x3
  274 00bd 47       		.byte	0x47
  275 00be 6B000000 		.4byte	0x6b
  276 00c2 00       		.byte	0
  277 00c3 00       		.byte	0
  278 00c4 08       		.uleb128 0x8
- 279 00c5 A6000000 		.4byte	.LASF16
+ 279 00c5 E0000000 		.4byte	.LASF16
  280 00c9 03       		.byte	0x3
  281 00ca 4D       		.byte	0x4d
  282 00cb AB000000 		.4byte	0xab
  283 00cf 09       		.uleb128 0x9
- 284 00d0 91000000 		.4byte	.LASF17
+ 284 00d0 CB000000 		.4byte	.LASF17
  285 00d4 01       		.byte	0x1
  286 00d5 36       		.byte	0x36
  287 00d6 00000000 		.4byte	.LFB0
@@ -502,7 +502,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cclX5nzB.s 			page 1
  289 00de 01       		.uleb128 0x1
  290 00df 9C       		.byte	0x9c
  291 00e0 09       		.uleb128 0x9
- 292 00e1 C7010000 		.4byte	.LASF18
+ 292 00e1 F7010000 		.4byte	.LASF18
  293 00e5 01       		.byte	0x1
  294 00e6 57       		.byte	0x57
  295 00e7 00000000 		.4byte	.LFB1
@@ -510,7 +510,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cclX5nzB.s 			page 1
  297 00ef 01       		.uleb128 0x1
  298 00f0 9C       		.byte	0x9c
  299 00f1 0A       		.uleb128 0xa
- 300 00f2 5A010000 		.4byte	.LASF19
+ 300 00f2 94010000 		.4byte	.LASF19
  301 00f6 01       		.byte	0x1
  302 00f7 78       		.byte	0x78
  303 00f8 00000000 		.4byte	.LFB2
@@ -526,7 +526,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cclX5nzB.s 			page 1
  313 0111 01       		.uleb128 0x1
  314 0112 9C       		.byte	0x9c
  315 0113 0B       		.uleb128 0xb
- 316 0114 20020000 		.4byte	.LASF26
+ 316 0114 25020000 		.4byte	.LASF26
  317 0118 01       		.byte	0x1
  318 0119 18       		.byte	0x18
  319 011a C4000000 		.4byte	0xc4
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cclX5nzB.s 			page 1
  325              	.Ldebug_abbrev0:
  326 0000 01       		.uleb128 0x1
  327 0001 11       		.uleb128 0x11
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cclX5nzB.s 			page 10
+ARM GAS  C:\Users\THERMA~1\AppData\Local\Temp\cckorPM6.s 			page 10
 
 
  328 0002 01       		.byte	0x1
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cclX5nzB.s 			page 1
  382 0038 00       		.byte	0
  383 0039 49       		.uleb128 0x49
  384 003a 13       		.uleb128 0x13
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cclX5nzB.s 			page 11
+ARM GAS  C:\Users\THERMA~1\AppData\Local\Temp\cckorPM6.s 			page 11
 
 
  385 003b 00       		.byte	0
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cclX5nzB.s 			page 1
  439 0071 3B       		.uleb128 0x3b
  440 0072 0B       		.uleb128 0xb
  441 0073 27       		.uleb128 0x27
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cclX5nzB.s 			page 12
+ARM GAS  C:\Users\THERMA~1\AppData\Local\Temp\cckorPM6.s 			page 12
 
 
  442 0074 19       		.uleb128 0x19
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cclX5nzB.s 			page 1
  496 000a 04       		.byte	0x4
  497 000b 00       		.byte	0
  498 000c 0000     		.2byte	0
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cclX5nzB.s 			page 13
+ARM GAS  C:\Users\THERMA~1\AppData\Local\Temp\cckorPM6.s 			page 13
 
 
  499 000e 0000     		.2byte	0
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cclX5nzB.s 			page 1
  534      00
  535              	.LASF12:
  536 0057 75696E74 		.ascii	"uint8\000"
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cclX5nzB.s 			page 14
+ARM GAS  C:\Users\THERMA~1\AppData\Local\Temp\cckorPM6.s 			page 14
 
 
  536      3800
@@ -800,107 +800,109 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cclX5nzB.s 			page 1
  543              	.LASF9:
  544 008b 666C6F61 		.ascii	"float\000"
  544      7400
- 545              	.LASF17:
- 546 0091 5052494E 		.ascii	"PRINTER_A_SaveConfig\000"
- 546      5445525F 
- 546      415F5361 
- 546      7665436F 
- 546      6E666967 
- 547              	.LASF16:
- 548 00a6 5052494E 		.ascii	"PRINTER_A_BACKUP_STRUCT\000"
- 548      5445525F 
- 548      415F4241 
- 548      434B5550 
- 548      5F535452 
- 549              	.LASF21:
- 550 00be 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
- 550      43313120 
- 550      352E342E 
- 550      31203230 
- 550      31363036 
- 551 00f1 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
- 551      20726576 
- 551      6973696F 
- 551      6E203233 
- 551      37373135 
- 552 0124 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
- 552      66756E63 
- 552      74696F6E 
- 552      2D736563 
- 552      74696F6E 
- 553              	.LASF1:
- 554 014c 756E7369 		.ascii	"unsigned char\000"
- 554      676E6564 
- 554      20636861 
- 554      7200
- 555              	.LASF19:
- 556 015a 5052494E 		.ascii	"PRINTER_A_Sleep\000"
- 556      5445525F 
- 556      415F536C 
- 556      65657000 
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cclX5nzB.s 			page 15
+ 545              	.LASF23:
+ 546 0091 433A5C55 		.ascii	"C:\\Users\\Thermaltake\\Documents\\GitHub\\Mepsan\\"
+ 546      73657273 
+ 546      5C546865 
+ 546      726D616C 
+ 546      74616B65 
+ 547 00be 4D657073 		.ascii	"Mepsan.cydsn\000"
+ 547      616E2E63 
+ 547      7964736E 
+ 547      00
+ 548              	.LASF17:
+ 549 00cb 5052494E 		.ascii	"PRINTER_A_SaveConfig\000"
+ 549      5445525F 
+ 549      415F5361 
+ 549      7665436F 
+ 549      6E666967 
+ 550              	.LASF16:
+ 551 00e0 5052494E 		.ascii	"PRINTER_A_BACKUP_STRUCT\000"
+ 551      5445525F 
+ 551      415F4241 
+ 551      434B5550 
+ 551      5F535452 
+ 552              	.LASF21:
+ 553 00f8 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 553      43313120 
+ 553      352E342E 
+ 553      31203230 
+ 553      31363036 
+ 554 012b 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 554      20726576 
+ 554      6973696F 
+ 554      6E203233 
+ 554      37373135 
+ 555 015e 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 555      66756E63 
+ 555      74696F6E 
+ 555      2D736563 
+ 555      74696F6E 
+ARM GAS  C:\Users\THERMA~1\AppData\Local\Temp\cckorPM6.s 			page 15
 
 
- 557              	.LASF24:
- 558 016a 5052494E 		.ascii	"PRINTER_A_backupStruct_\000"
- 558      5445525F 
- 558      415F6261 
- 558      636B7570 
- 558      53747275 
- 559              	.LASF4:
- 560 0182 6C6F6E67 		.ascii	"long int\000"
- 560      20696E74 
- 560      00
- 561              	.LASF2:
- 562 018b 73686F72 		.ascii	"short int\000"
- 562      7420696E 
- 562      7400
- 563              	.LASF25:
- 564 0195 656E6162 		.ascii	"enableState\000"
- 564      6C655374 
- 564      61746500 
- 565              	.LASF10:
- 566 01a1 646F7562 		.ascii	"double\000"
- 566      6C6500
- 567              	.LASF3:
- 568 01a8 73686F72 		.ascii	"short unsigned int\000"
- 568      7420756E 
- 568      7369676E 
- 568      65642069 
- 568      6E7400
- 569              	.LASF0:
- 570 01bb 7369676E 		.ascii	"signed char\000"
- 570      65642063 
- 570      68617200 
- 571              	.LASF18:
- 572 01c7 5052494E 		.ascii	"PRINTER_A_RestoreConfig\000"
- 572      5445525F 
- 572      415F5265 
- 572      73746F72 
- 572      65436F6E 
- 573              	.LASF14:
- 574 01df 6C6F6E67 		.ascii	"long double\000"
- 574      20646F75 
- 574      626C6500 
- 575              	.LASF23:
- 576 01eb 433A5C55 		.ascii	"C:\\Users\\Lenovo\\Documents\\GitHub\\Mepsan\\Mepsa"
- 576      73657273 
- 576      5C4C656E 
- 576      6F766F5C 
- 576      446F6375 
- 577 0218 6E2E6379 		.ascii	"n.cydsn\000"
- 577      64736E00 
+ 556              	.LASF1:
+ 557 0186 756E7369 		.ascii	"unsigned char\000"
+ 557      676E6564 
+ 557      20636861 
+ 557      7200
+ 558              	.LASF19:
+ 559 0194 5052494E 		.ascii	"PRINTER_A_Sleep\000"
+ 559      5445525F 
+ 559      415F536C 
+ 559      65657000 
+ 560              	.LASF24:
+ 561 01a4 5052494E 		.ascii	"PRINTER_A_backupStruct_\000"
+ 561      5445525F 
+ 561      415F6261 
+ 561      636B7570 
+ 561      53747275 
+ 562              	.LASF4:
+ 563 01bc 6C6F6E67 		.ascii	"long int\000"
+ 563      20696E74 
+ 563      00
+ 564              	.LASF25:
+ 565 01c5 656E6162 		.ascii	"enableState\000"
+ 565      6C655374 
+ 565      61746500 
+ 566              	.LASF10:
+ 567 01d1 646F7562 		.ascii	"double\000"
+ 567      6C6500
+ 568              	.LASF3:
+ 569 01d8 73686F72 		.ascii	"short unsigned int\000"
+ 569      7420756E 
+ 569      7369676E 
+ 569      65642069 
+ 569      6E7400
+ 570              	.LASF0:
+ 571 01eb 7369676E 		.ascii	"signed char\000"
+ 571      65642063 
+ 571      68617200 
+ 572              	.LASF18:
+ 573 01f7 5052494E 		.ascii	"PRINTER_A_RestoreConfig\000"
+ 573      5445525F 
+ 573      415F5265 
+ 573      73746F72 
+ 573      65436F6E 
+ 574              	.LASF14:
+ 575 020f 6C6F6E67 		.ascii	"long double\000"
+ 575      20646F75 
+ 575      626C6500 
+ 576              	.LASF2:
+ 577 021b 73686F72 		.ascii	"short int\000"
+ 577      7420696E 
+ 577      7400
  578              	.LASF26:
- 579 0220 5052494E 		.ascii	"PRINTER_A_backup\000"
+ 579 0225 5052494E 		.ascii	"PRINTER_A_backup\000"
  579      5445525F 
  579      415F6261 
  579      636B7570 
  579      00
+ARM GAS  C:\Users\THERMA~1\AppData\Local\Temp\cckorPM6.s 			page 16
+
+
  580              	.LASF15:
- 581 0231 73697A65 		.ascii	"sizetype\000"
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cclX5nzB.s 			page 16
-
-
+ 581 0236 73697A65 		.ascii	"sizetype\000"
  581      74797065 
  581      00
  582              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

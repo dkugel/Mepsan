@@ -22,13 +22,14 @@ char VolSimbol[1] = "G";
 /***********  Temporal messages ******************/
 uint8 msn_EDS[22]       = "   EDS LA PROVINCIA   ";
 uint8 msn_EDS2[22]      = "    OMAR MALAGON      ";
-uint8 msn_EDS3[22]      = "   Tel: (57)123456    ";
+uint8 msn_EDS3[22]      = "   Tel: 3202361131    ";
 uint8 msn_EDS4[22]      = "    NIT: 4172693-6    ";
-uint8 msn_EDS5[22]      = "   Km 2 via Tinjaca   ";
-uint8 msn_EDS6[22]      = "   TINJACA - BOYACA   ";
+uint8 msn_EDS5[22]      = "       Km 2 via       ";
+uint8 msn_EDS6[22]      = " Tinjaca - Sutamarchan";
+uint8 msn_EDS7[22]      = "   TINJACA - BOYACA   ";
 uint8 msn_footer[22]    = "GRACIAS POR SU COMPRA ";
 uint8 msn_footer2[22]   = "    VUELVA PRONTO     ";
-uint8 msn_diesel[8]     = "Diesel  ";
+uint8 msn_diesel[9]     = "Diesel   ";
 uint8 msn_gasoline[9]   = "Corriente";
 
 /*********** informative messages ****************/
@@ -87,7 +88,7 @@ void PrintReceipt(uint8 address){
     for(uint8 LCDRx = 0; LCDRx < 6; LCDRx++){
         screen_PutChar(ASK_TIME[LCDRx]);
     }
-    CyDelay(4);
+    CyDelay(10);
     screen_size = screen_GetRxBufferSize();
     if(screen_size >= 13 ){
         for(uint8 LCDRx = 0; LCDRx < screen_size; LCDRx++){
@@ -117,6 +118,10 @@ void PrintReceipt(uint8 address){
     PRINTER_A_PutChar(LINE_FEED);
     for(uint8 x = 0; x < 22; x ++){
 		PRINTER_A_PutChar(msn_EDS6[x]);
+	}
+    PRINTER_A_PutChar(LINE_FEED);
+    for(uint8 x = 0; x < 22; x ++){
+		PRINTER_A_PutChar(msn_EDS7[x]);
 	}
     PRINTER_A_PutChar(LINE_FEED);
 	for(uint8 x = 0; x < 24; x ++){
@@ -179,11 +184,11 @@ void PrintReceipt(uint8 address){
 			PRINTER_A_PutChar(msn_product[x]);
 		}
         if(side.a.Nozzle == 0x01){
-    		for(uint8 x = 0; x < 8; x ++){
+    		for(uint8 x = 0; x < 9; x ++){
     			PRINTER_A_PutChar(msn_diesel[x]);
     		}
         }else{
-            for(uint8 x = 0; x < 8; x ++){
+            for(uint8 x = 0; x < 9; x ++){
     			PRINTER_A_PutChar(msn_gasoline[x]);
     		}
         }        
@@ -214,7 +219,7 @@ void PrintReceipt(uint8 address){
 		PRINTER_A_PutChar(PRN_CURRENCY[0]);  
 		PRINTER_A_PutChar(' ');
 		for(uint8 x = 1; x < 6; x ++){
-			PRINTER_A_PutChar(side.a.ProcessedPPU[0][x]);
+			PRINTER_A_PutChar(side.a.ProcessedPPU[side.a.Nozzle-1][x]);
 		}
 		PRINTER_A_PutChar(LINE_FEED);
 	}
@@ -233,11 +238,11 @@ void PrintReceipt(uint8 address){
 			PRINTER_A_PutChar(msn_product[x]);
 		}
 		if(side.b.Nozzle == 0x02){
-    		for(uint8 x = 0; x < 8; x ++){
+    		for(uint8 x = 0; x < 9; x ++){
     			PRINTER_A_PutChar(msn_diesel[x]);
     		}
         }else{
-            for(uint8 x = 0; x < 8; x ++){
+            for(uint8 x = 0; x < 9; x ++){
     			PRINTER_A_PutChar(msn_gasoline[x]);
     		}
         }
@@ -268,7 +273,7 @@ void PrintReceipt(uint8 address){
 		PRINTER_A_PutChar(PRN_CURRENCY[0]);  
 		PRINTER_A_PutChar(' ');
 		for(uint8 x = 1; x < 6; x ++){
-			PRINTER_A_PutChar(side.b.ProcessedPPU[0][x]);
+			PRINTER_A_PutChar(side.b.ProcessedPPU[side.b.Nozzle - 1][x]);
 		}
 		PRINTER_A_PutChar(LINE_FEED);
 	}

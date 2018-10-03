@@ -323,7 +323,11 @@ int main()
                     for(uint8 LCDRx = 7; LCDRx < 15; LCDRx++){
                         if((touch1[LCDRx] == 0x00) ||(touch1[LCDRx] == 0xFF))
                             break;
-                        side.a.msn_plate[LCDRx-7] = touch1[LCDRx]-0x20;
+                        if(touch1[LCDRx] < 0x40){
+                            side.a.msn_plate[LCDRx-7] = touch1[LCDRx];
+                        }else{
+                            side.a.msn_plate[LCDRx-7] = touch1[LCDRx]-0x20;
+                        }
             		}
                     for(uint8 LCDRx = 0; LCDRx < 20; LCDRx++){
             			touch1[LCDRx] = 0x00;
@@ -335,7 +339,11 @@ int main()
                     for(uint8 LCDRx = 7; LCDRx < 15; LCDRx++){
                         if((touch1[LCDRx] == 0x00) ||(touch1[LCDRx] == 0xFF))
                             break;
-                        side.b.msn_plate[LCDRx-7] = touch1[LCDRx]-0x20;
+                        if(touch1[LCDRx] < 0x40){
+                            side.b.msn_plate[LCDRx-7] = touch1[LCDRx];
+                        }else{
+                            side.b.msn_plate[LCDRx-7] = touch1[LCDRx]-0x20;
+                        }
             		}
                     for(uint8 LCDRx = 0; LCDRx < 20; LCDRx++){
             			touch1[LCDRx] = 0x00;
