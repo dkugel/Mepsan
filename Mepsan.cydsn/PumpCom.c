@@ -87,6 +87,7 @@ void GetResponse(void){
     //CyDelay(10); 
     address = MepsanResponse[1] & 0x0F;
     if(address == side.a.dir){
+        side.a.MepRequest = 0;
         for(uint8 MepRx = 1; MepRx < size + 1; MepRx++){
             side.a.MepsanStore[MepRx - 1] = MepsanResponse[MepRx];
         }
@@ -150,8 +151,19 @@ void GetResponse(void){
             }
             EnablePin_Write (0u);
         }
+        if(side.a.MepsanStore[2] == 0x03 && side.a.MepsanStore[3] == 0x04 ){
+            side.a.MepRequest = MEPSAN_AUTHORIZE;
+            side.a.Nozzle = side.a.MepsanStore[7] & 0x0F;
+            side.a.ProcessedPPU[side.a.Nozzle-1][5] = (side.a.MepsanStore[6] & 0x0F) + 0x30;            
+            side.a.ProcessedPPU[side.a.Nozzle-1][4] = (side.a.MepsanStore[6] >> 4) + 0x30;
+            side.a.ProcessedPPU[side.a.Nozzle-1][3] = (side.a.MepsanStore[5] & 0x0F) + 0x30;
+            side.a.ProcessedPPU[side.a.Nozzle-1][2] = (side.a.MepsanStore[5] >> 4) + 0x30;
+            side.a.ProcessedPPU[side.a.Nozzle-1][1] = (side.a.MepsanStore[4] & 0x0F) + 0x30;
+            side.a.ProcessedPPU[side.a.Nozzle-1][0] = (side.a.MepsanStore[4] >> 4) + 0x30;                                           
+        }
     }
     if(address == side.b.dir){
+        side.a.MepRequest = 0;
         for(uint8 MepRx = 1; MepRx < size + 1; MepRx++){
             side.b.MepsanStore[MepRx - 1] = MepsanResponse[MepRx];
         }
@@ -214,6 +226,16 @@ void GetResponse(void){
                 side.b.ProcessedmoneySale[i] = 0x00;                
             }
             EnablePin_Write (0u);
+        }
+        if(side.b.MepsanStore[2] == 0x03 && side.b.MepsanStore[3] == 0x04 ){
+            side.b.MepRequest = MEPSAN_AUTHORIZE;
+            side.b.Nozzle = side.b.MepsanStore[7] & 0x0F;
+            side.b.ProcessedPPU[side.b.Nozzle-1][5] = (side.b.MepsanStore[6] & 0x0F) + 0x30;            
+            side.b.ProcessedPPU[side.b.Nozzle-1][4] = (side.b.MepsanStore[6] >> 4) + 0x30;
+            side.b.ProcessedPPU[side.b.Nozzle-1][3] = (side.b.MepsanStore[5] & 0x0F) + 0x30;
+            side.b.ProcessedPPU[side.b.Nozzle-1][2] = (side.b.MepsanStore[5] >> 4) + 0x30;
+            side.b.ProcessedPPU[side.b.Nozzle-1][1] = (side.b.MepsanStore[4] & 0x0F) + 0x30;
+            side.b.ProcessedPPU[side.b.Nozzle-1][0] = (side.b.MepsanStore[4] >> 4) + 0x30;            
         }
     }
     if(address == side.c.dir){
@@ -358,7 +380,7 @@ uint8 GetAddress (uint8 pos){
 
 
 /*******************************************************************************
-* Function Name: ReturnStatus
+* Function Name: Authorize
 ********************************************************************************
 *
 *

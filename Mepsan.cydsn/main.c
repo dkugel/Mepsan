@@ -68,9 +68,12 @@ void PollingPos(void){
         //ReturnStatus(side.a.dir);        
     }
     if(Positions == 2){
-        
+        if(side.a.MepRequest == MEPSAN_AUTHORIZE)
+            Authorize(side.a.dir);
+        if(side.b.MepRequest == MEPSAN_AUTHORIZE)
+            Authorize(side.b.dir);
         side.a.states[0] = PumpState(side.a.dir);
-        side.b.states[0] = PumpState(side.b.dir);
+        side.b.states[0] = PumpState(side.b.dir);        
                     
     }
     if(Positions == 3){
@@ -213,7 +216,7 @@ int main()
         	case 0x0A:
         		if(W_autorize == 1){
         			W_autorize = 0;                    
-                    PriceUpdate(side.a.dir,side.a.ppuNozzle[0]);
+                    //PriceUpdate(side.a.dir,side.a.ppuNozzle[0]);
                     Authorize(side.a.dir);
                     for(uint8 LCDRx = 0; LCDRx < 20; LCDRx++){
                         touch1[LCDRx] = 0x00;
@@ -232,7 +235,7 @@ int main()
         	case 0x0B:
         		if(W_autorize == 1){
         			W_autorize = 0;
-                    PriceUpdate(side.b.dir,side.b.ppuNozzle[0]);
+                    //PriceUpdate(side.b.dir,side.b.ppuNozzle[0]);
                     Authorize(side.b.dir);
                     for(uint8 LCDRx = 0; LCDRx < 20; LCDRx++){
                         touch1[LCDRx] = 0x00;
@@ -320,7 +323,11 @@ int main()
                     for(uint8 LCDRx = 7; LCDRx < 15; LCDRx++){
                         if((touch1[LCDRx] == 0x00) ||(touch1[LCDRx] == 0xFF))
                             break;
-                        side.a.msn_plate[LCDRx-7] = touch1[LCDRx];
+                        if(touch1[LCDRx] > 96 && touch1[LCDRx] < 123){
+                            side.a.msn_plate[LCDRx-7] = touch1[LCDRx]-0x20;                            
+                        }else{
+                            side.a.msn_plate[LCDRx-7] = touch1[LCDRx];
+                        }
             		}
                     for(uint8 LCDRx = 0; LCDRx < 20; LCDRx++){
             			touch1[LCDRx] = 0x00;
@@ -332,7 +339,12 @@ int main()
                     for(uint8 LCDRx = 7; LCDRx < 15; LCDRx++){
                         if((touch1[LCDRx] == 0x00) ||(touch1[LCDRx] == 0xFF))
                             break;
-                        side.b.msn_plate[LCDRx-7] = touch1[LCDRx];
+                        if( touch1[LCDRx] > 96 && touch1[LCDRx] < 123 ){
+                            side.b.msn_plate[LCDRx-7] = touch1[LCDRx]-0x20;
+                            
+                        }else{
+                            side.b.msn_plate[LCDRx-7] = touch1[LCDRx];
+                        }
             		}
                     for(uint8 LCDRx = 0; LCDRx < 20; LCDRx++){
             			touch1[LCDRx] = 0x00;

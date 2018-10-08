@@ -22,6 +22,7 @@ uint8 shift_number[6];
 uint8 int_shiftnumber;
 uint8 LCDhose;
 
+
 /*
 *********************************************************************************************************
 *
@@ -45,7 +46,8 @@ struct position{
     uint8 ProcessedvolumeSale[8];           //Venta de Volumen vendido
     uint8 ProcessedPPU[4][6];
     uint8 msn_plate[8];             //placa vehiculo por lado
-    
+    uint8 MepRequest;
+    uint8 Nozzle;
 };
 
 struct pump{
