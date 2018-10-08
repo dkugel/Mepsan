@@ -17,6 +17,7 @@ uint16 PollCounter;
 uint8 CurrentState;
 uint8 Receipt;
 uint8 sale_number[6];
+uint8 sale_number_copy[6];
 uint8 int_salenumber;
 uint8 shift_number[6];
 uint8 int_shiftnumber;
@@ -48,6 +49,8 @@ struct position{
     uint8 msn_plate[8];             //placa vehiculo por lado
     uint8 MepRequest;
     uint8 Nozzle;
+    uint8 km[7];
+    uint8 Copy;
 };
 
 struct pump{

@@ -22,7 +22,7 @@ char VolSimbol[1] = "G";
 /***********  Temporal messages ******************/
 uint8 msn_EDS[22]       = "  EDS LA PROVIDENCIA  ";
 uint8 msn_EDS2[22]      = "    OMAR MALAGON      ";
-uint8 msn_EDS3[22]      = "   Tel: 3202361131    ";
+uint8 msn_EDS3[22]      = "   Tel: 3208669161    ";
 uint8 msn_EDS4[22]      = "    NIT: 4172693-6    ";
 uint8 msn_EDS5[22]      = " Km 2 via Sutamarchan ";
 uint8 msn_EDS6[22]      = "   TINJACA - BOYACA   ";
@@ -30,6 +30,7 @@ uint8 msn_footer[22]    = "GRACIAS POR SU COMPRA ";
 uint8 msn_footer2[22]   = "    VUELVA PRONTO     ";
 uint8 msn_footer3[22]   = "Firma:                ";
 uint8 msn_footer4[22]   = "______________________";
+uint8 msn_copy[22]      = "        COPIA         ";
 uint8 msn_diesel[9]     = "Diesel   ";
 uint8 msn_gasoline[9]   = "Corriente";
 
@@ -155,21 +156,43 @@ void PrintReceipt(uint8 address){
     for(uint8 x = 0; x < 24; x ++){
 		PRINTER_A_PutChar(SEPARATOR[x]);
 	}
-    PRINTER_A_PutChar(LINE_FEED); 
-    for(uint8 x = 0; x < 13; x ++){
-		PRINTER_A_PutChar(msn_venta[x]);
-	}
-    for(uint8 x = 5; x > 0; x --){
-		PRINTER_A_PutChar(sale_number[x]);
-	}
-    PRINTER_A_PutChar(LINE_FEED);
-	for(uint8 x = 0; x < 13; x ++){
-		PRINTER_A_PutChar(msn_placa[x]);
-	}
+            
 	/***** body ******/
 	if(address == side.a.dir){
+        if(side.a.Copy == 1){
+            for(uint8 x = 0; x < 22; x ++){
+        		PRINTER_A_PutChar(msn_copy[x]);
+        	}
+            PRINTER_A_PutChar(LINE_FEED);
+            for(uint8 x = 0; x < 24; x ++){
+        		PRINTER_A_PutChar(SEPARATOR[x]);
+        	}
+        }         
+        for(uint8 x = 0; x < 13; x ++){
+    		PRINTER_A_PutChar(msn_venta[x]);
+    	}
+        if(side.a.Copy == 1){
+           for(uint8 x = 5; x > 0; x --){
+        		PRINTER_A_PutChar(sale_number_copy[x]);
+        	} 
+        }else{
+            for(uint8 x = 5; x > 0; x --){
+        		PRINTER_A_PutChar(sale_number[x]);
+        	}
+        }
+        PRINTER_A_PutChar(LINE_FEED);
+    	for(uint8 x = 0; x < 13; x ++){
+    		PRINTER_A_PutChar(msn_placa[x]);
+    	}
 		for(uint8 x = 0; x < 8; x ++){
 			PRINTER_A_PutChar(side.a.msn_plate[x]);
+		}  
+        PRINTER_A_PutChar(LINE_FEED);
+        for(uint8 x = 0; x < 13; x ++){
+			PRINTER_A_PutChar(PRN_MILLEAGE[x]);
+		}          
+        for(uint8 x = 0; x <6; x ++){
+			PRINTER_A_PutChar(side.a.km[x]);
 		}  
         PRINTER_A_PutChar(LINE_FEED);
 		for(uint8 x = 0; x < 13; x ++){
@@ -219,12 +242,45 @@ void PrintReceipt(uint8 address){
 			PRINTER_A_PutChar(side.a.ProcessedmoneySale[x]);
 		}		
 		PRINTER_A_PutChar(LINE_FEED);
+        side.a.Copy = 1;
 	}
 	
 	if(address == side.b.dir){
+		if(side.b.Copy == 1){
+            for(uint8 x = 0; x < 22; x ++){
+        		PRINTER_A_PutChar(msn_copy[x]);
+        	}
+            PRINTER_A_PutChar(LINE_FEED);
+            for(uint8 x = 0; x < 24; x ++){
+        		PRINTER_A_PutChar(SEPARATOR[x]);
+        	}
+        }         
+        for(uint8 x = 0; x < 13; x ++){
+    		PRINTER_A_PutChar(msn_venta[x]);
+    	}
+        if(side.b.Copy == 1){
+           for(uint8 x = 5; x > 0; x --){
+        		PRINTER_A_PutChar(sale_number_copy[x]);
+        	} 
+        }else{
+            for(uint8 x = 5; x > 0; x --){
+        		PRINTER_A_PutChar(sale_number[x]);
+        	}
+        }
+        PRINTER_A_PutChar(LINE_FEED);
+    	for(uint8 x = 0; x < 13; x ++){
+    		PRINTER_A_PutChar(msn_placa[x]);
+    	}
 		for(uint8 x = 0; x < 8; x ++){
 			PRINTER_A_PutChar(side.b.msn_plate[x]);
-		}
+		}  
+        PRINTER_A_PutChar(LINE_FEED);
+        for(uint8 x = 0; x < 13; x ++){
+			PRINTER_A_PutChar(PRN_MILLEAGE[x]);
+		}          
+        for(uint8 x = 0; x <6; x ++){
+			PRINTER_A_PutChar(side.b.km[x]);
+		}          
         PRINTER_A_PutChar(LINE_FEED);
 		for(uint8 x = 0; x < 13; x ++){
 			PRINTER_A_PutChar(msn_pos[x]);
@@ -273,6 +329,7 @@ void PrintReceipt(uint8 address){
 			PRINTER_A_PutChar(side.b.ProcessedmoneySale[x]);
 		}		
 		PRINTER_A_PutChar(LINE_FEED);
+        side.b.Copy = 1;
 	}
 	
 	if(address == side.c.dir){
@@ -400,6 +457,9 @@ void PrintReceipt(uint8 address){
     PRINTER_A_PutChar(LINE_FEED);
     PRINTER_A_PutChar(LINE_FEED);
     PRINTER_A_PutChar(LINE_FEED);
+    for(uint8 x = 0; x < 6; x ++){
+        sale_number_copy[x] = sale_number[x];
+    }
 }
 
 void PrintShift(void){

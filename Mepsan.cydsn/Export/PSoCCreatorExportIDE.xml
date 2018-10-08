@@ -25,7 +25,7 @@
       <Tool Name="postbuild" Command="" Options="" />
     </Toolchain>
   </Toolchains>
-  <Project Name="Mepsan" Path="C:\Users\Thermaltake\Documents\GitHub\Mepsan\Mepsan.cydsn" Version="5.70" Type="Normal">
+  <Project Name="Mepsan" Path="C:\Users\Diego\Documents\GitHub\Mepsan\Mepsan.cydsn" Version="5.70" Type="Normal">
     <CMSIS_SVD_File>Mepsan.svd</CMSIS_SVD_File>
     <Datasheet />
     <LinkerFiles>
@@ -34,8 +34,8 @@
       <LinkerFile Toolchain="ARM IAR Generic">.\Generated_Source\PSoC5\Cm3Iar.icf</LinkerFile>
     </LinkerFiles>
     <Folders>
-      <Folder BuildType="STRICT" Path="C:\Users\Thermaltake\Documents\GitHub\Mepsan\Mepsan.cydsn">
-        <Files Root="C:\Users\Thermaltake\Documents\GitHub\Mepsan\Mepsan.cydsn">
+      <Folder BuildType="STRICT" Path="C:\Users\Diego\Documents\GitHub\Mepsan\Mepsan.cydsn">
+        <Files Root="C:\Users\Diego\Documents\GitHub\Mepsan\Mepsan.cydsn">
           <File BuildType="BUILD" Toolchain="">cyapicallbacks.h</File>
           <File BuildType="BUILD" Toolchain="">GVar.h</File>
           <File BuildType="BUILD" Toolchain="">PumpCom.h</File>
@@ -47,8 +47,8 @@
           <File BuildType="BUILD" Toolchain="">printer.c</File>
         </Files>
       </Folder>
-      <Folder BuildType="STRICT" Path="C:\Users\Thermaltake\Documents\GitHub\Mepsan\Mepsan.cydsn\Generated_Source\PSoC5">
-        <Files Root="C:\Users\Thermaltake\Documents\GitHub\Mepsan\Mepsan.cydsn">
+      <Folder BuildType="STRICT" Path="C:\Users\Diego\Documents\GitHub\Mepsan\Mepsan.cydsn\Generated_Source\PSoC5">
+        <Files Root="C:\Users\Diego\Documents\GitHub\Mepsan\Mepsan.cydsn">
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\cyfitter_cfg.h</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\cyfitter_cfg.c</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\cymetadata.c</File>
@@ -164,50 +164,50 @@
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\IB2.h</File>
         </Files>
       </Folder>
-      <Folder BuildType="STRICT" Path="C:\Users\Thermaltake\Documents\GitHub\Mepsan\Mepsan.cydsn\Export\ARM_GCC_Generic">
-        <Files Root="C:\Users\Thermaltake\Documents\GitHub\Mepsan\Mepsan.cydsn">
+      <Folder BuildType="STRICT" Path="C:\Users\Diego\Documents\GitHub\Mepsan\Mepsan.cydsn\Export\ARM_GCC_Generic">
+        <Files Root="C:\Users\Diego\Documents\GitHub\Mepsan\Mepsan.cydsn">
           <File BuildType="BUILD" Toolchain="ARM GCC Generic">.\Export\ARM_GCC_Generic\CyComponentLibrary.a</File>
         </Files>
       </Folder>
-      <Folder BuildType="STRICT" Path="C:\Users\Thermaltake\Documents\GitHub\Mepsan\Mepsan.cydsn\Export\ARM_MDK_Generic">
-        <Files Root="C:\Users\Thermaltake\Documents\GitHub\Mepsan\Mepsan.cydsn">
+      <Folder BuildType="STRICT" Path="C:\Users\Diego\Documents\GitHub\Mepsan\Mepsan.cydsn\Export\ARM_MDK_Generic">
+        <Files Root="C:\Users\Diego\Documents\GitHub\Mepsan\Mepsan.cydsn">
           <File BuildType="BUILD" Toolchain="ARM MDK Generic">.\Export\ARM_MDK_Generic\CyComponentLibrary.a</File>
         </Files>
       </Folder>
-      <Folder BuildType="STRICT" Path="C:\Users\Thermaltake\Documents\GitHub\Mepsan\Mepsan.cydsn\Export\ARM_IAR_Generic">
-        <Files Root="C:\Users\Thermaltake\Documents\GitHub\Mepsan\Mepsan.cydsn">
+      <Folder BuildType="STRICT" Path="C:\Users\Diego\Documents\GitHub\Mepsan\Mepsan.cydsn\Export\ARM_IAR_Generic">
+        <Files Root="C:\Users\Diego\Documents\GitHub\Mepsan\Mepsan.cydsn">
           <File BuildType="BUILD" Toolchain="ARM IAR Generic">.\Export\ARM_IAR_Generic\CyComponentLibrary.a</File>
         </Files>
       </Folder>
       <Folder BuildType="EXCLUDE" Path=".\codegentemp">
-        <Files Root="C:\Users\Thermaltake\Documents\GitHub\Mepsan\Mepsan.cydsn" />
+        <Files Root="C:\Users\Diego\Documents\GitHub\Mepsan\Mepsan.cydsn" />
       </Folder>
       <Folder BuildType="EXCLUDE" Path=".\ARM_GCC_441">
-        <Files Root="C:\Users\Thermaltake\Documents\GitHub\Mepsan\Mepsan.cydsn" />
+        <Files Root="C:\Users\Diego\Documents\GitHub\Mepsan\Mepsan.cydsn" />
       </Folder>
       <Folder BuildType="EXCLUDE" Path=".\ARM_GCC_473">
-        <Files Root="C:\Users\Thermaltake\Documents\GitHub\Mepsan\Mepsan.cydsn" />
+        <Files Root="C:\Users\Diego\Documents\GitHub\Mepsan\Mepsan.cydsn" />
       </Folder>
       <Folder BuildType="EXCLUDE" Path=".\DP8051_Keil_952">
-        <Files Root="C:\Users\Thermaltake\Documents\GitHub\Mepsan\Mepsan.cydsn" />
+        <Files Root="C:\Users\Diego\Documents\GitHub\Mepsan\Mepsan.cydsn" />
       </Folder>
       <Folder BuildType="EXCLUDE" Path=".\DP8051">
-        <Files Root="C:\Users\Thermaltake\Documents\GitHub\Mepsan\Mepsan.cydsn" />
+        <Files Root="C:\Users\Diego\Documents\GitHub\Mepsan\Mepsan.cydsn" />
       </Folder>
       <Folder BuildType="EXCLUDE" Path=".\CortexM0">
-        <Files Root="C:\Users\Thermaltake\Documents\GitHub\Mepsan\Mepsan.cydsn" />
+        <Files Root="C:\Users\Diego\Documents\GitHub\Mepsan\Mepsan.cydsn" />
       </Folder>
       <Folder BuildType="EXCLUDE" Path=".\CortexM0p">
-        <Files Root="C:\Users\Thermaltake\Documents\GitHub\Mepsan\Mepsan.cydsn" />
+        <Files Root="C:\Users\Diego\Documents\GitHub\Mepsan\Mepsan.cydsn" />
       </Folder>
       <Folder BuildType="EXCLUDE" Path=".\CortexM3">
-        <Files Root="C:\Users\Thermaltake\Documents\GitHub\Mepsan\Mepsan.cydsn" />
+        <Files Root="C:\Users\Diego\Documents\GitHub\Mepsan\Mepsan.cydsn" />
       </Folder>
       <Folder BuildType="EXCLUDE" Path=".\CortexM4">
-        <Files Root="C:\Users\Thermaltake\Documents\GitHub\Mepsan\Mepsan.cydsn" />
+        <Files Root="C:\Users\Diego\Documents\GitHub\Mepsan\Mepsan.cydsn" />
       </Folder>
       <Folder BuildType="EXCLUDE" Path=".\CortexM7">
-        <Files Root="C:\Users\Thermaltake\Documents\GitHub\Mepsan\Mepsan.cydsn" />
+        <Files Root="C:\Users\Diego\Documents\GitHub\Mepsan\Mepsan.cydsn" />
       </Folder>
     </Folders>
   </Project>
