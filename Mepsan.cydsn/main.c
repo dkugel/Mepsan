@@ -235,27 +235,24 @@ int main()
                     PumpState(side.a.dir);
                     for(uint8 LCDRx = 0; LCDRx < 20; LCDRx++){
                         touch1[LCDRx] = 0x00;
-                    }
+                    }                    
         		}
-                if(W_autorize == 'k'){
-                    if(side.a.Copy == 1){
-                        W_autorize = 0;
-                        PrintReceipt(side.a.dir);
-                    }else{
-                        W_autorize = 0x1A;                                        
-                        for(uint8 LCDRx = 0; LCDRx < 20; LCDRx++){
-                            touch1[LCDRx] = 0x00;
-                        }
-                        for(uint8 LCDRx = 0; LCDRx < 8; LCDRx++){
-                            side.a.msn_plate[LCDRx] = 0x20;
-                        }
-                        for(uint8 LCDRx = 0; LCDRx < 6; LCDRx++){
-                            side.a.km[LCDRx] = 0x20;
-                        }
+                if(W_autorize == 'k'){                    
+                    W_autorize = 0x1A; 
+                    PumpState(side.a.dir);            
+                    TotalRequest(side.a.dir, TotalRequestType, 1); //dir 0, volume, nozzle 1                           
+                    PumpState(side.a.dir);
+                    for(uint8 LCDRx = 0; LCDRx < 20; LCDRx++){
+                        touch1[LCDRx] = 0x00;
                     }
-                    
+                    for(uint8 LCDRx = 0; LCDRx < 8; LCDRx++){
+                        side.a.msn_plate[LCDRx] = 0x20;
+                    }
+                    for(uint8 LCDRx = 0; LCDRx < 6; LCDRx++){
+                        side.a.km[LCDRx] = 0x20;
+                    }                                        
         		}
-        	break;
+        	break;            
         	case 0x0B:
         		if(W_autorize == 1){
         			W_autorize = 0;
@@ -269,28 +266,22 @@ int main()
                     W_autorize = 0x0B;
                     PumpState(side.b.dir);            
                     TotalRequest(side.b.dir, TotalRequestType, 1); //dir 0, volume, nozzle 1                           
-                    PumpState(side.b.dir); 
+                    PumpState(side.b.dir);                     
+                }                
+                if(W_autorize == 'k'){                    
+                    W_autorize = 0x1B; 
+                    PumpState(side.b.dir);            
+                    TotalRequest(side.b.dir, TotalRequestType, 1); //dir 0, volume, nozzle 1                           
+                    PumpState(side.b.dir);
                     for(uint8 LCDRx = 0; LCDRx < 20; LCDRx++){
                         touch1[LCDRx] = 0x00;
-                    }                                                               
-                }
-                if(W_autorize == 'k'){
-                    if(side.b.Copy == 1){
-                        W_autorize = 0;
-                        PrintReceipt(side.b.dir);
-                    }else{
-                        W_autorize = 0x1B;                                        
-                        for(uint8 LCDRx = 0; LCDRx < 20; LCDRx++){
-                            touch1[LCDRx] = 0x00;
-                        }
-                        for(uint8 LCDRx = 0; LCDRx < 8; LCDRx++){
-                            side.b.msn_plate[LCDRx] = 0x20;
-                        }
-                        for(uint8 LCDRx = 0; LCDRx < 6; LCDRx++){
-                            side.b.km[LCDRx] = 0x20;
-                        }
                     }
-                    
+                    for(uint8 LCDRx = 0; LCDRx < 8; LCDRx++){
+                        side.b.msn_plate[LCDRx] = 0x20;
+                    }
+                    for(uint8 LCDRx = 0; LCDRx < 6; LCDRx++){
+                        side.b.km[LCDRx] = 0x20;
+                    }                                        
         		}
         	break;
         	case 0xCC:
@@ -309,6 +300,26 @@ int main()
         		}                        
         		PrintShift(); 
         	break;
+            case 0x53:
+                if(W_autorize == 0xAC){
+                    side.a.Copy = 1;
+                    PrintReceipt(side.a.dir);
+                }
+                if(W_autorize == 0xBC){
+                    side.b.Copy = 1;
+                    PrintReceipt(side.b.dir);
+                }                
+            break;
+            case 0x4E:
+                if(W_autorize == 0xAC){
+                    W_autorize = 0;
+                    side.a.Copy = 0;                    
+                }
+                if(W_autorize == 0xBC){
+                    W_autorize = 0;
+                    side.b.Copy = 0;                                        
+                }                
+            break;
         	default:
                 if(touch1[3] == 0x83 && price_change == 0x0A && touch1[8] != 0xE1){
                     for(uint8 LCDRx = 0; LCDRx < 6; LCDRx++){                        
@@ -359,7 +370,7 @@ int main()
                     for(uint8 LCDRx = 0; LCDRx < 20; LCDRx++){
             			touch1[LCDRx] = 0x00;
             		}
-                }  
+                } 
                 if(touch1[3] == 0x83 && W_autorize == 0x1A){                                 
                     for(uint8 LCDRx = 7; LCDRx < 15; LCDRx++){
                         if((touch1[LCDRx] == 0x00) ||(touch1[LCDRx] == 0xFF))
@@ -386,7 +397,9 @@ int main()
             			touch1[LCDRx] = 0x00;
             		}
                     PrintReceipt(side.a.dir);
-                }
+                    side.a.Copy = 1;
+                    W_autorize =0xAC;
+                } 
                 if(touch1[3] == 0x83 && W_autorize == 0x1B){                                 
                     for(uint8 LCDRx = 7; LCDRx < 15; LCDRx++){
                         if((touch1[LCDRx] == 0x00) ||(touch1[LCDRx] == 0xFF))
@@ -413,6 +426,8 @@ int main()
             			touch1[LCDRx] = 0x00;
             		}
                     PrintReceipt(side.b.dir);
+                    side.b.Copy = 1;
+                    W_autorize  = 0xBC;
                 }
                 
         	break;

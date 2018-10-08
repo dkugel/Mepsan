@@ -77,8 +77,7 @@ uint8 ASK_TIME[]={0x5A, 0xA5, 0x03, 0x81, 0x20, 0x07};
 
 
 void PrintReceipt(uint8 address){
-    int8 screen_size;
-    int_salenumber++;
+    int8 screen_size;    
     sale_number[5]=(int_salenumber/10000)+48;
 	sale_number[4]=((int_salenumber%10000)/1000)+48;
 	sale_number[3]=(((int_salenumber%10000)%1000)/100)+48;
@@ -87,11 +86,13 @@ void PrintReceipt(uint8 address){
     for(uint8 i = 1; i<6; i++){
         EEPROM_1_WriteByte(sale_number[i],i);
     }
-    for(uint8 LCDRx = 0; LCDRx < 6; LCDRx++){
-        screen_PutChar(ASK_TIME[LCDRx]);
+    while(screen_size == 0){
+        for(uint8 LCDRx = 0; LCDRx < 6; LCDRx++){
+            screen_PutChar(ASK_TIME[LCDRx]);
+        }
+        CyDelay(5);
+        screen_size = screen_GetRxBufferSize();
     }
-    CyDelay(10);
-    screen_size = screen_GetRxBufferSize();
     if(screen_size >= 13 ){
         for(uint8 LCDRx = 0; LCDRx < screen_size; LCDRx++){
             touch1[LCDRx] = screen_ReadRxData();
@@ -166,8 +167,9 @@ void PrintReceipt(uint8 address){
             PRINTER_A_PutChar(LINE_FEED);
             for(uint8 x = 0; x < 24; x ++){
         		PRINTER_A_PutChar(SEPARATOR[x]);
-        	}
-        }         
+        	}            
+        }
+        PRINTER_A_PutChar(LINE_FEED);
         for(uint8 x = 0; x < 13; x ++){
     		PRINTER_A_PutChar(msn_venta[x]);
     	}
@@ -179,6 +181,7 @@ void PrintReceipt(uint8 address){
             for(uint8 x = 5; x > 0; x --){
         		PRINTER_A_PutChar(sale_number[x]);
         	}
+            int_salenumber++;
         }
         PRINTER_A_PutChar(LINE_FEED);
     	for(uint8 x = 0; x < 13; x ++){
@@ -243,8 +246,7 @@ void PrintReceipt(uint8 address){
 		}		
 		PRINTER_A_PutChar(LINE_FEED);
         side.a.Copy = 1;
-	}
-	
+	}	
 	if(address == side.b.dir){
 		if(side.b.Copy == 1){
             for(uint8 x = 0; x < 22; x ++){
@@ -253,8 +255,9 @@ void PrintReceipt(uint8 address){
             PRINTER_A_PutChar(LINE_FEED);
             for(uint8 x = 0; x < 24; x ++){
         		PRINTER_A_PutChar(SEPARATOR[x]);
-        	}
-        }         
+        	}            
+        }    
+        PRINTER_A_PutChar(LINE_FEED);
         for(uint8 x = 0; x < 13; x ++){
     		PRINTER_A_PutChar(msn_venta[x]);
     	}
@@ -266,6 +269,7 @@ void PrintReceipt(uint8 address){
             for(uint8 x = 5; x > 0; x --){
         		PRINTER_A_PutChar(sale_number[x]);
         	}
+            int_salenumber++;
         }
         PRINTER_A_PutChar(LINE_FEED);
     	for(uint8 x = 0; x < 13; x ++){
@@ -332,100 +336,7 @@ void PrintReceipt(uint8 address){
         side.b.Copy = 1;
 	}
 	
-	if(address == side.c.dir){
-		for(uint8 x = 0; x < 8; x ++){
-			PRINTER_A_PutChar(side.c.msn_plate[x]);
-		}  
-        PRINTER_A_PutChar(LINE_FEED);
-		for(uint8 x = 0; x < 13; x ++){
-			PRINTER_A_PutChar(msn_pos[x]);
-		}
-		PRINTER_A_PutChar((side.c.dir)+ 0x31);
-		PRINTER_A_PutChar(LINE_FEED);
-		for(uint8 x = 0; x < 13; x ++){
-			PRINTER_A_PutChar(msn_product[x]);
-		}
-		for(uint8 x = 0; x < 8; x ++){
-			PRINTER_A_PutChar(msn_diesel[x]);
-		}
-        PRINTER_A_PutChar(LINE_FEED);
-		for(uint8 x = 0; x < 13; x ++){
-			PRINTER_A_PutChar(msn_vol[x]);
-		}
-		for(uint8 x = 0; x < 8; x ++){
-			if((8-x) == DecVol)
-				PRINTER_A_PutChar('.');
-			PRINTER_A_PutChar(side.c.ProcessedvolumeSale[x]);        
-		}
-		PRINTER_A_PutChar(' ');
-		PRINTER_A_PutChar(VolSimbol[0]);
-		PRINTER_A_PutChar(LINE_FEED); 
-		for(uint8 x = 0; x < 13; x ++){
-			PRINTER_A_PutChar(msn_din[x]);
-		}     
-		PRINTER_A_PutChar(PRN_CURRENCY[0]);  
-		PRINTER_A_PutChar(' ');
-		for(uint8 x = 0; x < 8; x ++){
-			PRINTER_A_PutChar(side.c.ProcessedmoneySale[x]);
-		}
-		PRINTER_A_PutChar(LINE_FEED); 	
-		for(uint8 x = 0; x < 13; x ++){
-			PRINTER_A_PutChar(msn_ppu[x]);
-		}
-		PRINTER_A_PutChar(PRN_CURRENCY[0]);  
-		PRINTER_A_PutChar(' ');
-		for(uint8 x = 1; x < 6; x ++){
-			PRINTER_A_PutChar(side.c.ProcessedPPU[0][x]);
-		}
-		PRINTER_A_PutChar(LINE_FEED);
-	}
 	
-    if(address == side.d.dir){
-		for(uint8 x = 0; x < 8; x ++){
-			PRINTER_A_PutChar(side.d.msn_plate[x]);
-		}  
-		for(uint8 x = 0; x < 13; x ++){
-			PRINTER_A_PutChar(msn_pos[x]);
-		}
-		PRINTER_A_PutChar((side.d.dir)+ 0x31);
-		PRINTER_A_PutChar(LINE_FEED);
-		PRINTER_A_PutChar(LINE_FEED);
-		for(uint8 x = 0; x < 13; x ++){
-			PRINTER_A_PutChar(msn_product[x]);
-		}
-		for(uint8 x = 0; x < 8; x ++){
-			PRINTER_A_PutChar(msn_diesel[x]);
-		}
-		for(uint8 x = 0; x < 13; x ++){
-			PRINTER_A_PutChar(msn_vol[x]);
-		}
-		for(uint8 x = 0; x < 8; x ++){
-			if((8-x) == DecVol)
-				PRINTER_A_PutChar('.');
-			PRINTER_A_PutChar(side.d.ProcessedvolumeSale[x]);        
-		}
-		PRINTER_A_PutChar(' ');
-		PRINTER_A_PutChar(VolSimbol[0]);
-		PRINTER_A_PutChar(LINE_FEED); 
-		for(uint8 x = 0; x < 13; x ++){
-			PRINTER_A_PutChar(msn_din[x]);
-		}     
-		PRINTER_A_PutChar(PRN_CURRENCY[0]);  
-		PRINTER_A_PutChar(' ');
-		for(uint8 x = 0; x < 8; x ++){
-			PRINTER_A_PutChar(side.d.ProcessedmoneySale[x]);
-		}
-		PRINTER_A_PutChar(LINE_FEED); 	
-		for(uint8 x = 0; x < 13; x ++){
-			PRINTER_A_PutChar(msn_ppu[x]);
-		}
-		PRINTER_A_PutChar(PRN_CURRENCY[0]);  
-		PRINTER_A_PutChar(' ');
-		for(uint8 x = 1; x < 6; x ++){
-			PRINTER_A_PutChar(side.d.ProcessedPPU[0][x]);
-		}
-		PRINTER_A_PutChar(LINE_FEED);
-	}
 	
 	/******FOOTER*****/
 	for(uint8 x = 0; x < 24; x ++){
