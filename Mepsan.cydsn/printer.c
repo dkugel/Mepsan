@@ -77,7 +77,8 @@ uint8 ASK_TIME[]={0x5A, 0xA5, 0x03, 0x81, 0x20, 0x07};
 
 
 void PrintReceipt(uint8 address){
-    int8 screen_size;    
+    int8 screen_size;  
+    screen_size = 0;
     sale_number[5]=(int_salenumber/10000)+48;
 	sale_number[4]=((int_salenumber%10000)/1000)+48;
 	sale_number[3]=(((int_salenumber%10000)%1000)/100)+48;
@@ -375,13 +376,16 @@ void PrintReceipt(uint8 address){
 
 void PrintShift(void){
     uint8 screen_size,pos;
+    screen_size = 0;
     char8 lectanterior[10],lectactual[10],memoria[10],resultado[10];
     uint32 actual,anterior,resta;
-    for(uint8 LCDRx = 0; LCDRx < 6; LCDRx++){
-        screen_PutChar(ASK_TIME[LCDRx]);
+    while(screen_size == 0){
+        for(uint8 LCDRx = 0; LCDRx < 6; LCDRx++){
+            screen_PutChar(ASK_TIME[LCDRx]);
+        }
+        CyDelay(5);
+        screen_size = screen_GetRxBufferSize();
     }
-    CyDelay(10);
-    screen_size = screen_GetRxBufferSize();
     if(screen_size >= 13 ){
         for(uint8 LCDRx = 0; LCDRx < screen_size; LCDRx++){
             touch1[LCDRx] = screen_ReadRxData();

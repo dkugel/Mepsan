@@ -294,7 +294,14 @@ int main()
                 CyDelay(10);
         		PumpState(side.a.dir);
                 PumpState(side.b.dir);
-                PumpState(side.a.dir);
+                TotalRequest(side.b.dir, TotalRequestType, 2); //dir 0, volume, nozzle 1  
+                CyDelay(10);
+        		PumpState(side.b.dir); 
+        		PumpState(side.a.dir);            
+        		TotalRequest(side.a.dir, TotalRequestType, 2); //dir 0, volume, nozzle 1 
+                CyDelay(10);
+        		PumpState(side.a.dir);
+                PumpState(side.b.dir);
         		for(uint8 LCDRx = 0; LCDRx < 20; LCDRx++){
         			touch1[LCDRx] = 0x00;
         		}                        
