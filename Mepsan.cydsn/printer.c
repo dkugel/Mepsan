@@ -20,17 +20,17 @@ char VolSimbol[1] = "G";
 
 
 /***********  Temporal messages ******************/
-uint8 msn_EDS[22]       = "  EDS LA PROVIDENCIA  ";
-uint8 msn_EDS2[22]      = "    OMAR MALAGON      ";
-uint8 msn_EDS3[22]      = "   Tel: 3208669161    ";
-uint8 msn_EDS4[22]      = "    NIT: 4172693-6    ";
-uint8 msn_EDS5[22]      = " Km 2 via Sutamarchan ";
-uint8 msn_EDS6[22]      = "   TINJACA - BOYACA   ";
-uint8 msn_footer[22]    = "GRACIAS POR SU COMPRA ";
-uint8 msn_footer2[22]   = "    VUELVA PRONTO     ";
-uint8 msn_footer3[22]   = "Firma:                ";
-uint8 msn_footer4[22]   = "______________________";
-uint8 msn_copy[22]      = "        COPIA         ";
+uint8 msn_EDS[32]       = "      SISPETROL INGENIERIA      ";
+uint8 msn_EDS2[32]      = "      Soluciones y Equipos      ";
+uint8 msn_EDS3[32]      = "   para Estaciones de Servicio  ";
+uint8 msn_EDS4[32]      = " Tel: 571 3975916 - 310 5612276 ";
+uint8 msn_EDS5[32]      = "      CRA 82 Bis No 71 - 78     ";
+uint8 msn_EDS6[32]      = "          BOGOTA D.C.";
+uint8 msn_footer[32]    = "     GRACIAS POR SU COMPRA      ";
+uint8 msn_footer2[32]   = "          VUELVA PRONTO         ";
+uint8 msn_footer3[32]   = "Firma:                          ";
+uint8 msn_footer4[32]   = "________________________________";
+uint8 msn_copy[32]      = "             COPIA              ";
 uint8 msn_diesel[9]     = "Diesel   ";
 uint8 msn_gasoline[9]   = "Corriente";
 
@@ -71,7 +71,7 @@ uint8 PRN_CURRENCY[1]     = "$";
 uint8 msn_lecact[16]      ="Volumen actual: ";
 uint8 msn_lecaan[16]      ="Vol. anterior:  ";
 uint8 msn_dif[18]         ="Vol. dispensado:  ";
-uint8 SEPARATOR[24]       = "************************";
+uint8 SEPARATOR[32]       = "********************************";
 uint8 ASK_TIME[]={0x5A, 0xA5, 0x03, 0x81, 0x20, 0x07};
 
 
@@ -100,31 +100,31 @@ void PrintReceipt(uint8 address){
         }
         screen_size = 0;
     }
-	for(uint8 x = 0; x < 22; x ++){
+	for(uint8 x = 0; x < 32; x ++){
 		PRINTER_A_PutChar(msn_EDS[x]);
 	}
     PRINTER_A_PutChar(LINE_FEED);
-	for(uint8 x = 0; x < 22; x ++){
+	for(uint8 x = 0; x < 32; x ++){
 		PRINTER_A_PutChar(msn_EDS2[x]);
 	}
 	PRINTER_A_PutChar(LINE_FEED);
-	for(uint8 x = 0; x < 22; x ++){
+	for(uint8 x = 0; x < 32; x ++){
 		PRINTER_A_PutChar(msn_EDS3[x]);
 	}
 	PRINTER_A_PutChar(LINE_FEED);
-	for(uint8 x = 0; x < 22; x ++){
+	for(uint8 x = 0; x < 32; x ++){
 		PRINTER_A_PutChar(msn_EDS4[x]);
 	}
     PRINTER_A_PutChar(LINE_FEED);
-    for(uint8 x = 0; x < 22; x ++){
+    for(uint8 x = 0; x < 32; x ++){
 		PRINTER_A_PutChar(msn_EDS5[x]);
 	}
     PRINTER_A_PutChar(LINE_FEED);
-    for(uint8 x = 0; x < 22; x ++){
+    for(uint8 x = 0; x < 32; x ++){
 		PRINTER_A_PutChar(msn_EDS6[x]);
 	}    
     PRINTER_A_PutChar(LINE_FEED);
-	for(uint8 x = 0; x < 24; x ++){
+	for(uint8 x = 0; x < 32; x ++){
 		PRINTER_A_PutChar(SEPARATOR[x]);
 	}
     PRINTER_A_PutChar(LINE_FEED);
@@ -155,18 +155,18 @@ void PrintReceipt(uint8 address){
 	PRINTER_A_PutChar(((touch1[12] & 0x0F) + 0x30));
 	
     PRINTER_A_PutChar(LINE_FEED);
-    for(uint8 x = 0; x < 24; x ++){
+    for(uint8 x = 0; x < 32; x ++){
 		PRINTER_A_PutChar(SEPARATOR[x]);
 	}
             
 	/***** body ******/
 	if(address == side.a.dir){
         if(side.a.Copy == 1){
-            for(uint8 x = 0; x < 22; x ++){
+            for(uint8 x = 0; x < 32; x ++){
         		PRINTER_A_PutChar(msn_copy[x]);
         	}
             PRINTER_A_PutChar(LINE_FEED);
-            for(uint8 x = 0; x < 24; x ++){
+            for(uint8 x = 0; x < 32; x ++){
         		PRINTER_A_PutChar(SEPARATOR[x]);
         	}            
         }
@@ -250,11 +250,11 @@ void PrintReceipt(uint8 address){
 	}	
 	if(address == side.b.dir){
 		if(side.b.Copy == 1){
-            for(uint8 x = 0; x < 22; x ++){
+            for(uint8 x = 0; x < 32; x ++){
         		PRINTER_A_PutChar(msn_copy[x]);
         	}
             PRINTER_A_PutChar(LINE_FEED);
-            for(uint8 x = 0; x < 24; x ++){
+            for(uint8 x = 0; x < 32; x ++){
         		PRINTER_A_PutChar(SEPARATOR[x]);
         	}            
         }    
@@ -340,28 +340,28 @@ void PrintReceipt(uint8 address){
 	
 	
 	/******FOOTER*****/
-	for(uint8 x = 0; x < 24; x ++){
+	for(uint8 x = 0; x < 32; x ++){
 		PRINTER_A_PutChar(SEPARATOR[x]);
 	}
     PRINTER_A_PutChar(LINE_FEED);    
-	for(uint8 x = 0; x < 22; x ++){
+	for(uint8 x = 0; x < 32; x ++){
 		PRINTER_A_PutChar(msn_footer3[x]);
 	}
     PRINTER_A_PutChar(LINE_FEED);
     PRINTER_A_PutChar(LINE_FEED);
-	for(uint8 x = 0; x < 22; x ++){
+	for(uint8 x = 0; x < 32; x ++){
 		PRINTER_A_PutChar(msn_footer4[x]);
 	}
 	PRINTER_A_PutChar(LINE_FEED);    
-    for(uint8 x = 0; x < 24; x ++){
+    for(uint8 x = 0; x < 32; x ++){
 		PRINTER_A_PutChar(SEPARATOR[x]);
 	}
     PRINTER_A_PutChar(LINE_FEED);
-	for(uint8 x = 0; x < 22; x ++){
+	for(uint8 x = 0; x < 32; x ++){
 		PRINTER_A_PutChar(msn_footer[x]);
 	}
 	PRINTER_A_PutChar(LINE_FEED);
-	for(uint8 x = 0; x < 22; x ++){
+	for(uint8 x = 0; x < 32; x ++){
 		PRINTER_A_PutChar(msn_footer2[x]);
 	}    
     PRINTER_A_PutChar(LINE_FEED);
@@ -406,25 +406,26 @@ void PrintShift(void){
         EEPROM_1_WriteByte(shift_number[i-6],i);
     }
     PRINTER_A_PutChar(LINE_FEED);
-	for(uint8 x = 0; x < 22; x ++){
+	for(uint8 x = 0; x < 32; x ++){
 		PRINTER_A_PutChar(msn_EDS[x]);   // Encabezado de estación
 	}
 	PRINTER_A_PutChar(LINE_FEED);
-	for(uint8 x = 0; x < 22; x ++){
+	for(uint8 x = 0; x < 32; x ++){
 		PRINTER_A_PutChar(msn_EDS2[x]);
 	}
 	PRINTER_A_PutChar(LINE_FEED);
-	for(uint8 x = 0; x < 22; x ++){
+	for(uint8 x = 0; x < 32; x ++){
 		PRINTER_A_PutChar(msn_EDS3[x]);
 	}
 	PRINTER_A_PutChar(LINE_FEED);
-	for(uint8 x = 0; x < 22; x ++){
+	for(uint8 x = 0; x < 32; x ++){
 		PRINTER_A_PutChar(msn_EDS4[x]);
 	}
 	PRINTER_A_PutChar(LINE_FEED);  
-	for(uint8 x = 0; x < 24; x ++){
+	for(uint8 x = 0; x < 32; x ++){
 		PRINTER_A_PutChar(SEPARATOR[x]); //Separador de sección
 	}
+    PRINTER_A_PutChar(LINE_FEED);
     /********** FECHA ***************/
 	for(uint8 x = 0; x < 13; x ++){
 		PRINTER_A_PutChar(msn_fecha[x]);
@@ -452,9 +453,10 @@ void PrintShift(void){
     PRINTER_A_PutChar(((touch1[12] >> 4) + 0x30));
 	PRINTER_A_PutChar(((touch1[12] & 0x0F) + 0x30));
     PRINTER_A_PutChar(LINE_FEED);
-    for(uint8 x = 0; x < 24; x ++){
+    for(uint8 x = 0; x < 32; x ++){
 		PRINTER_A_PutChar(SEPARATOR[x]);
 	} 
+    PRINTER_A_PutChar(LINE_FEED);
     ////////////////////////////////////////
 	for(uint8 x = 0; x < 13; x ++){
 		PRINTER_A_PutChar(msn_cierre[x]);
@@ -520,7 +522,7 @@ void PrintShift(void){
         PRINTER_A_PutChar(resultado[x]);
     }
     PRINTER_A_PutChar(LINE_FEED);
-    for(uint8 x = 0; x < 24; x ++){
+    for(uint8 x = 0; x < 32; x ++){
         PRINTER_A_PutChar(SEPARATOR[x]);
     }  
     PRINTER_A_PutChar(LINE_FEED);
@@ -574,7 +576,7 @@ void PrintShift(void){
     PRINTER_A_PutChar(LINE_FEED);
     
     if((Positions-1)>= 3){
-        for(uint8 x = 0; x < 24; x ++){
+        for(uint8 x = 0; x < 32; x ++){
             PRINTER_A_PutChar(SEPARATOR[x]);
         }           
         PRINTER_A_PutChar(LINE_FEED);
@@ -593,7 +595,7 @@ void PrintShift(void){
     		PRINTER_A_PutChar(msn_lecaan[x]);
     	}
         PRINTER_A_PutChar(LINE_FEED);
-        for(uint8 x = 0; x < 24; x ++){
+        for(uint8 x = 0; x < 32; x ++){
             PRINTER_A_PutChar(SEPARATOR[x]);
         }   
         PRINTER_A_PutChar(LINE_FEED);
@@ -618,15 +620,15 @@ void PrintShift(void){
 	    PRINTER_A_PutChar(LINE_FEED);
     } 
     /******FOOTER*****/
-	for(uint8 x = 0; x < 24; x ++){
+	for(uint8 x = 0; x < 32; x ++){
 		PRINTER_A_PutChar(SEPARATOR[x]);
 	}
 	PRINTER_A_PutChar(LINE_FEED);
-	for(uint8 x = 0; x < 22; x ++){
+	for(uint8 x = 0; x < 32; x ++){
 		PRINTER_A_PutChar(msn_footer[x]);
 	}
 	PRINTER_A_PutChar(LINE_FEED);
-	for(uint8 x = 0; x < 22; x ++){
+	for(uint8 x = 0; x < 32; x ++){
 		PRINTER_A_PutChar(msn_footer2[x]);
 	}           
     PRINTER_A_PutChar(LINE_FEED);

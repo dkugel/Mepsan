@@ -201,6 +201,12 @@ int main()
         }
         CyDelay(4);
         switch(touch1[8]){
+            case 0x01:
+                W_autorize = 0xE1;
+            break;
+            case 0x02:
+                W_autorize = 0xE2;
+            break;
         	case 0xAA:
         		W_autorize = 1;
         		for(uint8 LCDRx = 0; LCDRx < 20; LCDRx++){
@@ -218,7 +224,7 @@ int main()
         		for(uint8 LCDRx = 0; LCDRx < 20; LCDRx++){
         			touch1[LCDRx] = 0x00;
         		}		
-        	break;
+        	break;             
         	case 0x0A:
         		if(W_autorize == 1){
         			W_autorize = 0;                    
@@ -327,6 +333,14 @@ int main()
                     side.b.Copy = 0;                                        
                 }                
             break;
+            case 0xE1:
+                if(W_autorize == 0xE1){
+                    W_autorize = 0xC1;
+                }
+                if(W_autorize == 0xE2){
+                    W_autorize = 0xC2;
+                }
+            break;
         	default:
                 if(touch1[3] == 0x83 && price_change == 0x0A && touch1[8] != 0xE1){
                     for(uint8 LCDRx = 0; LCDRx < 6; LCDRx++){                        
@@ -388,6 +402,32 @@ int main()
             			touch1[LCDRx] = 0x00;
             		}                    
                     W_autorize = 0x0A;
+                }
+                if(touch1[3] == 0x83 && W_autorize == 0xC1){                                 
+                    for(uint8 LCDRx = 7; LCDRx < 11; LCDRx++){
+                        if((touch1[LCDRx] == 0x00) ||(touch1[LCDRx] == 0xFF))
+                            break;                        
+                            side.a.ppuNozzle[0][LCDRx-7] = touch1[LCDRx]- 0x30;
+                        
+            		}
+                    for(uint8 LCDRx = 0; LCDRx < 20; LCDRx++){
+            			touch1[LCDRx] = 0x00;
+            		}
+                    PriceUpdate(side.a.dir,side.a.ppuNozzle[0]);
+                    W_autorize = 0;
+                }
+                if(touch1[3] == 0x83 && W_autorize == 0xC2){                                 
+                    for(uint8 LCDRx = 7; LCDRx < 11; LCDRx++){
+                        if((touch1[LCDRx] == 0x00) ||(touch1[LCDRx] == 0xFF))
+                            break;                        
+                            side.b.ppuNozzle[0][LCDRx-7] = touch1[LCDRx]- 0x30;
+                        
+            		}
+                    for(uint8 LCDRx = 0; LCDRx < 20; LCDRx++){
+            			touch1[LCDRx] = 0x00;
+            		}
+                    PriceUpdate(side.b.dir,side.b.ppuNozzle[0]);
+                    W_autorize = 0;
                 }
                 if(touch1[3] == 0x83 && W_autorize == 0x0A){             
                     W_autorize = 0;
