@@ -407,12 +407,15 @@ int main()
                     for(uint8 LCDRx = 7; LCDRx < 11; LCDRx++){
                         if((touch1[LCDRx] == 0x00) ||(touch1[LCDRx] == 0xFF))
                             break;                        
-                            side.a.ppuNozzle[0][LCDRx-7] = touch1[LCDRx]- 0x30;
+                            side.a.ProcessedPPU[0][LCDRx-7] = touch1[LCDRx]- 0x30;
                         
             		}
                     for(uint8 LCDRx = 0; LCDRx < 20; LCDRx++){
             			touch1[LCDRx] = 0x00;
             		}
+                    side.a.ppuNozzle[0][0] = ((side.a.ProcessedPPU[0][0] - 0x30)<<4) |((side.a.ProcessedPPU[0][1] - 0x30));
+                    side.a.ppuNozzle[0][1] = ((side.a.ProcessedPPU[0][2] - 0x30)<<4) |((side.a.ProcessedPPU[0][3] - 0x30));
+                    side.a.ppuNozzle[0][2] = ((side.a.ProcessedPPU[0][4] - 0x30)<<4) |((side.a.ProcessedPPU[0][5] - 0x30));
                     PriceUpdate(side.a.dir,side.a.ppuNozzle[0]);
                     W_autorize = 0;
                 }
@@ -420,12 +423,15 @@ int main()
                     for(uint8 LCDRx = 7; LCDRx < 11; LCDRx++){
                         if((touch1[LCDRx] == 0x00) ||(touch1[LCDRx] == 0xFF))
                             break;                        
-                            side.b.ppuNozzle[0][LCDRx-7] = touch1[LCDRx]- 0x30;
+                            side.b.ProcessedPPU[0][LCDRx-7] = touch1[LCDRx]- 0x30;
                         
             		}
                     for(uint8 LCDRx = 0; LCDRx < 20; LCDRx++){
             			touch1[LCDRx] = 0x00;
             		}
+                    side.b.ppuNozzle[0][0] = ((side.b.ProcessedPPU[0][0] - 0x30)<<4) |((side.b.ProcessedPPU[0][1] - 0x30));
+                    side.b.ppuNozzle[0][1] = ((side.b.ProcessedPPU[0][2] - 0x30)<<4) |((side.b.ProcessedPPU[0][3] - 0x30));
+                    side.b.ppuNozzle[0][2] = ((side.b.ProcessedPPU[0][4] - 0x30)<<4) |((side.b.ProcessedPPU[0][5] - 0x30));
                     PriceUpdate(side.b.dir,side.b.ppuNozzle[0]);
                     W_autorize = 0;
                 }
