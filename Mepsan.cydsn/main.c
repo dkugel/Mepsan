@@ -290,6 +290,71 @@ int main()
                     }                                        
         		}
         	break;
+                
+            case 0x0C:
+        		if(W_autorize == 1){
+        			W_autorize = 0;
+                    //PriceUpdate(side.b.dir,side.b.ppuNozzle[0]);
+                    Authorize(side.c.dir);
+                    for(uint8 LCDRx = 0; LCDRx < 20; LCDRx++){
+                        touch1[LCDRx] = 0x00;
+                    }
+        		}
+        		if(W_autorize == 2){
+                    W_autorize = 0x0C;
+                    PumpState(side.c.dir);            
+                    TotalRequest(side.c.dir, TotalRequestType, 1); //dir 0, volume, nozzle 1                           
+                    PumpState(side.c.dir);                     
+                }                
+                if(W_autorize == 'k'){                    
+                    W_autorize = 0x1C; 
+                    PumpState(side.c.dir);            
+                    TotalRequest(side.c.dir, TotalRequestType, 1); //dir 0, volume, nozzle 1                           
+                    PumpState(side.c.dir);
+                    for(uint8 LCDRx = 0; LCDRx < 20; LCDRx++){
+                        touch1[LCDRx] = 0x00;
+                    }
+                    for(uint8 LCDRx = 0; LCDRx < 8; LCDRx++){
+                        side.c.msn_plate[LCDRx] = 0x20;
+                    }
+                    for(uint8 LCDRx = 0; LCDRx < 6; LCDRx++){
+                        side.c.km[LCDRx] = 0x20;
+                    }                                        
+        		}
+        	break;
+                
+            case 0x0D:
+        		if(W_autorize == 1){
+        			W_autorize = 0;
+                    //PriceUpdate(side.b.dir,side.b.ppuNozzle[0]);
+                    Authorize(side.d.dir);
+                    for(uint8 LCDRx = 0; LCDRx < 20; LCDRx++){
+                        touch1[LCDRx] = 0x00;
+                    }
+        		}
+        		if(W_autorize == 2){
+                    W_autorize = 0x0C;
+                    PumpState(side.d.dir);            
+                    TotalRequest(side.d.dir, TotalRequestType, 1); //dir 0, volume, nozzle 1                           
+                    PumpState(side.d.dir);                     
+                }                
+                if(W_autorize == 'k'){                    
+                    W_autorize = 0x1D; 
+                    PumpState(side.d.dir);            
+                    TotalRequest(side.d.dir, TotalRequestType, 1); //dir 0, volume, nozzle 1                           
+                    PumpState(side.d.dir);
+                    for(uint8 LCDRx = 0; LCDRx < 20; LCDRx++){
+                        touch1[LCDRx] = 0x00;
+                    }
+                    for(uint8 LCDRx = 0; LCDRx < 8; LCDRx++){
+                        side.d.msn_plate[LCDRx] = 0x20;
+                    }
+                    for(uint8 LCDRx = 0; LCDRx < 6; LCDRx++){
+                        side.d.km[LCDRx] = 0x20;
+                    }                                        
+        		}
+        	break;
+                
         	case 0xCC:
         		PumpState(side.b.dir);            
         		TotalRequest(side.b.dir, TotalRequestType, 1); //dir 0, volume, nozzle 1      
@@ -321,7 +386,15 @@ int main()
                 if(W_autorize == 0xBC){
                     side.b.Copy = 1;
                     PrintReceipt(side.b.dir);
-                }                
+                } 
+                if(W_autorize == 0xCC){
+                    side.c.Copy = 1;
+                    PrintReceipt(side.c.dir);
+                }
+                if(W_autorize == 0xDC){
+                    side.d.Copy = 1;
+                    PrintReceipt(side.d.dir);
+                }
             break;
             case 0x4E:
                 if(W_autorize == 0xAC){
@@ -331,7 +404,15 @@ int main()
                 if(W_autorize == 0xBC){
                     W_autorize = 0;
                     side.b.Copy = 0;                                        
-                }                
+                } 
+                if(W_autorize == 0xCC){
+                    W_autorize = 0;
+                    side.c.Copy = 0;                    
+                }
+                if(W_autorize == 0xDC){
+                    W_autorize = 0;
+                    side.d.Copy = 0;                                        
+                }
             break;
             case 0xE1:
                 if(W_autorize == 0xE1){

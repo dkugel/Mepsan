@@ -156,47 +156,6 @@
 <VisibleNodeIds>
 <v>Mepsan</v>
 <v>Mepsan\Mepsan</v>
-<v>Mepsan\Mepsan\CortexM3</v>
-<v>Mepsan\Mepsan\CortexM3\ARM_GCC_541</v>
-<v>Mepsan\Mepsan\CortexM3\ARM_GCC_541\Debug</v>
-<v>Mepsan\Mepsan\CortexM3\ARM_GCC_541\Debug\Listing Files</v>
-<v>Mepsan\Mepsan\CortexM3\ARM_GCC_541\Debug\Listing Files\clock_1.lst</v>
-<v>Mepsan\Mepsan\CortexM3\ARM_GCC_541\Debug\Listing Files\Clock_2.lst</v>
-<v>Mepsan\Mepsan\CortexM3\ARM_GCC_541\Debug\Listing Files\Cm3Start.lst</v>
-<v>Mepsan\Mepsan\CortexM3\ARM_GCC_541\Debug\Listing Files\cy_em_eeprom.lst</v>
-<v>Mepsan\Mepsan\CortexM3\ARM_GCC_541\Debug\Listing Files\CyBootAsmGnu.lst</v>
-<v>Mepsan\Mepsan\CortexM3\ARM_GCC_541\Debug\Listing Files\CyDmac.lst</v>
-<v>Mepsan\Mepsan\CortexM3\ARM_GCC_541\Debug\Listing Files\cyfitter_cfg.lst</v>
-<v>Mepsan\Mepsan\CortexM3\ARM_GCC_541\Debug\Listing Files\CyFlash.lst</v>
-<v>Mepsan\Mepsan\CortexM3\ARM_GCC_541\Debug\Listing Files\CyLib.lst</v>
-<v>Mepsan\Mepsan\CortexM3\ARM_GCC_541\Debug\Listing Files\cymetadata.lst</v>
-<v>Mepsan\Mepsan\CortexM3\ARM_GCC_541\Debug\Listing Files\cyPm.lst</v>
-<v>Mepsan\Mepsan\CortexM3\ARM_GCC_541\Debug\Listing Files\CySpc.lst</v>
-<v>Mepsan\Mepsan\CortexM3\ARM_GCC_541\Debug\Listing Files\cyutils.lst</v>
-<v>Mepsan\Mepsan\CortexM3\ARM_GCC_541\Debug\Listing Files\EEPROM_1.lst</v>
-<v>Mepsan\Mepsan\CortexM3\ARM_GCC_541\Debug\Listing Files\EnablePin.lst</v>
-<v>Mepsan\Mepsan\CortexM3\ARM_GCC_541\Debug\Listing Files\GBCL.lst</v>
-<v>Mepsan\Mepsan\CortexM3\ARM_GCC_541\Debug\Listing Files\GBCL_BOOT.lst</v>
-<v>Mepsan\Mepsan\CortexM3\ARM_GCC_541\Debug\Listing Files\GBCL_INT.lst</v>
-<v>Mepsan\Mepsan\CortexM3\ARM_GCC_541\Debug\Listing Files\GBCL_PM.lst</v>
-<v>Mepsan\Mepsan\CortexM3\ARM_GCC_541\Debug\Listing Files\Gbr.lst</v>
-<v>Mepsan\Mepsan\CortexM3\ARM_GCC_541\Debug\Listing Files\IB1.lst</v>
-<v>Mepsan\Mepsan\CortexM3\ARM_GCC_541\Debug\Listing Files\IB2.lst</v>
-<v>Mepsan\Mepsan\CortexM3\ARM_GCC_541\Debug\Listing Files\Kill_Switch.lst</v>
-<v>Mepsan\Mepsan\CortexM3\ARM_GCC_541\Debug\Listing Files\main.lst</v>
-<v>Mepsan\Mepsan\CortexM3\ARM_GCC_541\Debug\Listing Files\MEPSAN.lst</v>
-<v>Mepsan\Mepsan\CortexM3\ARM_GCC_541\Debug\Listing Files\MEPSAN_BOOT.lst</v>
-<v>Mepsan\Mepsan\CortexM3\ARM_GCC_541\Debug\Listing Files\MEPSAN_INT.lst</v>
-<v>Mepsan\Mepsan\CortexM3\ARM_GCC_541\Debug\Listing Files\MEPSAN_IntClock.lst</v>
-<v>Mepsan\Mepsan\CortexM3\ARM_GCC_541\Debug\Listing Files\MEPSAN_PM.lst</v>
-<v>Mepsan\Mepsan\CortexM3\ARM_GCC_541\Debug\Listing Files\printer.lst</v>
-<v>Mepsan\Mepsan\CortexM3\ARM_GCC_541\Debug\Listing Files\PRINTER_A.lst</v>
-<v>Mepsan\Mepsan\CortexM3\ARM_GCC_541\Debug\Listing Files\PRINTER_A_BOOT.lst</v>
-<v>Mepsan\Mepsan\CortexM3\ARM_GCC_541\Debug\Listing Files\PRINTER_A_INT.lst</v>
-<v>Mepsan\Mepsan\CortexM3\ARM_GCC_541\Debug\Listing Files\PRINTER_A_IntClock.lst</v>
-<v>Mepsan\Mepsan\CortexM3\ARM_GCC_541\Debug\Listing Files\PRINTER_A_PM.lst</v>
-<v>Mepsan\Mepsan\CortexM3\ARM_GCC_541\Debug\Listing Files\PRINTER_B.lst</v>
-<v>Mepsan\Mepsan\CortexM3\ARM_GCC_541\Debug\Listing Files\PRINTER_B_BOOT.lst</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 </TreeStates>
