@@ -80,21 +80,46 @@ void PollingPos(void){
         side.b.states[0] = PumpState(side.b.dir);        
                     
     }
-    if(Positions == 3){
-        for(x = 0; x < 5; x++){
-            side.a.states[x] = PumpState(side.a.dir);
-            side.b.states[x] = PumpState(side.b.dir);
-            side.c.states[x] = PumpState(side.c.dir);
+    if(Positions == 3){                            
+        if(side.a.MepRequest == MEPSAN_AUTHORIZE){
+            Authorize(side.a.dir);
+            side.a.Copy = 0;
         }
+        if(side.b.MepRequest == MEPSAN_AUTHORIZE){
+            Authorize(side.b.dir);
+            side.b.Copy = 0;
+        }
+        if(side.c.MepRequest == MEPSAN_AUTHORIZE){
+            Authorize(side.c.dir);
+            side.c.Copy = 0;
+        }
+        side.a.states[0] = PumpState(side.a.dir);
+        side.b.states[0] = PumpState(side.b.dir);
+        side.c.states[0] = PumpState(side.c.dir);
         
     }
     if(Positions == 4){
-        for(x = 0; x < 5; x++){
-            side.a.states[x] = PumpState(side.a.dir);
-            side.b.states[x] = PumpState(side.b.dir);
-            side.c.states[x] = PumpState(side.c.dir);
-            side.d.states[x] = PumpState(side.d.dir);
-        }            
+        if(side.a.MepRequest == MEPSAN_AUTHORIZE){
+            Authorize(side.a.dir);
+            side.a.Copy = 0;
+        }
+        if(side.b.MepRequest == MEPSAN_AUTHORIZE){
+            Authorize(side.b.dir);
+            side.b.Copy = 0;
+        }
+        if(side.c.MepRequest == MEPSAN_AUTHORIZE){
+            Authorize(side.c.dir);
+            side.c.Copy = 0;
+        }
+        if(side.d.MepRequest == MEPSAN_AUTHORIZE){
+            Authorize(side.d.dir);
+            side.d.Copy = 0;
+        }
+        side.a.states[0] = PumpState(side.a.dir);
+        side.b.states[0] = PumpState(side.b.dir);
+        side.c.states[0] = PumpState(side.c.dir);
+        side.d.states[0] = PumpState(side.d.dir);
+        
     } 
 
 }
