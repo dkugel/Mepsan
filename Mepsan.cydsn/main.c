@@ -141,6 +141,7 @@ int main()
     uint8 price_change;
     uint8 auxPrice[5];
     DecVol = 3;
+    CyDelay(10000);
     PWM_1_Start(); 
     CyGlobalIntEnable;
     MEPSAN_Start();
@@ -588,7 +589,64 @@ int main()
                     side.b.Copy = 1;
                     W_autorize  = 0xBC;
                 }
-                
+                if(touch1[3] == 0x83 && W_autorize == 0x1C){                                 
+                    for(uint8 LCDRx = 7; LCDRx < 15; LCDRx++){
+                        if((touch1[LCDRx] == 0x00) ||(touch1[LCDRx] == 0xFF))
+                            break;
+                        side.c.km[LCDRx-7] = touch1[LCDRx];
+            		}
+                    for(uint8 LCDRx = 0; LCDRx < 20; LCDRx++){
+            			touch1[LCDRx] = 0x00;
+            		}                    
+                    W_autorize = 0x0C;
+                }
+                if(touch1[3] == 0x83 && W_autorize == 0x0C){             
+                    W_autorize = 0;
+                    for(uint8 LCDRx = 7; LCDRx < 15; LCDRx++){
+                        if((touch1[LCDRx] == 0x00) ||(touch1[LCDRx] == 0xFF))
+                            break;
+                        if(touch1[LCDRx] > 96 && touch1[LCDRx] < 123){
+                            side.c.msn_plate[LCDRx-7] = touch1[LCDRx]-0x20;                            
+                        }else{
+                            side.c.msn_plate[LCDRx-7] = touch1[LCDRx];
+                        }
+            		}
+                    for(uint8 LCDRx = 0; LCDRx < 20; LCDRx++){
+            			touch1[LCDRx] = 0x00;
+            		}
+                    PrintReceipt(side.c.dir);
+                    side.c.Copy = 1;
+                    W_autorize =0xCC;
+                }
+                if(touch1[3] == 0x83 && W_autorize == 0x1D){                                 
+                    for(uint8 LCDRx = 7; LCDRx < 15; LCDRx++){
+                        if((touch1[LCDRx] == 0x00) ||(touch1[LCDRx] == 0xFF))
+                            break;
+                        side.d.km[LCDRx-7] = touch1[LCDRx];
+            		}
+                    for(uint8 LCDRx = 0; LCDRx < 20; LCDRx++){
+            			touch1[LCDRx] = 0x00;
+            		}                    
+                    W_autorize = 0x0D;
+                }
+                if(touch1[3] == 0x83 && W_autorize == 0x0D){             
+                    W_autorize = 0;
+                    for(uint8 LCDRx = 7; LCDRx < 15; LCDRx++){
+                        if((touch1[LCDRx] == 0x00) ||(touch1[LCDRx] == 0xFF))
+                            break;
+                        if(touch1[LCDRx] > 96 && touch1[LCDRx] < 123){
+                            side.d.msn_plate[LCDRx-7] = touch1[LCDRx]-0x20;                            
+                        }else{
+                            side.d.msn_plate[LCDRx-7] = touch1[LCDRx];
+                        }
+            		}
+                    for(uint8 LCDRx = 0; LCDRx < 20; LCDRx++){
+            			touch1[LCDRx] = 0x00;
+            		}
+                    PrintReceipt(side.d.dir);
+                    side.d.Copy = 1;
+                    W_autorize =0xDC;
+                }
         	break;
         }
         screen_size = 0;
