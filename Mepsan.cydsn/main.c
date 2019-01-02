@@ -141,7 +141,7 @@ int main()
     uint8 price_change;
     uint8 auxPrice[5];
     DecVol = 3;
-    CyDelay(10000);
+    CyDelay(25000);
     PWM_1_Start(); 
     CyGlobalIntEnable;
     MEPSAN_Start();
@@ -151,6 +151,8 @@ int main()
     EEPROM_1_Start();
     side.a.Copy = 0;
     side.b.Copy = 0;
+    side.c.Copy = 0;
+    side.d.Copy = 0;
     if(EEPROM_1_ReadByte(0) == 0x5A){
         for(x=0;x<6;x++){
     		sale_number[x]=EEPROM_1_ReadByte(x);
@@ -201,17 +203,19 @@ int main()
 //    side.b.ProcessedPPU[0][5] = (side.b.ppuNozzle[0][2] & 0x0F) + 0x30;
     
     //while(side.a.dir == 0xFF){
-        for(uint8 y = 0; y < 16; y ++){
-            PumpAddress[y] = GetAddress(y); //Posiciones activas      
-        } 
+    //    for(uint8 y = 0; y < 16; y ++){
+    //        PumpAddress[y] = GetAddress(y); //Posiciones activas      
+    //    } 
     //}
     
-    side.a.dir = PumpAddress[1];
-    side.b.dir = PumpAddress[2];
-    side.c.dir = PumpAddress[3];
-    side.d.dir = PumpAddress[4]; 
+    //side.a.dir = PumpAddress[1];
+    //side.b.dir = PumpAddress[2];
+    //side.c.dir = PumpAddress[3];
+    //side.d.dir = PumpAddress[4]; 
     side.a.dir = 0x00;
     side.b.dir = 0x01;
+    side.c.dir = 0x02;
+    side.d.dir = 0x03;
     TotalRequestType = 0; 
     W_autorize = 0;        
     LCDhose = 0;

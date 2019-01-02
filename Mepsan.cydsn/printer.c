@@ -20,12 +20,12 @@ char VolSimbol[1] = "G";
 
 
 /***********  Temporal messages ******************/
-uint8 msn_EDS[32]       = "      SISPETROL INGENIERIA      ";
-uint8 msn_EDS2[32]      = "      Soluciones y Equipos      ";
-uint8 msn_EDS3[32]      = "   para Estaciones de Servicio  ";
-uint8 msn_EDS4[32]      = " Tel: 571 3975916 - 310 5612276 ";
-uint8 msn_EDS5[32]      = "      CRA 82 Bis No 71 - 78     ";
-uint8 msn_EDS6[32]      = "          BOGOTA D.C.";
+uint8 msn_EDS[32]       = "      ESTACION DE SERVICIO      ";
+uint8 msn_EDS2[32]      = "     SAN MARTIN D TOURS SAS     ";
+/*uint8 msn_EDS3[32]      = "   para Estaciones de Servicio  ";*/
+uint8 msn_EDS4[32]      = "          Tel: 2072855          ";
+uint8 msn_EDS5[32]      = "       CRA 1A #41A - 34 SUR     ";
+uint8 msn_EDS6[32]      = "          BOGOTA D.C.           ";
 uint8 msn_footer[32]    = "     GRACIAS POR SU COMPRA      ";
 uint8 msn_footer2[32]   = "          VUELVA PRONTO         ";
 uint8 msn_footer3[32]   = "Firma:                          ";
@@ -107,10 +107,10 @@ void PrintReceipt(uint8 address){
 	for(uint8 x = 0; x < 32; x ++){
 		PRINTER_A_PutChar(msn_EDS2[x]);
 	}
-	PRINTER_A_PutChar(LINE_FEED);
+	/*PRINTER_A_PutChar(LINE_FEED);
 	for(uint8 x = 0; x < 32; x ++){
 		PRINTER_A_PutChar(msn_EDS3[x]);
-	}
+	}*/
 	PRINTER_A_PutChar(LINE_FEED);
 	for(uint8 x = 0; x < 32; x ++){
 		PRINTER_A_PutChar(msn_EDS4[x]);
@@ -589,10 +589,10 @@ void PrintShift(void){
 	for(uint8 x = 0; x < 32; x ++){
 		PRINTER_A_PutChar(msn_EDS2[x]);
 	}
-	PRINTER_A_PutChar(LINE_FEED);
+	/*PRINTER_A_PutChar(LINE_FEED);
 	for(uint8 x = 0; x < 32; x ++){
 		PRINTER_A_PutChar(msn_EDS3[x]);
-	}
+	}*/
 	PRINTER_A_PutChar(LINE_FEED);
 	for(uint8 x = 0; x < 32; x ++){
 		PRINTER_A_PutChar(msn_EDS4[x]);

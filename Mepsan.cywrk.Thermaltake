@@ -13,7 +13,7 @@
 <v>Output</v>
 </TreeKeys>
 <TreeStates>
-<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="Mepsan\Mepsan">
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="Mepsan\Mepsan\Source Files\printer.c">
 <ExpandedNodeIds>
 <v>Mepsan</v>
 <v>Mepsan\Mepsan</v>
@@ -40,7 +40,6 @@
 <v>Mepsan\Mepsan\Source Files\printer.c</v>
 <v>Mepsan\Mepsan\Source Files\PumpCom.c</v>
 <v>Mepsan\Mepsan\Generated_Source</v>
-<v>Mepsan\Mepsan\Generated_Source\PSoC5</v>
 <v>Mepsan\CE195352_PSoC_5LP_Blinking_LED.pdf</v>
 </ExpandedNodeIds>
 <VisibleNodeIds>
@@ -70,27 +69,7 @@
 <v>Mepsan\Mepsan\Source Files\PumpCom.c</v>
 <v>Mepsan\Mepsan\Generated_Source</v>
 <v>Mepsan\Mepsan\Generated_Source\PSoC5</v>
-<v>Mepsan\Mepsan\Generated_Source\PSoC5\clock_1</v>
-<v>Mepsan\Mepsan\Generated_Source\PSoC5\Clock_2</v>
-<v>Mepsan\Mepsan\Generated_Source\PSoC5\cy_boot</v>
-<v>Mepsan\Mepsan\Generated_Source\PSoC5\EEPROM_1</v>
-<v>Mepsan\Mepsan\Generated_Source\PSoC5\Em_EEPROM_Dynamic</v>
-<v>Mepsan\Mepsan\Generated_Source\PSoC5\EnablePin</v>
-<v>Mepsan\Mepsan\Generated_Source\PSoC5\GBCL</v>
-<v>Mepsan\Mepsan\Generated_Source\PSoC5\IB1</v>
-<v>Mepsan\Mepsan\Generated_Source\PSoC5\IB2</v>
-<v>Mepsan\Mepsan\Generated_Source\PSoC5\Kill_Switch</v>
-<v>Mepsan\Mepsan\Generated_Source\PSoC5\MEPSAN</v>
-<v>Mepsan\Mepsan\Generated_Source\PSoC5\MEPSAN_IntClock</v>
-<v>Mepsan\Mepsan\Generated_Source\PSoC5\PRINTER_A</v>
-<v>Mepsan\Mepsan\Generated_Source\PSoC5\PRINTER_A_IntClock</v>
-<v>Mepsan\Mepsan\Generated_Source\PSoC5\PRINTER_B</v>
-<v>Mepsan\Mepsan\Generated_Source\PSoC5\PRINTER_B_IntClock</v>
-<v>Mepsan\Mepsan\Generated_Source\PSoC5\PWM_1</v>
-<v>Mepsan\Mepsan\Generated_Source\PSoC5\PWM_Out</v>
-<v>Mepsan\Mepsan\Generated_Source\PSoC5\screen</v>
-<v>Mepsan\Mepsan\Generated_Source\PSoC5\screen_IntClock</v>
-<v>Mepsan\Mepsan\Generated_Source\PSoC5\screen2</v>
+<v>Mepsan\CE195352_PSoC_5LP_Blinking_LED.pdf</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 <CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
@@ -286,10 +265,9 @@
 </CyGuid_fdba8dfd-b15b-4469-9bbb-9e40c3e70997>
 <Unloaded />
 <OpenDocs>
-<name v=".\Mepsan.cydsn\printer.c" />
 <name v=".\Mepsan.cydsn\main.c" />
 <name v=".\Mepsan.cydsn\PumpCom.c" />
-<name v=".\Mepsan.cydsn\Mepsan.cydwr" />
+<name v=".\Mepsan.cydsn\printer.c" />
 </OpenDocs>
 <OpenDocsLayout><![CDATA[<?xml version="1.0"?><!--
 
@@ -297,7 +275,7 @@
   Copyright (c) 2001-2016 Actipro Software LLC.  All rights reserved.
   http://www.actiprosoftware.com
 
---><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="1288, 892" SelectedTabbedMdiWindow="9da3a47a-554a-4e81-88ad-fa823fc391ae"><ToolWindow Key="Start Page:bd4649ab-da6b-4d04-a663-c722b8bf99db:Start Page" Guid="f84d78e5-5587-42ae-bdf7-15af6eafe1e4" /><DocumentWindow Key="C:\Users\Thermaltake\Documents\GitHub\Mepsan\Mepsan.cydsn\printer.c" Guid="4edfbc73-6318-46b3-b8d0-0341c43ce48c" /><DocumentWindow Key="C:\Users\Thermaltake\Documents\GitHub\Mepsan\Mepsan.cydsn\main.c" Guid="9da3a47a-554a-4e81-88ad-fa823fc391ae" /><DocumentWindow Key="C:\Users\Thermaltake\Documents\GitHub\Mepsan\Mepsan.cydsn\PumpCom.c" Guid="a2fbda2f-85a4-45c6-83a9-a0249f27a7c7" /><DocumentWindow Key="C:\Users\Thermaltake\Documents\GitHub\Mepsan\Mepsan.cydsn\Mepsan.cydwr" Guid="59193289-267c-403e-85e1-8258044d69fa" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
+--><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="1288, 892" SelectedTabbedMdiWindow="ea5db07f-f637-4cd4-bb60-925afe437d56"><DocumentWindow Key="C:\Users\Thermaltake\Documents\GitHub\Mepsan\Mepsan.cydsn\main.c" Guid="ea5db07f-f637-4cd4-bb60-925afe437d56" /><DocumentWindow Key="C:\Users\Thermaltake\Documents\GitHub\Mepsan\Mepsan.cydsn\PumpCom.c" Guid="d3181439-6d0a-4ea6-97fa-20bf83015758" /><DocumentWindow Key="C:\Users\Thermaltake\Documents\GitHub\Mepsan\Mepsan.cydsn\printer.c" Guid="184282c8-e787-44fe-a9d3-c242ca2ec549" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
 <config v="" />
 <AutoUpdate v="true" />
 </CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21>

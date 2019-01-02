@@ -1,0 +1,40 @@
+Category;Quantity;Reference;Value;Order Code
+Resistors;7;R1,R2,R3,R4,R6,R7,R8;10k;
+Resistors;1;R5;220;
+Resistors;2;R17,R20;100;
+Resistors;1;R18;15k;
+Resistors;2;R19,R33;3.3k;
+Resistors;3;R21,R30,R31;1.5k;
+Resistors;1;R22;150k;
+Resistors;1;R23;47.5k;
+Resistors;1;R24;150;
+Resistors;2;R25,R32;1k;
+Resistors;2;R26,R28;68.1;
+Resistors;1;R27;100k;
+Resistors;1;R29;221;
+Capacitors;1;C1;560pF;Digikey PCC561BTR-ND
+Capacitors;2;C2,C3;47n;Farnell 578-204
+Capacitors;1;C4;33n;Farnell 301-9822
+Capacitors;1;C5;1n;Farnell 317-457
+Capacitors;1;C6;100u;Digikey 495-1563-2-ND
+Capacitors;2;C7,C8;100n;Farnell 499-687
+Capacitors;16;C9,C10,C11,C12,C13,C14,C15,C16,C17,C18,C19,C20,C21,C22,C23C24;10u;Digikey PCC1894TR-ND
+Integrated Circuits;1;U1;CY8CKIT-059;
+Integrated Circuits;1;U2;MAX487;
+Integrated Circuits;4;U3,U7,U8,U9;MAX232;
+Integrated Circuits;1;U4;74HC14;
+Integrated Circuits;2;U5,U6;CNY17;
+Transistors;1;Q1;MMBTA13;Digikey MMBTA13FS-ND
+Transistors;3;Q2-Q4;MMBT2222A;Digikey MMBT2222AFSTR-ND
+Transistors;1;Q5;MMBT2907;Digikey MMBT2907TR-ND
+Diodes;1;D1;LED-RED;
+Diodes;1;D2;1N6263W;
+Diodes;1;D3;1N4148WS-7;Digikey 1N4148WSDITR-ND
+Diodes;1;D4;LED-YELLOW;
+Diodes;1;D5;LED-GREEN;
+Miscellaneous;5;J1,J2,J3,J4,J5;CONN-SIL2;
+Miscellaneous;2;J6,J14;CONN-SIL3;
+Miscellaneous;4;J7,J9,J11,J12;CONN-SIL4;
+Miscellaneous;1;J8;TWO WIRE;
+Miscellaneous;2;J10,J13;TBLOCK-I2;
+Miscellaneous;1;L1;963-BK2125HS150-T;
