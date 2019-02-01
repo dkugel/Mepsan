@@ -1,0 +1,43 @@
+dont_use_io iocell 1 0
+dont_use_io iocell 1 1
+dont_use_io iocell 1 3
+set_location "\GBCL:BUART:rx_postpoll\" macrocell 0 4 0 1
+set_location "\GBCL:BUART:sRX:RxSts\" statusicell 1 5 4 
+set_location "\GBCL:BUART:tx_status_2\" macrocell 1 4 0 1
+set_location "\GBCL:BUART:pollcount_0\" macrocell 0 5 0 2
+set_location "\GBCL:BUART:rx_parity_error_pre\" macrocell 0 4 1 1
+set_location "\GBCL:BUART:rx_state_stop1_reg\" macrocell 1 5 1 3
+set_location "\GBCL:BUART:tx_parity_bit\" macrocell 1 3 1 2
+set_location "\GBCL:BUART:txn\" macrocell 1 3 0 0
+set_location "\GBCL:BUART:tx_ctrl_mark_last\" macrocell 1 4 1 2
+set_location "\GBCL:BUART:rx_load_fifo\" macrocell 0 5 0 1
+set_location "\GBCL:BUART:rx_counter_load\" macrocell 0 3 0 0
+set_location "\GBCL:BUART:sTX:TxSts\" statusicell 1 4 4 
+set_location "\GBCL:BUART:counter_load_not\" macrocell 1 5 0 1
+set_location "\GBCL:BUART:rx_last\" macrocell 0 3 1 1
+set_location "\GBCL:BUART:rx_status_4\" macrocell 0 5 0 3
+set_location "\GBCL:BUART:tx_state_1\" macrocell 1 3 1 3
+set_location "\GBCL:BUART:rx_status_3\" macrocell 0 4 0 2
+set_location "\GBCL:BUART:sTX:TxShifter:u0\" datapathcell 1 4 2 
+set_location "\GBCL:BUART:rx_state_3\" macrocell 0 4 0 3
+set_location "\GBCL:BUART:rx_state_2\" macrocell 0 3 1 2
+set_location "\GBCL:BUART:tx_state_2\" macrocell 1 3 1 1
+set_location "\GBCL:BUART:rx_parity_bit\" macrocell 0 4 1 0
+set_location "\GBCL:BUART:tx_status_0\" macrocell 1 3 0 1
+set_location "\GBCL:BUART:sRX:RxShifter:u0\" datapathcell 0 4 2 
+set_location "\GBCL:BUART:tx_state_0\" macrocell 1 5 0 0
+set_location "\GBCL:BUART:rx_status_2\" macrocell 1 5 1 1
+set_location "\GBCL:BUART:sRX:RxBitCounter\" count7cell 0 3 7 
+set_location "\GBCL:BUART:rx_status_5\" macrocell 1 5 1 2
+set_location "\GBCL:BUART:rx_bitclk_enable\" macrocell 0 3 0 2
+set_location "\GBCL:BUART:tx_bitclk\" macrocell 1 5 1 0
+set_location "\GBCL:BUART:pollcount_1\" macrocell 0 5 0 0
+set_location "\GBCL:BUART:rx_state_0\" macrocell 0 4 0 0
+set_location "Net_2" macrocell 0 3 0 1
+set_location "\GBCL:BUART:sTX:sCLOCK:TxBitClkGen\" datapathcell 1 5 2 
+# Note: port 15 is the logical name for port 8
+set_io "Tx_2(0)" iocell 15 5
+# Note: port 15 is the logical name for port 8
+set_io "Rx_2(0)" iocell 15 4
+set_location "ClockBlock" clockblockcell -1 -1 0
+set_location "\GBCL:RXInternalInterrupt\" interrupt -1 -1 0

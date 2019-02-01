@@ -16,6 +16,7 @@
 </files>
 <projects>
 <v>.\Mepsan.cydsn\Mepsan.cyprj</v>
+<v>.\Emulador\Emulador.cydsn\Emulador.cyprj</v>
 </projects>
 <workspace_id v="d02426c9-118f-4ca7-9904-418f403aceb2" />
 <WriteAppVersionLastSavedWith v="4.2.0.641" />

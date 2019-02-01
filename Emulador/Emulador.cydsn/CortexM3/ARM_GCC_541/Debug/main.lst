@@ -1,0 +1,854 @@
+ARM GAS  C:\Users\THERMA~1\AppData\Local\Temp\ccMNsnm0.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"main.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.main,"ax",%progbits
+  20              		.align	2
+  21              		.global	main
+  22              		.thumb
+  23              		.thumb_func
+  24              		.type	main, %function
+  25              	main:
+  26              	.LFB63:
+  27              		.file 1 "main.c"
+   1:main.c        **** /* ========================================
+   2:main.c        ****  *
+   3:main.c        ****  * Copyright YOUR COMPANY, THE YEAR
+   4:main.c        ****  * All Rights Reserved
+   5:main.c        ****  * UNPUBLISHED, LICENSED SOFTWARE.
+   6:main.c        ****  *
+   7:main.c        ****  * CONFIDENTIAL AND PROPRIETARY INFORMATION
+   8:main.c        ****  * WHICH IS THE PROPERTY OF your company.
+   9:main.c        ****  *
+  10:main.c        ****  * ========================================
+  11:main.c        **** */
+  12:main.c        **** #include "project.h"
+  13:main.c        **** 
+  14:main.c        **** int main(void)
+  15:main.c        **** {
+  28              		.loc 1 15 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32 0000 38B5     		push	{r3, r4, r5, lr}
+  33              		.cfi_def_cfa_offset 16
+  34              		.cfi_offset 3, -16
+  35              		.cfi_offset 4, -12
+  36              		.cfi_offset 5, -8
+  37              		.cfi_offset 14, -4
+  16:main.c        ****     uint8 buffer_size;
+  17:main.c        ****     uint8 SPLL;
+  18:main.c        ****     uint8 bufferPOLL[100];
+  19:main.c        ****     uint8 Response;
+  20:main.c        ****     GBCL_Start();
+ARM GAS  C:\Users\THERMA~1\AppData\Local\Temp\ccMNsnm0.s 			page 2
+
+
+  38              		.loc 1 20 0
+  39 0002 FFF7FEFF 		bl	GBCL_Start
+  40              	.LVL0:
+  21:main.c        ****     CyGlobalIntEnable; /* Enable global interrupts. */
+  41              		.loc 1 21 0
+  42              		.syntax unified
+  43              	@ 21 "main.c" 1
+  44 0006 62B6     		CPSIE   i
+  45              	@ 0 "" 2
+  46              		.thumb
+  47              		.syntax unified
+  48              	.L5:
+  49              	.LVL1:
+  22:main.c        **** 
+  23:main.c        ****     /* Place your initialization/startup code here (e.g. MyInst_Start()) */
+  24:main.c        **** 
+  25:main.c        ****     for(;;)
+  26:main.c        ****     {
+  27:main.c        ****         /* Place your application code here. */
+  28:main.c        ****         buffer_size = GBCL_GetRxBufferSize();
+  50              		.loc 1 28 0
+  51 0008 FFF7FEFF 		bl	GBCL_GetRxBufferSize
+  52              	.LVL2:
+  29:main.c        ****         if(buffer_size >= 1 ){
+  53              		.loc 1 29 0
+  54 000c 0546     		mov	r5, r0
+  55 000e 28B9     		cbnz	r0, .L6
+  56              	.LBB2:
+  57 0010 07E0     		b	.L3
+  58              	.LVL3:
+  59              	.L4:
+  30:main.c        ****             for(uint8 GBRx = 0; GBRx < buffer_size; GBRx++){
+  31:main.c        ****                 bufferPOLL[GBRx] = GBCL_ReadRxData();
+  60              		.loc 1 31 0 discriminator 3
+  61 0012 FFF7FEFF 		bl	GBCL_ReadRxData
+  62              	.LVL4:
+  30:main.c        ****             for(uint8 GBRx = 0; GBRx < buffer_size; GBRx++){
+  63              		.loc 1 30 0 discriminator 3
+  64 0016 0134     		adds	r4, r4, #1
+  65              	.LVL5:
+  66 0018 E4B2     		uxtb	r4, r4
+  67              	.LVL6:
+  68 001a 00E0     		b	.L2
+  69              	.LVL7:
+  70              	.L6:
+  71              	.LBE2:
+  72 001c 0024     		movs	r4, #0
+  73              	.LVL8:
+  74              	.L2:
+  75              	.LBB3:
+  30:main.c        ****             for(uint8 GBRx = 0; GBRx < buffer_size; GBRx++){
+  76              		.loc 1 30 0 is_stmt 0 discriminator 1
+  77 001e AC42     		cmp	r4, r5
+  78 0020 F7D3     		bcc	.L4
+  79              	.LVL9:
+  80              	.L3:
+  81              	.LBE3:
+ARM GAS  C:\Users\THERMA~1\AppData\Local\Temp\ccMNsnm0.s 			page 3
+
+
+  32:main.c        ****             }            
+  33:main.c        ****         }
+  34:main.c        ****         
+  35:main.c        ****         switch(bufferPOLL[0]){
+  36:main.c        ****             case 0x01:
+  37:main.c        ****                 Response = 0x61;
+  38:main.c        ****             break;
+  39:main.c        ****         }
+  40:main.c        ****         
+  41:main.c        ****         CyDelay(50);
+  82              		.loc 1 41 0 is_stmt 1
+  83 0022 3220     		movs	r0, #50
+  84 0024 FFF7FEFF 		bl	CyDelay
+  85              	.LVL10:
+  42:main.c        ****         GBCL_PutChar(Response);
+  86              		.loc 1 42 0
+  87 0028 6120     		movs	r0, #97
+  88 002a FFF7FEFF 		bl	GBCL_PutChar
+  89              	.LVL11:
+  43:main.c        ****         
+  44:main.c        ****     }
+  90              		.loc 1 44 0
+  91 002e EBE7     		b	.L5
+  92              		.cfi_endproc
+  93              	.LFE63:
+  94              		.size	main, .-main
+  95              		.text
+  96              	.Letext0:
+  97              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.2\\psoc creator\\import\\gnu\\arm\\5.4.
+  98              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.2\\psoc creator\\import\\gnu\\arm\\5.4.
+  99              		.file 4 "Generated_Source\\PSoC5/cytypes.h"
+ 100              		.file 5 "Generated_Source\\PSoC5/GBCL.h"
+ 101              		.file 6 "Generated_Source\\PSoC5/CyLib.h"
+ 102              		.file 7 "Generated_Source\\PSoC5/core_cm3.h"
+ 103              		.section	.debug_info,"",%progbits
+ 104              	.Ldebug_info0:
+ 105 0000 A8010000 		.4byte	0x1a8
+ 106 0004 0400     		.2byte	0x4
+ 107 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 108 000a 04       		.byte	0x4
+ 109 000b 01       		.uleb128 0x1
+ 110 000c 4B000000 		.4byte	.LASF27
+ 111 0010 0C       		.byte	0xc
+ 112 0011 D3010000 		.4byte	.LASF28
+ 113 0015 FB000000 		.4byte	.LASF29
+ 114 0019 18000000 		.4byte	.Ldebug_ranges0+0x18
+ 115 001d 00000000 		.4byte	0
+ 116 0021 00000000 		.4byte	.Ldebug_line0
+ 117 0025 02       		.uleb128 0x2
+ 118 0026 01       		.byte	0x1
+ 119 0027 06       		.byte	0x6
+ 120 0028 0A020000 		.4byte	.LASF0
+ 121 002c 02       		.uleb128 0x2
+ 122 002d 01       		.byte	0x1
+ 123 002e 08       		.byte	0x8
+ 124 002f 3D000000 		.4byte	.LASF1
+ 125 0033 02       		.uleb128 0x2
+ARM GAS  C:\Users\THERMA~1\AppData\Local\Temp\ccMNsnm0.s 			page 4
+
+
+ 126 0034 02       		.byte	0x2
+ 127 0035 05       		.byte	0x5
+ 128 0036 DF010000 		.4byte	.LASF2
+ 129 003a 02       		.uleb128 0x2
+ 130 003b 02       		.byte	0x2
+ 131 003c 07       		.byte	0x7
+ 132 003d 16000000 		.4byte	.LASF3
+ 133 0041 03       		.uleb128 0x3
+ 134 0042 0C000000 		.4byte	.LASF9
+ 135 0046 02       		.byte	0x2
+ 136 0047 3F       		.byte	0x3f
+ 137 0048 4C000000 		.4byte	0x4c
+ 138 004c 02       		.uleb128 0x2
+ 139 004d 04       		.byte	0x4
+ 140 004e 05       		.byte	0x5
+ 141 004f F4010000 		.4byte	.LASF4
+ 142 0053 02       		.uleb128 0x2
+ 143 0054 04       		.byte	0x4
+ 144 0055 07       		.byte	0x7
+ 145 0056 E9000000 		.4byte	.LASF5
+ 146 005a 02       		.uleb128 0x2
+ 147 005b 08       		.byte	0x8
+ 148 005c 05       		.byte	0x5
+ 149 005d C5010000 		.4byte	.LASF6
+ 150 0061 02       		.uleb128 0x2
+ 151 0062 08       		.byte	0x8
+ 152 0063 07       		.byte	0x7
+ 153 0064 6B010000 		.4byte	.LASF7
+ 154 0068 04       		.uleb128 0x4
+ 155 0069 04       		.byte	0x4
+ 156 006a 05       		.byte	0x5
+ 157 006b 696E7400 		.ascii	"int\000"
+ 158 006f 02       		.uleb128 0x2
+ 159 0070 04       		.byte	0x4
+ 160 0071 07       		.byte	0x7
+ 161 0072 5E010000 		.4byte	.LASF8
+ 162 0076 03       		.uleb128 0x3
+ 163 0077 29000000 		.4byte	.LASF10
+ 164 007b 03       		.byte	0x3
+ 165 007c 2C       		.byte	0x2c
+ 166 007d 41000000 		.4byte	0x41
+ 167 0081 05       		.uleb128 0x5
+ 168 0082 37000000 		.4byte	.LASF11
+ 169 0086 04       		.byte	0x4
+ 170 0087 E401     		.2byte	0x1e4
+ 171 0089 2C000000 		.4byte	0x2c
+ 172 008d 02       		.uleb128 0x2
+ 173 008e 04       		.byte	0x4
+ 174 008f 04       		.byte	0x4
+ 175 0090 31000000 		.4byte	.LASF12
+ 176 0094 02       		.uleb128 0x2
+ 177 0095 08       		.byte	0x8
+ 178 0096 04       		.byte	0x4
+ 179 0097 4D010000 		.4byte	.LASF13
+ 180 009b 02       		.uleb128 0x2
+ 181 009c 01       		.byte	0x1
+ 182 009d 08       		.byte	0x8
+ARM GAS  C:\Users\THERMA~1\AppData\Local\Temp\ccMNsnm0.s 			page 5
+
+
+ 183 009e DA010000 		.4byte	.LASF14
+ 184 00a2 02       		.uleb128 0x2
+ 185 00a3 08       		.byte	0x8
+ 186 00a4 04       		.byte	0x4
+ 187 00a5 A7010000 		.4byte	.LASF15
+ 188 00a9 02       		.uleb128 0x2
+ 189 00aa 04       		.byte	0x4
+ 190 00ab 07       		.byte	0x7
+ 191 00ac B3010000 		.4byte	.LASF16
+ 192 00b0 06       		.uleb128 0x6
+ 193 00b1 54010000 		.4byte	.LASF30
+ 194 00b5 01       		.byte	0x1
+ 195 00b6 0E       		.byte	0xe
+ 196 00b7 68000000 		.4byte	0x68
+ 197 00bb 00000000 		.4byte	.LFB63
+ 198 00bf 30000000 		.4byte	.LFE63-.LFB63
+ 199 00c3 01       		.uleb128 0x1
+ 200 00c4 9C       		.byte	0x9c
+ 201 00c5 53010000 		.4byte	0x153
+ 202 00c9 07       		.uleb128 0x7
+ 203 00ca 00000000 		.4byte	.LASF19
+ 204 00ce 01       		.byte	0x1
+ 205 00cf 10       		.byte	0x10
+ 206 00d0 81000000 		.4byte	0x81
+ 207 00d4 00000000 		.4byte	.LLST0
+ 208 00d8 08       		.uleb128 0x8
+ 209 00d9 59010000 		.4byte	.LASF17
+ 210 00dd 01       		.byte	0x1
+ 211 00de 11       		.byte	0x11
+ 212 00df 81000000 		.4byte	0x81
+ 213 00e3 08       		.uleb128 0x8
+ 214 00e4 9C010000 		.4byte	.LASF18
+ 215 00e8 01       		.byte	0x1
+ 216 00e9 12       		.byte	0x12
+ 217 00ea 53010000 		.4byte	0x153
+ 218 00ee 09       		.uleb128 0x9
+ 219 00ef BC010000 		.4byte	.LASF20
+ 220 00f3 01       		.byte	0x1
+ 221 00f4 13       		.byte	0x13
+ 222 00f5 81000000 		.4byte	0x81
+ 223 00f9 61       		.byte	0x61
+ 224 00fa 0A       		.uleb128 0xa
+ 225 00fb 00000000 		.4byte	.Ldebug_ranges0+0
+ 226 00ff 1C010000 		.4byte	0x11c
+ 227 0103 07       		.uleb128 0x7
+ 228 0104 97010000 		.4byte	.LASF21
+ 229 0108 01       		.byte	0x1
+ 230 0109 1E       		.byte	0x1e
+ 231 010a 81000000 		.4byte	0x81
+ 232 010e 1E000000 		.4byte	.LLST1
+ 233 0112 0B       		.uleb128 0xb
+ 234 0113 16000000 		.4byte	.LVL4
+ 235 0117 74010000 		.4byte	0x174
+ 236 011b 00       		.byte	0
+ 237 011c 0B       		.uleb128 0xb
+ 238 011d 06000000 		.4byte	.LVL0
+ 239 0121 7F010000 		.4byte	0x17f
+ARM GAS  C:\Users\THERMA~1\AppData\Local\Temp\ccMNsnm0.s 			page 6
+
+
+ 240 0125 0B       		.uleb128 0xb
+ 241 0126 0C000000 		.4byte	.LVL2
+ 242 012a 8A010000 		.4byte	0x18a
+ 243 012e 0C       		.uleb128 0xc
+ 244 012f 28000000 		.4byte	.LVL10
+ 245 0133 95010000 		.4byte	0x195
+ 246 0137 42010000 		.4byte	0x142
+ 247 013b 0D       		.uleb128 0xd
+ 248 013c 01       		.uleb128 0x1
+ 249 013d 50       		.byte	0x50
+ 250 013e 02       		.uleb128 0x2
+ 251 013f 08       		.byte	0x8
+ 252 0140 32       		.byte	0x32
+ 253 0141 00       		.byte	0
+ 254 0142 0E       		.uleb128 0xe
+ 255 0143 2E000000 		.4byte	.LVL11
+ 256 0147 A0010000 		.4byte	0x1a0
+ 257 014b 0D       		.uleb128 0xd
+ 258 014c 01       		.uleb128 0x1
+ 259 014d 50       		.byte	0x50
+ 260 014e 02       		.uleb128 0x2
+ 261 014f 08       		.byte	0x8
+ 262 0150 61       		.byte	0x61
+ 263 0151 00       		.byte	0
+ 264 0152 00       		.byte	0
+ 265 0153 0F       		.uleb128 0xf
+ 266 0154 81000000 		.4byte	0x81
+ 267 0158 63010000 		.4byte	0x163
+ 268 015c 10       		.uleb128 0x10
+ 269 015d A9000000 		.4byte	0xa9
+ 270 0161 63       		.byte	0x63
+ 271 0162 00       		.byte	0
+ 272 0163 11       		.uleb128 0x11
+ 273 0164 40010000 		.4byte	.LASF31
+ 274 0168 07       		.byte	0x7
+ 275 0169 1207     		.2byte	0x712
+ 276 016b 6F010000 		.4byte	0x16f
+ 277 016f 12       		.uleb128 0x12
+ 278 0170 76000000 		.4byte	0x76
+ 279 0174 13       		.uleb128 0x13
+ 280 0175 D9000000 		.4byte	.LASF22
+ 281 0179 D9000000 		.4byte	.LASF22
+ 282 017d 05       		.byte	0x5
+ 283 017e 6F       		.byte	0x6f
+ 284 017f 13       		.uleb128 0x13
+ 285 0180 E9010000 		.4byte	.LASF23
+ 286 0184 E9010000 		.4byte	.LASF23
+ 287 0188 05       		.byte	0x5
+ 288 0189 54       		.byte	0x54
+ 289 018a 13       		.uleb128 0x13
+ 290 018b 82010000 		.4byte	.LASF24
+ 291 018f 82010000 		.4byte	.LASF24
+ 292 0193 05       		.byte	0x5
+ 293 0194 73       		.byte	0x73
+ 294 0195 13       		.uleb128 0x13
+ 295 0196 16020000 		.4byte	.LASF25
+ 296 019a 16020000 		.4byte	.LASF25
+ARM GAS  C:\Users\THERMA~1\AppData\Local\Temp\ccMNsnm0.s 			page 7
+
+
+ 297 019e 06       		.byte	0x6
+ 298 019f 76       		.byte	0x76
+ 299 01a0 13       		.uleb128 0x13
+ 300 01a1 FD010000 		.4byte	.LASF26
+ 301 01a5 FD010000 		.4byte	.LASF26
+ 302 01a9 05       		.byte	0x5
+ 303 01aa 8A       		.byte	0x8a
+ 304 01ab 00       		.byte	0
+ 305              		.section	.debug_abbrev,"",%progbits
+ 306              	.Ldebug_abbrev0:
+ 307 0000 01       		.uleb128 0x1
+ 308 0001 11       		.uleb128 0x11
+ 309 0002 01       		.byte	0x1
+ 310 0003 25       		.uleb128 0x25
+ 311 0004 0E       		.uleb128 0xe
+ 312 0005 13       		.uleb128 0x13
+ 313 0006 0B       		.uleb128 0xb
+ 314 0007 03       		.uleb128 0x3
+ 315 0008 0E       		.uleb128 0xe
+ 316 0009 1B       		.uleb128 0x1b
+ 317 000a 0E       		.uleb128 0xe
+ 318 000b 55       		.uleb128 0x55
+ 319 000c 17       		.uleb128 0x17
+ 320 000d 11       		.uleb128 0x11
+ 321 000e 01       		.uleb128 0x1
+ 322 000f 10       		.uleb128 0x10
+ 323 0010 17       		.uleb128 0x17
+ 324 0011 00       		.byte	0
+ 325 0012 00       		.byte	0
+ 326 0013 02       		.uleb128 0x2
+ 327 0014 24       		.uleb128 0x24
+ 328 0015 00       		.byte	0
+ 329 0016 0B       		.uleb128 0xb
+ 330 0017 0B       		.uleb128 0xb
+ 331 0018 3E       		.uleb128 0x3e
+ 332 0019 0B       		.uleb128 0xb
+ 333 001a 03       		.uleb128 0x3
+ 334 001b 0E       		.uleb128 0xe
+ 335 001c 00       		.byte	0
+ 336 001d 00       		.byte	0
+ 337 001e 03       		.uleb128 0x3
+ 338 001f 16       		.uleb128 0x16
+ 339 0020 00       		.byte	0
+ 340 0021 03       		.uleb128 0x3
+ 341 0022 0E       		.uleb128 0xe
+ 342 0023 3A       		.uleb128 0x3a
+ 343 0024 0B       		.uleb128 0xb
+ 344 0025 3B       		.uleb128 0x3b
+ 345 0026 0B       		.uleb128 0xb
+ 346 0027 49       		.uleb128 0x49
+ 347 0028 13       		.uleb128 0x13
+ 348 0029 00       		.byte	0
+ 349 002a 00       		.byte	0
+ 350 002b 04       		.uleb128 0x4
+ 351 002c 24       		.uleb128 0x24
+ 352 002d 00       		.byte	0
+ 353 002e 0B       		.uleb128 0xb
+ARM GAS  C:\Users\THERMA~1\AppData\Local\Temp\ccMNsnm0.s 			page 8
+
+
+ 354 002f 0B       		.uleb128 0xb
+ 355 0030 3E       		.uleb128 0x3e
+ 356 0031 0B       		.uleb128 0xb
+ 357 0032 03       		.uleb128 0x3
+ 358 0033 08       		.uleb128 0x8
+ 359 0034 00       		.byte	0
+ 360 0035 00       		.byte	0
+ 361 0036 05       		.uleb128 0x5
+ 362 0037 16       		.uleb128 0x16
+ 363 0038 00       		.byte	0
+ 364 0039 03       		.uleb128 0x3
+ 365 003a 0E       		.uleb128 0xe
+ 366 003b 3A       		.uleb128 0x3a
+ 367 003c 0B       		.uleb128 0xb
+ 368 003d 3B       		.uleb128 0x3b
+ 369 003e 05       		.uleb128 0x5
+ 370 003f 49       		.uleb128 0x49
+ 371 0040 13       		.uleb128 0x13
+ 372 0041 00       		.byte	0
+ 373 0042 00       		.byte	0
+ 374 0043 06       		.uleb128 0x6
+ 375 0044 2E       		.uleb128 0x2e
+ 376 0045 01       		.byte	0x1
+ 377 0046 3F       		.uleb128 0x3f
+ 378 0047 19       		.uleb128 0x19
+ 379 0048 03       		.uleb128 0x3
+ 380 0049 0E       		.uleb128 0xe
+ 381 004a 3A       		.uleb128 0x3a
+ 382 004b 0B       		.uleb128 0xb
+ 383 004c 3B       		.uleb128 0x3b
+ 384 004d 0B       		.uleb128 0xb
+ 385 004e 27       		.uleb128 0x27
+ 386 004f 19       		.uleb128 0x19
+ 387 0050 49       		.uleb128 0x49
+ 388 0051 13       		.uleb128 0x13
+ 389 0052 8701     		.uleb128 0x87
+ 390 0054 19       		.uleb128 0x19
+ 391 0055 11       		.uleb128 0x11
+ 392 0056 01       		.uleb128 0x1
+ 393 0057 12       		.uleb128 0x12
+ 394 0058 06       		.uleb128 0x6
+ 395 0059 40       		.uleb128 0x40
+ 396 005a 18       		.uleb128 0x18
+ 397 005b 9742     		.uleb128 0x2117
+ 398 005d 19       		.uleb128 0x19
+ 399 005e 01       		.uleb128 0x1
+ 400 005f 13       		.uleb128 0x13
+ 401 0060 00       		.byte	0
+ 402 0061 00       		.byte	0
+ 403 0062 07       		.uleb128 0x7
+ 404 0063 34       		.uleb128 0x34
+ 405 0064 00       		.byte	0
+ 406 0065 03       		.uleb128 0x3
+ 407 0066 0E       		.uleb128 0xe
+ 408 0067 3A       		.uleb128 0x3a
+ 409 0068 0B       		.uleb128 0xb
+ 410 0069 3B       		.uleb128 0x3b
+ARM GAS  C:\Users\THERMA~1\AppData\Local\Temp\ccMNsnm0.s 			page 9
+
+
+ 411 006a 0B       		.uleb128 0xb
+ 412 006b 49       		.uleb128 0x49
+ 413 006c 13       		.uleb128 0x13
+ 414 006d 02       		.uleb128 0x2
+ 415 006e 17       		.uleb128 0x17
+ 416 006f 00       		.byte	0
+ 417 0070 00       		.byte	0
+ 418 0071 08       		.uleb128 0x8
+ 419 0072 34       		.uleb128 0x34
+ 420 0073 00       		.byte	0
+ 421 0074 03       		.uleb128 0x3
+ 422 0075 0E       		.uleb128 0xe
+ 423 0076 3A       		.uleb128 0x3a
+ 424 0077 0B       		.uleb128 0xb
+ 425 0078 3B       		.uleb128 0x3b
+ 426 0079 0B       		.uleb128 0xb
+ 427 007a 49       		.uleb128 0x49
+ 428 007b 13       		.uleb128 0x13
+ 429 007c 00       		.byte	0
+ 430 007d 00       		.byte	0
+ 431 007e 09       		.uleb128 0x9
+ 432 007f 34       		.uleb128 0x34
+ 433 0080 00       		.byte	0
+ 434 0081 03       		.uleb128 0x3
+ 435 0082 0E       		.uleb128 0xe
+ 436 0083 3A       		.uleb128 0x3a
+ 437 0084 0B       		.uleb128 0xb
+ 438 0085 3B       		.uleb128 0x3b
+ 439 0086 0B       		.uleb128 0xb
+ 440 0087 49       		.uleb128 0x49
+ 441 0088 13       		.uleb128 0x13
+ 442 0089 1C       		.uleb128 0x1c
+ 443 008a 0B       		.uleb128 0xb
+ 444 008b 00       		.byte	0
+ 445 008c 00       		.byte	0
+ 446 008d 0A       		.uleb128 0xa
+ 447 008e 0B       		.uleb128 0xb
+ 448 008f 01       		.byte	0x1
+ 449 0090 55       		.uleb128 0x55
+ 450 0091 17       		.uleb128 0x17
+ 451 0092 01       		.uleb128 0x1
+ 452 0093 13       		.uleb128 0x13
+ 453 0094 00       		.byte	0
+ 454 0095 00       		.byte	0
+ 455 0096 0B       		.uleb128 0xb
+ 456 0097 898201   		.uleb128 0x4109
+ 457 009a 00       		.byte	0
+ 458 009b 11       		.uleb128 0x11
+ 459 009c 01       		.uleb128 0x1
+ 460 009d 31       		.uleb128 0x31
+ 461 009e 13       		.uleb128 0x13
+ 462 009f 00       		.byte	0
+ 463 00a0 00       		.byte	0
+ 464 00a1 0C       		.uleb128 0xc
+ 465 00a2 898201   		.uleb128 0x4109
+ 466 00a5 01       		.byte	0x1
+ 467 00a6 11       		.uleb128 0x11
+ARM GAS  C:\Users\THERMA~1\AppData\Local\Temp\ccMNsnm0.s 			page 10
+
+
+ 468 00a7 01       		.uleb128 0x1
+ 469 00a8 31       		.uleb128 0x31
+ 470 00a9 13       		.uleb128 0x13
+ 471 00aa 01       		.uleb128 0x1
+ 472 00ab 13       		.uleb128 0x13
+ 473 00ac 00       		.byte	0
+ 474 00ad 00       		.byte	0
+ 475 00ae 0D       		.uleb128 0xd
+ 476 00af 8A8201   		.uleb128 0x410a
+ 477 00b2 00       		.byte	0
+ 478 00b3 02       		.uleb128 0x2
+ 479 00b4 18       		.uleb128 0x18
+ 480 00b5 9142     		.uleb128 0x2111
+ 481 00b7 18       		.uleb128 0x18
+ 482 00b8 00       		.byte	0
+ 483 00b9 00       		.byte	0
+ 484 00ba 0E       		.uleb128 0xe
+ 485 00bb 898201   		.uleb128 0x4109
+ 486 00be 01       		.byte	0x1
+ 487 00bf 11       		.uleb128 0x11
+ 488 00c0 01       		.uleb128 0x1
+ 489 00c1 31       		.uleb128 0x31
+ 490 00c2 13       		.uleb128 0x13
+ 491 00c3 00       		.byte	0
+ 492 00c4 00       		.byte	0
+ 493 00c5 0F       		.uleb128 0xf
+ 494 00c6 01       		.uleb128 0x1
+ 495 00c7 01       		.byte	0x1
+ 496 00c8 49       		.uleb128 0x49
+ 497 00c9 13       		.uleb128 0x13
+ 498 00ca 01       		.uleb128 0x1
+ 499 00cb 13       		.uleb128 0x13
+ 500 00cc 00       		.byte	0
+ 501 00cd 00       		.byte	0
+ 502 00ce 10       		.uleb128 0x10
+ 503 00cf 21       		.uleb128 0x21
+ 504 00d0 00       		.byte	0
+ 505 00d1 49       		.uleb128 0x49
+ 506 00d2 13       		.uleb128 0x13
+ 507 00d3 2F       		.uleb128 0x2f
+ 508 00d4 0B       		.uleb128 0xb
+ 509 00d5 00       		.byte	0
+ 510 00d6 00       		.byte	0
+ 511 00d7 11       		.uleb128 0x11
+ 512 00d8 34       		.uleb128 0x34
+ 513 00d9 00       		.byte	0
+ 514 00da 03       		.uleb128 0x3
+ 515 00db 0E       		.uleb128 0xe
+ 516 00dc 3A       		.uleb128 0x3a
+ 517 00dd 0B       		.uleb128 0xb
+ 518 00de 3B       		.uleb128 0x3b
+ 519 00df 05       		.uleb128 0x5
+ 520 00e0 49       		.uleb128 0x49
+ 521 00e1 13       		.uleb128 0x13
+ 522 00e2 3F       		.uleb128 0x3f
+ 523 00e3 19       		.uleb128 0x19
+ 524 00e4 3C       		.uleb128 0x3c
+ARM GAS  C:\Users\THERMA~1\AppData\Local\Temp\ccMNsnm0.s 			page 11
+
+
+ 525 00e5 19       		.uleb128 0x19
+ 526 00e6 00       		.byte	0
+ 527 00e7 00       		.byte	0
+ 528 00e8 12       		.uleb128 0x12
+ 529 00e9 35       		.uleb128 0x35
+ 530 00ea 00       		.byte	0
+ 531 00eb 49       		.uleb128 0x49
+ 532 00ec 13       		.uleb128 0x13
+ 533 00ed 00       		.byte	0
+ 534 00ee 00       		.byte	0
+ 535 00ef 13       		.uleb128 0x13
+ 536 00f0 2E       		.uleb128 0x2e
+ 537 00f1 00       		.byte	0
+ 538 00f2 3F       		.uleb128 0x3f
+ 539 00f3 19       		.uleb128 0x19
+ 540 00f4 3C       		.uleb128 0x3c
+ 541 00f5 19       		.uleb128 0x19
+ 542 00f6 6E       		.uleb128 0x6e
+ 543 00f7 0E       		.uleb128 0xe
+ 544 00f8 03       		.uleb128 0x3
+ 545 00f9 0E       		.uleb128 0xe
+ 546 00fa 3A       		.uleb128 0x3a
+ 547 00fb 0B       		.uleb128 0xb
+ 548 00fc 3B       		.uleb128 0x3b
+ 549 00fd 0B       		.uleb128 0xb
+ 550 00fe 00       		.byte	0
+ 551 00ff 00       		.byte	0
+ 552 0100 00       		.byte	0
+ 553              		.section	.debug_loc,"",%progbits
+ 554              	.Ldebug_loc0:
+ 555              	.LLST0:
+ 556 0000 0C000000 		.4byte	.LVL2
+ 557 0004 12000000 		.4byte	.LVL3
+ 558 0008 0100     		.2byte	0x1
+ 559 000a 50       		.byte	0x50
+ 560 000b 1C000000 		.4byte	.LVL7
+ 561 000f 1E000000 		.4byte	.LVL8
+ 562 0013 0100     		.2byte	0x1
+ 563 0015 50       		.byte	0x50
+ 564 0016 00000000 		.4byte	0
+ 565 001a 00000000 		.4byte	0
+ 566              	.LLST1:
+ 567 001e 12000000 		.4byte	.LVL3
+ 568 0022 18000000 		.4byte	.LVL5
+ 569 0026 0100     		.2byte	0x1
+ 570 0028 54       		.byte	0x54
+ 571 0029 1A000000 		.4byte	.LVL6
+ 572 002d 1C000000 		.4byte	.LVL7
+ 573 0031 0100     		.2byte	0x1
+ 574 0033 54       		.byte	0x54
+ 575 0034 1E000000 		.4byte	.LVL8
+ 576 0038 22000000 		.4byte	.LVL9
+ 577 003c 0100     		.2byte	0x1
+ 578 003e 54       		.byte	0x54
+ 579 003f 00000000 		.4byte	0
+ 580 0043 00000000 		.4byte	0
+ 581              		.section	.debug_aranges,"",%progbits
+ARM GAS  C:\Users\THERMA~1\AppData\Local\Temp\ccMNsnm0.s 			page 12
+
+
+ 582 0000 1C000000 		.4byte	0x1c
+ 583 0004 0200     		.2byte	0x2
+ 584 0006 00000000 		.4byte	.Ldebug_info0
+ 585 000a 04       		.byte	0x4
+ 586 000b 00       		.byte	0
+ 587 000c 0000     		.2byte	0
+ 588 000e 0000     		.2byte	0
+ 589 0010 00000000 		.4byte	.LFB63
+ 590 0014 30000000 		.4byte	.LFE63-.LFB63
+ 591 0018 00000000 		.4byte	0
+ 592 001c 00000000 		.4byte	0
+ 593              		.section	.debug_ranges,"",%progbits
+ 594              	.Ldebug_ranges0:
+ 595 0000 10000000 		.4byte	.LBB2
+ 596 0004 1C000000 		.4byte	.LBE2
+ 597 0008 1E000000 		.4byte	.LBB3
+ 598 000c 22000000 		.4byte	.LBE3
+ 599 0010 00000000 		.4byte	0
+ 600 0014 00000000 		.4byte	0
+ 601 0018 00000000 		.4byte	.LFB63
+ 602 001c 30000000 		.4byte	.LFE63
+ 603 0020 00000000 		.4byte	0
+ 604 0024 00000000 		.4byte	0
+ 605              		.section	.debug_line,"",%progbits
+ 606              	.Ldebug_line0:
+ 607 0000 90010000 		.section	.debug_str,"MS",%progbits,1
+ 607      02006101 
+ 607      00000201 
+ 607      FB0E0D00 
+ 607      01010101 
+ 608              	.LASF19:
+ 609 0000 62756666 		.ascii	"buffer_size\000"
+ 609      65725F73 
+ 609      697A6500 
+ 610              	.LASF9:
+ 611 000c 5F5F696E 		.ascii	"__int32_t\000"
+ 611      7433325F 
+ 611      7400
+ 612              	.LASF3:
+ 613 0016 73686F72 		.ascii	"short unsigned int\000"
+ 613      7420756E 
+ 613      7369676E 
+ 613      65642069 
+ 613      6E7400
+ 614              	.LASF10:
+ 615 0029 696E7433 		.ascii	"int32_t\000"
+ 615      325F7400 
+ 616              	.LASF12:
+ 617 0031 666C6F61 		.ascii	"float\000"
+ 617      7400
+ 618              	.LASF11:
+ 619 0037 75696E74 		.ascii	"uint8\000"
+ 619      3800
+ 620              	.LASF1:
+ 621 003d 756E7369 		.ascii	"unsigned char\000"
+ 621      676E6564 
+ 621      20636861 
+ARM GAS  C:\Users\THERMA~1\AppData\Local\Temp\ccMNsnm0.s 			page 13
+
+
+ 621      7200
+ 622              	.LASF27:
+ 623 004b 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 623      43313120 
+ 623      352E342E 
+ 623      31203230 
+ 623      31363036 
+ 624 007e 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 624      20726576 
+ 624      6973696F 
+ 624      6E203233 
+ 624      37373135 
+ 625 00b1 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 625      66756E63 
+ 625      74696F6E 
+ 625      2D736563 
+ 625      74696F6E 
+ 626              	.LASF22:
+ 627 00d9 4742434C 		.ascii	"GBCL_ReadRxData\000"
+ 627      5F526561 
+ 627      64527844 
+ 627      61746100 
+ 628              	.LASF5:
+ 629 00e9 6C6F6E67 		.ascii	"long unsigned int\000"
+ 629      20756E73 
+ 629      69676E65 
+ 629      6420696E 
+ 629      7400
+ 630              	.LASF29:
+ 631 00fb 433A5C55 		.ascii	"C:\\Users\\Thermaltake\\Documents\\GitHub\\Mepsan\\"
+ 631      73657273 
+ 631      5C546865 
+ 631      726D616C 
+ 631      74616B65 
+ 632 0128 456D756C 		.ascii	"Emulador\\Emulador.cydsn\000"
+ 632      61646F72 
+ 632      5C456D75 
+ 632      6C61646F 
+ 632      722E6379 
+ 633              	.LASF31:
+ 634 0140 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 634      52784275 
+ 634      66666572 
+ 634      00
+ 635              	.LASF13:
+ 636 014d 646F7562 		.ascii	"double\000"
+ 636      6C6500
+ 637              	.LASF30:
+ 638 0154 6D61696E 		.ascii	"main\000"
+ 638      00
+ 639              	.LASF17:
+ 640 0159 53504C4C 		.ascii	"SPLL\000"
+ 640      00
+ 641              	.LASF8:
+ 642 015e 756E7369 		.ascii	"unsigned int\000"
+ 642      676E6564 
+ 642      20696E74 
+ARM GAS  C:\Users\THERMA~1\AppData\Local\Temp\ccMNsnm0.s 			page 14
+
+
+ 642      00
+ 643              	.LASF7:
+ 644 016b 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 644      206C6F6E 
+ 644      6720756E 
+ 644      7369676E 
+ 644      65642069 
+ 645              	.LASF24:
+ 646 0182 4742434C 		.ascii	"GBCL_GetRxBufferSize\000"
+ 646      5F476574 
+ 646      52784275 
+ 646      66666572 
+ 646      53697A65 
+ 647              	.LASF21:
+ 648 0197 47425278 		.ascii	"GBRx\000"
+ 648      00
+ 649              	.LASF18:
+ 650 019c 62756666 		.ascii	"bufferPOLL\000"
+ 650      6572504F 
+ 650      4C4C00
+ 651              	.LASF15:
+ 652 01a7 6C6F6E67 		.ascii	"long double\000"
+ 652      20646F75 
+ 652      626C6500 
+ 653              	.LASF16:
+ 654 01b3 73697A65 		.ascii	"sizetype\000"
+ 654      74797065 
+ 654      00
+ 655              	.LASF20:
+ 656 01bc 52657370 		.ascii	"Response\000"
+ 656      6F6E7365 
+ 656      00
+ 657              	.LASF6:
+ 658 01c5 6C6F6E67 		.ascii	"long long int\000"
+ 658      206C6F6E 
+ 658      6720696E 
+ 658      7400
+ 659              	.LASF28:
+ 660 01d3 6D61696E 		.ascii	"main.c\000"
+ 660      2E6300
+ 661              	.LASF14:
+ 662 01da 63686172 		.ascii	"char\000"
+ 662      00
+ 663              	.LASF2:
+ 664 01df 73686F72 		.ascii	"short int\000"
+ 664      7420696E 
+ 664      7400
+ 665              	.LASF23:
+ 666 01e9 4742434C 		.ascii	"GBCL_Start\000"
+ 666      5F537461 
+ 666      727400
+ 667              	.LASF4:
+ 668 01f4 6C6F6E67 		.ascii	"long int\000"
+ 668      20696E74 
+ 668      00
+ 669              	.LASF26:
+ 670 01fd 4742434C 		.ascii	"GBCL_PutChar\000"
+ARM GAS  C:\Users\THERMA~1\AppData\Local\Temp\ccMNsnm0.s 			page 15
+
+
+ 670      5F507574 
+ 670      43686172 
+ 670      00
+ 671              	.LASF0:
+ 672 020a 7369676E 		.ascii	"signed char\000"
+ 672      65642063 
+ 672      68617200 
+ 673              	.LASF25:
+ 674 0216 43794465 		.ascii	"CyDelay\000"
+ 674      6C617900 
+ 675              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

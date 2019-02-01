@@ -1,0 +1,8 @@
+C:\Users\Thermaltake\Documents\GitHub\Mepsan\Mepsan.cydsn\Mepsan.cyprj|4b760660-eee8-4bea-96cb-4d7d29bd254f
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|cfe9b206-4a86-4403-9856-cc49bba5516b
+C:\Users\Thermaltake\Documents\PSoC Creator\4.2\Downloads ( 4.2).cylib\Downloads ( 4.2).cyprj|e10e4ae5-aa15-40a9-8f07-8ac13d7eb1e4
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|b646b511-7529-4c71-9aac-54ec45d2042d
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|da5dc07c-137c-4b08-bd72-30e56ce995f2
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|2c3832b8-5262-408f-8adc-e78825995d04
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\default\CyReferenceLibrary\CyReferenceLibrary.cylib\CyReferenceLibrary.cyprj|1b6b0caf-ff16-4f3a-9520-91f17adc431b
+C:\Users\Thermaltake\Documents\GitHub\Mepsan\Emulador\Emulador.cydsn\Emulador.cyprj|d083ca14-55fa-4a2a-a7eb-ee8f26db2235
