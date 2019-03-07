@@ -100,6 +100,19 @@ void PrintReceipt(uint8 address){
         }
         screen_size = 0;
     }
+    while(touch1[8] == 0x00){
+         for(uint8 LCDRx = 0; LCDRx < 6; LCDRx++){
+            screen_PutChar(ASK_TIME[LCDRx]);
+        }
+        CyDelay(4);
+        screen_size = screen_GetRxBufferSize();
+        if(screen_size >= 13 ){
+            for(uint8 LCDRx = 0; LCDRx < screen_size; LCDRx++){
+                touch1[LCDRx] = screen_ReadRxData();
+            }
+            screen_size = 0;
+        }
+    }    
 	for(uint8 x = 0; x < 32; x ++){
 		PRINTER_A_PutChar(msn_EDS[x]);
 	}
@@ -558,10 +571,20 @@ void PrintShift(void){
         }
         screen_size = 0;
     }
-    PRINTER_A_PutChar(0x1D);
-    PRINTER_A_PutChar(0x70);
-    PRINTER_A_PutChar(0x01);
-    PRINTER_A_PutChar(0x00);
+    while(touch1[8] == 0x00){
+         for(uint8 LCDRx = 0; LCDRx < 6; LCDRx++){
+            screen_PutChar(ASK_TIME[LCDRx]);
+        }
+        CyDelay(4);
+        screen_size = screen_GetRxBufferSize();
+        if(screen_size >= 13 ){
+            for(uint8 LCDRx = 0; LCDRx < screen_size; LCDRx++){
+                touch1[LCDRx] = screen_ReadRxData();
+            }
+            screen_size = 0;
+        }
+    }
+
     int_shiftnumber++;
     shift_number[5]=(int_shiftnumber/10000)+48;
 	shift_number[4]=((int_shiftnumber%10000)/1000)+48;
