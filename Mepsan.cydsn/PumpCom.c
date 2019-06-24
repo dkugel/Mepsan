@@ -86,6 +86,7 @@ void GetResponse(void){
     size = MepsanResponse[0];          
     //CyDelay(10); 
     address = MepsanResponse[1] & 0x0F;
+    GILB_Send = GILB_IDLE;
     if(address == side.a.dir){
         side.a.MepRequest = 0;
         for(uint8 MepRx = 1; MepRx < size + 1; MepRx++){
@@ -229,6 +230,7 @@ void GetResponse(void){
         }
         if(side.b.MepsanStore[2] == 0x03 && side.b.MepsanStore[3] == 0x04 ){
             side.b.MepRequest = MEPSAN_AUTHORIZE;
+            GILB_Send = GILB_CALLING;
             side.b.Nozzle = side.b.MepsanStore[7] & 0x0F;
             side.b.ProcessedPPU[side.b.Nozzle-1][5] = (side.b.MepsanStore[6] & 0x0F) + 0x30;            
             side.b.ProcessedPPU[side.b.Nozzle-1][4] = (side.b.MepsanStore[6] >> 4) + 0x30;
@@ -459,6 +461,7 @@ uint8 ReturnStatus(uint8 address){
 
 uint8 PumpState(uint8 address)
 { 
+    GILB_Send = GILB_IDLE;
     for(uint8 x = 0; x < 50; x ++){
         MepsanResponse[x] = 0x00;
     }

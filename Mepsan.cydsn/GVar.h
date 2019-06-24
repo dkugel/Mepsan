@@ -78,6 +78,7 @@ uint8 crc_lo,crc_hi;
 uint8 Positions;
 uint8 TotalRequestType;
 uint8 DecVol;
+uint8 GILB_Send;
 
 /*
 *********************************************************************************************************
