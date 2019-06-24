@@ -72,6 +72,7 @@ enum MEPSAN_REQUEST
 uint8 MepsanResponse[50];
 uint8 MepsanSendTo[50];
 uint8 PumpAddress[15];
+uint8 GBResponse[50];
 uint16 CRC;
 uint8 crc_lo,crc_hi;
 uint8 Positions;
