@@ -47,7 +47,8 @@
 #include <Gbr.h>
 #include <printer.h>
 
-
+//DIESEL EXTRA CORRIENTE
+//CORRIENTE EXTRA DIESEL
 
 void PollingPos(void){
     uint8 x;
@@ -57,16 +58,16 @@ void PollingPos(void){
     if(side.a.dir != 0xFF && side.b.dir != 0xFF){
         Positions = 2;
     }
-    if(side.c.dir != 0xFF && side.d.dir == 0xFF){
-        Positions = 3;
-    }
-    if(side.c.dir != 0xFF && side.d.dir != 0xFF){
-        Positions = 4;
-    }
-    if(Positions == 1){       
-        side.a.states[0] = PumpState(side.a.dir);                                    
-        //ReturnStatus(side.a.dir);        
-    }
+//    if(side.c.dir != 0xFF && side.d.dir == 0xFF){
+//        Positions = 3;
+//    }
+//    if(side.c.dir != 0xFF && side.d.dir != 0xFF){
+//        Positions = 4;
+//    }
+//    if(Positions == 1){       
+//        side.a.states[0] = PumpState(side.a.dir);                                    
+//        //ReturnStatus(side.a.dir);        
+//    }
     if(Positions == 2){
         if(side.a.MepRequest == MEPSAN_AUTHORIZE){
             Authorize(side.a.dir);
@@ -80,47 +81,47 @@ void PollingPos(void){
         side.b.states[0] = PumpState(side.b.dir);        
                     
     }
-    if(Positions == 3){                            
-        if(side.a.MepRequest == MEPSAN_AUTHORIZE){
-            Authorize(side.a.dir);
-            side.a.Copy = 0;
-        }
-        if(side.b.MepRequest == MEPSAN_AUTHORIZE){
-            Authorize(side.b.dir);
-            side.b.Copy = 0;
-        }
-        if(side.c.MepRequest == MEPSAN_AUTHORIZE){
-            Authorize(side.c.dir);
-            side.c.Copy = 0;
-        }
-        side.a.states[0] = PumpState(side.a.dir);
-        side.b.states[0] = PumpState(side.b.dir);
-        side.c.states[0] = PumpState(side.c.dir);
-        
-    }
-    if(Positions == 4){
-        if(side.a.MepRequest == MEPSAN_AUTHORIZE){
-            Authorize(side.a.dir);
-            side.a.Copy = 0;
-        }
-        if(side.b.MepRequest == MEPSAN_AUTHORIZE){
-            Authorize(side.b.dir);
-            side.b.Copy = 0;
-        }
-        if(side.c.MepRequest == MEPSAN_AUTHORIZE){
-            Authorize(side.c.dir);
-            side.c.Copy = 0;
-        }
-        if(side.d.MepRequest == MEPSAN_AUTHORIZE){
-            Authorize(side.d.dir);
-            side.d.Copy = 0;
-        }
-        side.a.states[0] = PumpState(side.a.dir);
-        side.b.states[0] = PumpState(side.b.dir);
-        side.c.states[0] = PumpState(side.c.dir);
-        side.d.states[0] = PumpState(side.d.dir);
-        
-    } 
+//    if(Positions == 3){                            
+//        if(side.a.MepRequest == MEPSAN_AUTHORIZE){
+//            Authorize(side.a.dir);
+//            side.a.Copy = 0;
+//        }
+//        if(side.b.MepRequest == MEPSAN_AUTHORIZE){
+//            Authorize(side.b.dir);
+//            side.b.Copy = 0;
+//        }
+//        if(side.c.MepRequest == MEPSAN_AUTHORIZE){
+//            Authorize(side.c.dir);
+//            side.c.Copy = 0;
+//        }
+//        side.a.states[0] = PumpState(side.a.dir);
+//        side.b.states[0] = PumpState(side.b.dir);
+//        side.c.states[0] = PumpState(side.c.dir);
+//        
+//    }
+//    if(Positions == 4){
+//        if(side.a.MepRequest == MEPSAN_AUTHORIZE){
+//            Authorize(side.a.dir);
+//            side.a.Copy = 0;
+//        }
+//        if(side.b.MepRequest == MEPSAN_AUTHORIZE){
+//            Authorize(side.b.dir);
+//            side.b.Copy = 0;
+//        }
+//        if(side.c.MepRequest == MEPSAN_AUTHORIZE){
+//            Authorize(side.c.dir);
+//            side.c.Copy = 0;
+//        }
+//        if(side.d.MepRequest == MEPSAN_AUTHORIZE){
+//            Authorize(side.d.dir);
+//            side.d.Copy = 0;
+//        }
+//        side.a.states[0] = PumpState(side.a.dir);
+//        side.b.states[0] = PumpState(side.b.dir);
+//        side.c.states[0] = PumpState(side.c.dir);
+//        side.d.states[0] = PumpState(side.d.dir);
+//        
+//    } 
 
 }
 
@@ -141,7 +142,7 @@ int main()
     uint8 price_change;
     uint8 auxPrice[5];
     DecVol = 3;
-    CyDelay(25000);
+    CyDelay(2500);
     PWM_1_Start(); 
     CyGlobalIntEnable;
     MEPSAN_Start();
@@ -151,8 +152,8 @@ int main()
     EEPROM_1_Start();
     side.a.Copy = 0;
     side.b.Copy = 0;
-    side.c.Copy = 0;
-    side.d.Copy = 0;
+    //side.c.Copy = 0;
+    //side.d.Copy = 0;
     if(EEPROM_1_ReadByte(0) == 0x5A){
         for(x=0;x<6;x++){
     		sale_number[x]=EEPROM_1_ReadByte(x);
@@ -202,20 +203,21 @@ int main()
 //    side.b.ProcessedPPU[0][4] = (side.b.ppuNozzle[0][2] >> 4) + 0x30;
 //    side.b.ProcessedPPU[0][5] = (side.b.ppuNozzle[0][2] & 0x0F) + 0x30;
     
-    //while(side.a.dir == 0xFF){
-    //    for(uint8 y = 0; y < 16; y ++){
-    //        PumpAddress[y] = GetAddress(y); //Posiciones activas      
-    //    } 
-    //}
+    while(side.a.dir == 0xFF){
+        for(uint8 y = 0; y < 16; y ++){
+            PumpAddress[y] = GetAddress(y); //Posiciones activas      
+        } 
+    }
     
-    //side.a.dir = PumpAddress[1];
-    //side.b.dir = PumpAddress[2];
+    side.a.dir = PumpAddress[1];
+    side.b.dir = PumpAddress[2];
     //side.c.dir = PumpAddress[3];
     //side.d.dir = PumpAddress[4]; 
-    side.a.dir = 0x00;
-    side.b.dir = 0x01;
-    side.c.dir = 0x02;
-    side.d.dir = 0x03;
+    //side.a.dir = 0x00;
+    //side.b.dir = 0x01;    
+    //side.c.dir = 0x02;
+    //side.d.dir = 0x03;
+    //Positions = 2;
     TotalRequestType = 0; 
     W_autorize = 0;        
     LCDhose = 0;
@@ -417,14 +419,14 @@ int main()
                     side.b.Copy = 1;
                     PrintReceipt(side.b.dir);
                 } 
-                if(W_autorize == 0xCC){
-                    side.c.Copy = 1;
-                    PrintReceipt(side.c.dir);
-                }
-                if(W_autorize == 0xDC){
-                    side.d.Copy = 1;
-                    PrintReceipt(side.d.dir);
-                }
+//                if(W_autorize == 0xCC){
+//                    side.c.Copy = 1;
+//                    PrintReceipt(side.c.dir);
+//                }
+//                if(W_autorize == 0xDC){
+//                    side.d.Copy = 1;
+//                    PrintReceipt(side.d.dir);
+//                }
             break;
             case 0x4E:
                 if(W_autorize == 0xAC){
@@ -435,14 +437,14 @@ int main()
                     W_autorize = 0;
                     side.b.Copy = 0;                                        
                 } 
-                if(W_autorize == 0xCC){
-                    W_autorize = 0;
-                    side.c.Copy = 0;                    
-                }
-                if(W_autorize == 0xDC){
-                    W_autorize = 0;
-                    side.d.Copy = 0;                                        
-                }
+//                if(W_autorize == 0xCC){
+//                    W_autorize = 0;
+//                    side.c.Copy = 0;                    
+//                }
+//                if(W_autorize == 0xDC){
+//                    W_autorize = 0;
+//                    side.d.Copy = 0;                                        
+//                }
             break;
             case 0xE1:
                 if(W_autorize == 0xE1){
