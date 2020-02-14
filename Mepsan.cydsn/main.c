@@ -57,16 +57,16 @@ void PollingPos(void){
     if(side.a.dir != 0xFF && side.b.dir != 0xFF){
         Positions = 2;
     }
-    if(side.c.dir != 0xFF && side.d.dir == 0xFF){
-        Positions = 3;
-    }
-    if(side.c.dir != 0xFF && side.d.dir != 0xFF){
-        Positions = 4;
-    }
-    if(Positions == 1){       
-        side.a.states[0] = PumpState(side.a.dir);                                    
-        //ReturnStatus(side.a.dir);        
-    }
+//    if(side.c.dir != 0xFF && side.d.dir == 0xFF){
+//        Positions = 3;
+//    }
+//    if(side.c.dir != 0xFF && side.d.dir != 0xFF){
+//        Positions = 4;
+//    }
+//    if(Positions == 1){       
+//        side.a.states[0] = PumpState(side.a.dir);                                    
+//        //ReturnStatus(side.a.dir);        
+//    }
     if(Positions == 2){
         if(side.a.MepRequest == MEPSAN_AUTHORIZE){
             Authorize(side.a.dir);
@@ -141,7 +141,7 @@ int main()
     uint8 price_change;
     uint8 auxPrice[5];
     DecVol = 3;
-    CyDelay(25000);
+    CyDelay(2500);
     PWM_1_Start(); 
     CyGlobalIntEnable;
     MEPSAN_Start();
@@ -151,8 +151,8 @@ int main()
     EEPROM_1_Start();
     side.a.Copy = 0;
     side.b.Copy = 0;
-    side.c.Copy = 0;
-    side.d.Copy = 0;
+//    side.c.Copy = 0;
+//    side.d.Copy = 0;
     if(EEPROM_1_ReadByte(0) == 0x5A){
         for(x=0;x<6;x++){
     		sale_number[x]=EEPROM_1_ReadByte(x);
@@ -214,11 +214,12 @@ int main()
     //side.d.dir = PumpAddress[4]; 
     side.a.dir = 0x00;
     side.b.dir = 0x01;
-    side.c.dir = 0x02;
-    side.d.dir = 0x03;
+    //side.c.dir = 0x02;
+    //side.d.dir = 0x03;
     TotalRequestType = 0; 
     W_autorize = 0;        
     LCDhose = 0;
+    Positions = 2;
     for (;;)
     {
         PollingPos(); 

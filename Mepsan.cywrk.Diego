@@ -16,6 +16,7 @@
 <CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="Mepsan\Mepsan\Header Files\GVar.h">
 <ExpandedNodeIds>
 <v>Mepsan</v>
+<v>Mepsan\Emulador\TopDesign</v>
 <v>Mepsan\Mepsan</v>
 <v>Mepsan\Mepsan\TopDesign</v>
 <v>Mepsan\Mepsan\Mepsan.cydwr</v>
@@ -42,6 +43,7 @@
 </ExpandedNodeIds>
 <VisibleNodeIds>
 <v>Mepsan</v>
+<v>Mepsan\Emulador</v>
 <v>Mepsan\Mepsan</v>
 <v>Mepsan\Mepsan\TopDesign</v>
 <v>Mepsan\Mepsan\Mepsan.cydwr</v>
@@ -79,6 +81,7 @@
 </ExpandedNodeIds>
 <VisibleNodeIds>
 <v>Mepsan</v>
+<v>Mepsan\Emulador</v>
 <v>Mepsan\Mepsan</v>
 <v>Mepsan\Mepsan\TopDesign</v>
 <v>Mepsan\Mepsan\TopDesign\TopDesign.cysch</v>
@@ -87,6 +90,32 @@
 <CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
 <ExpandedNodeIds>
 <v>Mepsan</v>
+<v>Mepsan\Emulador</v>
+<v>Mepsan\Emulador\CortexM3</v>
+<v>Mepsan\Emulador\CortexM3\ARM_GCC_541</v>
+<v>Mepsan\Emulador\CortexM3\ARM_GCC_541\Debug</v>
+<v>Mepsan\Emulador\CortexM3\ARM_GCC_541\Debug\Listing Files</v>
+<v>Mepsan\Emulador\CortexM3\ARM_GCC_541\Debug\Listing Files\Clock_2.lst</v>
+<v>Mepsan\Emulador\CortexM3\ARM_GCC_541\Debug\Listing Files\Cm3Start.lst</v>
+<v>Mepsan\Emulador\CortexM3\ARM_GCC_541\Debug\Listing Files\cy_em_eeprom.lst</v>
+<v>Mepsan\Emulador\CortexM3\ARM_GCC_541\Debug\Listing Files\CyBootAsmGnu.lst</v>
+<v>Mepsan\Emulador\CortexM3\ARM_GCC_541\Debug\Listing Files\CyDmac.lst</v>
+<v>Mepsan\Emulador\CortexM3\ARM_GCC_541\Debug\Listing Files\cyfitter_cfg.lst</v>
+<v>Mepsan\Emulador\CortexM3\ARM_GCC_541\Debug\Listing Files\CyFlash.lst</v>
+<v>Mepsan\Emulador\CortexM3\ARM_GCC_541\Debug\Listing Files\CyLib.lst</v>
+<v>Mepsan\Emulador\CortexM3\ARM_GCC_541\Debug\Listing Files\cymetadata.lst</v>
+<v>Mepsan\Emulador\CortexM3\ARM_GCC_541\Debug\Listing Files\cyPm.lst</v>
+<v>Mepsan\Emulador\CortexM3\ARM_GCC_541\Debug\Listing Files\CySpc.lst</v>
+<v>Mepsan\Emulador\CortexM3\ARM_GCC_541\Debug\Listing Files\cyutils.lst</v>
+<v>Mepsan\Emulador\CortexM3\ARM_GCC_541\Debug\Listing Files\GBCL.lst</v>
+<v>Mepsan\Emulador\CortexM3\ARM_GCC_541\Debug\Listing Files\GBCL_BOOT.lst</v>
+<v>Mepsan\Emulador\CortexM3\ARM_GCC_541\Debug\Listing Files\GBCL_INT.lst</v>
+<v>Mepsan\Emulador\CortexM3\ARM_GCC_541\Debug\Listing Files\GBCL_PM.lst</v>
+<v>Mepsan\Emulador\CortexM3\ARM_GCC_541\Debug\Listing Files\main.lst</v>
+<v>Mepsan\Emulador\CortexM3\ARM_GCC_541\Debug\Emulador.elf</v>
+<v>Mepsan\Emulador\CortexM3\ARM_GCC_541\Debug\Emulador.hex</v>
+<v>Mepsan\Emulador\CortexM3\ARM_GCC_541\Debug\Emulador.map</v>
+<v>Mepsan\Emulador\Emulador.gpdsc</v>
 <v>Mepsan\Mepsan</v>
 <v>Mepsan\Mepsan\CortexM3</v>
 <v>Mepsan\Mepsan\CortexM3\ARM_GCC_541</v>
@@ -155,6 +184,34 @@
 </ExpandedNodeIds>
 <VisibleNodeIds>
 <v>Mepsan</v>
+<v>Mepsan\Emulador</v>
+<v>Mepsan\Emulador\CortexM3</v>
+<v>Mepsan\Emulador\CortexM3\ARM_GCC_541</v>
+<v>Mepsan\Emulador\CortexM3\ARM_GCC_541\Debug</v>
+<v>Mepsan\Emulador\CortexM3\ARM_GCC_541\Debug\Listing Files</v>
+<v>Mepsan\Emulador\CortexM3\ARM_GCC_541\Debug\Listing Files\Clock_2.lst</v>
+<v>Mepsan\Emulador\CortexM3\ARM_GCC_541\Debug\Listing Files\Cm3Start.lst</v>
+<v>Mepsan\Emulador\CortexM3\ARM_GCC_541\Debug\Listing Files\cy_em_eeprom.lst</v>
+<v>Mepsan\Emulador\CortexM3\ARM_GCC_541\Debug\Listing Files\CyBootAsmGnu.lst</v>
+<v>Mepsan\Emulador\CortexM3\ARM_GCC_541\Debug\Listing Files\CyDmac.lst</v>
+<v>Mepsan\Emulador\CortexM3\ARM_GCC_541\Debug\Listing Files\cyfitter_cfg.lst</v>
+<v>Mepsan\Emulador\CortexM3\ARM_GCC_541\Debug\Listing Files\CyFlash.lst</v>
+<v>Mepsan\Emulador\CortexM3\ARM_GCC_541\Debug\Listing Files\CyLib.lst</v>
+<v>Mepsan\Emulador\CortexM3\ARM_GCC_541\Debug\Listing Files\cymetadata.lst</v>
+<v>Mepsan\Emulador\CortexM3\ARM_GCC_541\Debug\Listing Files\cyPm.lst</v>
+<v>Mepsan\Emulador\CortexM3\ARM_GCC_541\Debug\Listing Files\CySpc.lst</v>
+<v>Mepsan\Emulador\CortexM3\ARM_GCC_541\Debug\Listing Files\cyutils.lst</v>
+<v>Mepsan\Emulador\CortexM3\ARM_GCC_541\Debug\Listing Files\GBCL.lst</v>
+<v>Mepsan\Emulador\CortexM3\ARM_GCC_541\Debug\Listing Files\GBCL_BOOT.lst</v>
+<v>Mepsan\Emulador\CortexM3\ARM_GCC_541\Debug\Listing Files\GBCL_INT.lst</v>
+<v>Mepsan\Emulador\CortexM3\ARM_GCC_541\Debug\Listing Files\GBCL_PM.lst</v>
+<v>Mepsan\Emulador\CortexM3\ARM_GCC_541\Debug\Listing Files\main.lst</v>
+<v>Mepsan\Emulador\CortexM3\ARM_GCC_541\Debug\Emulador.elf</v>
+<v>Mepsan\Emulador\CortexM3\ARM_GCC_541\Debug\Emulador.hex</v>
+<v>Mepsan\Emulador\CortexM3\ARM_GCC_541\Debug\Emulador.map</v>
+<v>Mepsan\Emulador\Emulador.gpdsc</v>
+<v>Mepsan\Emulador\Emulador.rpt</v>
+<v>Mepsan\Emulador\Emulador_timing.html</v>
 <v>Mepsan\Mepsan</v>
 <v>Mepsan\Mepsan\CortexM3</v>
 <v>Mepsan\Mepsan\CortexM3\ARM_GCC_541</v>
@@ -169,34 +226,6 @@
 <v>Mepsan\Mepsan\CortexM3\ARM_GCC_541\Debug\Listing Files\cyfitter_cfg.lst</v>
 <v>Mepsan\Mepsan\CortexM3\ARM_GCC_541\Debug\Listing Files\CyFlash.lst</v>
 <v>Mepsan\Mepsan\CortexM3\ARM_GCC_541\Debug\Listing Files\CyLib.lst</v>
-<v>Mepsan\Mepsan\CortexM3\ARM_GCC_541\Debug\Listing Files\cymetadata.lst</v>
-<v>Mepsan\Mepsan\CortexM3\ARM_GCC_541\Debug\Listing Files\cyPm.lst</v>
-<v>Mepsan\Mepsan\CortexM3\ARM_GCC_541\Debug\Listing Files\CySpc.lst</v>
-<v>Mepsan\Mepsan\CortexM3\ARM_GCC_541\Debug\Listing Files\cyutils.lst</v>
-<v>Mepsan\Mepsan\CortexM3\ARM_GCC_541\Debug\Listing Files\EEPROM_1.lst</v>
-<v>Mepsan\Mepsan\CortexM3\ARM_GCC_541\Debug\Listing Files\EnablePin.lst</v>
-<v>Mepsan\Mepsan\CortexM3\ARM_GCC_541\Debug\Listing Files\GBCL.lst</v>
-<v>Mepsan\Mepsan\CortexM3\ARM_GCC_541\Debug\Listing Files\GBCL_BOOT.lst</v>
-<v>Mepsan\Mepsan\CortexM3\ARM_GCC_541\Debug\Listing Files\GBCL_INT.lst</v>
-<v>Mepsan\Mepsan\CortexM3\ARM_GCC_541\Debug\Listing Files\GBCL_PM.lst</v>
-<v>Mepsan\Mepsan\CortexM3\ARM_GCC_541\Debug\Listing Files\Gbr.lst</v>
-<v>Mepsan\Mepsan\CortexM3\ARM_GCC_541\Debug\Listing Files\IB1.lst</v>
-<v>Mepsan\Mepsan\CortexM3\ARM_GCC_541\Debug\Listing Files\IB2.lst</v>
-<v>Mepsan\Mepsan\CortexM3\ARM_GCC_541\Debug\Listing Files\Kill_Switch.lst</v>
-<v>Mepsan\Mepsan\CortexM3\ARM_GCC_541\Debug\Listing Files\main.lst</v>
-<v>Mepsan\Mepsan\CortexM3\ARM_GCC_541\Debug\Listing Files\MEPSAN.lst</v>
-<v>Mepsan\Mepsan\CortexM3\ARM_GCC_541\Debug\Listing Files\MEPSAN_BOOT.lst</v>
-<v>Mepsan\Mepsan\CortexM3\ARM_GCC_541\Debug\Listing Files\MEPSAN_INT.lst</v>
-<v>Mepsan\Mepsan\CortexM3\ARM_GCC_541\Debug\Listing Files\MEPSAN_IntClock.lst</v>
-<v>Mepsan\Mepsan\CortexM3\ARM_GCC_541\Debug\Listing Files\MEPSAN_PM.lst</v>
-<v>Mepsan\Mepsan\CortexM3\ARM_GCC_541\Debug\Listing Files\printer.lst</v>
-<v>Mepsan\Mepsan\CortexM3\ARM_GCC_541\Debug\Listing Files\PRINTER_A.lst</v>
-<v>Mepsan\Mepsan\CortexM3\ARM_GCC_541\Debug\Listing Files\PRINTER_A_BOOT.lst</v>
-<v>Mepsan\Mepsan\CortexM3\ARM_GCC_541\Debug\Listing Files\PRINTER_A_INT.lst</v>
-<v>Mepsan\Mepsan\CortexM3\ARM_GCC_541\Debug\Listing Files\PRINTER_A_IntClock.lst</v>
-<v>Mepsan\Mepsan\CortexM3\ARM_GCC_541\Debug\Listing Files\PRINTER_A_PM.lst</v>
-<v>Mepsan\Mepsan\CortexM3\ARM_GCC_541\Debug\Listing Files\PRINTER_B.lst</v>
-<v>Mepsan\Mepsan\CortexM3\ARM_GCC_541\Debug\Listing Files\PRINTER_B_BOOT.lst</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 </TreeStates>
@@ -207,6 +236,14 @@
 <CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
 <ExpandedNodeIds>
 <v>Mepsan</v>
+<v>Mepsan\Emulador\PSoC 5LP Architecture TRM</v>
+<v>Mepsan\Emulador\CY8C58LP Family Datasheet</v>
+<v>Mepsan\Emulador\System Reference Guides</v>
+<v>Mepsan\Emulador\System Reference Guides\cy_boot_v5_70</v>
+<v>Mepsan\Emulador\cy_clock_v2_20.pdf</v>
+<v>Mepsan\Emulador\cy_pins_v2_20</v>
+<v>Mepsan\Emulador\cy_pins_v2_20\cy_pins_v2_20.pdf</v>
+<v>Mepsan\Emulador\UART_v2_50.pdf</v>
 <v>Mepsan\Mepsan</v>
 <v>Mepsan\Mepsan\PSoC 5LP Architecture TRM</v>
 <v>Mepsan\Mepsan\CY8C58LP Family Datasheet</v>
@@ -230,6 +267,7 @@
 </ExpandedNodeIds>
 <VisibleNodeIds>
 <v>Mepsan</v>
+<v>Mepsan\Emulador</v>
 <v>Mepsan\Mepsan</v>
 <v>Mepsan\Mepsan\PSoC 5LP Architecture TRM</v>
 <v>Mepsan\Mepsan\CY8C58LP Family Datasheet</v>
@@ -278,7 +316,7 @@
   Copyright (c) 2001-2016 Actipro Software LLC.  All rights reserved.
   http://www.actiprosoftware.com
 
---><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="1017, 836" SelectedTabbedMdiWindow="b1050600-88fb-499c-932c-3f23738d3fd9"><DocumentWindow Key="C:\Users\Diego\Documents\GitHub\Mepsan\Mepsan.cydsn\main.c" Guid="b1050600-88fb-499c-932c-3f23738d3fd9" /><DocumentWindow Key="C:\Users\Diego\Documents\GitHub\Mepsan\Mepsan.cydsn\PumpCom.c" Guid="0b434085-a8aa-428c-99da-a2b7f33848f0" /><DocumentWindow Key="C:\Users\Diego\Documents\GitHub\Mepsan\Mepsan.cydsn\printer.c" Guid="0fc51f33-6ce0-4d51-9519-95107a895b83" /><DocumentWindow Key="C:\Users\Diego\Documents\GitHub\Mepsan\Mepsan.cydsn\TopDesign\TopDesign.cysch" Guid="7c30ff6e-54d6-47a8-bff9-cd0c63e318af" /><DocumentWindow Key="C:\Users\Diego\Documents\GitHub\Mepsan\Mepsan.cydsn\Mepsan.cydwr" Guid="bea8f4b1-6c30-4c81-8a12-0923a11a4313" /><DocumentWindow Key="C:\Users\Diego\Documents\GitHub\Mepsan\Mepsan.cydsn\GVar.h" Guid="24e09a62-1853-4411-b9c3-16f5adb294cd" /><ToolWindow Key="Start Page:bd4649ab-da6b-4d04-a663-c722b8bf99db:Start Page" Guid="aeaa7156-235d-4beb-81af-36a6a4affac7" /><ToolWindow Key="CyGenericFrontend:e4c7e974-754b-433f-ab8c-50108e0a96a6:Locals" Guid="a75a9db7-66a6-478c-a5e6-32a4aa4f1e3f" /><DocumentWindow Key="C:\Users\Diego\Documents\GitHub\Mepsan\Mepsan.cydsn\PumpCom.h" Guid="7f8ea7d2-3eb2-4c55-a213-482a8f593c1b" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
+--><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="1017, 836" SelectedTabbedMdiWindow="0fc51f33-6ce0-4d51-9519-95107a895b83"><DocumentWindow Key="C:\Users\Diego\Documents\GitHub\Mepsan\Mepsan.cydsn\main.c" Guid="b1050600-88fb-499c-932c-3f23738d3fd9" /><DocumentWindow Key="C:\Users\Diego\Documents\GitHub\Mepsan\Mepsan.cydsn\PumpCom.c" Guid="0b434085-a8aa-428c-99da-a2b7f33848f0" /><DocumentWindow Key="C:\Users\Diego\Documents\GitHub\Mepsan\Mepsan.cydsn\printer.c" Guid="0fc51f33-6ce0-4d51-9519-95107a895b83" /><DocumentWindow Key="C:\Users\Diego\Documents\GitHub\Mepsan\Mepsan.cydsn\TopDesign\TopDesign.cysch" Guid="7c30ff6e-54d6-47a8-bff9-cd0c63e318af" /><DocumentWindow Key="C:\Users\Diego\Documents\GitHub\Mepsan\Mepsan.cydsn\Mepsan.cydwr" Guid="bea8f4b1-6c30-4c81-8a12-0923a11a4313" /><DocumentWindow Key="C:\Users\Diego\Documents\GitHub\Mepsan\Mepsan.cydsn\GVar.h" Guid="24e09a62-1853-4411-b9c3-16f5adb294cd" /><DocumentWindow Key="C:\Users\Diego\Documents\GitHub\Mepsan\Mepsan.cydsn\PumpCom.h" Guid="7f8ea7d2-3eb2-4c55-a213-482a8f593c1b" /><ToolWindow Key="Start Page:bd4649ab-da6b-4d04-a663-c722b8bf99db:Start Page" Guid="aeaa7156-235d-4beb-81af-36a6a4affac7" /><ToolWindow Key="CyGenericFrontend:e4c7e974-754b-433f-ab8c-50108e0a96a6:Locals" Guid="a75a9db7-66a6-478c-a5e6-32a4aa4f1e3f" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
 <config v="" />
 <AutoUpdate v="true" />
 </CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21>

@@ -60,8 +60,8 @@
   <block name="Tx_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="IB2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="IB1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="Em_EEPROM_Dynamic" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="cy_boot" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="Em_EEPROM_Dynamic" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="screen_rx" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="screen" BASE="0x0" SIZE="0x0" desc="UART" visible="true" hidden="false">
     <block name="IntClock" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
