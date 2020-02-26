@@ -1,31 +1,14 @@
-<<<<<<< HEAD
---------------- Build Started: 02/09/2020 11:34:48 Project: Mepsan, Configuration: ARM GCC 5.4-2016-q2-update Debug ---------------
-=======
---------------- Build Started: 01/16/2020 13:48:17 Project: Mepsan, Configuration: ARM GCC 5.4-2016-q2-update Debug ---------------
->>>>>>> 963b4664a2edc8a5937a78eea6deb7b1bfb7272c
+--------------- Build Started: 02/26/2020 11:32:48 Project: Mepsan, Configuration: ARM GCC 5.4-2016-q2-update Debug ---------------
 The code generation step is up to date.
-arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\ARM_GCC_541\Debug/main.lst -g -ffunction-sections -ffat-lto-objects -O0 -c main.c -o .\ARM_GCC_541\Debug\main.o
 arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\ARM_GCC_541\Debug/printer.lst -g -ffunction-sections -ffat-lto-objects -O0 -c printer.c -o .\ARM_GCC_541\Debug\printer.o
 arm-none-eabi-ar.exe -rs .\ARM_GCC_541\Debug\Mepsan.a .\ARM_GCC_541\Debug\clock_1.o .\ARM_GCC_541\Debug\PWM_1.o .\ARM_GCC_541\Debug\PWM_1_PM.o .\ARM_GCC_541\Debug\PWM_Out.o .\ARM_GCC_541\Debug\Kill_Switch.o .\ARM_GCC_541\Debug\CyDmac.o .\ARM_GCC_541\Debug\CyFlash.o .\ARM_GCC_541\Debug\CyLib.o .\ARM_GCC_541\Debug\cyPm.o .\ARM_GCC_541\Debug\CySpc.o .\ARM_GCC_541\Debug\cyutils.o .\ARM_GCC_541\Debug\cy_em_eeprom.o .\ARM_GCC_541\Debug\Clock_2.o .\ARM_GCC_541\Debug\EnablePin.o .\ARM_GCC_541\Debug\screen.o .\ARM_GCC_541\Debug\screen_PM.o .\ARM_GCC_541\Debug\screen_INT.o .\ARM_GCC_541\Debug\screen_BOOT.o .\ARM_GCC_541\Debug\screen_IntClock.o .\ARM_GCC_541\Debug\EEPROM_1.o .\ARM_GCC_541\Debug\PRINTER_B.o .\ARM_GCC_541\Debug\PRINTER_B_PM.o .\ARM_GCC_541\Debug\PRINTER_B_INT.o .\ARM_GCC_541\Debug\PRINTER_B_BOOT.o .\ARM_GCC_541\Debug\screen2.o .\ARM_GCC_541\Debug\screen2_PM.o .\ARM_GCC_541\Debug\screen2_INT.o .\ARM_GCC_541\Debug\screen2_BOOT.o .\ARM_GCC_541\Debug\PRINTER_A.o .\ARM_GCC_541\Debug\PRINTER_A_PM.o .\ARM_GCC_541\Debug\PRINTER_A_INT.o .\ARM_GCC_541\Debug\PRINTER_A_BOOT.o .\ARM_GCC_541\Debug\PRINTER_B_IntClock.o .\ARM_GCC_541\Debug\screen2_IntClock.o .\ARM_GCC_541\Debug\PRINTER_A_IntClock.o .\ARM_GCC_541\Debug\MEPSAN.o .\ARM_GCC_541\Debug\MEPSAN_PM.o .\ARM_GCC_541\Debug\MEPSAN_INT.o .\ARM_GCC_541\Debug\MEPSAN_BOOT.o .\ARM_GCC_541\Debug\GBCL.o .\ARM_GCC_541\Debug\GBCL_PM.o .\ARM_GCC_541\Debug\GBCL_INT.o .\ARM_GCC_541\Debug\GBCL_BOOT.o .\ARM_GCC_541\Debug\MEPSAN_IntClock.o .\ARM_GCC_541\Debug\IB1.o .\ARM_GCC_541\Debug\IB2.o .\ARM_GCC_541\Debug\CyBootAsmGnu.o
 arm-none-eabi-ar.exe: creating .\ARM_GCC_541\Debug\Mepsan.a
-<<<<<<< HEAD
-arm-none-eabi-gcc.exe -Wl,--start-group -o C:\Users\Diego\Documents\GitHub\Mepsan\Mepsan.cydsn\ARM_GCC_541\Debug\Mepsan.elf .\ARM_GCC_541\Debug\main.o .\ARM_GCC_541\Debug\PumpCom.o .\ARM_GCC_541\Debug\Gbr.o .\ARM_GCC_541\Debug\printer.o .\ARM_GCC_541\Debug\cyfitter_cfg.o .\ARM_GCC_541\Debug\cymetadata.o .\ARM_GCC_541\Debug\Cm3Start.o .\ARM_GCC_541\Debug\Mepsan.a "C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CortexM3\ARM_GCC_541\Debug\CyComponentLibrary.a" -mcpu=cortex-m3 -mthumb -L Generated_Source\PSoC5 -Wl,-Map,.\ARM_GCC_541\Debug/Mepsan.map -T Generated_Source\PSoC5\cm3gcc.ld -specs=nano.specs -Wl,--gc-sections -g -ffunction-sections -O0 -ffat-lto-objects -Wl,--end-group
-cyelftool.exe -C C:\Users\Diego\Documents\GitHub\Mepsan\Mepsan.cydsn\ARM_GCC_541\Debug\Mepsan.elf --flash_row_size 256 --flash_size 262144 --flash_offset 0x00000000
+arm-none-eabi-gcc.exe -Wl,--start-group -o C:\Users\Programador\Documents\GitHub\Mepsan\Mepsan.cydsn\ARM_GCC_541\Debug\Mepsan.elf .\ARM_GCC_541\Debug\main.o .\ARM_GCC_541\Debug\PumpCom.o .\ARM_GCC_541\Debug\Gbr.o .\ARM_GCC_541\Debug\printer.o .\ARM_GCC_541\Debug\cyfitter_cfg.o .\ARM_GCC_541\Debug\cymetadata.o .\ARM_GCC_541\Debug\Cm3Start.o .\ARM_GCC_541\Debug\Mepsan.a "C:\Program Files (x86)\Cypress\PSoC Creator\4.3\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CortexM3\ARM_GCC_541\Debug\CyComponentLibrary.a" -mcpu=cortex-m3 -mthumb -L Generated_Source\PSoC5 -Wl,-Map,.\ARM_GCC_541\Debug/Mepsan.map -T Generated_Source\PSoC5\cm3gcc.ld -specs=nano.specs -Wl,--gc-sections -g -ffunction-sections -O0 -ffat-lto-objects -Wl,--end-group
+cyelftool.exe -C C:\Users\Programador\Documents\GitHub\Mepsan\Mepsan.cydsn\ARM_GCC_541\Debug\Mepsan.elf --flash_row_size 256 --flash_size 262144 --flash_offset 0x00000000
 No ELF section .cychecksum found, creating one
 Application checksum calculated and stored in ELF section .cychecksum
 Checksum calculated and stored in ELF section .cymeta
-cyelftool.exe -S C:\Users\Diego\Documents\GitHub\Mepsan\Mepsan.cydsn\ARM_GCC_541\Debug\Mepsan.elf
-Flash used: 34648 of 262144 bytes (13,2 %).
-SRAM used: 5261 of 65536 bytes (8,0 %). Stack: 2048 bytes. Heap: 128 bytes.
---------------- Build Succeeded: 02/09/2020 11:35:00 ---------------
-=======
-arm-none-eabi-gcc.exe -Wl,--start-group -o C:\Users\bajog\Documents\GitHub\Mepsan\Mepsan.cydsn\ARM_GCC_541\Debug\Mepsan.elf .\ARM_GCC_541\Debug\main.o .\ARM_GCC_541\Debug\PumpCom.o .\ARM_GCC_541\Debug\Gbr.o .\ARM_GCC_541\Debug\printer.o .\ARM_GCC_541\Debug\cyfitter_cfg.o .\ARM_GCC_541\Debug\cymetadata.o .\ARM_GCC_541\Debug\Cm3Start.o .\ARM_GCC_541\Debug\Mepsan.a "C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CortexM3\ARM_GCC_541\Debug\CyComponentLibrary.a" -mcpu=cortex-m3 -mthumb -L Generated_Source\PSoC5 -Wl,-Map,.\ARM_GCC_541\Debug/Mepsan.map -T Generated_Source\PSoC5\cm3gcc.ld -specs=nano.specs -Wl,--gc-sections -g -ffunction-sections -O0 -ffat-lto-objects -Wl,--end-group
-cyelftool.exe -C C:\Users\bajog\Documents\GitHub\Mepsan\Mepsan.cydsn\ARM_GCC_541\Debug\Mepsan.elf --flash_row_size 256 --flash_size 262144 --flash_offset 0x00000000
-No ELF section .cychecksum found, creating one
-Application checksum calculated and stored in ELF section .cychecksum
-Checksum calculated and stored in ELF section .cymeta
-cyelftool.exe -S C:\Users\bajog\Documents\GitHub\Mepsan\Mepsan.cydsn\ARM_GCC_541\Debug\Mepsan.elf
-Flash used: 36760 of 262144 bytes (14,0 %).
+cyelftool.exe -S C:\Users\Programador\Documents\GitHub\Mepsan\Mepsan.cydsn\ARM_GCC_541\Debug\Mepsan.elf
+Flash used: 36704 of 262144 bytes (14,0 %).
 SRAM used: 5317 of 65536 bytes (8,1 %). Stack: 2048 bytes. Heap: 128 bytes.
---------------- Build Succeeded: 01/16/2020 13:48:30 ---------------
->>>>>>> 963b4664a2edc8a5937a78eea6deb7b1bfb7272c
+--------------- Build Succeeded: 02/26/2020 11:32:50 ---------------

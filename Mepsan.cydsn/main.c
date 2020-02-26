@@ -210,8 +210,8 @@ int main()
         } 
     }
     
-    side.a.dir = PumpAddress[1];
-    side.b.dir = PumpAddress[2];
+    side.a.dir = 0x00;
+    side.b.dir = 0x01;
     //side.c.dir = PumpAddress[3];
     //side.d.dir = PumpAddress[4]; 
 

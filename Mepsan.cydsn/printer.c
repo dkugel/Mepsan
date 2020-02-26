@@ -21,13 +21,13 @@ char VolSimbol[1] = "G";
 
 /***********  Temporal messages ******************/
 
-uint8 msn_EDS[32]       = "      ESTACION DE SERVICIO      ";
-uint8 msn_EDS2[32]      = "           JC VILLALUZ          ";
-uint8 msn_EDS0[32]      = "      JUAN ELIECER CORTES       ";
-uint8 msn_EDS3[32]      = "        Nit: 4.146.836-2        ";
-uint8 msn_EDS4[32]      = "        Tel: 311 2852698        ";
-uint8 msn_EDS5[32]      = "         CRA 11 #11 - 05        ";
-uint8 msn_EDS6[32]      = "         VILLA DE LEYVA         ";
+uint8 msn_EDS[32]       = "      ESTACION DE SERVICIOS     ";
+uint8 msn_EDS2[32]      = "    LA ESMERALDA DE SUTATENZA   ";
+uint8 msn_EDS0[32]      = "      JUAN ELIECER CORTES       "; //No va//
+uint8 msn_EDS3[32]      = "       Nit: 900.472.042-9       ";
+uint8 msn_EDS4[32]      = "  Tel: 3102946170 - 3106191868  ";
+uint8 msn_EDS5[32]      = "Km 12 Via Guateque - Las Juntas ";
+uint8 msn_EDS6[32]      = "       Sutatenza - Boyaca       ";
 uint8 msn_footer[32]    = "     GRACIAS POR SU COMPRA      ";
 uint8 msn_footer2[32]   = "          VUELVA PRONTO         ";
 uint8 msn_footer3[32]   = "Firma:                          ";
@@ -125,10 +125,10 @@ void PrintReceipt(uint8 address){
 		PRINTER_A_PutChar(msn_EDS2[x]);
 	}
 	PRINTER_A_PutChar(LINE_FEED);
-    for(uint8 x = 0; x < 32; x ++){
-		PRINTER_A_PutChar(msn_EDS0[x]);
-	}
-	PRINTER_A_PutChar(LINE_FEED);
+//    for(uint8 x = 0; x < 32; x ++){
+//		PRINTER_A_PutChar(msn_EDS0[x]);
+//	}
+//	PRINTER_A_PutChar(LINE_FEED);
 	for(uint8 x = 0; x < 32; x ++){
 		PRINTER_A_PutChar(msn_EDS3[x]);
 	}
@@ -296,7 +296,7 @@ void PrintReceipt(uint8 address){
         }
         if(side.a.Nozzle == 0x03){
             for(uint8 x = 0; x < 9; x ++){
-    			PRINTER_A_PutChar(msn_diesel[x]);
+    			PRINTER_A_PutChar(msn_gasoline[x]);
     		}
         } 
         PRINTER_A_PutChar(LINE_FEED); 	
@@ -457,7 +457,7 @@ void PrintReceipt(uint8 address){
         }
         if(side.b.Nozzle == 0x03){
             for(uint8 x = 0; x < 9; x ++){
-    			PRINTER_A_PutChar(msn_diesel[x]);
+    			PRINTER_A_PutChar(msn_gasoline[x]);
     		}
         }
         PRINTER_A_PutChar(LINE_FEED); 	
