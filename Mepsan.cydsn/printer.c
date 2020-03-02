@@ -34,7 +34,7 @@ uint8 msn_footer3[32]   = "Firma:                          ";
 uint8 msn_footer4[32]   = "________________________________";
 uint8 msn_copy[32]      = "             COPIA              ";
 uint8 msn_diesel[9]     = "Diesel   ";
-uint8 msn_gasoline[9]   = "Corriente";
+uint8 msn_gasoline[10]  = "Corriente ";
 uint8 msn_extra[9]      = "Extra    ";
 
 /*********** informative messages ****************/
@@ -702,7 +702,7 @@ void PrintShift(void){
     uint8 screen_size,pos;
     screen_size = 0;
     char8 lectanterior[10],lectactual[10],memoria[10],resultado[10];
-    uint32 actual,anterior,resta;
+    int actual,anterior,resta;
     while(screen_size == 0){
         for(uint8 LCDRx = 0; LCDRx < 6; LCDRx++){
             screen_PutChar(ASK_TIME[LCDRx]);
@@ -768,14 +768,14 @@ void PrintShift(void){
 	for(uint8 x = 0; x < 13; x ++){
 		PRINTER_A_PutChar(msn_fecha[x]);
 	}
-    PRINTER_A_PutChar(((touch1[6] >> 4) + 0x30));
-    PRINTER_A_PutChar(((touch1[6] & 0x0F) + 0x30));
+    PRINTER_A_PutChar(((touch1[8] >> 4) + 0x30)) ;
+	PRINTER_A_PutChar(((touch1[8] & 0x0F) + 0x30));
     PRINTER_A_PutChar('/');
     PRINTER_A_PutChar(((touch1[7] >> 4) + 0x30)) ;
     PRINTER_A_PutChar(((touch1[7] & 0x0F) + 0x30));
     PRINTER_A_PutChar('/');
-    PRINTER_A_PutChar(((touch1[8] >> 4) + 0x30)) ;
-	PRINTER_A_PutChar(((touch1[8] & 0x0F) + 0x30));
+    PRINTER_A_PutChar(((touch1[6] >> 4) + 0x30));
+    PRINTER_A_PutChar(((touch1[6] & 0x0F) + 0x30));
 
 	PRINTER_A_PutChar(LINE_FEED);
     /********** HORA ***************/
@@ -802,13 +802,15 @@ void PrintShift(void){
 	for(uint8 x = 5; x > 0; x --){
 		PRINTER_A_PutChar(shift_number[x]);   //Número de cierre
 	}
-	PRINTER_A_PutChar(LINE_FEED);
+    
+    PRINTER_A_PutChar(LINE_FEED);
     PRINTER_A_PutChar(LINE_FEED);
     
     for(uint8 x = 0; x < 13; x ++){
         PRINTER_A_PutChar(msn_pos[x]);
     }
     PRINTER_A_PutChar(side.a.dir + 0x31);
+    PRINTER_A_PutChar(LINE_FEED);
     PRINTER_A_PutChar(LINE_FEED);
 	for(uint8 x = 0; x < 16; x ++){
 		PRINTER_A_PutChar(msn_lecact[x]);
@@ -828,8 +830,50 @@ void PrintShift(void){
         PRINTER_A_PutChar(side.a.ProcessedTotals[0][0][x]);
     }
     PRINTER_A_PutChar(LINE_FEED);
-
-    for(uint8 x = 0; x < 13; x ++){
+    for(uint8 x = 0; x < 16; x ++){
+		PRINTER_A_PutChar(msn_lecaan[x]);
+	}
+    PRINTER_A_PutChar(LINE_FEED);
+    for(uint8 x = 0; x < 10; x ++){
+        memoria[x] = EEPROM_1_ReadByte(36+x);
+    }
+    for(uint8 x = 0; x < 10; x ++){ 
+        if((10-x) == DecVol)
+            PRINTER_A_PutChar('.');
+        PRINTER_A_PutChar(memoria[x]);
+    }
+    for(uint8 x = pos; x < 10; x++ ){
+        lectactual[x-pos] = side.a.ProcessedTotals[0][0][x];
+        lectanterior[x-pos] = memoria[x];
+        resultado[x] = 0x00;
+    }
+    
+    int d;
+    anterior = sscanf(lectanterior,"%d",&d);
+    actual = sscanf(lectactual,"%d",&d);
+    resta =  actual - anterior;
+    //itoa(resta,resultado,10);
+    sprintf(resultado, "%d", resta);
+    PRINTER_A_PutChar(LINE_FEED);
+    for(uint8 x = 0; x < 18; x ++){
+        PRINTER_A_PutChar(msn_dif[x]);
+    }
+    PRINTER_A_PutChar(LINE_FEED);
+    for(uint8 x = 0; x < 10; x ++){
+        if((10-x) == DecVol)
+            PRINTER_A_PutChar('.');
+        PRINTER_A_PutChar(resultado[x]);
+    }
+    for(uint8 x = 0; x < 10; x++){
+        EEPROM_1_WriteByte(side.a.ProcessedTotals[0][0][x],36+x);        
+    }
+    PRINTER_A_PutChar(LINE_FEED);
+    PRINTER_A_PutChar(LINE_FEED);
+    for(uint8 x = 0; x < 16; x ++){
+		PRINTER_A_PutChar(msn_lecact[x]);
+	}
+    PRINTER_A_PutChar(LINE_FEED);
+    for(uint8 x = 0; x < 13; x ++){  //Segundo producto
 		PRINTER_A_PutChar(msn_product[x]);
 	}
     PRINTER_A_PutChar(LINE_FEED);
@@ -842,51 +886,30 @@ void PrintShift(void){
         PRINTER_A_PutChar(side.a.ProcessedTotals[1][0][x]);
     }
     PRINTER_A_PutChar(LINE_FEED);
-    
-    for(uint8 x = 0; x < 13; x ++){
-		PRINTER_A_PutChar(msn_product[x]);
-	}        
-    for(uint8 x = 0; x < 9; x ++){
-		PRINTER_A_PutChar(msn_gasoline[x]);
-	}
-    for(uint8 x = 0; x < 10; x ++){ 
-        if((10-x) == DecVol)
-            PRINTER_A_PutChar('.');
-        PRINTER_A_PutChar(side.a.ProcessedTotals[2][0][x]);
-    }
-    PRINTER_A_PutChar(LINE_FEED); 	
-                          
-    
-    for(uint8 x = 0; x < 10; x++){
-        pos = x;
-        if(side.a.ProcessedTotals[0][0][x] != 0x00 )
-            break;
-    }
-	for(uint8 x = 0; x < 16; x ++){
+    for(uint8 x = 0; x < 16; x ++){
 		PRINTER_A_PutChar(msn_lecaan[x]);
 	}
     PRINTER_A_PutChar(LINE_FEED);
     for(uint8 x = 0; x < 10; x ++){
-        memoria[x] = EEPROM_1_ReadByte(36+x);
+        memoria[x] = EEPROM_1_ReadByte(56+x);
     }
     for(uint8 x = 0; x < 10; x ++){ 
         if((10-x) == DecVol)
             PRINTER_A_PutChar('.');
         PRINTER_A_PutChar(memoria[x]);
     }
-    PRINTER_A_PutChar(LINE_FEED);
-    
     for(uint8 x = pos; x < 10; x++ ){
-        lectactual[x-pos] = side.a.ProcessedTotals[0][0][x];
+        lectactual[x-pos] = side.a.ProcessedTotals[1][0][x];
         lectanterior[x-pos] = memoria[x];
         resultado[x] = 0x00;
     }
     
-    anterior = atoi(lectanterior);
-    actual = atoi(lectactual);
+    anterior = sscanf(lectanterior,"%d",&d);
+    actual = sscanf(lectactual,"%d",&d);
     resta =  actual - anterior;
-    itoa(resta,resultado,10);
-    
+    //itoa(resta,resultado,10);
+    sprintf(resultado, "%d", resta);
+    PRINTER_A_PutChar(LINE_FEED);
     for(uint8 x = 0; x < 18; x ++){
         PRINTER_A_PutChar(msn_dif[x]);
     }
@@ -896,6 +919,31 @@ void PrintShift(void){
             PRINTER_A_PutChar('.');
         PRINTER_A_PutChar(resultado[x]);
     }
+    for(uint8 x = 0; x < 10; x++){
+        EEPROM_1_WriteByte(side.a.ProcessedTotals[1][0][x],56+x);        
+    }
+//    for(uint8 x = 0; x < 13; x ++){
+//		PRINTER_A_PutChar(msn_product[x]);
+//	}        
+//    for(uint8 x = 0; x < 9; x ++){
+//		PRINTER_A_PutChar(msn_gasoline[x]);
+//	}
+//    for(uint8 x = 0; x < 10; x ++){ 
+//        if((10-x) == DecVol)
+//            PRINTER_A_PutChar('.');
+//        PRINTER_A_PutChar(side.a.ProcessedTotals[2][0][x]);
+//    }
+//    PRINTER_A_PutChar(LINE_FEED); 	
+                          
+    
+//    for(uint8 x = 0; x < 10; x++){
+//        pos = x;
+//        if(side.a.ProcessedTotals[0][0][x] != 0x00 )
+//            break;
+//    }
+	
+    
+    //Lecturas lado B
     PRINTER_A_PutChar(LINE_FEED);
     for(uint8 x = 0; x < 32; x ++){
         PRINTER_A_PutChar(SEPARATOR[x]);
@@ -906,6 +954,7 @@ void PrintShift(void){
     }
     PRINTER_A_PutChar(side.b.dir + 0x31);
     PRINTER_A_PutChar(LINE_FEED);
+    PRINTER_A_PutChar(LINE_FEED);
     for(uint8 x = 0; x < 16; x ++){
 		PRINTER_A_PutChar(msn_lecact[x]);
 	}
@@ -915,7 +964,7 @@ void PrintShift(void){
 		PRINTER_A_PutChar(msn_product[x]);
 	}
     PRINTER_A_PutChar(LINE_FEED);
-	for(uint8 x = 0; x < 9; x ++){
+	for(uint8 x = 0; x < 10; x ++){
 		PRINTER_A_PutChar(msn_gasoline[x]);
 	}
     for(uint8 x = 0; x < 10; x ++){ 
@@ -924,35 +973,8 @@ void PrintShift(void){
         PRINTER_A_PutChar(side.b.ProcessedTotals[0][0][x]);
     }
     PRINTER_A_PutChar(LINE_FEED);
-
-    for(uint8 x = 0; x < 13; x ++){
-		PRINTER_A_PutChar(msn_product[x]);
-	}
-    PRINTER_A_PutChar(LINE_FEED);
-    for(uint8 x = 0; x < 9; x ++){
-    	PRINTER_A_PutChar(msn_extra[x]);
-    }
-    for(uint8 x = 0; x < 10; x ++){ 
-        if((10-x) == DecVol)
-            PRINTER_A_PutChar('.');
-        PRINTER_A_PutChar(side.b.ProcessedTotals[0][1][x]);
-    }
-    PRINTER_A_PutChar(LINE_FEED);
     
-    for(uint8 x = 0; x < 13; x ++){
-		PRINTER_A_PutChar(msn_product[x]);
-	}        
-    PRINTER_A_PutChar(LINE_FEED);
-    for(uint8 x = 0; x < 9; x ++){
-		PRINTER_A_PutChar(msn_diesel[x]);
-	}
-    for(uint8 x = 0; x < 10; x ++){ 
-        if((10-x) == DecVol)
-            PRINTER_A_PutChar('.');
-        PRINTER_A_PutChar(side.b.ProcessedTotals[0][1][x]);
-    }
-    PRINTER_A_PutChar(LINE_FEED); 
-	for(uint8 x = 0; x < 16; x ++){
+    for(uint8 x = 0; x < 16; x ++){
 		PRINTER_A_PutChar(msn_lecaan[x]);
 	}
     PRINTER_A_PutChar(LINE_FEED);
@@ -971,10 +993,11 @@ void PrintShift(void){
         resultado[x] = 0x00;
     }
     
-    anterior = atoi(lectanterior);
-    actual = atoi(lectactual);
+    anterior = sscanf(lectanterior,"%d",&d);
+    actual = sscanf(lectactual,"%d",&d);
     resta =  actual - anterior;
-    itoa(resta,resultado,10);
+    //itoa(resta,resultado,10);
+    sprintf(resultado, "%d", resta);
     for(uint8 x = 0; x < 18; x ++){
         PRINTER_A_PutChar(msn_dif[x]);
     }
@@ -984,7 +1007,78 @@ void PrintShift(void){
             PRINTER_A_PutChar('.');
         PRINTER_A_PutChar(resultado[x]);
     }
+    for(uint8 x = 0; x < 10; x++){
+        EEPROM_1_WriteByte(side.b.ProcessedTotals[0][0][x],46+x);        
+    }
     PRINTER_A_PutChar(LINE_FEED);
+    PRINTER_A_PutChar(LINE_FEED);
+
+    for(uint8 x = 0; x < 13; x ++){
+		PRINTER_A_PutChar(msn_product[x]);
+	}
+    PRINTER_A_PutChar(LINE_FEED);
+    for(uint8 x = 0; x < 9; x ++){
+    	PRINTER_A_PutChar(msn_extra[x]);
+    }
+    for(uint8 x = 0; x < 10; x ++){ 
+        if((10-x) == DecVol)
+            PRINTER_A_PutChar('.');
+        PRINTER_A_PutChar(side.b.ProcessedTotals[1][0][x]);
+    }
+    PRINTER_A_PutChar(LINE_FEED);
+    for(uint8 x = 0; x < 16; x ++){
+		PRINTER_A_PutChar(msn_lecaan[x]);
+	}
+    PRINTER_A_PutChar(LINE_FEED);
+    for(uint8 x = 0; x < 10; x ++){
+        memoria[x] = EEPROM_1_ReadByte(66+x);
+    }
+    for(uint8 x = 0; x < 10; x ++){ 
+        if((10-x) == DecVol)
+            PRINTER_A_PutChar('.');
+        PRINTER_A_PutChar(memoria[x]);
+    }
+    PRINTER_A_PutChar(LINE_FEED);
+    for(uint8 x = pos; x < 10; x++ ){
+        lectactual[x-pos] = side.b.ProcessedTotals[1][0][x];
+        lectanterior[x-pos] = memoria[x];
+        resultado[x] = 0x00;
+    }
+    
+    anterior = sscanf(lectanterior,"%d",&d);
+    actual = sscanf(lectactual,"%d",&d);
+    resta =  actual - anterior;
+    //itoa(resta,resultado,10);
+    sprintf(resultado, "%d", resta);
+    for(uint8 x = 0; x < 18; x ++){
+        PRINTER_A_PutChar(msn_dif[x]);
+    }
+    PRINTER_A_PutChar(LINE_FEED);
+    for(uint8 x = 0; x < 10; x ++){
+        if((10-x) == DecVol)
+            PRINTER_A_PutChar('.');
+        PRINTER_A_PutChar(resultado[x]);
+    }
+    for(uint8 x = 0; x < 10; x++){
+        EEPROM_1_WriteByte(side.b.ProcessedTotals[1][0][x],66+x);        
+    }
+    PRINTER_A_PutChar(LINE_FEED);
+    
+    
+//    for(uint8 x = 0; x < 13; x ++){
+//		PRINTER_A_PutChar(msn_product[x]);
+//	}        
+//    PRINTER_A_PutChar(LINE_FEED);
+//    for(uint8 x = 0; x < 9; x ++){
+//		PRINTER_A_PutChar(msn_diesel[x]);
+//	}
+//    for(uint8 x = 0; x < 10; x ++){ 
+//        if((10-x) == DecVol)
+//            PRINTER_A_PutChar('.');
+//        PRINTER_A_PutChar(side.b.ProcessedTotals[0][1][x]);
+//    }
+//    PRINTER_A_PutChar(LINE_FEED); 
+	
     
     if((Positions-1)>= 3){
         for(uint8 x = 0; x < 32; x ++){
@@ -1047,18 +1141,7 @@ void PrintShift(void){
     PRINTER_A_PutChar(LINE_FEED);
     PRINTER_A_PutChar(LINE_FEED);
     PRINTER_A_PutChar(LINE_FEED);
-    for(uint8 x = 0; x < 10; x++){
-        EEPROM_1_WriteByte(side.a.ProcessedTotals[0][0][x],36+x);        
-    }
-    for(uint8 x = 0; x < 10; x++){
-        EEPROM_1_WriteByte(side.b.ProcessedTotals[0][0][x],46+x);
-    }
-    for(uint8 x = 0; x < 10; x++){
-        EEPROM_1_WriteByte(side.c.ProcessedTotals[0][0][x],56+x);
-    }
-    for(uint8 x = 0; x < 10; x++){
-        EEPROM_1_WriteByte(side.d.ProcessedTotals[0][0][x],66+x);
-    }
+    
 }
 
 
