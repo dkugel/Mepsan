@@ -163,7 +163,7 @@ void GetResponse(void){
         }
     }
     if(address == side.b.dir){
-        side.a.MepRequest = 0;
+        side.b.MepRequest = 0;
         for(uint8 MepRx = 1; MepRx < size + 1; MepRx++){
             side.b.MepsanStore[MepRx - 1] = MepsanResponse[MepRx];
         }
