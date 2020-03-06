@@ -21,14 +21,14 @@ char VolSimbol[1] = "G";
 
 /***********  Temporal messages ******************/
 
-uint8 msn_EDS[32]       = "      ESTACION DE SERVICIOS     ";
-uint8 msn_EDS2[32]      = "    LA ESMERALDA DE SUTATENZA   ";
+uint8 msn_EDS[32]       = "      ESTACION DE SERVICIO      ";
+uint8 msn_EDS2[32]      = "       COMBUSCOL JASA SAS       ";
 uint8 msn_EDS0[32]      = "      JUAN ELIECER CORTES       "; //No va//
-uint8 msn_EDS3[32]      = "       Nit: 900.472.042-9       ";
-uint8 msn_EDS4[32]      = "  Tel: 3102946170 - 3106191868  ";
-uint8 msn_EDS5[32]      = "Km 12 Via Guateque - Las Juntas ";
-uint8 msn_EDS6[32]      = "       Sutatenza - Boyaca       ";
-uint8 msn_footer[32]    = "     GRACIAS POR SU COMPRA      ";
+uint8 msn_EDS3[32]      = "       Nit: 901.235.744-9       ";
+uint8 msn_EDS4[32]      = "  Tel: 3102946170 - 3106191868  "; //nO VA
+uint8 msn_EDS5[32]      = "    CALLE 76 A SUR # 66 - 02    ";
+uint8 msn_EDS6[32]      = "         BARRIO CARACOLI        ";
+uint8 msn_footer[32]    = "      GRACIAS POR SU COMPRA     ";
 uint8 msn_footer2[32]   = "          VUELVA PRONTO         ";
 uint8 msn_footer3[32]   = "Firma:                          ";
 uint8 msn_footer4[32]   = "________________________________";
@@ -133,10 +133,10 @@ void PrintReceipt(uint8 address){
 		PRINTER_A_PutChar(msn_EDS3[x]);
 	}
 	PRINTER_A_PutChar(LINE_FEED);
-	for(uint8 x = 0; x < 32; x ++){
-		PRINTER_A_PutChar(msn_EDS4[x]);
-	}
-    PRINTER_A_PutChar(LINE_FEED);
+//	for(uint8 x = 0; x < 32; x ++){
+//		PRINTER_A_PutChar(msn_EDS4[x]);
+//	}
+//    PRINTER_A_PutChar(LINE_FEED);
     for(uint8 x = 0; x < 32; x ++){
 		PRINTER_A_PutChar(msn_EDS5[x]);
 	}
@@ -286,7 +286,7 @@ void PrintReceipt(uint8 address){
 		}
         if(side.a.Nozzle == 0x01){
     		for(uint8 x = 0; x < 9; x ++){
-    			PRINTER_A_PutChar(msn_gasoline[x]);
+    			PRINTER_A_PutChar(msn_diesel[x]);
     		}
         }
         if(side.a.Nozzle == 0x02){
@@ -446,7 +446,7 @@ void PrintReceipt(uint8 address){
 		if(side.b.Nozzle == 0x01){
     		for(uint8 x = 0; x < 9; x ++){
 
-    			PRINTER_A_PutChar(msn_gasoline[x]);  //aso 1 producto
+    			PRINTER_A_PutChar(msn_diesel[x]);  //aso 1 producto
 
     		}
         }
