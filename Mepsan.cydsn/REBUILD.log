@@ -1,4 +1,4 @@
---------------- Rebuild Started: 03/01/2020 14:51:38 Project: Mepsan, Configuration: ARM GCC 5.4-2016-q2-update Debug ---------------
+--------------- Rebuild Started: 03/14/2020 13:35:58 Project: Mepsan, Configuration: ARM GCC 5.4-2016-q2-update Debug ---------------
 Deleting file ".\ARM_GCC_541\Debug\main.o"
 Deleting file ".\ARM_GCC_541\Debug\PumpCom.o"
 Deleting file ".\ARM_GCC_541\Debug\Gbr.o"
@@ -140,6 +140,6 @@ No ELF section .cychecksum found, creating one
 Application checksum calculated and stored in ELF section .cychecksum
 Checksum calculated and stored in ELF section .cymeta
 cyelftool.exe -S C:\Users\Mery\Documents\GitHub\Mepsan\Mepsan.cydsn\ARM_GCC_541\Debug\Mepsan.elf
-Flash used: 36296 of 262144 bytes (13,8 %).
-SRAM used: 5317 of 65536 bytes (8,1 %). Stack: 2048 bytes. Heap: 128 bytes.
---------------- Rebuild Succeeded: 03/01/2020 14:54:16 ---------------
+Flash used: 41728 of 262144 bytes (15,9 %).
+SRAM used: 5341 of 65536 bytes (8,1 %). Stack: 2048 bytes. Heap: 128 bytes.
+--------------- Rebuild Succeeded: 03/14/2020 13:38:09 ---------------
