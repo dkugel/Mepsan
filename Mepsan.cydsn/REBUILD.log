@@ -1,4 +1,4 @@
---------------- Rebuild Started: 03/01/2020 14:51:38 Project: Mepsan, Configuration: ARM GCC 5.4-2016-q2-update Debug ---------------
+--------------- Rebuild Started: 08/30/2020 13:26:06 Project: Mepsan, Configuration: ARM GCC 5.4-2016-q2-update Debug ---------------
 Deleting file ".\ARM_GCC_541\Debug\main.o"
 Deleting file ".\ARM_GCC_541\Debug\PumpCom.o"
 Deleting file ".\ARM_GCC_541\Debug\Gbr.o"
@@ -62,7 +62,7 @@ Deleting file ".\Mepsan.rpt"
 Deleting file ".\Mepsan_timing.html"
 Deleting file ".\ARM_GCC_541\Debug\.deps\SOURCE_C__ARM_GCC_GENERIC.P"
 Deleting file ".\ARM_GCC_541\Debug\.deps\SOURCE_ASM__ARM_GCC_GENERIC.P"
-cydsfit.exe -.appdatapath "C:\Users\Mery\AppData\Local\Cypress Semiconductor\PSoC Creator\4.3" -.fdsnotice -.fdswarpdepfile=warp_dependencies.txt -.fdselabdepfile=elab_dependencies.txt -.fdsbldfile=generated_files.txt -.fdsreffile=referenced_files.txt -p C:\Users\Mery\Documents\GitHub\Mepsan\Mepsan.cydsn\Mepsan.cyprj -d CY8C5888LTI-LP097 -s C:\Users\Mery\Documents\GitHub\Mepsan\Mepsan.cydsn\Generated_Source\PSoC5 -- -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE
+cydsfit.exe -.appdatapath "C:\Users\Diego\AppData\Local\Cypress Semiconductor\PSoC Creator\4.2" -.fdsnotice -.fdswarpdepfile=warp_dependencies.txt -.fdselabdepfile=elab_dependencies.txt -.fdsbldfile=generated_files.txt -.fdsreffile=referenced_files.txt -p F:\Users\Diego\Documents\GitHub\Mepsan\Mepsan.cydsn\Mepsan.cyprj -d CY8C5888LTI-LP097 -s F:\Users\Diego\Documents\GitHub\Mepsan\Mepsan.cydsn\Generated_Source\PSoC5 -- -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE
 Elaborating Design...
 HDL Generation...
 Synthesis...
@@ -134,12 +134,12 @@ arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I. -IGenerated_Source\PSoC5 -Wa,-
 arm-none-eabi-as.exe -mcpu=cortex-m3 -mthumb -I. -IGenerated_Source\PSoC5 -alh=.\ARM_GCC_541\Debug/CyBootAsmGnu.lst -g -o .\ARM_GCC_541\Debug\CyBootAsmGnu.o Generated_Source\PSoC5\CyBootAsmGnu.s
 arm-none-eabi-ar.exe -rs .\ARM_GCC_541\Debug\Mepsan.a .\ARM_GCC_541\Debug\clock_1.o .\ARM_GCC_541\Debug\PWM_1.o .\ARM_GCC_541\Debug\PWM_1_PM.o .\ARM_GCC_541\Debug\PWM_Out.o .\ARM_GCC_541\Debug\Kill_Switch.o .\ARM_GCC_541\Debug\CyDmac.o .\ARM_GCC_541\Debug\CyFlash.o .\ARM_GCC_541\Debug\CyLib.o .\ARM_GCC_541\Debug\cyPm.o .\ARM_GCC_541\Debug\CySpc.o .\ARM_GCC_541\Debug\cyutils.o .\ARM_GCC_541\Debug\cy_em_eeprom.o .\ARM_GCC_541\Debug\Clock_2.o .\ARM_GCC_541\Debug\EnablePin.o .\ARM_GCC_541\Debug\screen.o .\ARM_GCC_541\Debug\screen_PM.o .\ARM_GCC_541\Debug\screen_INT.o .\ARM_GCC_541\Debug\screen_BOOT.o .\ARM_GCC_541\Debug\screen_IntClock.o .\ARM_GCC_541\Debug\EEPROM_1.o .\ARM_GCC_541\Debug\PRINTER_B.o .\ARM_GCC_541\Debug\PRINTER_B_PM.o .\ARM_GCC_541\Debug\PRINTER_B_INT.o .\ARM_GCC_541\Debug\PRINTER_B_BOOT.o .\ARM_GCC_541\Debug\screen2.o .\ARM_GCC_541\Debug\screen2_PM.o .\ARM_GCC_541\Debug\screen2_INT.o .\ARM_GCC_541\Debug\screen2_BOOT.o .\ARM_GCC_541\Debug\PRINTER_A.o .\ARM_GCC_541\Debug\PRINTER_A_PM.o .\ARM_GCC_541\Debug\PRINTER_A_INT.o .\ARM_GCC_541\Debug\PRINTER_A_BOOT.o .\ARM_GCC_541\Debug\PRINTER_B_IntClock.o .\ARM_GCC_541\Debug\screen2_IntClock.o .\ARM_GCC_541\Debug\PRINTER_A_IntClock.o .\ARM_GCC_541\Debug\MEPSAN.o .\ARM_GCC_541\Debug\MEPSAN_PM.o .\ARM_GCC_541\Debug\MEPSAN_INT.o .\ARM_GCC_541\Debug\MEPSAN_BOOT.o .\ARM_GCC_541\Debug\GBCL.o .\ARM_GCC_541\Debug\GBCL_PM.o .\ARM_GCC_541\Debug\GBCL_INT.o .\ARM_GCC_541\Debug\GBCL_BOOT.o .\ARM_GCC_541\Debug\MEPSAN_IntClock.o .\ARM_GCC_541\Debug\IB1.o .\ARM_GCC_541\Debug\IB2.o .\ARM_GCC_541\Debug\CyBootAsmGnu.o
 arm-none-eabi-ar.exe: creating .\ARM_GCC_541\Debug\Mepsan.a
-arm-none-eabi-gcc.exe -Wl,--start-group -o C:\Users\Mery\Documents\GitHub\Mepsan\Mepsan.cydsn\ARM_GCC_541\Debug\Mepsan.elf .\ARM_GCC_541\Debug\main.o .\ARM_GCC_541\Debug\PumpCom.o .\ARM_GCC_541\Debug\Gbr.o .\ARM_GCC_541\Debug\printer.o .\ARM_GCC_541\Debug\cyfitter_cfg.o .\ARM_GCC_541\Debug\cymetadata.o .\ARM_GCC_541\Debug\Cm3Start.o .\ARM_GCC_541\Debug\Mepsan.a "C:\Program Files (x86)\Cypress\PSoC Creator\4.3\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CortexM3\ARM_GCC_541\Debug\CyComponentLibrary.a" -mcpu=cortex-m3 -mthumb -L Generated_Source\PSoC5 -Wl,-Map,.\ARM_GCC_541\Debug/Mepsan.map -T Generated_Source\PSoC5\cm3gcc.ld -specs=nano.specs -Wl,--gc-sections -g -ffunction-sections -O0 -ffat-lto-objects -Wl,--end-group
-cyelftool.exe -C C:\Users\Mery\Documents\GitHub\Mepsan\Mepsan.cydsn\ARM_GCC_541\Debug\Mepsan.elf --flash_row_size 256 --flash_size 262144 --flash_offset 0x00000000
+arm-none-eabi-gcc.exe -Wl,--start-group -o F:\Users\Diego\Documents\GitHub\Mepsan\Mepsan.cydsn\ARM_GCC_541\Debug\Mepsan.elf .\ARM_GCC_541\Debug\main.o .\ARM_GCC_541\Debug\PumpCom.o .\ARM_GCC_541\Debug\Gbr.o .\ARM_GCC_541\Debug\printer.o .\ARM_GCC_541\Debug\cyfitter_cfg.o .\ARM_GCC_541\Debug\cymetadata.o .\ARM_GCC_541\Debug\Cm3Start.o .\ARM_GCC_541\Debug\Mepsan.a "C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CortexM3\ARM_GCC_541\Debug\CyComponentLibrary.a" -mcpu=cortex-m3 -mthumb -L Generated_Source\PSoC5 -Wl,-Map,.\ARM_GCC_541\Debug/Mepsan.map -T Generated_Source\PSoC5\cm3gcc.ld -specs=nano.specs -Wl,--gc-sections -g -ffunction-sections -O0 -ffat-lto-objects -Wl,--end-group
+cyelftool.exe -C F:\Users\Diego\Documents\GitHub\Mepsan\Mepsan.cydsn\ARM_GCC_541\Debug\Mepsan.elf --flash_row_size 256 --flash_size 262144 --flash_offset 0x00000000
 No ELF section .cychecksum found, creating one
 Application checksum calculated and stored in ELF section .cychecksum
 Checksum calculated and stored in ELF section .cymeta
-cyelftool.exe -S C:\Users\Mery\Documents\GitHub\Mepsan\Mepsan.cydsn\ARM_GCC_541\Debug\Mepsan.elf
-Flash used: 36296 of 262144 bytes (13,8 %).
-SRAM used: 5317 of 65536 bytes (8,1 %). Stack: 2048 bytes. Heap: 128 bytes.
---------------- Rebuild Succeeded: 03/01/2020 14:54:16 ---------------
+cyelftool.exe -S F:\Users\Diego\Documents\GitHub\Mepsan\Mepsan.cydsn\ARM_GCC_541\Debug\Mepsan.elf
+Flash used: 37048 of 262144 bytes (14,1 %).
+SRAM used: 5821 of 65536 bytes (8,9 %). Stack: 2048 bytes. Heap: 128 bytes.
+--------------- Rebuild Succeeded: 08/30/2020 13:27:14 ---------------

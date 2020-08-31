@@ -1,6 +1,6 @@
 -- Project:   Mepsan
--- Generated: 03/01/2020 14:52:32
--- PSoC Creator  4.3
+-- Generated: 08/30/2020 13:26:24
+-- PSoC Creator  4.2
 
 ENTITY Mepsan IS
     PORT(

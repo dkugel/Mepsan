@@ -1,6 +1,6 @@
--- Project:   C:\Users\Mery\Documents\GitHub\Mepsan\Mepsan.cydsn\Mepsan.cyprj
--- Generated: 03/01/2020 14:53:07
--- PSoC Creator  4.3
+-- Project:   F:\Users\Diego\Documents\GitHub\Mepsan\Mepsan.cydsn\Mepsan.cyprj
+-- Generated: 08/30/2020 13:26:40
+-- PSoC Creator  4.2
 
 ENTITY Mepsan IS
     PORT(

@@ -411,11 +411,11 @@ int main()
             case 0x53:
                 if(W_autorize == 0xAC){
                     side.a.Copy = 1;
-                    PrintReceipt(side.a.dir);
+                    PrintPOS(side.a.dir);
                 }
                 if(W_autorize == 0xBC){
                     side.b.Copy = 1;
-                    PrintReceipt(side.b.dir);
+                    PrintPOS(side.b.dir);
                 } 
 //                if(W_autorize == 0xCC){
 //                    side.c.Copy = 1;
@@ -560,7 +560,7 @@ int main()
                     for(uint8 LCDRx = 0; LCDRx < 20; LCDRx++){
             			touch1[LCDRx] = 0x00;
             		}
-                    PrintReceipt(side.a.dir);
+                    PrintPOS(side.a.dir);
                     side.a.Copy = 1;
                     W_autorize =0xAC;
                 } 
@@ -589,7 +589,7 @@ int main()
                     for(uint8 LCDRx = 0; LCDRx < 20; LCDRx++){
             			touch1[LCDRx] = 0x00;
             		}
-                    PrintReceipt(side.b.dir);
+                    PrintPOS(side.b.dir);
                     side.b.Copy = 1;
                     W_autorize  = 0xBC;
                 }
@@ -618,7 +618,7 @@ int main()
                     for(uint8 LCDRx = 0; LCDRx < 20; LCDRx++){
             			touch1[LCDRx] = 0x00;
             		}
-                    PrintReceipt(side.c.dir);
+                    PrintPOS(side.c.dir);
                     side.c.Copy = 1;
                     W_autorize =0xCC;
                 }
@@ -647,7 +647,7 @@ int main()
                     for(uint8 LCDRx = 0; LCDRx < 20; LCDRx++){
             			touch1[LCDRx] = 0x00;
             		}
-                    PrintReceipt(side.d.dir);
+                    PrintPOS(side.d.dir);
                     side.d.Copy = 1;
                     W_autorize =0xDC;
                 }
