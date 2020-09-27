@@ -221,15 +221,20 @@ int main()
     Positions = 2;
     for (;;)
     {
-        PollingPos(); 
+        
         //screen_PutChar(0x5A);
-        screen_size = screen_GetRxBufferSize();
+        //screen_size = screen_GetRxBufferSize();
+        do {
+            PollingPos(); 
+            CyDelay(4);
+            screen_size = screen_GetRxBufferSize();
+        }while(screen_size < 5);
         if(screen_size >= 5 ){
             for(uint8 LCDRx = 0; LCDRx < screen_size; LCDRx++){
                 touch1[LCDRx] = screen_ReadRxData();
             }            
-        }
-        CyDelay(4);
+        }        
+        screen_size = 0;
         switch(touch1[8]){
             case 0x01:
                 W_autorize = 0xE1;
@@ -281,10 +286,10 @@ int main()
                     for(uint8 LCDRx = 0; LCDRx < 20; LCDRx++){
                         touch1[LCDRx] = 0x00;
                     }
-                    for(uint8 LCDRx = 0; LCDRx < 8; LCDRx++){
+                    for(uint8 LCDRx = 0; LCDRx < 20; LCDRx++){
                         side.a.msn_plate[LCDRx] = 0x20;
                     }
-                    for(uint8 LCDRx = 0; LCDRx < 6; LCDRx++){
+                    for(uint8 LCDRx = 0; LCDRx < 20; LCDRx++){
                         side.a.km[LCDRx] = 0x20;
                     }                                        
         		}
@@ -409,11 +414,11 @@ int main()
         		PrintShift(); 
         	break;
             case 0x53:
-                if(W_autorize == 0xAC){
+                if(W_autorize == 0xAC || W_autorize == 0x0A){
                     side.a.Copy = 1;
                     PrintPOS(side.a.dir);
                 }
-                if(W_autorize == 0xBC){
+                if(W_autorize == 0xBC || W_autorize == 0x0B){
                     side.b.Copy = 1;
                     PrintPOS(side.b.dir);
                 } 
@@ -504,7 +509,7 @@ int main()
             		}
                 } 
                 if(touch1[3] == 0x83 && W_autorize == 0x1A){                                 
-                    for(uint8 LCDRx = 7; LCDRx < 15; LCDRx++){
+                    for(uint8 LCDRx = 7; LCDRx < 27; LCDRx++){ //Nuevo campo NIT
                         if((touch1[LCDRx] == 0x00) ||(touch1[LCDRx] == 0xFF))
                             break;
                         side.a.km[LCDRx-7] = touch1[LCDRx];
@@ -548,7 +553,7 @@ int main()
                 }
                 if(touch1[3] == 0x83 && W_autorize == 0x0A){             
                     W_autorize = 0;
-                    for(uint8 LCDRx = 7; LCDRx < 15; LCDRx++){
+                    for(uint8 LCDRx = 7; LCDRx < 27; LCDRx++){  // datos nombre
                         if((touch1[LCDRx] == 0x00) ||(touch1[LCDRx] == 0xFF))
                             break;
                         if(touch1[LCDRx] > 96 && touch1[LCDRx] < 123){
@@ -653,7 +658,7 @@ int main()
                 }
         	break;
         }
-        screen_size = 0;
+        
     }
 }
 

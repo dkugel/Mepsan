@@ -48,10 +48,10 @@ struct position{
     uint8 ProcessedmoneySale[8];            //Venta de Dinero vendido
     uint8 ProcessedvolumeSale[8];           //Venta de Volumen vendido
     uint8 ProcessedPPU[4][6];
-    uint8 msn_plate[8];             //placa vehiculo por lado
+    uint8 msn_plate[20];             //placa vehiculo por lado
     uint8 MepRequest;
     uint8 Nozzle;
-    uint8 km[7];
+    uint8 km[20];
     uint8 Copy;
 };
 

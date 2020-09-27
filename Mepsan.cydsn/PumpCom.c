@@ -316,7 +316,7 @@ void GetResponse(void){
         }
     }
     
-     if(address == side.d.dir){
+    if(address == side.d.dir){
         side.d.MepRequest = 0;
         for(uint8 MepRx = 1; MepRx < size + 1; MepRx++){
             side.d.MepsanStore[MepRx - 1] = MepsanResponse[MepRx];
@@ -438,6 +438,8 @@ uint8 Authorize(uint8 address){
     for(uint8 x = 0; x < 50; x ++){
         MepsanSendTo[x] = 0x00;
     }
+    if(address == 0x01)
+        side.a.Copy = 0;
     EnablePin_Write (1u);
     MepsanSendTo[0] = (0x50|address);
     MepsanSendTo[1] = (0x30);

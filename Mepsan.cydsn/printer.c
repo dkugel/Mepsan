@@ -37,8 +37,8 @@ uint8 msn_original[32]  = "            ORIGINAL            ";
 uint8 msn_diesel[9]     = "Diesel   ";
 uint8 msn_gasoline[10]  = "Corriente ";
 uint8 msn_extra[9]      = "Extra    ";
-uint8 msn_POS2[13]      = "Cliente:     ";
-uint8 msn_POS3[13]      = "C.C/NIT:     ";
+uint8 msn_POS2[13]      = "Cliente: ";
+uint8 msn_POS3[13]      = "C.C/NIT: ";
 uint8 msn_POS4[32]      = "Codigo                          ";
 uint8 msn_POS5[32]      = "Descripcion de item             ";
 uint8 msn_POS6[32]      = "Cantidad     PPU      Valor     ";
@@ -1362,18 +1362,18 @@ void PrintPOS(uint8 address){
     		PRINTER_A_PutChar(SEPARATOR[x]);
     	}
         PRINTER_A_PutChar(LINE_FEED);
-        for(uint8 x = 0; x < 13; x ++){
+        for(uint8 x = 0; x < 9; x ++){
 			PRINTER_A_PutChar(msn_POS2[x]);
 		}
-        for(uint8 x = 0; x < 8; x ++){
+        for(uint8 x = 0; x < 20; x ++){
 			PRINTER_A_PutChar(side.a.msn_plate[x]);
 		} 
         PRINTER_A_PutChar(LINE_FEED);
-        for(uint8 x = 0; x < 13; x ++){
+        for(uint8 x = 0; x < 9; x ++){
 			PRINTER_A_PutChar(msn_POS3[x]);
 		}
-        for(uint8 x = 0; x <6; x ++){
-			PRINTER_A_PutChar(side.a.km[x]);
+        for(uint8 x = 0; x <20; x ++){
+			PRINTER_A_PutChar(side.a.km[x]); //CC / NIT
 		}
         PRINTER_A_PutChar(LINE_FEED);        
         for(uint8 x = 0; x < 32; x ++){
@@ -1531,10 +1531,7 @@ void PrintPOS(uint8 address){
     for(uint8 x = 0; x < 32; x ++){
 		PRINTER_A_PutChar(SEPARATOR[x]);
 	}
-    /******FOOTER*****/
-	for(uint8 x = 0; x < 32; x ++){
-		PRINTER_A_PutChar(SEPARATOR[x]);
-	}
+    /******FOOTER*****/	
     PRINTER_A_PutChar(LINE_FEED);    
 	for(uint8 x = 0; x < 32; x ++){
 		PRINTER_A_PutChar(msn_footer3[x]);
